@@ -7,6 +7,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//models
+var models = require('./models');
 
 var fundacion = require('./routes/fundacion');
 

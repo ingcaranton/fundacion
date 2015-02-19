@@ -5,8 +5,7 @@ module.exports = function(mongoose){
 		titulo : String,
 		descripcion : String,
 		elementos : [{
-			titulo : String,
-			descripcion : String,
+			elemento : String,
 			tipo : String
 		}]
 	});

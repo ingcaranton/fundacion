@@ -3,7 +3,7 @@ if (!global.hasOwnProperty('db')) {
  
   var mongoose = require('mongoose');
  
-  var dbName = 'vuelos'
+  var dbName = 'testFundacion'
  
   // the application is executed on the local machine ...
   mongoose.connect('mongodb://localhost/' + dbName);
@@ -14,7 +14,7 @@ if (!global.hasOwnProperty('db')) {
     mongoose: mongoose,
  
     //models
-    user:require('./pagina')(mongoose)
+     pagina:require('./pagina')(mongoose)
     
     // agregar más modelos aquí en caso de haberlos
   };

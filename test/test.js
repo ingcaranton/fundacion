@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 describe("pages", function() {
   describe('when i visit the all pages', function(){
-    it('shows the pages content', function(done){
+    it('shows the page content', function(done){
       db.pagina.find().exec(function(error, paginas){
         paginas.forEach(function(pagina){
           chai.request(app)
@@ -22,8 +22,20 @@ describe("pages", function() {
             });
           });
         });
-      done();
       });
+      done();  
+    });
+    it('show the index content', function(done){
+      db.pagina.find().exec(function(error, paginas){
+          chai.request(app)
+          .get ('/')
+          .end(function(err, res){
+            paginas.forEach(function(pagina){
+              expect(res.text).to.contain(pagina.nombreEnlace, "Error in links of index");
+            });
+          });
+      });
+      done();
     });
   });
 });

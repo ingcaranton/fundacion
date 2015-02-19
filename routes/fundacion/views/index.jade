@@ -1,5 +1,5 @@
 extends ../../../views/layout
 block content
   each pagina in paginas
-    a(href=paginas.nombreEnlace)
-      h2 paginas.titulo
+    a(href=pagina.nombreEnlace)
+      h2 #{pagina.titulo}

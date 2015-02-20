@@ -11,6 +11,7 @@ var bodyParser = require('body-parser');
 var models = require('./models');
 
 var fundacion = require('./routes/fundacion');
+var edit = require('./routes/edit');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //routes
+app.use('/edit', edit);
 app.use('/', fundacion);
 
 // catch 404 and forward to error handler

@@ -2,4 +2,6 @@ extends ../../../views/layout
 block content
   each pagina in paginas
     a(href=pagina.nombreEnlace)
-      h2 #{pagina.titulo}
+      p #{pagina.titulo}
+    a(href="/edit/")
+      p Editar

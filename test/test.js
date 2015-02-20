@@ -10,7 +10,7 @@ describe("admin pages", function() {
   describe('content admin in index', function(){
     it('link a edit page in index', function(done){
       chai.request(app)
-      .get ("/")
+      .get ('/')
       .end(function(err, res){
         expect(res.text).to.contain('href="/edit/"', 'Error in the link edit');
         done();

@@ -3,11 +3,11 @@ block content
   each pagina in paginas
     a(href="/edit/"+pagina.nombreEnlace)
       p #{pagina.titulo}
-    p Pagina Nueva
-    form(method="POST", action="/edit/new")
-      p Nombre pagina
-      input(type="text" name="nombrePagina")
-      p Descripcion
-      textarea(name="descripcionPagina")
-      button(type="submit") Crear Pagina
-    button(id="agregarElemento") Agregar Elemento 
+  p Pagina Nueva
+  form(method="POST", action="/edit/new")
+    p Nombre pagina
+    input(type="text" name="nombrePagina")
+    p Descripcion
+    textarea(name="descripcionPagina")
+    button(type="submit") Crear Pagina
+  button(id="agregarElemento") Agregar Elemento 

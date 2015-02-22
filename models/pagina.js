@@ -9,5 +9,5 @@ module.exports = function(mongoose){
 			tipo : String
 		}]
 	});
-	return mongoose.model('pagina', paginaSchema);
+	return mongoose.model('Pagina', paginaSchema);
 }

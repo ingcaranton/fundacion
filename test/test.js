@@ -9,12 +9,12 @@ chai.use(chaiHttp);
 describe("admin pages", function() {
   describe('content admin in index', function(){
     it('link a edit page in index', function(done){
-      chai.request(app)
-      .get ('/')
-      .end(function(err, res){
-        expect(res.text).to.contain('href="/edit/"', 'Error in the link edit');
-        done();
-      });  
+        chai.request(app)
+        .get ('/')
+        .end(function(err, res){
+          expect(res.text).to.contain('href="/edit/"', 'Error in the link edit');
+          done();
+        });  
     });
   });
 });
@@ -36,7 +36,7 @@ describe("pages", function() {
       });
       done();  
     });
-    it('show the index content', function(done){
+    it('shows the index content', function(done){
       db.pagina.find().exec(function(error, paginas){
           chai.request(app)
           .get ('/')

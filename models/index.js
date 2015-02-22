@@ -3,8 +3,12 @@ if (!global.hasOwnProperty('db')) {
  
   var mongoose = require('mongoose');
  
-  var dbName = 'testFundacion'
- 
+  var dbName;
+//  if(process.env.ENV === 'test')
+//    dbName = 'test_fundacion';
+//  else
+//    dbName = 'fundacion';
+var dbName='testFundacion'; 
   // the application is executed on the local machine ...
   mongoose.connect('mongodb://localhost/' + dbName);
  

@@ -5,5 +5,9 @@ app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
-  res.render('index');
+  db.pagina.find().exec(function(error, paginas){
+    res.render('index', {
+      paginas: paginas
+    });
+  });
 });

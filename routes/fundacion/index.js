@@ -14,12 +14,14 @@ app.route('/')
 
 app.route('/:pagina')
 .get(function(req, res) {
+  //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
 	db.pagina.findOne({ nombreEnlace:"/"+req.params.pagina }, function(error, pagina){
   		if(pagina){
         res.render('pagina', { 
           pagina: pagina
   		  });
   	   }else{
+        //Si no encuentra el registro, renderiza not found
         res.render('pagina', {
           pagina: {titulo:"not found"}
         });

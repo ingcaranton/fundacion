@@ -1,0 +1,10 @@
+extends ../../../views/layout
+block content
+  #panelEdit
+    a(href="/admin/edit/"+pagina.nombreEnlace) Modo editar &nbsp
+    a(href="/admin/"+pagina.nombreEnlace) Modo normal &nbsp
+    a(href="/admin") Menu administrador
+  h1 #{pagina.titulo}
+  if pagina.elementos
+    each elemento in pagina.elementos 
+      p #{elemento.elemento}

@@ -1,7 +1,7 @@
 extends ../../../views/layout
 block content
   each pagina in paginas
-    a(href=pagina.nombreEnlace)
+    a(href="/"+pagina.nombreEnlace)
       p #{pagina.titulo}
-  a(href="/edit/")
+  a(href="/admin/")
     p Editar

@@ -1,0 +1,25 @@
+extends ../../../views/layout
+block content
+  each pagina in paginas
+    a(href="/admin/"+pagina.nombreEnlace)
+      p #{pagina.titulo}
+  h2 Pagina Nueva
+  form(method="POST", action="/admin/new")
+    p Enlace
+    input(type="text" name="nombreEnlace")
+    p Titulo
+    input(type="text" name="titulo")
+    p Descripcion
+    textarea(name="descripcion")
+    p Elemento
+    textarea(name="elemento")
+    input(type="radio" checked)
+    | Texto
+    input(type="radio")
+    | Link YouTube
+    input(type="radio")
+    | Imagen
+    br
+    a(href="#") Agregar Elemento 
+    button(type="submit") Crear Pagina
+  

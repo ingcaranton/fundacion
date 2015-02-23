@@ -6,12 +6,14 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
+var flash = require('connect-flash');
 //models
 var models = require('./models');
 
 var fundacion = require('./routes/fundacion');
-var edit = require('./routes/edit');
+var admin = require('./routes/admin');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,9 +26,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//Sesiones y cokies
+app.use(cookieParser());
+app.use(session({secret: '1234567'}));
+app.use(flash());   
 
 //routes
-app.use('/edit', edit);
+app.use('/admin', admin);
 app.use('/', fundacion);
 
 // catch 404 and forward to error handler

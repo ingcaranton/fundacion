@@ -17,6 +17,8 @@
     "request": "~2.53.0",
     "chai-http": "~1.0.0",
     "mongoose": "~3.8.23",
-    "stylus": "~0.50.0"
+    "stylus": "~0.50.0",
+    "connect-flash": "~0.1.1",
+    "express-session": "~1.10.3"
   }
 }

@@ -1,7 +1,47 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+  head    
+    meta(charset="utf-8")
+    title= title   
+    link(rel='stylesheet', href='/css/style.css')
   body
-    block content
+
+    #logo
+     a(href='/') 
+      img(src='/img/logo.png')
+
+    #titulo
+     h1 FUNDACIÓN BIENESTAR 
+
+    #barra
+     ul
+      li
+       a(href='#') Entrada Uno
+      li
+       a(href='#') Entrada Dos
+      li
+       a(href='#') Entrada Tres
+
+    #contenido
+     block content
+
+    #piePagina
+      footer 
+       #logoPiePagina
+        a(href='/') 
+         img(src='/img/logo.png')
+
+       #enlaces
+        table(id="tablaEnlaces")
+          tr
+            td
+              each pagina in paginas
+                a(href="/"+pagina.nombreEnlace)
+                  p #{pagina.titulo}
+            td
+              a(href="/admin/")
+               p Editar
+
+       #copyright
+        p Copyright @arleyViviana Todos los derechos reservados
+  

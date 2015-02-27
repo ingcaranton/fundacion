@@ -1,4 +1,5 @@
 module.exports.create = function(req, res, done) {
+    console.log(req.body);
     if (req.body.nombreEnlace){
         var nombreEnlace = req.body.nombreEnlace.toLowerCase(); 
     }

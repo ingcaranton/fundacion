@@ -25,7 +25,8 @@ if(process.env.NODE_ENV==="development"||process.env.NODE_ENV==null){
     mongoose: mongoose,
  
     //models
-    pagina:require('./pagina')(mongoose)
+    pagina:require('./pagina')(mongoose),
+    usuario:require('./usuario')(mongoose)
   };
 }
  

@@ -1,2 +1,5 @@
-$(document).ready(function(){
-}
+var pag={};
+$(document).ready(function() {
+  $("#sliderImagenes").featureCarousel({ 
+  });
+});

@@ -1,8 +1,43 @@
 extends ../../../views/layout
 block content
 
-  #sliderImagenes
-    img(src='/img/slider.png')
+  #carrusel.carousel-container
+    #sliderImagenes
+      .carousel-feature
+        a(href="#")
+          img.carousel-image(alt="Image Caption" src="images/imagesSlider/sample1.jpg")
+        #descripcionImagen1.carousel-caption
+          p Imagen 1
+
+      .carousel-feature
+        a(href="#")
+          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample2.jpg")
+        #descripcionImagen2.carousel-caption
+          p Imagen 2
+
+      .carousel-feature
+        a(href="#")
+          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample3.jpg")
+        #descripcionImagen3.carousel-caption
+          p Imagen 3
+
+      .carousel-feature
+        a(href="#")
+          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample4.jpg")
+        #descripcionImagen4.carousel-caption
+          p Imagen 4
+
+      .carousel-feature
+        a(href="#")
+          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample5.jpg")
+        #descripcionImagen5.carousel-caption
+          p Imagen 5
+
+    #carousel-left
+      img(src="images/imagesSlider/arrow-left.png")
+    #carousel-right
+      img(src="images/imagesSlider/arrow-right.png")
+
   #seccionesPrincipales
     table
       tr

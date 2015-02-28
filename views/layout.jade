@@ -4,15 +4,19 @@ html
     meta(charset="utf-8")
     title= title   
     link(rel='stylesheet', href='/css/style.css')
-    script(type='text/javascript', src='/js/jquery-1.10.2.js')
+    link(rel="stylesheet" href="/plugins/slider/css/feature-carousel.css" charset="utf-8")
+    script(type='text/javascript', src='/js/jquery-1.7.min.js')      
     script(type='text/javascript', src='/js/bootstrap.min.js')
-    script(type='text/javascript', src='/js/ckeditor/ckeditor.js')
-    script(type='text/javascript', src='/js/script.js')
+    script(type='text/javascript', src='/plugins/ckeditor/ckeditor.js')
+    script(type="text/javascript", src="/plugins/slider/js/jquery.featureCarousel.min.js" charset="utf-8")
+    script(type='text/javascript', src='/js/script.js')     
   body
+    script(type="text/javascript").
+      pag=!{JSON.stringify(paginas)};
 
     #logo
      a(href='/') 
-      img(src='/img/logo.png')
+      img(src='/images/logo.png')
 
     #titulo
      h1 FUNDACIÓN BIENESTAR 
@@ -33,13 +37,13 @@ html
       footer 
        #logoPiePagina
         a(href='/') 
-         img(src='/img/logo.png')
+         img(src='/images/logo.png')
 
        #enlaces
         table(id="tablaEnlaces")
           tr
-            td
-              each pagina in paginas
+            each pagina in paginas
+              td
                 a(href="/"+pagina.nombreEnlace)
                   p #{pagina.titulo}
             td

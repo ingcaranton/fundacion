@@ -6,7 +6,7 @@ app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find().exec(function(error, paginas){
+  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     res.render('index', {
       paginas: paginas
     });
@@ -16,7 +16,7 @@ app.route('/')
 app.route('/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
-  db.pagina.find().exec(function(error, paginas){
+  db.pagina.find({},"nombreEnlace titulo").exec(function(error, paginas){
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
         res.render('pagina', { 
@@ -35,7 +35,7 @@ app.route('/:pagina')
 app.route('/edit/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
-  db.pagina.find().exec(function(error, paginas){
+  db.pagina.find({},"nombreEnlace titulo").exec(function(error, paginas){
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
         res.render('pagina', { 

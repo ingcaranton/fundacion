@@ -5,16 +5,31 @@ var assert = chai.assert;
 var expect = chai.expect;
 
 chai.use(chaiHttp);
+db.pagina.remove({},function(errRemove){
+  
+  var newPagina = new db.pagina();
+    newPagina.nombreEnlace = "test";
+    newPagina.titulo = "Esto es un test";
+    newPagina.descripcion = "Pagina de prueba";
+    newPagina.elementos.push({elemento:"Aqui va el texto de la prueba"});
+  newPagina.save(function(errSave, paginaSave){
+    if(paginaSave)
+      console.log("Registro de prueba guardado");
+    else
+      console.log(errSave);
+  });
+});
 
+//empiezan las pruebas
 describe("admin pages", function() {
   describe('content admin in index', function(){
     it('link a edit page in index', function(done){
         chai.request(app)
         .get ('/')
         .end(function(err, res){
-          expect(res.text).to.contain('href="/edit/"', 'Error in the link edit');
-          done();
+          expect(res.text).to.contain('href="/admin/"', 'Error in the link edit');
         });  
+      done();
     });
   });
 });
@@ -25,7 +40,7 @@ describe("pages", function() {
       db.pagina.find().exec(function(error, paginas){
         paginas.forEach(function(pagina){
           chai.request(app)
-          .get (pagina.nombreEnlace)
+          .get ("/"+pagina.nombreEnlace)
           .end(function(err, res){
             expect(res.text).to.contain(pagina.titulo, "Error in title of "+pagina.nombreEnlace);
             pagina.elementos.forEach(function(elemento){

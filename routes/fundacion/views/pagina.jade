@@ -3,4 +3,4 @@ block content
   h1 #{pagina.titulo}
   if pagina.elementos
     each elemento in pagina.elementos 
-      p!=elemento.elemento
+      | !{elemento.elemento}

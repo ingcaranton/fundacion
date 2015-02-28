@@ -13,7 +13,7 @@ module.exports.create = function(req, res, done) {
           var newPagina = new db.pagina();
             newPagina.nombreEnlace = nombreEnlace;
             newPagina.titulo = req.body.titulo;
-            newPagina.descripcion = req.body.descripcion
+            newPagina.descripcion = req.body.descripcion;
             newPagina.elementos.push({elemento:req.body.elemento,tipo:"texto"});
           newPagina.save(function(errSave, paginaSave){
             if(errSave){

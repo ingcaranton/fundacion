@@ -1,3 +1,5 @@
+/*Layout*/
+
 #logo
   width 10%
   margin-left 15%
@@ -28,7 +30,7 @@
 
 #contenido
   float left
-  min-height 500px
+  min-height 300px
   height auto
   width 80%
   margin 5% 10% 5% 10%
@@ -54,15 +56,19 @@
 #tablaEnlaces
   tr 
     td 
-      padding 2% 2% 2% 2%
-      width 150px
+      padding 1% 2% 1% 2%
+      width 130px
+      text-align center
+      
+/*Fin Layout*/      
+   
+/*Home*/
 
 #carrusel
   #sliderImagenes
     width 100%
-    height 200px
+    height 280px
     padding 2% 0 2% 0
-    margin-rigth 10%
 
 #seccionesPrincipales
   height 50%
@@ -76,26 +82,46 @@
     tr 
       td 
         width 300px
+        
+/*Fin Home*/
 
-#paginaNueva
+/*Agregar paginas*/    
+  
+#editarEnlaces
   width 70%
-  margin-left 15%
+  float left
+  margin 0 0 5% 18%
+
+#tablaEditarEnlaces
+  tr 
+    td 
+      padding 1% 2% 1% 2%
+      width 130px
+      text-align center
+      
+#paginaNueva
+  width 80%
+  margin-left 10%
   #tablaCampos
     width 100%
     #columnaPequena
-      width 15%
+      width 8%
       height auto
       padding 1% 1% 1% 1%
     #columnaGrande
-      width 85%
+      width 92%
       height auto
       padding 1% 1% 1% 1%
+      text-align center
       input 
-        width 100%
+        width 80%
         height 30px
       textarea
-        width 100%
+        width 80%
         height 30px
+      #textContenido
+        width 100%
+        
   #tablaBotones
     width 100%
     height auto
@@ -107,3 +133,44 @@
       text-align left
       width 50%
       padding 3% 10% 3% 10%
+
+/*Fin Agregar Páginas*/
+
+/*Login*/
+
+#login
+  width 70%
+  margin 5% 15% 5% 15%
+  #tablaLogin
+    width 70%
+    margin 0 15% 0 15%
+    #columnaPequena
+      width 20%
+      height auto
+      padding 1% 1% 1% 1%
+    #columnaGrande
+      width 80%
+      height auto
+      padding 1% 1% 1% 1%
+      input
+        width 100%
+        height 30px
+    #olvidoContrasena
+      text-align right
+      padding 1% 1% 1% 1%
+    #botonIngresar
+      text-align center
+      padding 1% 1% 1% 1%
+      button
+        width 100px
+        height 30px 
+
+/*Fin Login*/
+
+/*Admin/views/pagina.jade*/
+
+#panelEdit
+  a 
+    text-decoration none
+
+/*Fin Admin/views/pagina.jade*/

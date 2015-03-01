@@ -1,8 +1,7 @@
 extends ../../../views/layout
 block content
-  each pagina in paginas
-    a(href="/admin/"+pagina.nombreEnlace)
-      p #{pagina.titulo}
+  #editarEnlaces
+      table#tablaEditarEnlaces
   #paginaNueva
       form(method="POST", action="/admin/new")
         table#tablaCampos

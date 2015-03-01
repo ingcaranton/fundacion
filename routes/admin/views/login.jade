@@ -1,0 +1,22 @@
+extends ../../../views/layout
+block content
+  #login
+    form(method="POST", action="/admin/login")
+      table#tablaLogin
+          tr 
+           td#columnaPequena
+              p Usuario:
+           td#columnaGrande
+              input(type="text" name="usuario")
+          tr
+           td#columnaPequena
+              p Contraseña:
+           td#columnaGrande
+              input(type="text" name="contrasena")
+          tr
+           td#olvidoContrasena(colspan="2")
+              a(href="#")
+                p ¿Olvidó Contraseña?
+          tr
+           td#botonIngresar(colspan="2")
+              button(type="submit") Ingresar

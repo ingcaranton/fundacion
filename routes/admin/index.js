@@ -43,7 +43,7 @@ app.route('/login')
 
 app.route('/logout')
 .get(function(req,res){
-  delete req.session;
+  delete req.session.admin;
   res.redirect('/');
 });
 

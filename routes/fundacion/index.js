@@ -7,6 +7,7 @@ app.route('/')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     res.render('index', {
+      administrador : req.session.admin,
       paginas: paginas
     });
   });
@@ -19,6 +20,7 @@ app.route('/:pagina')
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
         res.render('pagina', { 
+          administrador : req.session.admin,
           pagina: pagina,
           paginas: paginas
   		  });

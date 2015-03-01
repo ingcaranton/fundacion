@@ -14,7 +14,7 @@ module.exports.create = function(req, res, done) {
             newPagina.nombreEnlace = nombreEnlace;
             newPagina.titulo = req.body.titulo;
             newPagina.descripcion = req.body.descripcion;
-            newPagina.elementos.push({elemento:req.body.elemento,tipo:"texto"});
+            newPagina.contenido =req.body.contenido;
           newPagina.save(function(errSave, paginaSave){
             if(errSave){
               return done(errSave);          

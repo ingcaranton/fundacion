@@ -4,10 +4,7 @@ module.exports = function(mongoose){
 		nombreEnlace : String,
 		titulo : String,
 		descripcion : String,
-		elementos : [{
-			elemento : String,
-			tipo : String
-		}]
+		contenido : String
 	});
 	return mongoose.model('Pagina', paginaSchema);
 }

@@ -21,13 +21,13 @@ block content
               p Contenido
             td#columnaGrande
               textarea(name="contenido" id="textContenido" class="ckeditor")
-                | pagina.contenido
+                | #{pagina.contenido}
           tr
             td#columnaPequena
               p Descripción
             td#columnaGrande
               textarea(name="descripcion")
-                | pagina.contenido
+                | #{pagina.contenido}
         table#tablaBotones
           tr
             td#guardar

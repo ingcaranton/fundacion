@@ -41,6 +41,12 @@ app.route('/login')
     }
 });
 
+app.route('/logout')
+.get(function(req,res){
+  req.logout();
+  res.redirect('/');
+});
+
 app.route('/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga

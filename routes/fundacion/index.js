@@ -26,8 +26,8 @@ app.route('/:pagina')
   		  });
   	   }else{
         //Si no encuentra el registro, renderiza not found
-        res.render('pagina', {
-          pagina: {titulo:"not found"}
+          res.render('pagina', {
+            error: "not found"
         });
        }
     });

@@ -23,6 +23,22 @@ app.route('/login')
   });
 });
 
+app.route('/login')
+.post(function(req,res){
+  if(req.body.usuario=='admin'){
+    if(req.body.contrasena=='admin'){
+      req.session.admin='admin';
+      res.redirect("/admin/");
+    }else{
+      res.redirect('/');
+      req.flash('message', 'error with password');
+    }
+  }else{
+      res.redirect('/');
+      req.flash('message', 'error with nickname');
+    }
+});
+
 app.route('/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga

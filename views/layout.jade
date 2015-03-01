@@ -24,31 +24,31 @@ html
     #barra
      ul
       li
-       a(href='#') Entrada Uno
+        a(href='#') Entrada Uno
       li
-       a(href='#') Entrada Dos
+        a(href='#') Entrada Dos
       li
-       a(href='#') Entrada Tres
+        a(href='#') Entrada Tres
 
     #contenido
      block content
 
     #piePagina
       footer 
-       #logoPiePagina
-        a(href='/') 
-         img(src='/images/logo.png')
+        #logoPiePagina
+          a(href='/') 
+            img(src='/images/logo.png')
 
-       #enlaces
-        table(id="tablaEnlaces")
-          tr
-            each pagina in paginas
+        #enlaces
+          table#tablaEnlaces
+            tr
+              each pagina in paginas
+                td
+                  a(href="/"+pagina.nombreEnlace)
+                    p #{pagina.titulo}
               td
-                a(href="/"+pagina.nombreEnlace)
-                  p #{pagina.titulo}
-            td
-              a(href="/admin/")
-               p Editar
+                a(href="/admin/")
+                 p Editar
 
        #copyright
         p Copyright @arleyViviana Todos los derechos reservados

@@ -1,6 +1,9 @@
 extends ../../../views/layout
 block content
-  h1 #{pagina.titulo}
-  if pagina.elementos
-    each elemento in pagina.elementos 
-      | !{elemento.elemento}
+  #contenidoPagina
+    if pagina
+      h1 #{pagina.titulo}
+      #elemento
+        | !{pagina.contenido}
+    else
+      h1 #{error}

@@ -13,7 +13,11 @@ html
   body
     script(type="text/javascript").
       pag=!{JSON.stringify(paginas)};
-
+      administrador="!{administrador}";
+    #editar
+      if administrador
+        a(href="/admin")
+          p Editar
     #logo
      a(href='/') 
       img(src='/images/logo.png')

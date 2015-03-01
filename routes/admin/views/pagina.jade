@@ -7,25 +7,25 @@ block content
       form(method="POST", action="/admin/update")
         table#tablaCampos
           tr 
-            td#columnaPequena
+            td.columnaPequena
               p Enlace
-            td#columnaGrande
+            td.columnaGrande
               input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
           tr
-            td#columnaPequena
+            td.columnaPequena
               p Título
-            td#columnaGrande
+            td.columnaGrande
               input(type="text" name="titulo" value=pagina.titulo)
           tr
-            td#columnaPequena
+            td.columnaPequena
               p Contenido
-            td#columnaGrande
+            td.columnaGrande
               textarea(name="contenido" id="textContenido" class="ckeditor")
                 | #{pagina.contenido}
           tr
-            td#columnaPequena
+            td.columnaPequena
               p Descripción
-            td#columnaGrande
+            td.columnaGrande
               textarea(name="descripcion")
                 | #{pagina.contenido}
         table#tablaBotones

@@ -13,6 +13,16 @@ app.route('/')
   });
 });
 
+
+app.route('/login')
+.get(function(req, res){
+  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+    res.render('login', {
+      paginas: paginas
+    });
+  });
+});
+
 app.route('/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga

@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  #editarEnlaces
+  #editarEnlaces(onload="cargarPaginasEnEditar();")
       table#tablaEditarEnlaces
   #paginaNueva
       form(method="POST", action="/admin/new")

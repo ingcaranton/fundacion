@@ -1,9 +1,11 @@
 var pag={};
+var administrador= false;
 $(document).ready(function() {
   $("#sliderImagenes").featureCarousel({ 
+    largeFeatureWidth: 600,
+    largeFeatureHeight: 380
   });
-  cargarPaginasEnLayout();
-  cargarPaginasEnEditar();
+  cargarPaginasEnLayout(); 
 });
 
 function cargarPaginasEnLayout(){
@@ -25,11 +27,19 @@ function cargarPaginasEnLayout(){
 	if(contador==6){
 		row = table.insertRow();		
 	}
-	var cell = row.insertCell();
-	var a = document.createElement("a");
-  a.href = "/admin/";
-  a.innerHTML = "Editar"
-	cell.appendChild(a);
+  if(administrador){
+    var cell = row.insertCell();
+    var a = document.createElement("a");
+    a.href = "/admin/logout";
+    a.innerHTML = "Salir"
+    cell.appendChild(a);
+  }else{
+    var cell = row.insertCell();
+    var a = document.createElement("a");
+    a.href = "/admin/login";
+    a.innerHTML = "Administrar";
+    cell.appendChild(a);
+  }
 }
 
 function cargarPaginasEnEditar(){

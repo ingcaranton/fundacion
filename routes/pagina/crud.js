@@ -15,6 +15,11 @@ module.exports.create = function(req, res, done) {
             newPagina.titulo = req.body.titulo;
             newPagina.descripcion = req.body.descripcion;
             newPagina.contenido =req.body.contenido;
+            if(req.body.publicar){
+              newPagina.publicar = true;
+            }else{
+              newPagina.publicar = false;
+            }
           newPagina.save(function(errSave, paginaSave){
             if(errSave){
               return done(errSave);          

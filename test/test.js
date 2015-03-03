@@ -5,8 +5,11 @@ var assert = chai.assert;
 var expect = chai.expect;
 
 chai.use(chaiHttp);
+
+//borra la BD
 db.pagina.remove({},function(errRemove){
-  
+
+//Llena la BD con un ejemplo
   var newPagina = new db.pagina();
     newPagina.nombreEnlace = "test";
     newPagina.titulo = "Esto es un test";

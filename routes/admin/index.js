@@ -2,6 +2,10 @@ var express = require('express');
 var app = module.exports = express();
 var crudPagina = require("../pagina/crud");
 
+//Rutas para la autenticacion
+var autenticacion = require("./autenticacion");
+app.use(autenticacion);
+
 app.set('views', __dirname + '/views');
 
 app.route('/')
@@ -14,37 +18,14 @@ app.route('/')
   });
 });
 
-
-app.route('/login')
+app.route('/new')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    res.render('login', {
+    res.render('new', {
       administrador : req.session.admin,
       paginas: paginas
     });
   });
-});
-
-app.route('/login')
-.post(function(req,res){
-  if(req.body.usuario=='admin'){
-    if(req.body.contrasena=='admin'){
-      req.session.admin='admin';
-      res.redirect("/");
-    }else{
-      res.redirect('/admin/login');
-      req.flash('message', 'error with password');
-    }
-  }else{
-      res.redirect('/admin/login');
-      req.flash('message', 'error with nickname');
-    }
-});
-
-app.route('/logout')
-.get(function(req,res){
-  delete req.session.admin;
-  res.redirect('/');
 });
 
 app.route('/:pagina')
@@ -89,7 +70,7 @@ app.route('/edit/:pagina')
   });
 });
 
-app.route('/new')
+app.route('/guardar')
   .post(function(req,res){
     crudPagina.create(req, res, function(err, pagina, flash){
       if(err){
@@ -98,4 +79,16 @@ app.route('/new')
         res.redirect("/admin");
        }
   });
+});
+
+app.route('/publicar')
+  .post(function(req,res){
+    req.body.publicar=true;
+    crudPagina.create(req, res, function(err, pagina, flash){
+      if(err){
+        res.redirect("/admin/error");
+       }else{
+        res.redirect("/admin");
+       }
   });
+});

@@ -3,35 +3,7 @@ block content
   if administrador
     #editarEnlaces
         table#tablaEditarEnlaces
-    #paginaNueva
-        form(method="POST", action="/admin/new")
-          table#tablaCampos
-              tr 
-               td.columnaPequena
-                  p Enlace
-               td.columnaGrande
-                  input(type="text" name="nombreEnlace")
-              tr
-               td.columnaPequena
-                  p Título
-               td.columnaGrande
-                  input(type="text" name="titulo")
-              tr
-               td.columnaPequena
-                  p Contenido
-               td.columnaGrande
-                  textarea(name="contenido" id="textContenido" class="ckeditor")
-              tr
-               td.columnaPequena
-                  p Descripción
-               td.columnaGrande
-                  textarea(name="descripcion")
-          table#tablaBotones
-              tr
-               td#guardar
-                  button(type="submit") Guardar 
-               td#publicar 
-                  button#botonPublicar Publicar
+        a(href="/admin/new") Nueva entrada
   else
     #noAdmin 
       h1 ¡No eres administrador! 

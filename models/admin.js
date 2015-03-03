@@ -7,10 +7,10 @@ var userSchema = new Schema({
     contrasena : String,
     nickName : String
 });
+//generates an encrypted password
 userSchema.methods.generateHash = function(contrasena) {
     return bcrypt.hashSync(contrasena, bcrypt.genSaltSync(8), null);
 };
-
 // checking if password is valid
 userSchema.methods.validPassword = function(contrasena) {
     return bcrypt.compareSync(contrasena, this.contrasena);

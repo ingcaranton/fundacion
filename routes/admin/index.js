@@ -30,7 +30,7 @@ app.route('/new')
 
 app.route('/:pagina')
 .get(function(req, res) {
-  //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
+  //Search the page you're requesting in the DB, if found render the info you need
   db.pagina.find().exec(function(error, paginas){
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
@@ -40,7 +40,7 @@ app.route('/:pagina')
           paginas: paginas
         });
       }else{
-        //Si no encuentra el registro, renderiza not found
+        //Can not find the record, renders not found
         res.render('pagina', {
           error: "not found"
         });
@@ -61,7 +61,7 @@ app.route('/edit/:pagina')
           paginas:paginas
         });
       }else{
-        //Si no encuentra el registro, renderiza not found
+        //Can not find the record, renders not found
         res.render('pagina', {
           error: "not found"
         });

@@ -2,9 +2,11 @@
 if (!global.hasOwnProperty('db')) {
  
   var mongoose = require('mongoose');
- 
+
+  //Prints the current environment variable 
   console.log(process.env.NODE_ENV);
 
+  //Choose the DB according to your environment variable
   if(process.env.NODE_ENV==="production"){
     mongoose.connect('mongodb://arley:arley@ds045521.mongolab.com:45521/fundacion');
   }
@@ -15,10 +17,8 @@ if (!global.hasOwnProperty('db')) {
     mongoose.connect('mongodb://localhost/fundacion');
   }
 
+  //Creates a struct with models
   global.db = {
- 
-    mongoose: mongoose,
- 
     //models
     pagina:require('./pagina')(mongoose),
     admin:require('./admin')(mongoose)

@@ -3,7 +3,25 @@ block content
   if administrador
     #editarEnlaces
         table#tablaEditarEnlaces
-        a(href="/admin/new") Nueva entrada
+          each pagina in paginas
+            tr
+              td.columnaTitulo
+                span #{pagina.titulo}
+              td.columnaUsuario
+                span nombre usuario 
+              td.columnaFecha
+                span fecha creacion 
+              td.columnaAcciones
+                a(href="/admin/"+pagina.nombreEnlace) Editar 
+                span &nbsp; | &nbsp;
+                a(href="#") Eliminar
+                span &nbsp; | &nbsp;
+                a(href="#") Publicar
+                span &nbsp; 
+          tr
+            td#paginaNueva(colspan="4")
+              button#botonPaginaNueva
+                a(href="/admin/new") Pagina Nueva
   else
     #noAdmin 
-      h1 ¡No eres administrador! 
+      h1 ¡No eres administrador!  

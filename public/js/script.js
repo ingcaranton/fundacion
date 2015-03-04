@@ -10,25 +10,6 @@ $(document).ready(function() {
     largeFeatureHeight: 380
   });
   cargarPaginasEnLayout();
-
-  /*Carga los enlaces de las paginas en la opcion de editar*/
-  if($("#editarEnlaces").length){
-      var table = document.getElementById("tablaEditarEnlaces");
-      var contador=1;
-      var row = table.insertRow();
-      for(var i=0; i<pag.length; i++){
-        if(contador==6){
-          row = table.insertRow();
-          contador=1;
-        }
-        var cell = row.insertCell();
-        var a = document.createElement("a");
-        a.href = "/admin/"+pag[i].nombreEnlace;
-        a.innerHTML= pag[i].titulo;
-        cell.appendChild(a);
-            contador++;
-      }
-  }
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/

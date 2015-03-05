@@ -43,8 +43,8 @@ describe("pages", function() {
         });
       });
       done();  
-    });
-    it('shows the contentof the main page', function(done){
+    }); 
+    it('shows the content of the main page', function(done){
       db.pagina.find({}, "nombreEnlace titulo descripcion").exec(function(error, paginas){
           chai.request(app)
           .get ('/')
@@ -52,10 +52,30 @@ describe("pages", function() {
             //Test who are all links to the pages of the DB
             paginas.forEach(function(pagina){
               expect(res.text).to.contain(pagina.nombreEnlace, "Error in links of index");
+              //Test link a login
             });
           });
       });
       done();
     });
+    it('shows the content of login page', function(done){
+      chai.request(app)
+      .get ('/admin/login')
+      .end(function(err, res){
+        expect(res.text).to.contain("Usuario:", "No se encontro input suario");
+        expect(res.text).to.contain("Contraseña:",  "No no se encontro input contraseña");
+      });
+      done();
+    });
+  });
+  describe('when I complete a form and sending', function(){
+    chai.request(app)
+    .post('/admin/login')
+      //Authenticates and expects it to route to home page
+      .send({ usuario: 'admin', contrasena: 'admin' })
+      .end(function (err, res) {
+        expect(res).to.have.status(200);
+        expect(res.redirects[0]).to.not.contain("/admin/login", "Si se redirecciona a /admin/login quiere decir que hubo problemas de autenticacion");
+      });
   });
 });

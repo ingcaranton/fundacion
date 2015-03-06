@@ -10,11 +10,14 @@ module.exports.create = function(req, res, done) {
         if (pagina) {
           return done(new Error("Page is not created"), false, req.flash('message', 'That page link is already taken.'));
         }else {
+          var date = new Date()
+          var dateFormateada = pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());
           var newPagina = new db.pagina();
             newPagina.nombreEnlace = nombreEnlace;
             newPagina.titulo = req.body.titulo;
             newPagina.descripcion = req.body.descripcion;
             newPagina.contenido =req.body.contenido;
+            newPagina.fechaCreacion = dateFormateada;
             if(req.body.publicar){
               newPagina.publicar = true;
             }else{
@@ -30,4 +33,7 @@ module.exports.create = function(req, res, done) {
         }
       });
     });
+}
+function pad(d) {
+    return (d < 10) ? '0' + d.toString() : d.toString();
 }

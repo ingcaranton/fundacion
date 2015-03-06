@@ -19,7 +19,7 @@ app.route('/login')
   db.admin.findOne(function(errorUser, pagina){
     if(pagina){
       if(pagina.contrasena==req.body.contrasena){
-        req.session.admin=req.body.nombre;
+        req.session.admin=pagina.nombre;
         res.redirect("/");
       }else{
         req.flash('message', 'error with contrasena');

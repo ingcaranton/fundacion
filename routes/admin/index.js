@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+  db.pagina.find({},"nombreEnlace titulo descripcion fechaCreacion").exec(function(error, paginas){
     res.render('index', {
       administrador : req.session.admin,
       paginas: paginas

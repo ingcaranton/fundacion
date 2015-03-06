@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
 	nombre : String,
     contrasena : String,
-    nickName : String
+    usuario : String
 });
 //generates an encrypted password
 userSchema.methods.generateHash = function(contrasena) {
@@ -16,5 +16,5 @@ userSchema.methods.validPassword = function(contrasena) {
     return bcrypt.compareSync(contrasena, this.contrasena);
 };
 
-return mongoose.model('user',userSchema);
+return mongoose.model('admin',userSchema);
 }

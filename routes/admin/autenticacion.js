@@ -15,18 +15,21 @@ app.route('/login')
 
 app.route('/login')
 .post(function(req,res){
-  if(req.body.usuario=='admin'){
-    if(req.body.contrasena=='admin'){
-      req.session.admin='admin';
-      res.redirect("/");
+  var usuario=req.body.usuario.toLowerCase();
+  db.admin.findOne(function(errorUser, pagina){
+    if(pagina){
+      if(pagina.contrasena==req.body.contrasena){
+        req.session.admin=req.body.nombre;
+        res.redirect("/");
+      }else{
+        req.flash('message', 'error with contrasena');
+        res.redirect('/admin/login');
+      }
     }else{
-      res.redirect('/admin/login');
-      req.flash('message', 'error with password');
-    }
-  }else{
-      res.redirect('/admin/login');
       req.flash('message', 'error with nickname');
+      res.redirect('/admin/login');
     }
+  });
 });
 
 app.route('/logout')

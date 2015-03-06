@@ -7,5 +7,5 @@ module.exports = function(mongoose){
 		contenido : String,
 		publicar : Boolean
 	});
-	return mongoose.model('Pagina', paginaSchema);
+	return mongoose.model('pagina', paginaSchema);
 }

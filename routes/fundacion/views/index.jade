@@ -1,43 +1,52 @@
 extends ../../../views/layout
 block content
 
-  #carrusel.carousel-container
-    #sliderImagenes
-      .carousel-feature
-        a(href="#")
-          img.carousel-image(alt="Image Caption" src="images/imagesSlider/sample1.jpg")
-        #descripcionImagen1.carousel-caption
-          p Imagen 1
+  #sliderImagenes.wrapper
+    ul#sb-slider.sb-slider
+      li
+        img(src="images/imageSlider/1.jpg" alt="image1")
+        .sb-description
+          h3 Creative Lifesaver
+      li
+        img(src="images/imageSlider/2.jpg" alt="image2")
+        .sb-description
+          h3 Honest Entertainer
+      li
+        img(src="images/imageSlider/3.jpg" alt="image1")
+        .sb-description
+          h3 Brave Astronaut
+      li
+        img(src="images/imageSlider/4.jpg" alt="image1")
+        .sb-description
+          h3 Affectionate Decision Maker
+      li
+        img(src="images/imageSlider/5.jpg" alt="image1")
+        .sb-description
+          h3 Faithful Investor
+      li
+        img(src="images/imageSlider/6.jpg" alt="image1")
+        .sb-description
+          h3 Groundbreaking Artist
+      li
+        img(src="images/imageSlider/7.jpg" alt="image1")
+        .sb-description
+          h3 Selfless Philantropist
 
-      .carousel-feature
-        a(href="#")
-          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample2.jpg")
-        #descripcionImagen2.carousel-caption
-          p Imagen 2
+    #shadow.shadow
 
-      .carousel-feature
-        a(href="#")
-          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample3.jpg")
-        #descripcionImagen3.carousel-caption
-          p Imagen 3
+    #nav-arrows.nav-arrows
+      a(href="#") Next
+      a(href="#") Previous
 
-      .carousel-feature
-        a(href="#")
-          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample4.jpg")
-        #descripcionImagen4.carousel-caption
-          p Imagen 4
-
-      .carousel-feature
-        a(href="#")
-          img(class="carousel-image" alt="Image Caption" src="images/imagesSlider/sample5.jpg")
-        #descripcionImagen5.carousel-caption
-          p Imagen 5
-
-    #carousel-left
-      img(src="images/imagesSlider/arrow-left.png")
-    #carousel-right
-      img(src="images/imagesSlider/arrow-right.png")
-
+    #nav-dots.nav-dots
+      span.nav-dot-current
+      span
+      span
+      span
+      span
+      span
+      span
+      
   #seccionesPrincipales
     table
       tr

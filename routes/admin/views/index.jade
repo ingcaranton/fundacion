@@ -3,10 +3,11 @@ block content
   if administrador
     #editarEnlaces
         table#tablaEditarEnlaces
-          each pagina in paginas
+          each pagina in pagsAdmin
             tr
               td.columnaTitulo
-                span #{pagina.titulo}
+                span 
+                  a(href="/"+pagina.nombreEnlace target="_blank") #{pagina.titulo}
               td.columnaUsuario
                 span nombre usuario 
               td.columnaFecha
@@ -14,9 +15,12 @@ block content
               td.columnaAcciones
                 a(href="/admin/"+pagina.nombreEnlace) Editar 
                 span &nbsp; | &nbsp;
-                a(href="#") Eliminar
+                a(href="/admin/borrar_pagina") Eliminar
                 span &nbsp; | &nbsp;
-                a(href="#") Publicar
+                if pagina.publicar
+                  a(href="/admin/no_publicar") Dejar de publicar
+                else
+                  a(href="/admin/publicar") Publicar
                 span &nbsp; 
           tr
             td#paginaNueva(colspan="4")

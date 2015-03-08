@@ -72,10 +72,10 @@ function cargarPaginasEnLayout(){
 		}
 		var cell = row.insertCell();
 		var a = document.createElement("a");
-        a.href = "/"+pag[i].nombreEnlace;
-        a.innerHTML= pag[i].titulo;
+    a.href = "/"+pag[i].nombreEnlace;
+    a.innerHTML= pag[i].titulo;
 		cell.appendChild(a);
-        contador++;
+    contador++;
 	}
 
 }

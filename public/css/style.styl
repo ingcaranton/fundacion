@@ -1,77 +1,86 @@
 /*Layout*/
 
-#editar
-  width 100%
-  margin-right 15%
-  p 
-    vertical-aling center
-    text-align right
-
-#logo
-  width 10%
-  margin-left 15%
-  float left
-
-  img
-    width 70%
-
-#titulo
-  width 70%
-  float right
-
-  h1
-    text-aling center
-    padding-left 15%
-
-#barra
-  float right
-  width 85%
-  padding-left 20%
-  a 
-   text-decoration none
-   font-size 18px
-  li
-   display: inline;
-   text-align: center
-   padding 0 10% 0 10%
+nav
+  height 8%
+  .container
+    .navbar-header
+      width 10%
+      a.navbar-brand
+        height 100%
+        width 100%
+        margin-left -10px
+        padding 0 0 0 0
+        img
+          width 100%
+          height 100%
+    #submenu
+      margin-left 20%
+      p 
+        a 
+          text-decoration none
+          color #000
+    #botonIngresar 
+      top 0
+      bottom 0
+      text-align center
+      height 100%
+      li 
+        button
+          height 100%
+          background-color #777
+          border-color #777
+          float right
+          a 
+            text-decoration none
+            color #fff
 
 #contenido
-  float left
-  min-height 300px
   height auto
-  width 80%
-  margin 5% 10% 5% 10%
-
-#logoPiePagina
-  width 7%
-  margin-left 18%
-  float left
-  img
-    width 70%
-
-#enlaces
-  width 70%
-  float right
-
-#copyright
   width 100%
-  margin-top 5%
-  float left
-  p 
-    text-align center
+  margin 3% 0 5% 0
+  background-color #1B7DEF
+  
+.footer
+  bottom: 0
+  width: 100%
+  padding 0 15% 0 15%
 
-#tablaEnlaces
-  tr 
-    td 
-      padding 1% 2% 1% 2%
-      width 130px
+  #logoPiePagina
+    width 15%
+    float left
+    vertical-aling center
+    img
+      width 100%
+      height 20%
+
+  #enlaces
+    width 80%
+    float right
+    
+    #tablaEnlaces
+    tr 
+      td 
+        padding 1% 2% 1% 2%
+        width 130px
+        text-align center
+
+  #copyright
+    width 100%
+    float left
+    p 
       text-align center
       
 /*Fin Layout*/      
    
 /*Home*/
+#sliderImagenes
+  padding 3% 0 3% 0
+  width 100%
+  #shadow
+    height 100px
 
 #seccionesPrincipales
+  background-color #fff
   width 100%
   h3
     text-align center
@@ -88,8 +97,9 @@
 /*Agregar paginas*/    
       
 #paginaNueva
-  width 80%
-  margin-left 10%
+  background-color #fff
+  width 100%
+  padding-left 10%
   #tablaCampos
     width 100%
     .columnaPequena
@@ -123,6 +133,7 @@
       padding 3% 10% 3% 10%
 #noAdmin
   width 100%
+  background-color #fff
   h1
     text-align center
   table
@@ -137,6 +148,7 @@
 /*index admin*/
 #editarEnlaces
   width 100%
+  background-color #fff
   float left
   margin 5% 0 5% 
 
@@ -168,8 +180,9 @@
 /*Login*/
 
 #login
-  width 70%
-  margin 5% 15% 5% 15%
+  width 100%
+  background-color #fff
+  padding 15% 15% 5% 15%
   #tablaLogin
     width 70%
     margin 0 15% 0 15%
@@ -199,7 +212,10 @@
 /*Ver página*/
 
 #contenidoPagina
+  background-color #fff
   width 100%
+  padding-top 5%
+  min-height 480px
   h1
     text-align center
   #elemento

@@ -58,7 +58,6 @@ $(document).ready(function() {
       });
   /*Fin Cargar Slider*/
   cargarPaginasEnLayout();
-
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/
@@ -78,23 +77,5 @@ function cargarPaginasEnLayout(){
 		cell.appendChild(a);
         contador++;
 	}
-	if(contador==6){
-		row = table.insertRow();		
-	}
 
-  /*Si existe  aparece enlace para salir*/
-  if(administrador){
-    var cell = row.insertCell();
-    var a = document.createElement("a");
-    a.href = "/admin/logout";
-    a.innerHTML = "Salir"
-    cell.appendChild(a);
-  }else{
-  /*Si no existe administrador aparece enlace para login*/
-    var cell = row.insertCell();
-    var a = document.createElement("a");
-    a.href = "/admin/login";
-    a.innerHTML = "Administrar";
-    cell.appendChild(a);
-  }
 }

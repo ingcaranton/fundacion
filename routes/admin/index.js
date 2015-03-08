@@ -10,17 +10,20 @@ app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({},"nombreEnlace titulo descripcion fechaCreacion").exec(function(error, paginas){
-    res.render('index', {
-      administrador : req.session.admin,
-      paginas: paginas
+  db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+    db.pagina.find().exec(function(error, pagsAdmin){
+      res.render('index', {
+        administrador : req.session.admin,
+        paginas: paginas,
+        pagsAdmin: pagsAdmin
+      });
     });
   });
 });
 
 app.route('/new')
 .get(function(req, res){
-  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+  db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     res.render('new', {
       administrador : req.session.admin,
       paginas: paginas
@@ -31,7 +34,7 @@ app.route('/new')
 app.route('/:pagina')
 .get(function(req, res) {
   //Search the page you're requesting in the DB, if found render the info you need
-  db.pagina.find().exec(function(error, paginas){
+  db.pagina.find({publicar:true}).exec(function(error, paginas){
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
         res.render('pagina', {
@@ -52,7 +55,7 @@ app.route('/:pagina')
 app.route('/edit/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
-  db.pagina.find({},"nombreEnlace titulo").exec(function(error, paginas){
+  db.pagina.find({publicar:true},"nombreEnlace titulo").exec(function(error, paginas){
     db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
       if(pagina){
         res.render('pagina', { 

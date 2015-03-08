@@ -1,0 +1,51 @@
+doctype html
+<html></html>
+  <head>    
+    <meta charset="utf-8">
+    <link rel='stylesheet', href='/css/bootstrap.min.css'>
+    <link rel='stylesheet', href='/css/style.css'>
+    <script type='text/javascript', src='/js/jquery-1.11.2.min.js'></script>
+    <script type='text/javascript', src='/js/bootstrap.min.js'></script> 
+    <script type='text/javascript', src='/js/script.js'></script> 
+  </head>  
+  <body>
+
+    <div class="panel panel-default">
+ 
+      <div class="panel-heading">QUIENES SOMOS</div>
+      <div class="panel-body">
+        <input type="text" value="QUIENES SOMOS" id="tituloMenu">
+        <input type="text" value="#" id="enlaceMenu">
+        <p>Usuario</p>
+        <p>Fecha creación</p>
+        <button type="button" id="agregarSubmenu" class="btn btn-default"> Agregar Submenu </button>
+        <button type="button" id="guardarCambios" class="btn btn-default"> Guardar Cambios </button>
+        <button type="button" id="eliminarMenu" class="btn btn-default"> Eliminar Menu </button>
+      </div>
+     
+      <table class="table">
+        <tr>
+          <td colspan="5">
+            <span>Submenus</span>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" value="Sobre Nosotros" id="tituloSubmenu"></td>
+          <td><input type="text" value="#" id="enlaceSubmenu"></td>
+          <td><p>Usuario</p></td>
+          <td><p>Fecha creación</p></td>
+          <button type="button" id="eliminarSubmenu" class="btn btn-default"> Eliminar</button>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <button type="button" id="agregarMenu" class="btn btn-primary">Agregar Menu</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <button type="button" id="regresarMenu" class="btn btn-default">Regresar</button>
+          </td>
+        </tr>
+      </table>
+    </div>      
+  </body>

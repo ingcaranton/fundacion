@@ -95,11 +95,11 @@ html
                     a(href="#") CONTACTO
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
-              button(type="button" class="btn btn-default btn-primary navbar-btn") 
+              button(type="button" class="btn btn-primary navbar-btn") 
                 if !administrador
                   a(href="/admin/login") INGRESAR
                 else
-                  a(href="/admin/logout") SALIR
+                  a(href="/admin/login") ADMINISTRAR
 
     #contenido
      block content

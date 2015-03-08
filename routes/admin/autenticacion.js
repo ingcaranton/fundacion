@@ -20,7 +20,7 @@ app.route('/login')
     if(pagina){
       if(pagina.contrasena==req.body.contrasena){
         req.session.admin=pagina.nombre;
-        res.redirect("/");
+        res.redirect("/admin/login");
       }else{
         req.flash('message', 'error with contrasena');
         res.redirect('/admin/login');

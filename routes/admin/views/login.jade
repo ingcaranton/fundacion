@@ -2,6 +2,7 @@ extends ../../../views/layout
 block content
   if !administrador
     #login
+      h3 INGRESA TUS DATOS
       form(method="POST", action="/admin/login")
         table#tablaLogin
             tr 
@@ -22,13 +23,17 @@ block content
              td#botonIngresar(colspan="2")
                 button(type="submit") Ingresar
   else
-    #noAdmin
-      h1 ¡Ya esta autenticado!
+    #adminLogin
+      h3 ¡BIENVENIDO AL MODO ADMINISTRADOR!
       table
         tr
           td
-            a(href="/admin")
-              p Editar
+            button.btn.btn-primary(type="button")
+              a(href="/admin/editarMenu") Editar Menu 
           td
-            a(href="/admin/logout")
-              p Salir
+            button.btn.btn-primary(type="button") 
+              a(href="/admin") Editar Paginas
+        tr
+          td(colspan="2")
+            button.btn.btn-danger(type="button")
+              a(href="/admin/logout") Salir del Administrador 

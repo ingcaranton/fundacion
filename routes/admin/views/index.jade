@@ -23,9 +23,12 @@ block content
                   a(href="/admin/publicar") Publicar
                 span &nbsp; 
           tr
-            td#paginaNueva(colspan="4")
-              button#botonPaginaNueva
+            td.botones(colspan="2")
+              button.btn.btn-primary
                 a(href="/admin/new") Pagina Nueva
+            td.botones(colspan="2")
+              button.btn.btn-primary(type="button")
+                a(href="/admin/Login") Regresar 
   else
     #noAdmin 
       h1 ¡No eres administrador!  

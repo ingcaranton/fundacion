@@ -64,13 +64,31 @@ module.exports.update = function(req, res, done) {
         update.publicar = false;
       }
   db.pagina.findOneAndUpdate({ "nombreEnlace" : nombreEnlace},{$set:update},
-      function(error, nombreEnlace){
+      function(error){
           if (error)
             return done(error);          
           else
             return done(null, false, req.flash('message', 'page edited'));
       }
   );
+}
+module.exports.updateEstado = function(req, res, done) {
+  db.pagina.findOne({ "nombreEnlace" : req.params.pagina }, function(error, pagina){
+    if (error)
+      return done(error);          
+    else{
+      var estado=pagina.publicar;
+        db.pagina.findOneAndUpdate({ "nombreEnlace" : req.params.pagina },{$set:{publicar:!estado}},
+          function(error){
+            if (error)
+              return done(error);          
+            else
+              return done(null, false, req.flash('message', 'page edited'));
+           }
+        );
+                  return done(null, pagina);
+    }
+  });
 }
 
 function pad(d) {

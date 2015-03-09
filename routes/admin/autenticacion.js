@@ -3,7 +3,7 @@ var app = module.exports = express();
 
 app.set('views', __dirname + '/views');
 
-app.route('/login')
+app.route('/')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     res.render('login', {

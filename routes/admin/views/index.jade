@@ -18,9 +18,9 @@ block content
                 a(href="/admin/pagina/borrar/"+pagina.nombreEnlace) Eliminar
                 span &nbsp; | &nbsp;
                 if pagina.publicar
-                  a(href="/admin/pagina/no_publicar") Dejar de publicar
+                  a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Dejar de publicar
                 else
-                  a(href="/admin/pagina/publicar") Publicar
+                  a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Publicar
                 span &nbsp; 
           tr
             td.botones(colspan="2")

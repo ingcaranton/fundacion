@@ -8,7 +8,7 @@ app.use(autenticacion);
 
 app.set('views', __dirname + '/views');
 
-app.route('/')
+app.route('/paginas')
 .get(function(req, res){
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     db.pagina.find().exec(function(error, pagsAdmin){

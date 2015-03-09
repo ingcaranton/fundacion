@@ -42,9 +42,9 @@ app.route('/guardar')
     crudPagina.create(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");
-       }else{
+      }else{
         res.redirect("/admin");
-       }
+      }
   });
 });
 
@@ -54,9 +54,9 @@ app.route('/publicar')
     crudPagina.create(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");
-       }else{
+      }else{
         res.redirect("/admin");
-       }
+      }
   });
 });
 
@@ -65,9 +65,9 @@ app.route('/borrar/:pagina')
     crudPagina.deleter(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");
-       }else{
+      }else{
         res.redirect("/admin");
-       }
+      }
   });
 });
 
@@ -77,9 +77,9 @@ app.route('/actualizar/guardar')
     crudPagina.update(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");
-       }else{
+      }else{
         res.redirect("/admin");
-       }
+      }
   });
 });
 
@@ -89,8 +89,19 @@ app.route('/actualizar/publicar')
     crudPagina.update(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");
-       }else{
+      }else{
         res.redirect("/admin");
-       }
+      }
+  });
+});
+
+app.route('/cambiarEstado/:pagina')
+.get(function(req,res){
+    crudPagina.updateEstado(req, res, function(err, pagina, flash){
+      if(err){
+        res.redirect("/admin/error");
+      }else{
+        res.redirect("/admin");
+      }
   });
 });

@@ -12,6 +12,7 @@ html
     script(type='text/javascript', src='/js/script.js')   
     script(type="text/javascript" src="/plugins/Slicebox/js/modernizr.custom.46884.js")
     script(type="text/javascript" src="/plugins/Slicebox/js/jquery.slicebox.js")
+    #{message}
   body
     script(type="text/javascript").
       pag=!{JSON.stringify(paginas)};
@@ -20,7 +21,7 @@ html
       .container-fluid
         .navbar-header
           a.navbar-brand(href="/")
-            img(alt="Brand" src="/images/logo.png" width="150" height="50")
+            img(alt="Brand" src="/images/logo.png" width="110" height="50")
           button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
             span.sr-only Toggle navigation
             span.icon-bar
@@ -97,21 +98,20 @@ html
             li 
               button(type="button" class="btn btn-primary navbar-btn") 
                 if !administrador
-                  a(href="/admin/login") INGRESAR
+                  a(href="/admin") INGRESAR
                 else
-                  a(href="/admin/login") ADMINISTRAR
+                  a(href="/admin") ADMINISTRAR
 
     #contenido
      block content
 
     
     footer.footer
-      #logoPiePagina
-        a(href='/') 
-          img(src='/images/logo.png')
+      .container
+        #tituloFundacion
+          p FUNDACION CONEXIÓN BIENESTAR
+        #enlaces
+          table#tablaEnlaces
 
-      #enlaces
-        table#tablaEnlaces
-
-      #copyright
-        p Copyright @arleyViviana Todos los derechos reservados
+        #copyright
+          p Copyright @arleyViviana Todos los derechos reservados

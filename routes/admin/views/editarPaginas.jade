@@ -1,0 +1,32 @@
+extends ../../../views/layout
+block content
+  if administrador
+    #editarPaginas
+      h3 EDITAR PAGINAS 
+      table#tablaEditarPaginas
+        each pagina in pagsAdmin
+          tr
+            td.columnaTitulo
+              span 
+                a(href="/"+pagina.nombreEnlace target="_blank") #{pagina.titulo}
+            td.columnaUsuario
+              span nombre usuario 
+            td.columnaFecha
+              span #{pagina.fechaCreacion} 
+            td.columnaAcciones
+              a(href="/admin/pagina/editar/"+pagina.nombreEnlace) Editar 
+              span &nbsp; | &nbsp;
+              a(href="/admin/pagina/borrar/"+pagina.nombreEnlace) Eliminar
+              span &nbsp; | &nbsp;
+              if pagina.publicar
+                a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Dejar de publicar
+              else
+                a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Publicar
+              span &nbsp; 
+        tr
+          td.botones(colspan="4")
+            button.btn.btn-primary
+              a(href="/admin/pagina/nueva") Pagina Nueva
+  else
+    #noAdmin 
+      h1 ¡No eres administrador!  

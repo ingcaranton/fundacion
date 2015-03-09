@@ -1,5 +1,117 @@
 extends ../../../views/layout
 block content
 
-  button.btn.btn-primary(type="button")
-    a(href="/admin/Login") Regresar 
+  if administrador
+    #editarMenu
+      h3 EDITAR MENU
+      #menu 
+        .panel.panel-default 
+          .panel-heading 
+            h4 QUIENES SOMOS
+          .panel-body
+            table
+              tr 
+                td
+                  input(type="text" value="QUIENES SOMOS" id="tituloMenu")
+                td 
+                  input(type="text" value="#" id="enlaceMenu")
+                td
+                  p Usuario
+                td
+                  p Fecha 
+                td
+                  button(type="button" id="agregarSubmenu" class="btn btn-default") Agregar Submenu 
+                td
+                  button(type="button" id="guardarCambios" class="btn btn-default") Guardar Cambios
+                td
+                  button(type="button" id="eliminarMenu" class="btn btn-default") Eliminar Menu 
+         
+          table.table
+            tr
+              td(colspan="5")
+                h5 Submenus
+            tr
+              td
+                span 1
+              td 
+                input(type="text" value="Sobre Nosotros" id="tituloSubmenu")
+              td
+                input(type="text" value="#" id="enlaceSubmenu")
+              td
+                p Usuario
+              td
+                p Fecha creación
+              td
+                button(type="button" id="eliminarSubmenu" class="btn btn-default") Eliminar
+            tr
+              td
+                span 2
+              td 
+                input(type="text" value="Información Centros" id="tituloSubmenu")
+              td
+                input(type="text" value="#" id="enlaceSubmenu")
+              td
+                p Usuario
+              td
+                p Fecha creación
+              td
+                button(type="button" id="eliminarSubmenu" class="btn btn-default") Eliminar
+        .panel.panel-default 
+          .panel-heading 
+            h4 AYUDAR
+          .panel-body
+            table
+              tr 
+                td
+                  input(type="text" value="AYUDAR" id="tituloMenu")
+                td 
+                  input(type="text" value="#" id="enlaceMenu")
+                td
+                  p Usuario
+                td
+                  p Fecha
+                td
+                  button(type="button" id="agregarSubmenu" class="btn btn-default") Agregar Submenu 
+                td
+                  button(type="button" id="guardarCambios" class="btn btn-default") Guardar Cambios
+                td
+                  button(type="button" id="eliminarMenu" class="btn btn-default") Eliminar Menu 
+         
+          table.table
+            tr
+              td(colspan="5")
+                h5 Submenus
+            tr
+              td
+                span 1
+              td 
+                input(type="text" value="Como voluntario" id="tituloSubmenu")
+              td
+                input(type="text" value="#" id="enlaceSubmenu")
+              td
+                p Usuario
+              td
+                p Fecha creación
+              td
+                button(type="button" id="eliminarSubmenu" class="btn btn-default") Eliminar
+            tr
+              td
+                span 2
+              td 
+                input(type="text" value="Hacer donación" id="tituloSubmenu")
+              td
+                input(type="text" value="#" id="enlaceSubmenu")
+              td
+                p Usuario
+              td
+                p Fecha creación
+              td
+                button(type="button" id="eliminarSubmenu" class="btn btn-default") Eliminar
+      #botones
+        button.btn.btn-primary(type="button" id="agregarMenu") Agregar Menu 
+        span &nbsp; &nbsp; &nbsp;
+        button.btn.btn-primary(type="button")
+          a(href="/admin/Login") Regresar 
+  else
+    #noAdmin 
+      h1 ¡No eres administrador!  

@@ -2,35 +2,36 @@ extends ../../../views/layout
 block content
   if administrador
     #paginaNueva
-      a(href="/admin") Volver a administrar
+      h3 PAGINA NUEVA 
+      a(href="/admin/paginas") Regresar
       form(method="POST" action="")
         table#tablaCampos
-            tr 
-             td.columnaPequena
-                p Enlace
-             td.columnaGrande
-                input(type="text" name="nombreEnlace")
-            tr
-             td.columnaPequena
-                p Título
-             td.columnaGrande
-                input(type="text" name="titulo")
-            tr
-             td.columnaPequena
-                p Contenido
-             td.columnaGrande
-                textarea(name="contenido" id="textContenido" class="ckeditor")
-            tr
-             td.columnaPequena
-                p Descripción
-             td.columnaGrande
-                textarea(name="descripcion")
+          tr
+           td.columnaPequena
+              p Título
+           td.columnaGrande
+              input(type="text" name="titulo")
+          tr 
+           td.columnaPequena
+              p Enlace
+           td.columnaGrande
+              input(type="text" name="nombreEnlace")
+          tr
+           td.columnaPequena
+              p Contenido
+           td.columnaGrande
+              textarea(name="contenido" id="textContenido" class="ckeditor")
+          tr
+           td.columnaPequena
+              p Descripción
+           td.columnaGrande
+              textarea(name="descripcion")
         table#tablaBotones
-            tr
-             td#guardar
-                button(type="submit" onclick="this.form.action='/admin/pagina/guardar'") Guardar 
-             td#publicar 
-                button(type="submit" onclick="this.form.action='/admin/pagina/publicar'")  Publicar
+          tr
+           td#guardar
+              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/guardar'") Guardar 
+           td#publicar 
+              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/publicar'")  Publicar
   else
      #noAdmin 
       h1 ¡No eres administrador! 

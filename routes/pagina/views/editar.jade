@@ -1,22 +1,22 @@
 extends ../../../views/layout
 block content
-  #editarEnlaces
-    table#tablaEditarEnlaces
   if pagina
     #paginaNueva
+      h3 Editar #{pagina.titulo}
+      a(href="/admin/paginas") Regresar
       form(method="POST", action="")
         input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
-        table#tablaCampos
-          tr
-            td.columnaPequena
-              p Enlace
-            td.columnaGrande
-              input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
+        table#tablaCampos          
           tr
             td.columnaPequena
               p Título
             td.columnaGrande
               input(type="text" name="titulo" value=pagina.titulo)
+          tr
+            td.columnaPequena
+              p Enlace
+            td.columnaGrande
+              input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
           tr
             td.columnaPequena
               p Contenido
@@ -32,6 +32,6 @@ block content
         table#tablaBotones
           tr
             td#guardar
-                button(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
+                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
              td#publicar 
-                button(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
+                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar

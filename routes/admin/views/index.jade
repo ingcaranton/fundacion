@@ -1,34 +1,40 @@
 extends ../../../views/layout
 block content
-  if administrador
-    #editarEnlaces
-        table#tablaEditarEnlaces
-          each pagina in pagsAdmin
+  if !administrador
+    #login
+      h3 INGRESA TUS DATOS
+      form(method="POST", action="/admin/login")
+        table#tablaLogin
+            tr 
+             td#columnaPequena
+                p Usuario:
+             td#columnaGrande
+                input(type="text" name="usuario")
             tr
-              td.columnaTitulo
-                span 
-                  a(href="/"+pagina.nombreEnlace target="_blank") #{pagina.titulo}
-              td.columnaUsuario
-                span nombre usuario 
-              td.columnaFecha
-                span #{pagina.fechaCreacion} 
-              td.columnaAcciones
-                a(href="/admin/pagina/editar/"+pagina.nombreEnlace) Editar 
-                span &nbsp; | &nbsp;
-                a(href="/admin/pagina/borrar/"+pagina.nombreEnlace) Eliminar
-                span &nbsp; | &nbsp;
-                if pagina.publicar
-                  a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Dejar de publicar
-                else
-                  a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Publicar
-                span &nbsp; 
-          tr
-            td.botones(colspan="2")
-              button.btn.btn-primary
-                a(href="/admin/pagina/nueva") Pagina Nueva
-            td.botones(colspan="2")
-              button.btn.btn-primary(type="button")
-                a(href="/admin/login") Regresar 
+             td#columnaPequena
+                p Contraseña:
+             td#columnaGrande
+                input(type="password" name="contrasena")
+            tr
+             td#olvidoContrasena(colspan="2")
+                a(href="#")
+                  p ¿Olvidó Contraseña?
+            tr
+             td#botonIngresar(colspan="2")
+                button.btn.btn-primary(type="submit") Ingresar
   else
-    #noAdmin 
-      h1 ¡No eres administrador!  
+    #adminLogin
+      h3 ¡BIENVENIDO AL MODO ADMINISTRADOR!
+      table
+        tr
+          td
+            button.btn.btn-primary(type="button")
+              a(href="/admin/editarMenu") Editar Menu 
+        tr
+          td
+            button.btn.btn-primary(type="button") 
+              a(href="/admin/paginas") Editar Paginas
+        tr
+          td
+            button.btn.btn-danger(type="button")
+              a(href="/admin/logout") Salir del Administrador 

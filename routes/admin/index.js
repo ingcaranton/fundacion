@@ -12,7 +12,7 @@ app.route('/paginas')
 .get(function(req, res){
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     db.pagina.find().exec(function(error, pagsAdmin){
-      res.render('index', {
+      res.render('editarPaginas', {
         administrador : req.session.admin,
         paginas: paginas,
         pagsAdmin: pagsAdmin
@@ -20,7 +20,6 @@ app.route('/paginas')
     });
   });
 });
-
 
 app.route('/editarmenu')
 .get(function(req, res){

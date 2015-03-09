@@ -20,14 +20,14 @@ app.route('/login')
     if(user){
       if(user.contrasena==req.body.contrasena){
         req.session.admin=user.nombre;
-        res.redirect("/admin/login");
+        res.redirect("/admin");
       }else{
         req.flash('message', 'error with contrasena');
-        res.redirect('/admin/login');
+        res.redirect('/admin');
       }
     }else{
       req.flash('message', 'error with nickname');
-      res.redirect('/admin/login');
+      res.redirect('/admin');
     }
   });
 });

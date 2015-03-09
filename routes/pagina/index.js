@@ -43,7 +43,7 @@ app.route('/guardar')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });
@@ -55,7 +55,7 @@ app.route('/publicar')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });
@@ -66,11 +66,10 @@ app.route('/borrar/:pagina')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });
-
 
 app.route('/actualizar/guardar')
   .post(function(req,res){
@@ -78,7 +77,7 @@ app.route('/actualizar/guardar')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });
@@ -90,7 +89,7 @@ app.route('/actualizar/publicar')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });
@@ -101,7 +100,7 @@ app.route('/cambiarEstado/:pagina')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin");
+        res.redirect("/admin/paginas");
       }
   });
 });

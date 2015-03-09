@@ -13,22 +13,22 @@ block content
               td.columnaFecha
                 span #{pagina.fechaCreacion} 
               td.columnaAcciones
-                a(href="/admin/"+pagina.nombreEnlace) Editar 
+                a(href="/admin/pagina/editar/"+pagina.nombreEnlace) Editar 
                 span &nbsp; | &nbsp;
-                a(href="/admin/borrar_pagina") Eliminar
+                a(href="/admin/pagina/borrar/"+pagina.nombreEnlace) Eliminar
                 span &nbsp; | &nbsp;
                 if pagina.publicar
-                  a(href="/admin/no_publicar") Dejar de publicar
+                  a(href="/admin/pagina/no_publicar") Dejar de publicar
                 else
-                  a(href="/admin/publicar") Publicar
+                  a(href="/admin/pagina/publicar") Publicar
                 span &nbsp; 
           tr
             td.botones(colspan="2")
               button.btn.btn-primary
-                a(href="/admin/new") Pagina Nueva
+                a(href="/admin/pagina/nueva") Pagina Nueva
             td.botones(colspan="2")
               button.btn.btn-primary(type="button")
-                a(href="/admin/Login") Regresar 
+                a(href="/admin/login") Regresar 
   else
     #noAdmin 
       h1 ¡No eres administrador!  

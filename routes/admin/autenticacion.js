@@ -16,10 +16,10 @@ app.route('/login')
 app.route('/login')
 .post(function(req,res){
   var usuario=req.body.usuario.toLowerCase();
-  db.admin.findOne(function(errorUser, pagina){
-    if(pagina){
-      if(pagina.contrasena==req.body.contrasena){
-        req.session.admin=pagina.nombre;
+  db.admin.findOne(function(errorUser, user){
+    if(user){
+      if(user.contrasena==req.body.contrasena){
+        req.session.admin=user.nombre;
         res.redirect("/admin/login");
       }else{
         req.flash('message', 'error with contrasena');

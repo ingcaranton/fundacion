@@ -4,9 +4,10 @@ block content
     table#tablaEditarEnlaces
   if pagina
     #paginaNueva
-      form(method="POST", action="/admin/update")
+      form(method="POST", action="")
+        input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
         table#tablaCampos
-          tr 
+          tr
             td.columnaPequena
               p Enlace
             td.columnaGrande
@@ -31,6 +32,6 @@ block content
         table#tablaBotones
           tr
             td#guardar
-              button(type="submit") Guardar 
-            td#publicar 
-              button#botonPublicar Publicar
+                button(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
+             td#publicar 
+                button(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar

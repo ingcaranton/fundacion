@@ -31,6 +31,16 @@ app.route('/new')
   });
 });
 
+app.route('/editarMenu')
+.get(function(req, res){
+  db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+    res.render('editarMenu', {
+      administrador : req.session.admin,
+      paginas: paginas
+    });
+  });
+});
+
 app.route('/:pagina')
 .get(function(req, res) {
   //Search the page you're requesting in the DB, if found render the info you need

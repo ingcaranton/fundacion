@@ -86,7 +86,6 @@ module.exports.updateEstado = function(req, res, done) {
               return done(null, false, req.flash('message', 'page edited'));
            }
         );
-                  return done(null, pagina);
     }
   });
 }

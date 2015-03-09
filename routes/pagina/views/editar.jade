@@ -1,9 +1,8 @@
 extends ../../../views/layout
 block content
   if pagina
-    #paginaNueva
+    #pagina
       h3 Editar #{pagina.titulo}
-      a(href="/admin/paginas") Regresar
       form(method="POST", action="")
         input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
         table#tablaCampos          
@@ -32,6 +31,9 @@ block content
         table#tablaBotones
           tr
             td#guardar
-                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
-             td#publicar 
-                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
+              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
+            td#publicar 
+              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
+            td#regresar  
+              button.btn.btn-primary(type="button")  
+                a(href="/admin/paginas") Regresar

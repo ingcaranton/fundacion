@@ -1,9 +1,8 @@
 extends ../../../views/layout
 block content
   if administrador
-    #paginaNueva
+    #pagina
       h3 PAGINA NUEVA 
-      a(href="/admin/paginas") Regresar
       form(method="POST" action="")
         table#tablaCampos
           tr
@@ -32,6 +31,9 @@ block content
               button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/guardar'") Guardar 
            td#publicar 
               button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/publicar'")  Publicar
+           td#regresar 
+              button.btn.btn-primary(type="button")  
+                a(href="/admin/paginas") Regresar
   else
      #noAdmin 
       h1 ¡No eres administrador! 

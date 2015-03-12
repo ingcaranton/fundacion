@@ -58,6 +58,7 @@ $(document).ready(function() {
       });
   /*Fin Cargar Slider*/
   cargarPaginasEnLayout();
+  $( "#accordion" ).accordion();
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/

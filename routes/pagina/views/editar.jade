@@ -19,16 +19,21 @@ block content
                 input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
             tr
               td.columnaPequena
-                p Contenido
+                p Imagen Descripción
               td.columnaGrande
-                textarea(name="contenido" id="textContenido" class="ckeditor")
-                  | #{pagina.contenido}
+                input#inputImagen(type="file" value=pagina.linkImagen) 
             tr
               td.columnaPequena
                 p Descripción
               td.columnaGrande
                 textarea(name="descripcion")
                   | #{pagina.descripcion}
+            tr
+              td.columnaPequena
+                p Contenido
+              td.columnaGrande
+                textarea(name="contenido" id="textContenido" class="ckeditor")
+                  | #{pagina.contenido}
           table#tablaBotones
             tr
               td#guardar

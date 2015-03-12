@@ -2,8 +2,48 @@
 var pag={};
 var administrador= "";
 
+/*Simulacion menu*/
+function menu(titulo){
+  this.titulo = titulo;
+}
+var menus = [
+  new menu("Quienes Somos"), 
+  new menu("Ayudar"), 
+  new menu("Certificaciones"), 
+  new menu("Eventos"), 
+  new menu("Club Amigos"), 
+  new menu("Yo soy tu"), 
+  new menu("Video"), 
+  new menu("Tienda Sana"), 
+  new menu("Contacto"),
+  new menu("ejemplo1"),
+  new menu("ejemplo2"),
+  new menu("ejemplo3")
+];
+/*Fin simulacion menu*/
+
 /*Función de cargar en home*/
 $(document).ready(function() {
+
+  /*Menu dinamico*/
+  var ul=document.getElementById("menu");
+  for(var i=0; i<menus.length; i++){
+    var span= document.createElement("span");
+    span.class="caret";
+    var a= document.createElement("a");
+    a.class="dropdown-toggle";
+    a.getAttribute('data-toggle','dropdown');
+    a.role="button";
+    a.getAttribute('aria-expanded', false);
+    a.innerHTML=menus[i].titulo;
+    a.appendChild(span);
+    var li=document.createElement("li");
+    li.class="dropdown";
+    li.appendChild(a);
+    ul.appendChild(li);
+  }
+  /*Fin Menu dinamico*/
+
   /*Cargar Slider*/
   $(function() {
         var Page = (function() {
@@ -87,5 +127,4 @@ function cargarPaginasEnLayout(){
 		cell.appendChild(a);
     contador++;
 	}
-
 }

@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if !administrador
     #pagina
       h3 PAGINA NUEVA 
       form(method="POST" action="")
@@ -16,15 +16,20 @@ block content
            td.columnaGrande
               input(type="text" name="nombreEnlace")
           tr
-           td.columnaPequena
-              p Contenido
-           td.columnaGrande
-              textarea(name="contenido" id="textContenido" class="ckeditor")
+            td.columnaPequena
+              p Imagen Descripción
+            td.columnaGrande
+              input#inputImagen(type="file") 
           tr
            td.columnaPequena
               p Descripción
            td.columnaGrande
               textarea(name="descripcion")
+          tr
+           td.columnaPequena
+              p Contenido
+           td.columnaGrande
+              textarea(name="contenido" id="textContenido" class="ckeditor")
         table#tablaBotones
           tr
            td#guardar

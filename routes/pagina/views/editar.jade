@@ -1,39 +1,42 @@
 extends ../../../views/layout
 block content
-  if pagina
-    #pagina
-      h3 Editar #{pagina.titulo}
-      form(method="POST", action="")
-        input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
-        table#tablaCampos          
-          tr
-            td.columnaPequena
-              p Título
-            td.columnaGrande
-              input(type="text" name="titulo" value=pagina.titulo)
-          tr
-            td.columnaPequena
-              p Enlace
-            td.columnaGrande
-              input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
-          tr
-            td.columnaPequena
-              p Contenido
-            td.columnaGrande
-              textarea(name="contenido" id="textContenido" class="ckeditor")
-                | #{pagina.contenido}
-          tr
-            td.columnaPequena
-              p Descripción
-            td.columnaGrande
-              textarea(name="descripcion")
-                | #{pagina.descripcion}
-        table#tablaBotones
-          tr
-            td#guardar
-              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
-            td#publicar 
-              button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
-            td#regresar  
-              button.btn.btn-primary(type="button")  
-                a(href="/admin/paginas") Regresar
+  if administrador
+    if pagina
+      #pagina
+        h3 Editar #{pagina.titulo}
+        form(method="POST", action="")
+          input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
+          table#tablaCampos          
+            tr
+              td.columnaPequena
+                p Título
+              td.columnaGrande
+                input(type="text" name="titulo" value=pagina.titulo)
+            tr
+              td.columnaPequena
+                p Enlace
+              td.columnaGrande
+                input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
+            tr
+              td.columnaPequena
+                p Contenido
+              td.columnaGrande
+                textarea(name="contenido" id="textContenido" class="ckeditor")
+                  | #{pagina.contenido}
+            tr
+              td.columnaPequena
+                p Descripción
+              td.columnaGrande
+                textarea(name="descripcion")
+                  | #{pagina.descripcion}
+          table#tablaBotones
+            tr
+              td#guardar
+                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/guardar'") Guardar 
+              td#publicar 
+                button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
+              td#regresar  
+                button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") Regresar
+  else
+    #noAdmin 
+      h1 ¡No eres administrador! 

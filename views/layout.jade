@@ -5,10 +5,8 @@ html
     title= title
     link(rel="stylesheet" type="text/css" href="/plugins/Slicebox/css/slicebox.css")
     link(rel='stylesheet', href='/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/css/jquery-ui.min.css')
     link(rel='stylesheet', href='/css/style.css')
     script(type='text/javascript', src='/js/jquery-1.11.2.min.js')   
-    script(type='text/javascript', src='/js/jquery-ui.min.js')   
     script(type='text/javascript', src='/js/bootstrap.min.js')
     script(type='text/javascript', src='/plugins/ckeditor/ckeditor.js')
     script(type='text/javascript', src='/js/script.js')   
@@ -98,15 +96,14 @@ html
                     a(href="#") CONTACTO
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
-              button(type="button" class="btn btn-primary navbar-btn") 
-                if !administrador
-                  a(href="/admin") INGRESAR
-                else
-                  a(href="/admin") ADMINISTRAR
+              button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 
+                if(administrador)
+                  span ADMINISTRAR 
+                else 
+                  span INGRESAR 
 
     #contenido
      block content
-
     
     footer.footer
       .container

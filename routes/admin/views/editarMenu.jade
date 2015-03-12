@@ -1,26 +1,34 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if !administrador
     #editarMenu
-      h4 EDITAR MENU
-      #accordion 
-        h3 Menu 1
-        div
-          p Contenido Menu 1
-        h3 Menu 2
-        div
-          p Contenido Menu 2
-        h3 Menu 3
-        div
-          p Contenido Menu 3
-        h3 Menu 4
-        div
-          p Contenido Menu 4
+      h3 EDITAR MENU
+      #accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseOne") Menu 1 
+          #collapseOne.panel-collapse.collapse
+            .panel-body Contenido Menu 1
+
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseTwo") Menu 2 
+          #collapseTwo.panel-collapse.collapse
+            .panel-body Contenido Menu 2
+
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseThree") Menu 3 
+          #collapseThree.panel-collapse.collapse
+            .panel-body Contenido Menu 3
+
       #botones
-        button.btn.btn-primary(type="button" id="agregarMenu") Agregar Menu 
+        button#agregarMenu.btn.btn-primary(type="button") Agregar Menu 
         span &nbsp; &nbsp; &nbsp;
-        button.btn.btn-primary(type="button")
-          a(href="/admin") Regresar 
+        button.btn.btn-primary(type="button" onclick="location.href='/admin'") Regresar 
   else
     #noAdmin 
       h1 ¡No eres administrador!  

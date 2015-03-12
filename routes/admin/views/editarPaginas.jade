@@ -25,11 +25,9 @@ block content
               span &nbsp; 
         tr
           td.botones(colspan="2")
-            button.btn.btn-primary
-              a(href="/admin/pagina/nueva") Pagina Nueva
+            button.btn.btn-primary(onclick="location.href='/admin/pagina/nueva'") Pagina Nueva
           td.botones(colspan="2")
-            button.btn.btn-primary
-              a(href="/admin") Regresar
+            button.btn.btn-primary(onclick="location.href='/admin'") Regresar
   else
     #noAdmin 
       h1 ¡No eres administrador!  

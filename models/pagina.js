@@ -6,7 +6,10 @@ module.exports = function(mongoose){
 		descripcion : String,
 		contenido : String,
 		publicar : Boolean,
-		fechaCreacion : String
+		fechaCreacion : String,
+		categoria : String,
+		creador : String,
+		linkImagen: String,
 	});
 	return mongoose.model('pagina', paginaSchema);
 }

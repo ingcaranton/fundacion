@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if !administrador
+  if administrador
     #pagina
       h3 PAGINA NUEVA 
       form(method="POST" action="")

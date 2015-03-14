@@ -40,7 +40,7 @@ app.route('/editar/:pagina')
 });
 
 app.route('/guardar')
-  .post(function(req,res){
+  .post(multipart(),function(req,res){
     crudPagina.create(req, res, function(err, pagina, flash){
       if(err){
         res.redirect("/admin/error");

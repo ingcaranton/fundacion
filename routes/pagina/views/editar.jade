@@ -28,6 +28,15 @@ block content
               td.columnaGrande
                 textarea(name="descripcion")
                   | #{pagina.descripcion}
+            tr 
+              td.columnaPequena
+                p Categoría
+              td.columnaGrande
+                select.form-control(value=pagina.ategoría)
+                  option Fisico
+                  option Emocional
+                  option Espiritual
+                  option Otro
             tr
               td.columnaPequena
                 p Contenido

@@ -3,98 +3,34 @@ html
   head    
     meta(charset="utf-8")
     title= title
-    link(rel="stylesheet" type="text/css" href="/plugins/Slicebox/css/slicebox.css")
-    link(rel='stylesheet', href='/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/css/style.css')
-    script(type='text/javascript', src='/js/jquery-1.11.2.min.js')   
-    script(type='text/javascript', src='/js/bootstrap.min.js')
-    script(type='text/javascript', src='/plugins/ckeditor/ckeditor.js') 
-    script(type='text/javascript', src='/js/fileinput.min.js')  
-    script(type='text/javascript', src='/js/script.js')   
-    script(type="text/javascript" src="/plugins/Slicebox/js/modernizr.custom.46884.js")
-    script(type="text/javascript" src="/plugins/Slicebox/js/jquery.slicebox.js")
+    link(rel='stylesheet' type='text/css' href='/plugins/Slicebox/css/slicebox.css')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(rel='stylesheet' type="text/css" href="/css/yamm.css")
+    link(rel='stylesheet' href='/css/style.css')
+    script(type='text/javascript' src='/js/jquery-1.11.2.min.js')   
+    script(type='text/javascript' src='/js/bootstrap.min.js')
+    script(type='text/javascript' src='/plugins/ckeditor/ckeditor.js') 
+    script(type='text/javascript' src='/js/fileinput.min.js')  
+    script(type='text/javascript' src='/js/script.js')   
+    script(type='text/javascript' src='/plugins/Slicebox/js/modernizr.custom.46884.js')
+    script(type='text/javascript' src='/plugins/Slicebox/js/jquery.slicebox.js')
   p #{message}
   body
     script(type="text/javascript").
       pag=!{JSON.stringify(paginas)};
-      administrador="!{administrador}";
-    nav.navbar.navbar-default.navbar-fixed-top(role="navigation")
+      administrador="!{administrador}";   
+    .navbar.yamm.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
           a.navbar-brand(href="/")
             img(alt="Brand" src="/images/logo.png" width="110" height="50")
-          button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
-            span.sr-only Toggle navigation
+          button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
             span.icon-bar
             span.icon-bar
-            span.icon-bar          
-        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            span.icon-bar
+        #navbar-collapse-1.navbar-collapse.collapse
           ul#menu.nav.navbar-nav
-            li.dropdown
-              a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false") QUIENES SOMOS
-                span.caret
-              ul.dropdown-menu(role="menu")
-                li
-                  a(href="#") Sobre Nosotros
-                li.divider
-                li
-                  a(href="#") Información Centros
-                li.divider
-                li
-                  a(href="#") Franquicias 
-                li.divider
-                li
-                  a(href="#") Plataforma de difusión
-                  #submenu
-                    p 
-                      a(href="#") Web TV
-                    p
-                      a(href="#") Canales TV
-                    p
-                      a(href="#") Red Alterna
-                    p
-                      a(href="#") Publik
-                    p
-                      a(href="#") Otros Medios
-            li.dropdown
-              a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false") AYUDAR
-                span.caret
-                ul.dropdown-menu(role="menu")
-                  li
-                    a(href="#") Como Voluntario
-                  li.divider
-                  li
-                    a(href="#") Hacer Donación
-            li.dropdown
-              a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false") CERTIFICACIONES
-                span.caret
-                ul.dropdown-menu(role="menu")
-                  li
-                    a(href="#") Salud Física
-                  li.divider
-                  li
-                    a(href="#") Salud Emocional
-                  li.divider
-                  li
-                    a(href="#") Conexión Espiritual
-            li
-              a(href="#") EVENTOS
-            li
-              a(href="#") CLUB AMIGOS
-            li
-              a(href="#") YO SOY TU
-            li.dropdown
-              a.dropdown-toggle(href="#" data-toggle="dropdown" role="button" aria-expanded="false") MAS...
-                span.caret
-                ul.dropdown-menu(role="menu")
-                  li
-                    a(href="#") VIDEO
-                  li.divider
-                  li
-                    a(href="#") TIENDA SANA
-                  li.divider
-                  li
-                    a(href="#") CONTACTO
+            //Aqui va el menu
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
               button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 

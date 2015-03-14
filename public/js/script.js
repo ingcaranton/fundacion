@@ -136,7 +136,7 @@ $(document).ready(function() {
   $(function(){      
     $(".card").flip({        
       velMax:10000,
-      velMin:7500,
+      velMin:5000,
       rangoMax:(pag.length-1),
       rangoMin:1
     });

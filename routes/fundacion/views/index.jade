@@ -48,33 +48,169 @@ block content
       span
       
   #seccionesPrincipales
-    .spacer
-      &nbsp;
-    .float
-      h3 Mente
-      a.label(href="#") Leer +
-    .float
-      h3 Cuerpo
-      a.label(href="#") Leer +
-    .float
-      h3 Espíritu
-      a.label(href="#") Leer +
-    .float
-      h3 Aleatorio
-      a.label(href="#") Leer +
-    .spacer
-      &nbsp;
-    .float
-      h3 Aleatorio
-      a.label(href="#") Leer +
-    .float
-      h3 Aleatorio
-      a.label(href="#") Leer +
-    .float
-      h3 Aleatorio
-      a.label(href="#") Leer +
-    .float
-      h3 Aleatorio
-      a.label(href="#") Leer +
-    .spacer
-      &nbsp;
+    #card-1.cardStatic
+      .content.fisico
+        p Fisico
+
+    #card-2.card
+      .cards.front
+      .cards.back   
+      ul.store
+        each pagina in paginas
+            li 
+              if pagina.categoria == "fisico"
+                .content.fisico 
+                  #imagenDescripcion
+                    img(src=pagina.linkImagen width="100" height="100")
+                  #descripcion 
+                    p #{pagina.descripcion}
+              if pagina.categoria=="emocional"
+                .content.emocional 
+                  #imagenDescripcion
+                    img(src=pagina.linkImagen width="100" height="100")
+                  #descripcion 
+                    p #{pagina.descripcion}
+              if pagina.categoria=="espiritual"
+                .content.espiritual
+                  #imagenDescripcion
+                    img(src=pagina.linkImagen width="100" height="100")
+                  #descripcion 
+                    p #{pagina.descripcion}
+              if pagina.categoria=="Sin Categoría"
+                .content.otro 
+                  #imagenDescripcion
+                    img(src=pagina.linkImagen width="100" height="100")
+                  #descripcion 
+                    p #{pagina.descripcion}
+
+    #card-3.cardStatic
+      .content.emocional 
+        p Emocional
+
+    #card-4.card
+      .cards.front
+      .cards.back
+      ul.store
+        each pagina in paginas
+          li 
+            if pagina.categoria == "fisico"
+              .content.fisico 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen width="100" height="100")
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="emocional"
+              .content.emocional 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen width="100" height="100")
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="espiritual"
+              .content.espiritual
+                #imagenDescripcion
+                  img(src=pagina.linkImagen width="100" height="100")
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="Sin Categoría"
+              .content.otro 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen width="100" height="100")
+                #descripcion 
+                  p #{pagina.descripcion}
+
+    #card-5.card
+      .cards.front
+      .cards.back
+      ul.store
+        each pagina in paginas
+          li 
+            if pagina.categoria == "fisico"
+              .content.fisico 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="emocional"
+              .content.emocional 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="espiritual"
+              .content.espiritual
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="Sin Categoría"
+              .content.otro 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+
+    #card-6.cardStatic
+      .content.espiritual
+        p espiritual
+
+    #card-7.card
+      .cards.front
+      .cards.back
+      ul.store
+        each pagina in paginas
+          li 
+            if pagina.categoria == "fisico"
+              .content.fisico 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="emocional"
+              .content.emocional 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="espiritual"
+              .content.espiritual
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="Sin Categoría"
+              .content.otro 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+
+    #card-8.card
+      .cards.front
+      .cards.back
+      ul.store
+        each pagina in paginas
+          li 
+            if pagina.categoria == "fisico"
+              .content.fisico 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="emocional"
+              .content.emocional 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="espiritual"
+              .content.espiritual
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+            if pagina.categoria=="Sin Categoría"
+              .content.otro 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}

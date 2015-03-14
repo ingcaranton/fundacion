@@ -55,7 +55,7 @@ $(document).ready(function() {
               cuboidsCount : 5,
               disperseFactor : 20,
               autoplay: true,
-              interval: 4500,
+              interval: 6000,
               onBeforeChange : function( pos ) {
                 $nav.removeClass( 'nav-dot-current' );
                 $nav.eq( pos ).addClass( 'nav-dot-current' );
@@ -131,6 +131,17 @@ $(document).ready(function() {
     $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
   });
   /*fin navbar*/
+
+  /*flip*/
+  $(function(){      
+    $(".card").flip({        
+      velMax:10000,
+      velMin:7500,
+      rangoMax:(pag.length-1),
+      rangoMin:1
+    });
+  });
+  /*fin flip*/
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/
@@ -185,7 +196,6 @@ function crearMenu(menu){
     var imagen = document.createElement("img");
     imagen.src="/images/logo.png";
     imagen.width="120";
-    imagen.height="80";
     divImagen.appendChild(imagen);
     divSubmenu.appendChild(divImagen);
     liSubmenu.appendChild(divSubmenu);
@@ -217,7 +227,9 @@ function agregarSubmenu(submenu){
   }
   return ulLista;
 }
+/*Fin crear menu*/
 
+/*agregar mas: Agrega un list si los elementos del menu sobrepasan a 8*/
 function agregarMas(){  
   var li = document.createElement("li");
   li.className="dropdown yamm-fw";
@@ -268,3 +280,36 @@ function agregarMenusLista(row){
     row.appendChild(ul);
   }
 }
+/*fin agregar mas*/
+
+/*agregar flips*
+function agregarFlips(){
+  var secciones = document.getElementById("seccionesPrincipales");
+  for(var i=0; i<8; i++){
+    var div 
+  }
+  #card-2.card
+      .cards.front
+      .cards.back   
+      ul.store
+        each pagina in pag 
+          if pagina
+            if pagina.categoria
+              if pagina.categoria == "fisico"
+                li
+                  .content.fisico 
+              if pagina.categoria=="emocional"
+                li
+                  .content.emocional 
+              if pagina.categoria=="espiritual"
+                li
+                  .content.espiritual
+              if pagina.categoria=="otro"
+                li
+                  .content.otro 
+          //#imagenDescripcion
+            img(src=pagina.linkImagen width="100" height="100")
+          //#descripcion 
+          //p #{pagina.descripcion}
+}
+/*fin flips*/

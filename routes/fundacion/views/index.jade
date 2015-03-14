@@ -1,51 +1,52 @@
 extends ../../../views/layout
 block content
 
-  #sliderImagenes.wrapper
-    ul#sb-slider.sb-slider
-      li
-        img(src="images/imageSlider/1.jpg" alt="image1")
-        .sb-description
-          h3 Creative Lifesaver
-      li
-        img(src="images/imageSlider/2.jpg" alt="image2")
-        .sb-description
-          h3 Honest Entertainer
-      li
-        img(src="images/imageSlider/3.jpg" alt="image1")
-        .sb-description
-          h3 Brave Astronaut
-      li
-        img(src="images/imageSlider/4.jpg" alt="image1")
-        .sb-description
-          h3 Affectionate Decision Maker
-      li
-        img(src="images/imageSlider/5.jpg" alt="image1")
-        .sb-description
-          h3 Faithful Investor
-      li
-        img(src="images/imageSlider/6.jpg" alt="image1")
-        .sb-description
-          h3 Groundbreaking Artist
-      li
-        img(src="images/imageSlider/7.jpg" alt="image1")
-        .sb-description
-          h3 Selfless Philantropist
+  #slider 
+    #sliderImagenes.wrapper
+      ul#sb-slider.sb-slider
+        li
+          img(src="images/imageSlider/1.jpg" alt="image1")
+          .sb-description
+            h3 Creative Lifesaver
+        li
+          img(src="images/imageSlider/2.jpg" alt="image2")
+          .sb-description
+            h3 Honest Entertainer
+        li
+          img(src="images/imageSlider/3.jpg" alt="image1")
+          .sb-description
+            h3 Brave Astronaut
+        li
+          img(src="images/imageSlider/4.jpg" alt="image1")
+          .sb-description
+            h3 Affectionate Decision Maker
+        li
+          img(src="images/imageSlider/5.jpg" alt="image1")
+          .sb-description
+            h3 Faithful Investor
+        li
+          img(src="images/imageSlider/6.jpg" alt="image1")
+          .sb-description
+            h3 Groundbreaking Artist
+        li
+          img(src="images/imageSlider/7.jpg" alt="image1")
+          .sb-description
+            h3 Selfless Philantropist
 
-    #shadow.shadow
+      #shadow.shadow
 
-    #nav-arrows.nav-arrows
-      a(href="#") Next
-      a(href="#") Previous
+      #nav-arrows.nav-arrows
+        a(href="#") Next
+        a(href="#") Previous
 
-    #nav-dots.nav-dots
-      span.nav-dot-current
-      span
-      span
-      span
-      span
-      span
-      span
+      #nav-dots.nav-dots
+        span.nav-dot-current
+        span
+        span
+        span
+        span
+        span
+        span
       
   #seccionesPrincipales
     #card-1.cardStatic
@@ -63,7 +64,7 @@ block content
               if pagina.categoria == "fisico"
                 .content.fisico 
                   #imagenDescripcion
-                    img(src=pagina.linkImagen width="100" height="100")
+                    img(src=pagina.linkImagen)
                   #descripcion 
                     p #{pagina.descripcion}
                   #leerMas
@@ -71,7 +72,7 @@ block content
               if pagina.categoria=="emocional"
                 .content.emocional 
                   #imagenDescripcion
-                    img(src=pagina.linkImagen width="100" height="100")
+                    img(src=pagina.linkImagen)
                   #descripcion 
                     p #{pagina.descripcion}
                   #leerMas
@@ -79,7 +80,7 @@ block content
               if pagina.categoria=="espiritual"
                 .content.espiritual
                   #imagenDescripcion
-                    img(src=pagina.linkImagen width="100" height="100")
+                    img(src=pagina.linkImagen)
                   #descripcion 
                     p #{pagina.descripcion}
                   #leerMas
@@ -87,7 +88,7 @@ block content
               if pagina.categoria=="sinCategoria"
                 .content.otro 
                   #imagenDescripcion
-                    img(src=pagina.linkImagen width="100" height="100")
+                    img(src=pagina.linkImagen)
                   #descripcion 
                     p #{pagina.descripcion}
                   #leerMas
@@ -108,7 +109,7 @@ block content
             if pagina.categoria == "fisico"
               .content.fisico 
                 #imagenDescripcion
-                  img(src=pagina.linkImagen width="100" height="100")
+                  img(src=pagina.linkImagen)
                 #descripcion 
                   p #{pagina.descripcion}
                 #leerMas
@@ -116,7 +117,7 @@ block content
             if pagina.categoria=="emocional"
               .content.emocional 
                 #imagenDescripcion
-                  img(src=pagina.linkImagen width="100" height="100")
+                  img(src=pagina.linkImagen)
                 #descripcion 
                   p #{pagina.descripcion}
                 #leerMas
@@ -124,7 +125,7 @@ block content
             if pagina.categoria=="espiritual"
               .content.espiritual
                 #imagenDescripcion
-                  img(src=pagina.linkImagen width="100" height="100")
+                  img(src=pagina.linkImagen)
                 #descripcion 
                   p #{pagina.descripcion}
                 #leerMas
@@ -132,7 +133,7 @@ block content
             if pagina.categoria=="sinCategoria"
               .content.otro 
                 #imagenDescripcion
-                  img(src=pagina.linkImagen width="100" height="100")
+                  img(src=pagina.linkImagen)
                 #descripcion 
                   p #{pagina.descripcion}
                 #leerMas

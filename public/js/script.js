@@ -282,34 +282,10 @@ function agregarMenusLista(row){
 }
 /*fin agregar mas*/
 
-/*agregar flips*
-function agregarFlips(){
-  var secciones = document.getElementById("seccionesPrincipales");
-  for(var i=0; i<8; i++){
-    var div 
-  }
-  #card-2.card
-      .cards.front
-      .cards.back   
-      ul.store
-        each pagina in pag 
-          if pagina
-            if pagina.categoria
-              if pagina.categoria == "fisico"
-                li
-                  .content.fisico 
-              if pagina.categoria=="emocional"
-                li
-                  .content.emocional 
-              if pagina.categoria=="espiritual"
-                li
-                  .content.espiritual
-              if pagina.categoria=="otro"
-                li
-                  .content.otro 
-          //#imagenDescripcion
-            img(src=pagina.linkImagen width="100" height="100")
-          //#descripcion 
-          //p #{pagina.descripcion}
+/*editar Menu*
+function ocultarHeaderPanel(){
+  $("#editarMenu #accordion #titulo #aEditar").on("click", function(){
+    $("#editarMenu #accordion #titulo").on("")
+  });
 }
 /*fin flips*/

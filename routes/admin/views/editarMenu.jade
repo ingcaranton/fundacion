@@ -1,15 +1,16 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if !administrador
     #editarMenu
       h3 EDITAR MENU
       #accordion.panel-group
-        .panel.panel-default
-          .panel-heading
-            h4.panel-title
-              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseOne") Menu 1 
+        .panel.panel-primary
+          #titulo.panel-heading
+            h4.panel-title Menu 1
+            h4#editar.panel-title 
+              a#aEditar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="ocultarHeaderPanel();") Editar 
           #collapseOne.panel-collapse.collapse
-            .panel-body Contenido Menu 1
+            .panel-body.open Contenido Menu 1
 
         .panel.panel-default
           .panel-heading

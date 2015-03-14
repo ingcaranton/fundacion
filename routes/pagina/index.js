@@ -2,6 +2,8 @@ var express = require('express');
 var app = module.exports = express();
 var crudPagina = require("./crud");
 
+  var multipart = require('connect-multiparty');
+
 app.set('views', __dirname + '/views');
 
 app.route('/nueva')
@@ -49,7 +51,7 @@ app.route('/guardar')
 });
 
 app.route('/publicar')
-  .post(function(req,res){
+  .post(multipart(),function(req,res){
     req.body.publicar=true;
     crudPagina.create(req, res, function(err, pagina, flash){
       if(err){

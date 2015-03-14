@@ -20,6 +20,8 @@
     "stylus": "~0.50.0",
     "connect-flash": "~0.1.1",
     "express-session": "~1.10.3",
-    "bcrypt-nodejs": "0.0.3"
+    "bcrypt-nodejs": "0.0.3",
+    "fs": "0.0.2",
+    "connect-multiparty": "~1.2.5"
   }
 }

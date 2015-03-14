@@ -3,7 +3,7 @@ block content
   if administrador
     #pagina
       h3 PAGINA NUEVA 
-      form(method="POST" action="")
+      form(method="POST" enctype='multipart/form-data' action="")
         table#tablaCampos
           tr
            td.columnaPequena
@@ -19,7 +19,7 @@ block content
             td.columnaPequena
               p Imagen Descripción
             td.columnaGrande
-              input#inputImagen(type="file") 
+              input#inputImagen(type="file" name="image") 
           tr
            td.columnaPequena
               p Descripción
@@ -29,11 +29,11 @@ block content
             td.columnaPequena
               p Categoría
             td.columnaGrande
-              select.form-control
-                option Fisico
-                option Emocional
-                option Espiritual
-                option Otro
+              select.form-control(name="categoria")
+                option(value="sinCategoria" selected) Sin Categoría
+                option(value="fisico") Fisico
+                option(value="emocional") Emocional
+                option(value="espiritual") Espiritual
           tr
            td.columnaPequena
               p Contenido

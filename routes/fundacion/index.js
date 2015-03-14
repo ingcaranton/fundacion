@@ -5,7 +5,7 @@ app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+  db.pagina.find({publicar:true}).exec(function(error, paginas){
     res.render('index', {
       administrador : req.session.admin,
       paginas: paginas

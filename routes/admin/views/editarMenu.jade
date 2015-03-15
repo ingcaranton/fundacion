@@ -2,29 +2,61 @@ extends ../../../views/layout
 block content
   if !administrador
     #editarMenu
-      h3 EDITAR MENU
+      h1 EDITAR MENU
       #accordion.panel-group
-        .panel.panel-primary
-          #titulo.panel-heading
-            h4.panel-title Menu 1
-            h4#editar.panel-title 
-              a#aEditar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="ocultarHeaderPanel();") Editar 
-          #collapseOne.panel-collapse.collapse
-            .panel-body.open Contenido Menu 1
+        - var contador = 0
+        each menu in [{titulo:"Quines Somos", arregloSubmenu:[{titulo:"Sobre Nosotros", url:"#"},{titulo:"Informacion Centros", url:"#"},{titulo:"Franquicias", url:"#"}, {titulo:"Plataforma de difusión", url:"#"}]},{titulo:"Ayudar", arregloSubmenu:[{titulo:"Como Voluntario", url:"#"},{titulo:"Hacer Donación", url:"#"}]},{titulo:"Certificaciones", arregloSubmenu:[{titulo:"Salud Física", url:"#"},{titulo:"Salud Emocional", url:"#"},{titulo:"Conexión Espiritual", url:"#"}]},{titulo:"Eventos", arregloSubmenu:[]},{titulo:"Club Amigos", arregloSubmenu:[]},{titulo:"Yo soy tu", arregloSubmenu:[]},{titulo:"Video", arregloSubmenu:[]},{titulo:"Tienda Sana", arregloSubmenu:[]},{titulo:"Contacto", arregloSubmenu:[{titulo:"On-line", url:"#"},{titulo:"Por teléfono", url:"#"}]},{titulo:"Ejemplo1", arregloSubmenu:[]},{titulo:"Ejemplo2", arregloSubmenu:[]},{titulo:"Ejemplo3", arregloSubmenu:[]}]
+          #titulo.panel.panel-primary
+            .panel-heading
+              h2.panel-title #{menu.titulo}
+              h3.editar.panel-title 
+                a#aEditar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#"+contador) Editar 
+            .panel-collapse.collapse(id=contador)
+              form(method="POST", action="/admin/menu/editar")
+                input(type="hidden" name="nombreMenuOriginal" value=menu.titulo)
+                .panel-body
+                  .tituloMenu
+                    input(type="text" name="tituloMenu" value=menu.titulo)
+                    .acciones
+                      a(href="#") Guardar 
+                      span &nbsp; | &nbsp;
+                      a(href="#") Eliminar
+                      span &nbsp; | &nbsp;
+                      a#cancelar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#"+contador) Cancelar
+                  if menu.arregloSubmenu.length>0
+                    .tituloSubmenu
+                      h3 SUBMENU
+                if menu.arregloSubmenu.length>0
+                  table.table
+                    tr
+                      td 
+                        h5 
+                          b #
+                      td 
+                        h5
+                          b Titulo 
+                      td 
+                        h5
+                          b Url 
+                      td 
+                        h5
+                          b Acción
+                    each submenu, index in menu.arregloSubmenu
+                      input(type="hidden" name="nombreSubmenuOriginal" value=submenu.titulo)
+                      tr
+                        td=index+1
+                        td 
+                          input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
+                        td 
+                          input(type="text" name="urlMenu["+index+"]" value=submenu.url) 
+                        td  
+                          a(href="#") Eliminar
 
-        .panel.panel-default
-          .panel-heading
-            h4.panel-title
-              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseTwo") Menu 2 
-          #collapseTwo.panel-collapse.collapse
-            .panel-body Contenido Menu 2
+                .botonSubmenu
+                      button.btn.btn-primary.btn-sm(type="button") Agregar Submenu
+          -contador++
 
-        .panel.panel-default
-          .panel-heading
-            h4.panel-title
-              a.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#collapseThree") Menu 3 
-          #collapseThree.panel-collapse.collapse
-            .panel-body Contenido Menu 3
+
 
       #botones
         button#agregarMenu.btn.btn-primary(type="button") Agregar Menu 

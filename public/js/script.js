@@ -137,11 +137,12 @@ $(document).ready(function() {
     $(".card").flip({        
       velMax:10000,
       velMin:5000,
-      rangoMax:(pag.length-1),
+      rangoMax:(pag.length),
       rangoMin:1
     });
   });
   /*fin flip*/
+  ocultarHeaderPanel();
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/
@@ -282,10 +283,13 @@ function agregarMenusLista(row){
 }
 /*fin agregar mas*/
 
-/*editar Menu*
+/*editar Menu*/
 function ocultarHeaderPanel(){
-  $("#editarMenu #accordion #titulo #aEditar").on("click", function(){
-    $("#editarMenu #accordion #titulo").on("")
+  $("#editarMenu #accordion #titulo #aEditar").click(function(){
+    $("#editarMenu #accordion #titulo").css("display","none");
+  });
+  $("#cancelar").click(function(){
+    $("#editarMenu #accordion #titulo").css("display","inherit");
   });
 }
 /*fin flips*/

@@ -32,8 +32,6 @@ var menus = [
   new menu("ejemplo2", []),
   new menu("ejemplo3", [])
 ];
-
-
 /*Fin simulacion menu*/
 
 /*Función de cargar en home*/
@@ -59,7 +57,7 @@ $(document).ready(function() {
         }          
     });
   });
-/*fin selector de imagen*/
+  /*fin selector de imagen*/
   /*Cargar Slider*/
   $(function() {
         var Page = (function() {
@@ -165,15 +163,27 @@ $(document).ready(function() {
   });
   /*fin flip*/
   /*editar Menu*/
-  $("#editarMenu #accordion .panel.panel-primary .panel-heading a").click(function(){
-    var titulo=$(this).attr('titulo');
-    $("#editarMenu #accordion #"+titulo).css("display","none");
-  });
-  $("#editarMenu #accordion .panel.panel-primary .panel-collapse.collapse .cancelar").click(function(){
-    var titulo=$(this).attr('titulo');
-    $("#editarMenu #accordion #"+titulo).css("display","inherit");
-  });
-/*fin editar Menu*/
+    /*Ocultar o mostrar paneles*/
+    $("#editarMenu #accordion a").click(function(){
+      var titulo=$(this).attr('titulo');
+      $("#editarMenu #accordion #"+titulo).css("display","none");
+    });
+    $("#editarMenu #accordion a.cancelar").click(function(){
+      var titulo=$(this).attr('titulo');
+      $("#editarMenu #accordion #"+titulo).css("display","inherit");
+    });
+    /*Agregar submenu*/
+    $("#editarMenu #accordion .agregarSubmenu").on('click', 'button',function(){
+      var tabla=$(this).attr('tabla');
+      var filas=$('tr', '#'+tabla).length;
+      $('#editarMenu #accordion #'+tabla+' > tbody:last').
+        append('<tr id="'+filas+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
+        (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
+        +']"></input></td><td><a href="javascript:void(0);" class="cancelarAgregarSubmenu" onclick="cancelarSubmenu('+
+          filas+')"> Cancelar </a></td></tr>');
+    });
+
+  /*fin editar Menu*/
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/
@@ -313,3 +323,18 @@ function agregarMenusLista(row){
   }
 }
 /*fin agregar mas*/
+
+function cancelarSubmenu(id){
+    var tabla=$("#editarMenu #accordion .agregarSubmenu button").attr('tabla');
+    $("#editarMenu #accordion #"+tabla+" #"+id).remove();
+    var i=1;
+    $('#'+tabla+' tr.dato').each(function () {
+      var td=$(this).find("td").eq(0);
+      td.html(i);
+      this.id=i-1;
+      $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
+      $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
+      $(this).find("td").eq(3).find("a").attr('onclick','cancelarSubmenu('+(i-1)+')');
+      i++;
+    });
+}

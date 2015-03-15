@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if !administrador
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
@@ -23,11 +23,11 @@ block content
                       a(href="/admin/menu/eliminar") Eliminar
                       span &nbsp; | &nbsp;
                       a.cancelar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#"+contador) Cancelar
-                  if menu.arregloSubmenu.length>0
-                    .tituloSubmenu
-                      h3 SUBMENU
                 if menu.arregloSubmenu.length>0
-                  table.table
+                  .tituloSubmenu
+                    h3 SUBMENU
+                if menu.arregloSubmenu.length>0
+                  table.table(id="tabla"+contador)
                     tr
                       td 
                         h5 
@@ -42,18 +42,21 @@ block content
                         h5
                           b Acción
                     each submenu, index in menu.arregloSubmenu
-                      input(type="hidden" name="nombreSubmenuOriginal" value=submenu.titulo)
-                      tr
+                      tr.dato(id=index) 
                         td=index+1
                         td 
                           input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
                         td 
                           input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
                         td  
-                          a(href="#") Eliminar
+                          a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
+                .agregarSubmenu
+                  if menu.arregloSubmenu.length>0   
+                    button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador) Agregar Submenu
+                  else
+                    button.agregarTablaSubmenu.btn.btn-primary.btn-sm(type="button") Agregar Submenu
 
-                .botonSubmenu
-                      button.btn.btn-primary.btn-sm(type="button") Agregar Submenu
+
           -contador++
 
       #botones

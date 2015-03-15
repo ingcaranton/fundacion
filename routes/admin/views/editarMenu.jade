@@ -1,28 +1,28 @@
 extends ../../../views/layout
 block content
-  if !administrador
+  if administrador
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
         - var contador = 0
         each menu in [{titulo:"Quines Somos", arregloSubmenu:[{titulo:"Sobre Nosotros", url:"#"},{titulo:"Informacion Centros", url:"#"},{titulo:"Franquicias", url:"#"}, {titulo:"Plataforma de difusión", url:"#"}]},{titulo:"Ayudar", arregloSubmenu:[{titulo:"Como Voluntario", url:"#"},{titulo:"Hacer Donación", url:"#"}]},{titulo:"Certificaciones", arregloSubmenu:[{titulo:"Salud Física", url:"#"},{titulo:"Salud Emocional", url:"#"},{titulo:"Conexión Espiritual", url:"#"}]},{titulo:"Eventos", arregloSubmenu:[]},{titulo:"Club Amigos", arregloSubmenu:[]},{titulo:"Yo soy tu", arregloSubmenu:[]},{titulo:"Video", arregloSubmenu:[]},{titulo:"Tienda Sana", arregloSubmenu:[]},{titulo:"Contacto", arregloSubmenu:[{titulo:"On-line", url:"#"},{titulo:"Por teléfono", url:"#"}]},{titulo:"Ejemplo1", arregloSubmenu:[]},{titulo:"Ejemplo2", arregloSubmenu:[]},{titulo:"Ejemplo3", arregloSubmenu:[]}]
-          #titulo.panel.panel-primary
-            .panel-heading
+          .panel.panel-primary
+            .panel-heading(id="titulo"+contador)
               h2.panel-title #{menu.titulo}
               h3.editar.panel-title 
-                a#aEditar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#"+contador) Editar 
+                a.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#"+contador) Editar 
             .panel-collapse.collapse(id=contador)
-              form(method="POST", action="/admin/menu/editar")
+              form#formEditarMenu(method="POST", action="/admin/menu/editar")
                 input(type="hidden" name="nombreMenuOriginal" value=menu.titulo)
                 .panel-body
                   .tituloMenu
                     input(type="text" name="tituloMenu" value=menu.titulo)
                     .acciones
-                      a(href="#") Guardar 
+                      a(href="javascript: document.formEditarMenu.submit();") Guardar 
                       span &nbsp; | &nbsp;
-                      a(href="#") Eliminar
+                      a(href="/admin/menu/eliminar") Eliminar
                       span &nbsp; | &nbsp;
-                      a#cancelar.accordion-toggle(data-toggle="collapse" data-parent="#accordion" href="#"+contador) Cancelar
+                      a.cancelar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#"+contador) Cancelar
                   if menu.arregloSubmenu.length>0
                     .tituloSubmenu
                       h3 SUBMENU
@@ -55,8 +55,6 @@ block content
                 .botonSubmenu
                       button.btn.btn-primary.btn-sm(type="button") Agregar Submenu
           -contador++
-
-
 
       #botones
         button#agregarMenu.btn.btn-primary(type="button") Agregar Menu 

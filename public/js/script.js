@@ -38,6 +38,28 @@ var menus = [
 
 /*Función de cargar en home*/
 $(document).ready(function() {
+  /*Selector de imagen*/
+  $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+  
+  $(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }          
+    });
+  });
+/*fin selector de imagen*/
   /*Cargar Slider*/
   $(function() {
         var Page = (function() {
@@ -142,7 +164,16 @@ $(document).ready(function() {
     });
   });
   /*fin flip*/
-  ocultarHeaderPanel();
+  /*editar Menu*/
+  $("#editarMenu #accordion .panel.panel-primary .panel-heading a").click(function(){
+    var titulo=$(this).attr('titulo');
+    $("#editarMenu #accordion #"+titulo).css("display","none");
+  });
+  $("#editarMenu #accordion .panel.panel-primary .panel-collapse.collapse .cancelar").click(function(){
+    var titulo=$(this).attr('titulo');
+    $("#editarMenu #accordion #"+titulo).css("display","inherit");
+  });
+/*fin editar Menu*/
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/
@@ -282,14 +313,3 @@ function agregarMenusLista(row){
   }
 }
 /*fin agregar mas*/
-
-/*editar Menu*/
-function ocultarHeaderPanel(){
-  $("#editarMenu #accordion #titulo #aEditar").click(function(){
-    $("#editarMenu #accordion #titulo").css("display","none");
-  });
-  $("#cancelar").click(function(){
-    $("#editarMenu #accordion #titulo").css("display","inherit");
-  });
-}
-/*fin flips*/

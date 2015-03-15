@@ -4,7 +4,7 @@ block content
     if pagina
       #pagina
         h3 Editar #{pagina.titulo}
-        form(method="POST", action="")
+        form(method="POST" enctype='multipart/form-data' action="")
           input(type="hidden" name="nombreEnlaceOriginal" value=pagina.nombreEnlace)
           table#tablaCampos          
             tr
@@ -20,23 +20,42 @@ block content
             tr
               td.columnaPequena
                 p Imagen Descripción
-              td.columnaGrande
-                input#inputImagen(type="file" value=pagina.linkImagen) 
+              td.columnaPequena
+              p Imagen Descripción
+            td.columnaGrande
+              .input-group
+                span.input-group-btn
+                  span.btn.btn-primary.btn-file
+                      span Seleccione una imagen&hellip; 
+                        input(type="file" name="image")
+                input.form-control(type="text" readonly)
             tr
               td.columnaPequena
-                p Descripción
+                p Descripción (Max 120 caracteres)
               td.columnaGrande
-                textarea(name="descripcion")
+                textarea(name="descripcion" maxlength="120")
                   | #{pagina.descripcion}
             tr 
               td.columnaPequena
                 p Categoría
               td.columnaGrande
-                select.form-control(value=pagina.categoría)
-                  option(value="sinCategoria") Sin categoría
-                  option(value="fisico") Fisico
-                  option(value="emocional") Emocional
-                  option(value="espiritual") Espiritual
+                select.form-control(name="categoria")
+                  if pagina.categoria == "sinCategoria"
+                    option(value="sinCategoria" selected) Sin categoría
+                  else
+                    option(value="sinCategoria") Sin categoría
+                  if pagina.categoria == "fisico"
+                    option(value="fisico" selected) fisico
+                  else
+                    option(value="fisico") fisico
+                  if pagina.categoria == "emocional"
+                    option(value="emocional" selected) Emocional
+                  else
+                    option(value="emocional") Emocional
+                  if pagina.categoria == "espiritual"
+                    option(value="espiritual" selected) Espiritual
+                  else
+                    option(value="espiritual") Espiritual
             tr
               td.columnaPequena
                 p Contenido

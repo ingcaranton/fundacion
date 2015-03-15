@@ -17,18 +17,16 @@ module.exports.create = function(req, res, done) {
         newPagina.fechaCreacion = dateFormateada;
         newPagina.creador = req.session.admin;
         newPagina.categoria =req.body.categoria;
-        console.log(req.files);
-        console.log(req.body);
+        if(req.body.publicar)
+          newPagina.publicar = true;
+        else
+          newPagina.publicar = false;  
         if(req.files.image.name){
           fs.readFile(req.files.image.path, function (err, data) {
           var imageName = req.files.image.name
           var newPath ='./public/imagesUploads/'+ imageName;
             fs.writeFile(newPath, data, function (err) {
-              newPagina.linkImagen='/imagesUploads/'+imageName;
-                if(req.body.publicar)
-                  newPagina.publicar = true;
-                else
-                  newPagina.publicar = false;               
+              newPagina.linkImagen='/imagesUploads/'+imageName;   
               newPagina.save(function(errSave, paginaSave){
                 if(errSave)
                   return done(errSave);          
@@ -38,10 +36,6 @@ module.exports.create = function(req, res, done) {
             });
           });
         }else{
-          if(req.body.publicar)
-            newPagina.publicar = true;
-          else
-            newPagina.publicar = false;
           newPagina.save(function(errSave, paginaSave){
           if(errSave)
             return done(errSave);          
@@ -79,19 +73,39 @@ module.exports.update = function(req, res, done) {
       update.titulo = req.body.titulo;
       update.descripcion = req.body.descripcion;
       update.contenido =req.body.contenido;
+      update.creador = req.session.admin;
+      update.categoria =req.body.categoria;
       if(req.body.publicar){
         update.publicar = true;
       }else{
         update.publicar = false;
       }
-  db.pagina.findOneAndUpdate({ "nombreEnlace" : nombreEnlace},{$set:update},
-      function(error){
-          if (error)
-            return done(error);          
-          else
-            return done(null, false, req.flash('message', 'page edited'));
+      if(req.files.image.name){
+        fs.readFile(req.files.image.path, function (err, data) {
+        var imageName = req.files.image.name
+        var newPath ='./public/imagesUploads/'+ imageName;
+          fs.writeFile(newPath, data, function (err) {
+            update.linkImagen='/imagesUploads/'+imageName;       
+            db.pagina.findOneAndUpdate({ "nombreEnlace" : nombreEnlace},{$set:update},
+              function(error){
+                if (error)
+                  return done(error);          
+                else
+                  return done(null, false, req.flash('message', 'page edited'));
+              }
+            );
+          });
+        });
+      }else{
+        db.pagina.findOneAndUpdate({ "nombreEnlace" : nombreEnlace},{$set:update},
+          function(error){
+            if (error)
+              return done(error);          
+            else
+              return done(null, false, req.flash('message', 'page edited'));
+          }
+        );
       }
-  );
 }
 module.exports.updateEstado = function(req, res, done) {
   db.pagina.findOne({ "nombreEnlace" : req.params.pagina }, function(error, pagina){

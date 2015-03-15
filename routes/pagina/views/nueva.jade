@@ -1,6 +1,7 @@
 extends ../../../views/layout
 block content
   if administrador
+
     #pagina
       h3 PAGINA NUEVA 
       form(method="POST" enctype='multipart/form-data' action="")
@@ -19,12 +20,17 @@ block content
             td.columnaPequena
               p Imagen Descripción
             td.columnaGrande
-              input#inputImagen(type="file" name="image") 
+              .input-group
+                span.input-group-btn
+                  span.btn.btn-primary.btn-file
+                      span Seleccione una imagen&hellip; 
+                        input(type="file" name="image")
+                input.form-control(type="text" readonly)
           tr
-           td.columnaPequena
-              p Descripción
-           td.columnaGrande
-              textarea(name="descripcion")
+            td.columnaPequena
+              p Descripción (Max 120 caracteres)
+            td.columnaGrande
+              textarea(name="descripcion" maxlength="120")
           tr 
             td.columnaPequena
               p Categoría
@@ -46,7 +52,7 @@ block content
            td#publicar 
               button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/publicar'")  Publicar
            td#regresar 
-              button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") Regresar
+              button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") regresar
   else
      #noAdmin 
       h1 ¡No eres administrador! 

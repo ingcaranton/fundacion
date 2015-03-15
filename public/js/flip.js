@@ -47,13 +47,13 @@
         });
         $(document).ready(function(){
               $dom.data("hover", false);
-              var nextContent = $('#'+$dom.attr('id')+' .store li:nth-child('+(Math.floor(Math.random() * (settings.rangoMax-settings.rangoMin+settings.rangoMin)) + settings.rangoMin)+')').html(); 
+              var nextContent = $('#'+$dom.attr('id')+' .store li:nth-child('+(Math.floor(Math.random() * (settings.rangoMax-settings.rangoMin+1)) + settings.rangoMin)+')').html(); 
               $('#'+$dom.attr('id')+' .front').html(nextContent);
 
-        var random= Math.floor(Math.random() * (settings.velMax-settings.velMin+settings.velMin)) + settings.velMin; 
+        var random= Math.floor(Math.random() * (settings.velMax-settings.velMin+1)) + settings.velMin; 
 
           setInterval(function() { 
-            random2= Math.floor(Math.random() * (settings.rangoMax-settings.rangoMin+settings.rangoMin)) + settings.rangoMin;
+            random2= Math.floor(Math.random() * (settings.rangoMax-settings.rangoMin+1)) + settings.rangoMin;
             var nextContent = $('#'+$dom.attr('id')+' .store li:nth-child(' + random2 + ')').html(); 
 
             

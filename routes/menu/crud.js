@@ -17,7 +17,14 @@ module.exports.read = function(req, res, done) {
  
 }
 module.exports.deleter = function(req, res, done) {
-  
+  db.menu.findOneAndRemove({ "titulo" : req.params.menu},
+    function(error){
+      if (error)
+          return done(error);          
+      else
+        return done(null, req.flash('message', 'menu delete'));
+    }
+  );
 }
 module.exports.update = function(req, res, done) {
    var update= {};

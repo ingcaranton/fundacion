@@ -1,24 +1,24 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if !administrador
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
         - var contador = 0
         each menu in menus
-          .panel.panel-primary
+          .panel.panel-primary(id="panel"+contador)
             .panel-heading(id="titulo"+contador)
               h2.panel-title #{menu.titulo}
               h3.editar.panel-title 
                 a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
             .panel-collapse.collapse(id="panelCollapse"+contador)
-              form(method="POST", action="/admin/menu/editar" name="formEditarMenu")
+              form(id="formEditarMenu" method="POST", action="/admin/menu/editar")
                 input(type="hidden" name="nombreMenuOriginal" value=menu.titulo)
                 .panel-body
                   .tituloMenu
                     input(type="text" name="tituloMenu" value=menu.titulo)
                     .acciones
-                      a(href="javascript: document.formEditarMenu.submit();") Guardar 
+                      a(href="javascript:document.getElementById('formEditarMenu').submit();") Guardar 
                       span &nbsp; | &nbsp;
                       a(href="/admin/menu/eliminar") Eliminar
                       span &nbsp; | &nbsp;
@@ -43,9 +43,9 @@ block content
                     tr.dato(id=index) 
                       td=index+1
                       td 
-                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
+                        input(type="text" name="submenu["+index+"].titulo" value=submenu.titulo)
                       td 
-                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
+                        input(type="text" name="submenu["+index+"].url" value=submenu.url) 
                       td  
                         a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
                 .agregarSubmenu

@@ -1,7 +1,7 @@
 /*Variables Globales*/
 var pag={};
 var administrador= "";
-var numElementosMenu=8;
+var numElementosMenu=9;
 
 /*Simulacion menu*/
 function menu(titulo, arreglo){

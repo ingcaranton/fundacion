@@ -1,18 +1,18 @@
 extends ../../../views/layout
 block content
-  if !administrador
+  if administrador
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
         - var contador = 0
-        each menu in [{titulo:"Quines Somos", arregloSubmenu:[{titulo:"Sobre Nosotros", url:"#"},{titulo:"Informacion Centros", url:"#"},{titulo:"Franquicias", url:"#"}, {titulo:"Plataforma de difusión", url:"#"}]},{titulo:"Ayudar", arregloSubmenu:[{titulo:"Como Voluntario", url:"#"},{titulo:"Hacer Donación", url:"#"}]},{titulo:"Certificaciones", arregloSubmenu:[{titulo:"Salud Física", url:"#"},{titulo:"Salud Emocional", url:"#"},{titulo:"Conexión Espiritual", url:"#"}]},{titulo:"Eventos", arregloSubmenu:[]},{titulo:"Club Amigos", arregloSubmenu:[]},{titulo:"Yo soy tu", arregloSubmenu:[]},{titulo:"Video", arregloSubmenu:[]},{titulo:"Tienda Sana", arregloSubmenu:[]},{titulo:"Contacto", arregloSubmenu:[{titulo:"On-line", url:"#"},{titulo:"Por teléfono", url:"#"}]},{titulo:"Ejemplo1", arregloSubmenu:[]},{titulo:"Ejemplo2", arregloSubmenu:[]},{titulo:"Ejemplo3", arregloSubmenu:[]}]
+        each menu in menus
           .panel.panel-primary
             .panel-heading(id="titulo"+contador)
               h2.panel-title #{menu.titulo}
               h3.editar.panel-title 
-                a.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#"+contador) Editar 
-            .panel-collapse.collapse(id=contador)
-              form#formEditarMenu(method="POST", action="/admin/menu/editar")
+                a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
+            .panel-collapse.collapse(id="panelCollapse"+contador)
+              form(method="POST", action="/admin/menu/editar" name="formEditarMenu")
                 input(type="hidden" name="nombreMenuOriginal" value=menu.titulo)
                 .panel-body
                   .tituloMenu
@@ -22,40 +22,34 @@ block content
                       span &nbsp; | &nbsp;
                       a(href="/admin/menu/eliminar") Eliminar
                       span &nbsp; | &nbsp;
-                      a.cancelar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#"+contador) Cancelar
-                if menu.arregloSubmenu.length>0
-                  .tituloSubmenu
-                    h3 SUBMENU
-                if menu.arregloSubmenu.length>0
-                  table.table(id="tabla"+contador)
-                    tr
+                      a(href="") Cancelar
+                .tituloSubmenu
+                  h3 SUBMENU
+                table.table(id="tabla"+contador)
+                  tr
+                    td 
+                      h5 
+                        b #
+                    td 
+                      h5
+                        b Titulo 
+                    td 
+                      h5
+                        b Url 
+                    td 
+                      h5
+                        b Acción
+                  each submenu, index in menu.arregloSubmenu
+                    tr.dato(id=index) 
+                      td=index+1
                       td 
-                        h5 
-                          b #
+                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
                       td 
-                        h5
-                          b Titulo 
-                      td 
-                        h5
-                          b Url 
-                      td 
-                        h5
-                          b Acción
-                    each submenu, index in menu.arregloSubmenu
-                      tr.dato(id=index) 
-                        td=index+1
-                        td 
-                          input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
-                        td 
-                          input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
-                        td  
-                          a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
+                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
+                      td  
+                        a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
                 .agregarSubmenu
-                  if menu.arregloSubmenu.length>0   
-                    button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador) Agregar Submenu
-                  else
-                    button.agregarTablaSubmenu.btn.btn-primary.btn-sm(type="button") Agregar Submenu
-
+                  button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador) Agregar Submenu
 
           -contador++
 
@@ -63,6 +57,47 @@ block content
         button#agregarMenu.btn.btn-primary(type="button") Agregar Menu 
         span &nbsp; &nbsp; &nbsp;
         button.btn.btn-primary(type="button" onclick="location.href='/admin'") Regresar 
+
+      #menuNuevo(style="display:none")
+        form(method="POST", action="/admin/menu/nuevo" name="formMenuNuevo")
+        .panel.panel-primary
+            .panel-heading
+              h2.panel-title MENU NUEVO 
+            .panel-collapse
+                .panel-body
+                  .tituloMenu
+                    input(type="text" name="tituloMenu" placeholder="Título")
+                    .acciones
+                      a#aGuardar(href="javascript: document.formMenuNuevo.submit();") Guardar 
+                      span &nbsp; | &nbsp;
+                      a(href="") Cancelar
+                .tituloSubmenu
+                  h3 SUBMENU
+                table.table
+                  tr
+                    td 
+                      h5 
+                        b #
+                    td 
+                      h5
+                        b Titulo 
+                    td 
+                      h5
+                        b Url 
+                    td 
+                      h5
+                        b Acción
+                    tr#0.dato
+                      td 1
+                      td 
+                        input(type="text" name="tituloSubmenu[0]")
+                      td 
+                        input(type="text" name="urlSubmenu[0]") 
+                      td  
+                        a(href="javascript:void(0);" onclick="cancelarSubmenu(0)") Eliminar    
+                .agregarSubmenu
+                  button#botonSubmenu.btn.btn-primary.btn-sm(type="button") Agregar Submenu
+
   else
     #noAdmin 
       h1 ¡No eres administrador!  

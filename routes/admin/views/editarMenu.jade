@@ -43,9 +43,9 @@ block content
                     tr.dato(id=index) 
                       td=index+1
                       td 
-                        input(type="text" name="submenu["+index+"].titulo" value=submenu.titulo)
+                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
                       td 
-                        input(type="text" name="submenu["+index+"].url" value=submenu.url) 
+                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
                       td  
                         a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
                 .agregarSubmenu

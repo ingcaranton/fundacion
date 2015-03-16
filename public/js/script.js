@@ -175,9 +175,9 @@ $(document).ready(function() {
       var tabla=$(this).attr('tabla');
       var filas=$('tr', '#'+tabla).length;
       $('#editarMenu #accordion #'+tabla+' > tbody:last').
-        append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="submenu['+
-        (filas-1)+'].titulo"></input></td><td><input type="text" name="submenu['+(filas-1)
-        +'].url"></input></td><td><a href="javascript:void(0);" class="cancelarAgregarSubmenu" onclick="cancelarSubmenu('+
+        append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
+        (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
+        +']"></input></td><td><a href="javascript:void(0);" class="cancelarAgregarSubmenu" onclick="cancelarSubmenu('+
           (filas-1)+')"> Cancelar </a></td></tr>');
     });
   /*fin editar Menu*/

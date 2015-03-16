@@ -15,6 +15,7 @@ var models = require('./models');
 var fundacion = require('./routes/fundacion');
 var admin = require('./routes/admin');
 var pagina = require('./routes/pagina');
+var menu = require('./routes/menu');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +34,7 @@ app.use(session({secret: '1234567'}));
 app.use(flash());   
 
 //routes
+app.use('/admin/menu', menu);
 app.use('/admin/pagina', pagina);
 app.use('/admin', admin);
 app.use('/', fundacion);

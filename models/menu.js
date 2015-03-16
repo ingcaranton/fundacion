@@ -9,3 +9,4 @@ var menuSchema = new Schema({
 		}]
 });
 return mongoose.model('menu', menuSchema);
+}

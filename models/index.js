@@ -21,7 +21,8 @@ if (!global.hasOwnProperty('db')) {
   global.db = {
     //models
     pagina:require('./pagina')(mongoose),
-    admin:require('./admin')(mongoose)
+    admin:require('./admin')(mongoose),
+    menu:require('./menu')(mongoose)
   };
 }
  

@@ -6,9 +6,13 @@ app.set('views', __dirname + '/views');
 app.route('/')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    res.render('index', {
-      administrador : req.session.admin,
-      paginas: paginas
+    db.menu.find().exec(function(errorMenu, menus){
+      res.render('index', {
+        administrador : req.session.admin,
+        paginas: paginas,
+        title : "Administrar paginas",
+        menus : menus
+      });
     });
   });
 });

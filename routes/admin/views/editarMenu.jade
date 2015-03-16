@@ -1,11 +1,11 @@
 extends ../../../views/layout
 block content
-  if !administrador
+  if administrador
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
         - var contador = 0
-        each menu in menus
+        each menu in [{titulo:"Quines Somos", arregloSubmenu:[{titulo:"Sobre Nosotros", url:"#"},{titulo:"Informacion Centros", url:"#"},{titulo:"Franquicias", url:"#"}]},{titulo:"Ayudar", arregloSubmenu:[{titulo:"Como Voluntario", url:"#"},{titulo:"Hacer Donación", url:"#"}]},{titulo:"Certificaciones", arregloSubmenu:[{titulo:"Salud Física", url:"#"},{titulo:"Salud Emocional", url:"#"},{titulo:"Conexión Espiritual", url:"#"}]}] 
           .panel.panel-primary(id="panel"+contador)
             .panel-heading(id="titulo"+contador)
               h2.panel-title #{menu.titulo}
@@ -22,7 +22,7 @@ block content
                       span &nbsp; | &nbsp;
                       a(href="/admin/menu/eliminar") Eliminar
                       span &nbsp; | &nbsp;
-                      a(href="") Cancelar
+                      a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar
                 .tituloSubmenu
                   h3 SUBMENU
                 table.table(id="tabla"+contador)
@@ -47,9 +47,9 @@ block content
                       td 
                         input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
                       td  
-                        a(href="javascript:void(0);" onclick="cancelarSubmenu("+index+")") Eliminar      
+                        a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"')") Eliminar      
                 .agregarSubmenu
-                  button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador) Agregar Submenu
+                  button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador panel="panel"+contador) Agregar Submenu
 
           -contador++
 
@@ -58,46 +58,46 @@ block content
         span &nbsp; &nbsp; &nbsp;
         button.btn.btn-primary(type="button" onclick="location.href='/admin'") Regresar 
 
-      #menuNuevo(style="display:none")
-        form(method="POST", action="/admin/menu/nuevo" name="formMenuNuevo")
-        .panel.panel-primary
-            .panel-heading
-              h2.panel-title MENU NUEVO 
-            .panel-collapse
-                .panel-body
-                  .tituloMenu
-                    input(type="text" name="tituloMenu" placeholder="Título")
-                    .acciones
-                      a#aGuardar(href="javascript: document.formMenuNuevo.submit();") Guardar 
-                      span &nbsp; | &nbsp;
-                      a(href="") Cancelar
-                .tituloSubmenu
-                  h3 SUBMENU
-                table.table
-                  tr
-                    td 
-                      h5 
-                        b #
-                    td 
-                      h5
-                        b Titulo 
-                    td 
-                      h5
-                        b Url 
-                    td 
-                      h5
-                        b Acción
-                    tr#0.dato
-                      td 1
+      #nuevoMenu
+        #menuNuevo(style="display:none")
+          form#formMenuNuevo(method="POST", action="/admin/menu/nuevo")
+          #panelMenuNuevo.panel.panel-primary
+              .panel-heading
+                h2.panel-title MENU NUEVO 
+              .panel-collapse
+                  .panel-body
+                    .tituloMenu
+                      input(type="text" name="tituloMenu" placeholder="Título")
+                      .acciones
+                        a#aGuardar(href="javascript: document.getElementById('formMenuNuevo').submit();") Guardar 
+                        span &nbsp; | &nbsp;
+                        a#aCancelar(href="javascript:void(0);") Cancelar
+                  .tituloSubmenu
+                    h3 SUBMENU
+                  table#tablaMenuNuevo.table
+                    tr
                       td 
-                        input(type="text" name="tituloSubmenu[0]")
+                        h5 
+                          b #
                       td 
-                        input(type="text" name="urlSubmenu[0]") 
-                      td  
-                        a(href="javascript:void(0);" onclick="cancelarSubmenu(0)") Eliminar    
-                .agregarSubmenu
-                  button#botonSubmenu.btn.btn-primary.btn-sm(type="button") Agregar Submenu
-
+                        h5
+                          b Titulo 
+                      td 
+                        h5
+                          b Url 
+                      td 
+                        h5
+                          b Acción
+                      tr#0.dato
+                        td 1
+                        td 
+                          input(type="text" name="tituloSubmenu[0]")
+                        td 
+                          input(type="text" name="urlSubmenu[0]") 
+                        td  
+                          a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo')") Eliminar    
+                  .agregarSubmenu
+                    button#botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tablaMenuNuevo") Agregar Submenu
   else
     #noAdmin 
       h1 ¡No eres administrador!  

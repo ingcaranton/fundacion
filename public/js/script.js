@@ -164,34 +164,46 @@ $(document).ready(function() {
   /*fin flip*/
   /*editar Menu*/
     /*Ocultar paneles*/
-    $("#editarMenu #accordion a.aEditar").click(function(){
+    $("#editarMenu #accordion").on('click','a.aEditar',function(){
       var titulo=$(this).attr('titulo'); 
       $("#editarMenu #accordion .panel-heading").css("display","inherit");
       $("#editarMenu #accordion #"+titulo).css("display","none");
+    });
+    /*Actualizar panel*/
+    $("#editarMenu #accordion").on('click','a.aCancelar',function() {
+      var panel=$(this).attr('panel');
+      var panelCollapse=$(this).attr('panelCollapse');
+      var titulo=$(this).attr('titulo');
+      $('#'+panel).load(' #'+titulo+', #'+panelCollapse);
+    });
+    $("#editarMenu #menuNuevo").on('click','#aCancelar',function() {
+      $('#nuevoMenu').load(' #menuNuevo');
     });
     /*Agregar submenu*/
     $("#editarMenu #accordion .panel.panel-primary .agregarSubmenu").on('click', 'button',function(){
       $('#editarMenu #accordion .alert').css("display","none");
       var tabla=$(this).attr('tabla');
+      var panel=$(this).attr('panel');
       var filas=$('tr', '#'+tabla).length;
       $('#editarMenu #accordion #'+tabla+' > tbody:last').
         append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
         (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
-        +']"></input></td><td><a href="javascript:void(0);" class="cancelarAgregarSubmenu" onclick="cancelarSubmenu('+
-          (filas-1)+')"> Cancelar </a></td></tr>');
+        +']"></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+          (filas-1)+',\''+panel+'\')"> Cancelar </a></td></tr>');
     });
   /*fin editar Menu*/
   /*Menu nuevo*/
   $("#agregarMenu").click(function(){
     $("#menuNuevo").css("display","inherit");
   });
-  $("#editarMenu #menuNuevo #botonSubmenu").click(function(){
+  $("#editarMenu #nuevoMenu #menuNuevo #botonSubmenu").click(function(){
     var filas=$("tr","#menuNuevo table").length;
-    $('#editarMenu #menuNuevo table > tbody:last').
-        append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
+    $('#editarMenu #menuNuevo table  > tbody:last').
+        append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas
+        +'</td><td><input type="text" name="tituloSubmenu['+
         (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
-        +']"></input></td><td><a href="javascript:void(0);" class="cancelarAgregarSubmenu" onclick="cancelarSubmenu('+
-          (filas-1)+')"> Cancelar </a></td></tr>');
+        +']"></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+        (filas-1)+',\'panelMenuNuevo\')"> Cancelar </a></td></tr>');
   });
   /*Fin menu nuevo*/
 });
@@ -334,17 +346,22 @@ function agregarMenusLista(row){
 }
 /*fin agregar mas*/
 
-function cancelarSubmenu(id){
-  var tabla=$("#editarMenu #accordion .agregarSubmenu button").attr('tabla');
-  $("#editarMenu #accordion #panel"+id+" #"+tabla+" #"+id).remove();
-  var i=1;
-  $('#'+tabla+' tr.dato').each(function () {
-    var td=$(this).find("td").eq(0);
-    td.html(i);
-    this.id=i-1;
-    $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
-    $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
-    $(this).find("td").eq(3).find("a").attr('onclick','cancelarSubmenu('+(i-1)+')');
-    i++;
-  });
+function cancelar_eliminarSubmenu(id,panel){
+  var tabla=$("#editarMenu #"+panel+" button").attr('tabla');
+  var filas=$("tr","#"+tabla).length;
+  if(filas>2){
+    $("#editarMenu #"+tabla+" #"+id).remove();
+    var i=1;
+    $('#'+tabla+' tr.dato').each(function () {
+      var td=$(this).find("td").eq(0);
+      td.html(i);
+      this.id=i-1;
+      $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
+      $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
+      $(this).find("td").eq(3).find("a").attr('onclick','cancelar_eliminarSubmenu('+(i-1)+', "'+panel+'")');
+      i++;
+    });
+  }else{
+    bootbox.alert("El menu debe tener por lo menus un submenu");
+  }
 }

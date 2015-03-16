@@ -2,37 +2,7 @@
 var pag={};
 var administrador= "";
 var numElementosMenu=9;
-
-/*Simulacion menu*/
-function menu(titulo, arreglo){
-  this.titulo = titulo;
-  this.arregloSubmenu=arreglo;
-  url="#";
-}
-function submenu(tit, url){
-  this.titulo=tit;
-  this.url=url;
-}
-
-var menus = [
-  new menu("Quienes Somos", new Array(new submenu("Sobre Nosotros", "#"), new submenu("Informacion Centros", "#") ,
-  new submenu("Franquicias", "#"), new submenu("Plataforma de difusión", "#"))), 
-  new menu("Ayudar", new Array(new submenu("Como Voluntario", "#"), new submenu("Hacer Donación", "#"))), 
-  new menu("Certificaciones", new Array(new submenu("Salud Física", "#"), new submenu("Salud Emocional", "#"),
-  new submenu("Conexión Espiritual", "#"))), 
-  new menu("Eventos", []), 
-  new menu("Club Amigos", []), 
-  new menu("Yo soy tu", []), 
-  new menu("Video", []), 
-  new menu("Tienda Sana", []), 
-  new menu("Contacto", new Array(new submenu("Sobre Nosotros", "#"), new submenu("Informacion Centros", "#") ,
-  new submenu("Franquicias", "#"), new submenu("Plataforma de difusión", "#"))),
-  new menu("ejemplo1", new Array(new submenu("Sobre Nosotros", "#"), new submenu("Informacion Centros", "#") ,
-  new submenu("Franquicias", "#"), new submenu("Plataforma de difusión", "#"))),
-  new menu("ejemplo2", []),
-  new menu("ejemplo3", [])
-];
-/*Fin simulacion menu*/
+var menus=[];
 
 /*Función de cargar en home*/
 $(document).ready(function() {
@@ -236,14 +206,14 @@ function crearMenu(menu){
   aMenu.setAttribute("data-toggle", "dropdown");
   aMenu.href=menu.url;
   aMenu.innerHTML=menu.titulo;
-  if(menu.arregloSubmenu.length>0){
+  if(menu.submenus.length>0){
     var b = document.createElement("b");
     b.className="caret";
     aMenu.appendChild(b);
   }
   liMenu.appendChild(aMenu);
   /*agregar submenu*/
-  if(menu.arregloSubmenu.length>0){
+  if(menu.submenus.length>0){
     var ulMenu = document.createElement("ul");
     ulMenu.className="dropdown-menu";
     var liSubmenu = document.createElement("li");
@@ -252,7 +222,7 @@ function crearMenu(menu){
     divSubmenu.className="row";
     var divLista = document.createElement("div");
     divLista.className="col-sm-6";
-    divLista.appendChild(agregarSubmenu(menu.arregloSubmenu));
+    divLista.appendChild(agregarSubmenu(menu.submenus));
     divSubmenu.appendChild(divLista);
     var divImagen = document.createElement("div");
     divImagen.className="col-sm-4";
@@ -333,11 +303,11 @@ function agregarMenusLista(row){
     li.appendChild(h4);
     ul.appendChild(li);
     ul.appendChild(liDivider);
-    for(var q=0; q<menus[m].arregloSubmenu.length; q++){
+    for(var q=0; q<menus[m].submenus.length; q++){
       var liElemento = document.createElement("li");
       var a = document.createElement("a");
-      a.href=menus[m].arregloSubmenu[q].url;
-      a.innerHTML=menus[m].arregloSubmenu[q].titulo;
+      a.href=menus[m].submenus[q].url;
+      a.innerHTML=menus[m].submenus[q].titulo;
       liElemento.appendChild(a);
       ul.appendChild(liElemento);
     }

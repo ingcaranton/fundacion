@@ -7,14 +7,12 @@ module.exports.create = function(req, res, done) {
     if (pagina) {
       return done(new Error("Page is not created"), false, req.flash('message', 'That page link is already taken.'));
     }else {
-      var date = new Date()
-      var dateFormateada = pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());
       var newPagina = new db.pagina();
         newPagina.nombreEnlace = req.body.nombreEnlace;
         newPagina.titulo = req.body.titulo;
         newPagina.descripcion = req.body.descripcion;
         newPagina.contenido =req.body.contenido;
-        newPagina.fechaCreacion = dateFormateada;
+        newPagina.fechaCreacion = dateFormateada();
         newPagina.creador = req.session.admin;
         newPagina.categoria =req.body.categoria;
         if(req.body.publicar)
@@ -74,7 +72,9 @@ module.exports.update = function(req, res, done) {
       update.descripcion = req.body.descripcion;
       update.contenido =req.body.contenido;
       update.creador = req.session.admin;
+      update.creador = req.session.admin;
       update.categoria =req.body.categoria;
+      update.fechaCreacion = dateFormateada();
       if(req.body.publicar){
         update.publicar = true;
       }else{
@@ -127,4 +127,8 @@ module.exports.updateEstado = function(req, res, done) {
 
 function pad(d) {
     return (d < 10) ? '0' + d.toString() : d.toString();
+}
+function dateFormateada(){
+  var date = new Date()
+  return pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());
 }

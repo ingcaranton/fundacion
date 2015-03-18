@@ -13,7 +13,7 @@ block content
                 a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
             .panel-collapse.collapse(id="panelCollapse"+contador)
               form(id="formEditarMenu" method="POST", action="/admin/menu/editar")
-                input(type="hidden" name="nombreMenuOriginal" value=menu.titulo)
+                input(type="hidden" name="tituloMenuOriginal" value=menu.titulo)
                 .panel-body
                   .tituloMenu
                     input(type="text" name="tituloMenu" value=menu.titulo)

@@ -55,6 +55,7 @@
           setInterval(function() { 
             random2= Math.floor(Math.random() * (settings.rangoMax-settings.rangoMin+1)) + settings.rangoMin;
             var nextContent = $('#'+$dom.attr('id')+' .store li:nth-child(' + random2 + ')').html(); 
+            console.log(nextContent);
 
             
             if(!$dom.data("hover")){

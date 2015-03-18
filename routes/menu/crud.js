@@ -33,10 +33,11 @@ module.exports.update = function(req, res, done) {
    for(var i=0;i<req.body.tituloSubmenu.length;i++){
    		update.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
    }
-    db.menu.findOneAndUpdate({ "titulo" : req.body.tituloMenuOriginal},{$set:update},
+    console.log(req.body);
+    db.menu.findOneAndUpdate({ "titulo" : req.body.tituloMenuOriginal},update,
               function(error){
                 if (error)
-                  return done(error);          
+                  return done(error);        
                 else
                   return done(null, false, req.flash('message', 'menu edited'));
               }

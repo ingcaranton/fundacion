@@ -92,7 +92,7 @@ $(document).ready(function() {
   }
   $('#accordion').on('hidden.bs.collapse', toggleChevron);
   $('#accordion').on('shown.bs.collapse', toggleChevron);  
-  /*Agregar menu al navbar*/
+  /*Agregar menu al navbar*
   var ul = document.getElementById("menu");
   for(var j=0; j<menus.length; j++){
     if(j<numElementosMenu){
@@ -176,6 +176,17 @@ $(document).ready(function() {
         (filas-1)+',\'panelMenuNuevo\')"> Cancelar </a></td></tr>');
   });
   /*Fin menu nuevo*/
+  /*Confirmación de elimar pagina*/
+  $("#editarPaginas table").on('click', 'a.eliminarPagina', function(){
+    var pagina=$(this).attr('pagina');
+    var enlace=$(this).attr('enlace');
+    bootbox.confirm("¿Eliminar pagina "+pagina+"?", function(result) {    
+      if(result){
+        $("#editarPaginas table a.eliminarPagina").attr('href', "/admin/pagina/borrar/"+enlace);
+        document.location.href=$("#editarPaginas table a.eliminarPagina").attr('href');
+      }      
+    }); 
+  });
 });
 
 /*Carga los enlaces de las paginas en el pie de pagina*/

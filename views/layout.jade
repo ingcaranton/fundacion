@@ -31,7 +31,46 @@ html
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
           ul#menu.nav.navbar-nav
-            //Aqui va el menu
+            - var indice = 0
+            each menu in menus
+              if indice<9
+                li.dropdown
+                  a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") #{menu.titulo}
+                    if menu.submenus.length>0
+                      b.caret
+                  if menu.submenus.length>0
+                    ul.dropdown-menu
+                      li.grid-demo
+                        .row
+                          .col-sm-6
+                            ul.yamm-content.list-unstyled(role="menu")
+                              each submenu, index in menu.submenus
+                                  li 
+                                    a(tabindex="-1" href=submenu.url) #{submenu.titulo}
+                                  if index<(menu.submenus.length-1)
+                                    li.divider
+                          .divImagenSubmenu.col-sm-6
+                            img(src="/images/logo.png" width="100")
+              - indice++
+            if indice==9
+              -indice=0
+              li.dropdown.yamm-fw
+                a.dropdown-toggle(data-toggle="dropdown") Mas..
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    .yamm-content
+                      .row
+                        ul.col-sm-2.list-unstyled
+                          each menu in menus
+                            if contador>9
+                              li
+                                p
+                                  strong #{menu.titulo}
+                                  each submenu in menu.submenus
+                                    li
+                                      a(href=submenu.url) #{submenu.titulo}
+                            - indice++
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
               button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 

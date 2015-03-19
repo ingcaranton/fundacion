@@ -12,13 +12,13 @@ block content
               h3.editar.panel-title 
                 a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
             .panel-collapse.collapse(id="panelCollapse"+contador)
-              form(id="formEditarMenu" method="POST", action="/admin/menu/editar")
+              form(id="formEditarMenu"+contador method="POST", action="/admin/menu/editar")
                 input(type="hidden" name="tituloMenuOriginal" value=menu.titulo)
                 .panel-body
                   .tituloMenu
                     input(type="text" name="tituloMenu" value=menu.titulo)
                     .acciones
-                      a(href="javascript:document.getElementById('formEditarMenu').submit();") Guardar 
+                      a(href="javascript:document.getElementById('formEditarMenu"+contador+"').submit();") Guardar 
                       span &nbsp; | &nbsp;
                       a(href="/admin/menu/eliminar/"+menu.titulo) Eliminar
                       span &nbsp; | &nbsp;

@@ -55,7 +55,19 @@ block content
         #leerMas
           a(href="#") LEER +
 
-    #card-2.card
+    #card-2.cardStatic
+      .content.emocional 
+        p EMOCIONAL
+        #leerMas
+          a(href="#") LEER +
+
+    #card-3.cardStatic
+      .content.espiritual
+        p ESPIRITUAL 
+        #leerMas
+          a(href="#") LEER +
+
+    #card-4.card
       .cards.front
       .cards.back   
       ul.store
@@ -92,51 +104,6 @@ block content
                   #descripcion 
                     p #{pagina.descripcion}
                   #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-
-    #card-3.cardStatic
-      .content.emocional 
-        p EMOCIONAL
-        #leerMas
-          a(href="#") LEER +
-
-    #card-4.card
-      .cards.front
-      .cards.back
-      ul.store
-        each pagina in paginas
-          li 
-            if pagina.categoria == "fisico"
-              .content.fisico 
-                #imagenDescripcion
-                  img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="emocional"
-              .content.emocional 
-                #imagenDescripcion
-                  img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="espiritual"
-              .content.espiritual
-                #imagenDescripcion
-                  img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="sinCategoria"
-              .content.otro 
-                #imagenDescripcion
-                  img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
                     a(href=pagina.nombreEnlace) LEER +
 
     #card-5.card
@@ -178,11 +145,44 @@ block content
                 #leerMas
                     a(href=pagina.nombreEnlace) LEER +
 
-    #card-6.cardStatic
-      .content.espiritual
-        p ESPIRITUAL 
-        #leerMas
-          a(href="#") LEER +
+    #card-6.card
+      .cards.front
+      .cards.back
+      ul.store
+        each pagina in paginas
+          li 
+            if pagina.categoria == "fisico"
+              .content.fisico 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+                #leerMas
+                    a(href=pagina.nombreEnlace) LEER +
+            if pagina.categoria=="emocional"
+              .content.emocional 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+                #leerMas
+                    a(href=pagina.nombreEnlace) LEER +
+            if pagina.categoria=="espiritual"
+              .content.espiritual
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+                #leerMas
+                    a(href=pagina.nombreEnlace) LEER +
+            if pagina.categoria=="sinCategoria"
+              .content.otro 
+                #imagenDescripcion
+                  img(src=pagina.linkImagen)
+                #descripcion 
+                  p #{pagina.descripcion}
+                #leerMas
+                    a(href=pagina.nombreEnlace) LEER +
 
     #card-7.card
       .cards.front

@@ -16,7 +16,7 @@ block content
             td.columnaAcciones
               a(href="/admin/pagina/editar/"+pagina.nombreEnlace) Editar 
               span &nbsp; | &nbsp;
-              a(href="/admin/pagina/borrar/"+pagina.nombreEnlace) Eliminar
+              a.eliminarPagina(href="javascript:void(0);" enlace=pagina.nombreEnlace pagina=pagina.titulo) Eliminar
               span &nbsp; | &nbsp;
               if pagina.publicar
                 a(href="/admin/pagina/cambiarEstado/"+pagina.nombreEnlace) Dejar de publicar

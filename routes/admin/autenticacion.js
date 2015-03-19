@@ -9,9 +9,25 @@ app.route('/')
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus, flash){
       res.render('index', {
-        administrador : req.session.admin,
+        message : req.flash('message'),
+        user : req.session.user,
         paginas: paginas,
         title : "Administrar paginas",
+        menus : menus
+      });
+    });
+  });
+});
+
+app.route('/signup')
+.get(function(req, res){
+  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+    crudMenu.read(req, res, function(err, menus, flash){
+      res.render('signup', {
+        message : req.flash('message'),
+        user : req.session.user,
+        paginas: paginas,
+        title : "Registrar",
         menus : menus
       });
     });
@@ -21,10 +37,10 @@ app.route('/')
 app.route('/login')
 .post(function(req,res){
   var usuario=req.body.usuario.toLowerCase();
-  db.admin.findOne(function(errorUser, user){
+  db.user.findOne({nickName:usuario},function(errorUser, user){
     if(user){
       if(user.contrasena==req.body.contrasena){
-        req.session.admin=user.nombre;
+        req.session.user=user;
         res.redirect("/admin");
       }else{
         req.flash('message', 'error with contrasena');
@@ -39,6 +55,6 @@ app.route('/login')
 
 app.route('/logout')
 .get(function(req,res){
-  delete req.session.admin;
+  delete req.session.user;
   res.redirect('/');
 });

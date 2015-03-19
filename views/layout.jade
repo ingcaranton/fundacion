@@ -18,12 +18,11 @@ html
   body
     script(type="text/javascript").
       //Solo para etapa de desarrollo
-      var message= "#{message}"
+      var message= "#{message}";
       if(message)
         alert(message);
       pag=!{JSON.stringify(paginas)};
-      menus=!{JSON.stringify(menus)};
-      administrador="!{administrador}";   
+    
     .navbar.yamm.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -79,7 +78,7 @@ html
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
               button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 
-                if(administrador)
+                if user && user.rol == "administrador"
                   span ADMINISTRAR 
                 else 
                   span INGRESAR 

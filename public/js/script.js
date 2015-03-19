@@ -1,8 +1,6 @@
 /*Variables Globales*/
 var pag={};
-var administrador= "";
 var numElementosMenu=9;
-var menus=[];
 
 /*Función de cargar en home*/
 $(document).ready(function() {

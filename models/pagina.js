@@ -8,8 +8,9 @@ module.exports = function(mongoose){
 		publicar : Boolean,
 		fechaCreacion : String,
 		categoria : String,
-		creador : String,
+		UserModificacion : String,
 		linkImagen: String,
+		soloRegistrados : Boolean
 	});
 	return mongoose.model('pagina', paginaSchema);
 }

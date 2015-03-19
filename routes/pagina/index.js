@@ -12,8 +12,8 @@ app.route('/nueva')
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus, flash){
       res.render('nueva', {
-        massage : req.flash('message'),
-        administrador : req.session.admin,
+        message : req.flash('message'),
+        user : req.session.user,
         paginas: paginas,
         title : "Nueva pagina",
         menus : menus
@@ -30,8 +30,8 @@ app.route('/editar/:pagina')
       crudPagina.read(req, res, function(err, pagina, flash){
         if(pagina){
           res.render('editar', {
-            massage : req.flash('message'),
-            administrador : req.session.admin,
+            message : req.flash('message'),
+            user : req.session.user,
             pagina: pagina,
             paginas:paginas,
             title : "Editar "+req.params.pagina,

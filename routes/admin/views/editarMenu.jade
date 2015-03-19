@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if user && user.rol == "administrador"
     #editarMenu
       h1 EDITAR MENU
       #accordion.panel-group
@@ -23,7 +23,7 @@ block content
                       span Url
                       input(type="text" name="urlMenu")
                   .creadorMenu
-                    span Usuario: #{menu.creador}
+                    span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;
                     span #{menu.fechaCreacion}
                   .acciones

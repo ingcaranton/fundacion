@@ -1,5 +1,6 @@
 //Create and save a record in the DB
 module.exports.create = function(req, res, done) {
+  console.log(req.body);
   var fs = require('fs');
   db.pagina.findOne({ "nombreEnlace" :  req.body.nombreEnlace }, function(err, pagina) {
     if (err)
@@ -13,8 +14,12 @@ module.exports.create = function(req, res, done) {
         newPagina.descripcion = req.body.descripcion;
         newPagina.contenido =req.body.contenido;
         newPagina.fechaCreacion = dateFormateada();
-        newPagina.creador = req.session.admin;
+        newPagina.UserModificacion = req.session.user.nickName;
         newPagina.categoria =req.body.categoria;
+        if(req.body.soloRegistrados=="on")
+          newPagina.soloRegistrados = true;
+        else
+          newPagina.soloRegistrados = false;
         if(req.body.publicar)
           newPagina.publicar = true;
         else
@@ -71,8 +76,8 @@ module.exports.update = function(req, res, done) {
       update.titulo = req.body.titulo;
       update.descripcion = req.body.descripcion;
       update.contenido =req.body.contenido;
-      update.creador = req.session.admin;
-      update.creador = req.session.admin;
+      update.UserModificacion = req.session.user.nickName;
+      update.UserModificacion = req.session.user.nickName;
       update.categoria =req.body.categoria;
       update.fechaCreacion = dateFormateada();
       if(req.body.publicar){

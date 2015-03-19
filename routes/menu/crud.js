@@ -4,7 +4,7 @@ module.exports.create = function(req, res, done) {
   	newMenu.titulo=req.body.tituloMenu;
   	newMenu.submenus=[];
     newMenu.fechaCreacion = dateFormateada();
-    newMenu.creador = req.session.admin;
+    newMenu.UserModificacion = req.session.user.nickName;
    	for(var i=0;i<req.body.tituloSubmenu.length;i++){
    			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
     }
@@ -38,7 +38,7 @@ module.exports.update = function(req, res, done) {
   update.titulo=req.body.tituloMenu;
   update.submenus=[];
   update.fechaCreacion = dateFormateada();
-  update.creador = req.session.admin;
+  update.UserModificacion = req.session.user;
     for(var i=0;i<req.body.tituloSubmenu.length;i++){
    	  update.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
     }

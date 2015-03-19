@@ -4,8 +4,11 @@ var bcrypt   = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
 	nombre : String,
+	nickName : String,
     contrasena : String,
-    usuario : String
+    usuario : String,
+    rol : String,
+    correo : String
 });
 //generates an encrypted password
 userSchema.methods.generateHash = function(contrasena) {
@@ -16,5 +19,5 @@ userSchema.methods.validPassword = function(contrasena) {
     return bcrypt.compareSync(contrasena, this.contrasena);
 };
 
-return mongoose.model('admin',userSchema);
+return mongoose.model('user',userSchema);
 }

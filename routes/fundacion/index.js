@@ -8,8 +8,8 @@ app.route('/')
   db.pagina.find({publicar:true}).exec(function(error, paginas){
     db.menu.find().exec(function(errorMenu, menus){
       res.render('index', {
-        massage : req.flash('message'),
-        administrador : req.session.admin,
+        message : req.flash('message'),
+        user : req.session.user,
         paginas: paginas,
         title : 'Conexion bienestar',
         menus : menus
@@ -25,8 +25,8 @@ app.route('/:pagina')
       db.menu.find().exec(function(errorMenu, menus){
         if(pagina){
           res.render('pagina', {
-            massage : req.flash('message'),
-            administrador : req.session.admin,
+            message : req.flash('message'),
+            user : req.session.user,
             pagina: pagina,
             paginas: paginas,
             title : pagina.titulo,

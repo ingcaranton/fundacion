@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if user.rol == "administrador"
     #editarPaginas
       h3 EDITAR PAGINAS 
       table#tablaEditarPaginas
@@ -10,7 +10,7 @@ block content
               span 
                 a(href="/"+pagina.nombreEnlace target="_blank") #{pagina.titulo}
             td.columnaUsuario
-              span #{pagina.creador}
+              span #{pagina.UserModificacion}
             td.columnaFecha
               span #{pagina.fechaCreacion} 
             td.columnaAcciones

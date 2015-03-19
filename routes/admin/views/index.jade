@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if !administrador
+  if !user
     #login
       h3 INGRESA TUS DATOS
       form(method="POST", action="/admin/login")

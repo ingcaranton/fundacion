@@ -14,8 +14,8 @@ app.route('/paginas')
     db.pagina.find().exec(function(error, pagsAdmin){
       db.menu.find().exec(function(errorMenu, menus){
         res.render('editarPaginas', {
-          massage : req.flash('message'),
-          administrador : req.session.admin,
+          message : req.flash('message'),
+          user : req.session.user,
           paginas: paginas,
           pagsAdmin: pagsAdmin,
           title : "Administrar paginas",
@@ -31,8 +31,8 @@ app.route('/editarmenu')
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     db.menu.find().exec(function(errorMenu, menus){
           res.render('editarMenu', {
-          massage : req.flash('message'),
-          administrador : req.session.admin,
+          message : req.flash('message'),
+          user : req.session.user,
           paginas: paginas,
           title : "Administrar menu",
           menus : menus

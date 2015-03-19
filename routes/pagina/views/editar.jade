@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if administrador
+  if user && user.rol == "administrador"
     if pagina
       #pagina
         h3 Editar #{pagina.titulo}
@@ -54,6 +54,15 @@ block content
                     option(value="espiritual" selected) Espiritual
                   else
                     option(value="espiritual") Espiritual
+            tr
+              td.columnaPequena
+  
+              td.columnaGrande
+                if pagina.soloRegistrados
+                  input(name="soloRegistrados" type="checkbox" checked)
+                else
+                  input(name="soloRegistrados" type="checkbox")
+                p Visible solo para usuario registrados
             tr
               td.columnaPequena
                 p Contenido

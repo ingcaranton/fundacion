@@ -2,11 +2,22 @@ var express = require('express');
 var app = module.exports = express();
 var crudPagina = require("../pagina/crud");
 
-//Rutas para la autenticacion
-var autenticacion = require("./autenticacion");
-app.use(autenticacion);
-
 app.set('views', __dirname + '/views');
+
+app.route('/')
+.get(function(req, res){
+  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
+    crudMenu.read(req, res, function(err, menus, flash){
+      res.render('index', {
+        message : req.flash('message'),
+        user : req.session.user,
+        paginas: paginas,
+        title : "Administrar paginas",
+        menus : menus
+      });
+    });
+  });
+});
 
 app.route('/paginas')
 .get(function(req, res){

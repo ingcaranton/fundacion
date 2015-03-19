@@ -15,14 +15,23 @@ block content
               form(id="formEditarMenu"+contador method="POST", action="/admin/menu/editar")
                 input(type="hidden" name="tituloMenuOriginal" value=menu.titulo)
                 .panel-body
-                  .tituloMenu
-                    input(type="text" name="tituloMenu" value=menu.titulo)
-                    .acciones
-                      a(href="javascript:document.getElementById('formEditarMenu"+contador+"').submit();") Guardar 
-                      span &nbsp; | &nbsp;
-                      a(href="/admin/menu/eliminar/"+menu.titulo) Eliminar
-                      span &nbsp; | &nbsp;
-                      a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar
+                  .datosMenu
+                    .tituloMenu 
+                      span Titulo 
+                      input(type="text" name="tituloMenu" value=menu.titulo)
+                    .urlMenu 
+                      span Url
+                      input(type="text" name="urlMenu")
+                  .creadorMenu
+                    span Usuario: #{menu.creador}
+                    span &nbsp; &nbsp;
+                    span #{menu.fechaCreacion}
+                  .acciones
+                    a.agregarSubmenu(href="javascript:void(0);" tabla="tabla"+contador panel="panel"+contador) Agregar Submenu 
+                    span &nbsp; | &nbsp;
+                    a.eliminarMenu(href="/admin/menu/eliminar/"+menu.titulo) Eliminar Menu
+                    span &nbsp; | &nbsp;
+                    a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar Edición
                 .tituloSubmenu
                   h3 SUBMENU
                 table.table(id="tabla"+contador)
@@ -48,9 +57,8 @@ block content
                         input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
                       td  
                         a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"')") Eliminar      
-                .agregarSubmenu
-                  button.botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tabla"+contador panel="panel"+contador) Agregar Submenu
-
+                .guardarMenu
+                  button.botonSubmenu.btn.btn-primary.btn-sm(type="submiy") Guardar Cambios
           -contador++
 
       #botones
@@ -96,7 +104,7 @@ block content
                             input(type="text" name="urlSubmenu[0]") 
                           td  
                             a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo')") Eliminar    
-                    .agregarSubmenu
+                    .guardarMenu
                       button#botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tablaMenuNuevo") Agregar Submenu
   else
     #noAdmin 

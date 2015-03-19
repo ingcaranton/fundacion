@@ -138,7 +138,7 @@ $(document).ready(function() {
       $('#nuevoMenu').load(' #menuNuevo');
     });
     /*Agregar submenu*/
-    $("#editarMenu #accordion .panel.panel-primary .agregarSubmenu").on('click', 'button',function(){
+    $("#editarMenu #accordion .panel.panel-primary .acciones").on('click', 'a.agregarSubmenu',function(){
       $('#editarMenu #accordion .alert').css("display","none");
       var tabla=$(this).attr('tabla');
       var panel=$(this).attr('panel');

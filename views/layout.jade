@@ -17,6 +17,10 @@ html
     script(type='text/javascript' src='/plugins/Slicebox/js/jquery.slicebox.js')
   body
     script(type="text/javascript").
+      //Solo para etapa de desarrollo
+      var message= "#{message}"
+      if(message)
+        alert(message);
       pag=!{JSON.stringify(paginas)};
       menus=!{JSON.stringify(menus)};
       administrador="!{administrador}";   
@@ -24,16 +28,17 @@ html
       .container-fluid
         .navbar-header
           a.navbar-brand(href="/")
-            img(alt="Brand" src="/images/logo.png" width="110" height="50")
+            img(alt="Brand" src="/images/logo.png" width="100" height="50")
           button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
             span.icon-bar
             span.icon-bar
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
-          ul#menu.nav.navbar-nav
-            - var indice = 0
+          ul.nav.navbar-nav
+            -var indice = 0
+            -var tamano = 9
             each menu in menus
-              if indice<9
+              if indice<tamano
                 li.dropdown
                   a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") #{menu.titulo}
                     if menu.submenus.length>0
@@ -45,32 +50,32 @@ html
                           .col-sm-6
                             ul.yamm-content.list-unstyled(role="menu")
                               each submenu, index in menu.submenus
-                                  li 
-                                    a(tabindex="-1" href=submenu.url) #{submenu.titulo}
-                                  if index<(menu.submenus.length-1)
-                                    li.divider
+                                li 
+                                  a(tabindex="-1" href=submenu.url) #{submenu.titulo}
+                                if index < (menu.submenus.length-1)
+                                  li.divider
                           .divImagenSubmenu.col-sm-6
                             img(src="/images/logo.png" width="100")
-              - indice++
-            if indice==9
-              -indice=0
+              -indice++
+            if indice>=tamano
               li.dropdown.yamm-fw
-                a.dropdown-toggle(data-toggle="dropdown") Mas..
+                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") Mas..
                   b.caret
                 ul.dropdown-menu
                   li
                     .yamm-content
                       .row
-                        ul.col-sm-2.list-unstyled
-                          each menu in menus
-                            if contador>9
+                        each menu, index in menus
+                          if index>=tamano
+                            ul.col-sm-2.list-unstyled
                               li
                                 p
                                   strong #{menu.titulo}
-                                  each submenu in menu.submenus
-                                    li
-                                      a(href=submenu.url) #{submenu.titulo}
-                            - indice++
+                              each submenu in menu.submenus
+                                li
+                                  a(href=submenu.url) #{submenu.titulo} 
+                              li.divider
+
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
               button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 

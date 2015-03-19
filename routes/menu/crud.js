@@ -47,3 +47,7 @@ module.exports.update = function(req, res, done) {
       }
     );
 }
+function dateFormateada(){
+  var date = new Date()
+  return pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());
+}

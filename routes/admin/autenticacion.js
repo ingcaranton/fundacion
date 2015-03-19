@@ -1,12 +1,13 @@
 var express = require('express');
 var app = module.exports = express();
+var crudMenu = require("../menu/crud");
 
 app.set('views', __dirname + '/views');
 
 app.route('/')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    db.menu.find().exec(function(errorMenu, menus){
+    crudMenu.read(req, res, function(err, menus, flash){
       res.render('index', {
         administrador : req.session.admin,
         paginas: paginas,

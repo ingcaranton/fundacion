@@ -77,11 +77,35 @@ html
 
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
-              button#botonIngresar.btn.btn-primary.navbar-btn(type="button" onclick="location.href='/admin'") 
-                if user && user.rol == "administrador"
-                  span ADMINISTRAR 
-                else 
-                  span INGRESAR 
+              .btn-group
+                button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+                  if user 
+                    if user.rol == "administrador"
+                      span ADMINISTRAR 
+                    if user.rol == "usuario"
+                      span Bienvenido #{user.nickname}
+                  else 
+                    span INGRESAR
+                .dropdown-menu
+                  #login
+                    h5 
+                      b INGRESA TUS DATOS
+                    form(method="POST", action="/admin/login")
+                      #datos 
+                        input(type="text" name="usuario" autofocus placeholder="Usuario") 
+                        span *
+                        input(type="password" name="contrasena" placeholder="Contraseña") 
+                        span *
+                      #registrarse
+                        a(href="#")
+                          span Registrarse
+                      #olvidoContrasena
+                        a(href="#")
+                          span ¿Olvidó Contraseña?
+                      #boton
+                        button.btn(type="submit") OK
+                
+          //onclick="location.href='/admin'"
 
     #contenido
      block content

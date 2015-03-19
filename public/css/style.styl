@@ -5,30 +5,68 @@
       a.navbar-brand
         padding 0 0 0 1%
     #navbar-collapse-1 
-      ul li 
-        ul.submenus.dropdown-menu
-          min-width 500px
-          width auto
-          height auto
-        .divImagenSubmenu
-          img 
-            height 50%
-            margin 25% 5%  25% -5%
+      ul 
+        padding-left 3%
+        li 
+          ul.submenus.dropdown-menu
+            min-width 500px
+            width auto
+            height auto
+          .divImagenSubmenu
+            img 
+              height 50%
+              margin 25% 5%  25% -5%
     ul#botonIngresar 
-      top 0
-      bottom 0
+      padding-top 0.7%
       padding-right 2%
       text-align center
       height 100%
       li 
-        button
-          height 100%
-          background-color #777
-          border-color #777
-          float right
-          a 
-            text-decoration none
-            color #fff
+        .btn-group
+          button
+            height 100%
+            background-color #777
+            border-color #777
+            float right
+            a 
+              text-decoration none
+              color #fff
+          .dropdown-menu
+            background-color gray
+/*Login*/
+#login
+  width 500px
+  padding 5% 15% 5% 15%
+  #boton
+    button
+      width 100px
+      background-color white
+      color gray
+  h5
+    text-align center
+    color white
+  #datos 
+    width 100%
+    padding 2% 2% 2% 2%
+    input 
+      margin 2% 2% 2% 2%
+      width 93%
+      color gray
+    span
+      color white
+  #registrarse
+    text-align left
+    width 50%
+    float left
+    a 
+      color white
+  #olvidoContrasena
+    text-align right
+    width 50%
+    float right
+    a 
+      color white
+/*Fin Login*/
 
 #contenido
   height auto
@@ -268,39 +306,9 @@
             color #fff
       
 /*editar paginas*/
-
-/*Login*/
-
-#login
-  width 100%
-  padding 5% 15% 5% 15%
-  h3
-    text-align center
-  #tablaLogin
-    width 70%
-    margin 10% 15% 0 15%
-    #columnaPequena
-      width 20%
-      height auto
-      padding 1% 1% 1% 1%
-    #columnaGrande
-      width 80%
-      height auto
-      padding 1% 1% 1% 1%
-      input
-        width 100%
-        height 30px
-    #olvidoContrasena
-      text-align right
-      padding 1% 1% 1% 1%
-    #botonIngresar
-      text-align center
-      padding 1% 1% 1% 1%
-      button
-        width 100px
-        height 30px 
         
-#adminLogin
+/*administrador*/
+#admin
   margin-top 7%
   width 100%
   h3
@@ -316,7 +324,7 @@
           text-decoration none
           color #fff
 
-/*Fin Login*/
+/*fin administrador*/
 
 /*Ver página*/
 

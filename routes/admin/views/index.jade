@@ -1,29 +1,10 @@
 extends ../../../views/layout
 block content
-  if !user
-    #login
-      h3 INGRESA TUS DATOS
-      form(method="POST", action="/admin/login")
-        table#tablaLogin
-            tr 
-             td#columnaPequena
-                p Usuario:
-             td#columnaGrande
-                input(type="text" name="usuario" autofocus)
-            tr
-             td#columnaPequena
-                p Contraseña:
-             td#columnaGrande
-                input(type="password" name="contrasena")
-            tr
-             td#olvidoContrasena(colspan="2")
-                a(href="#")
-                  p ¿Olvidó Contraseña?
-            tr
-             td#botonIngresar(colspan="2")
-                button.btn.btn-primary(type="submit") Ingresar
+  if !user.rol=!"administrador"
+    #noAdmin 
+      h1 ¡No eres administrador! 
   else
-    #adminLogin
+    #admin
       h3 ¡BIENVENIDO ADMINISTRADOR!
       table
         tr

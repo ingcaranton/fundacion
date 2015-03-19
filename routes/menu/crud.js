@@ -16,7 +16,12 @@ module.exports.create = function(req, res, done) {
     });
 }
 module.exports.read = function(req, res, done) {
- 
+  db.menu.find().exec(function(error, menus){
+    if (error)
+      return done(error);          
+    else
+      return done(null, menus);     
+  });
 }
 module.exports.deleter = function(req, res, done) {
   db.menu.findOneAndRemove({ "titulo" : req.params.menu},

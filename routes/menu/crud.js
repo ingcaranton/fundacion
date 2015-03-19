@@ -52,6 +52,10 @@ module.exports.update = function(req, res, done) {
       }
     );
 }
+
+function pad(d) {
+    return (d < 10) ? '0' + d.toString() : d.toString();
+}
 function dateFormateada(){
   var date = new Date()
   return pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());

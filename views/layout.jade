@@ -35,7 +35,7 @@ html
         #navbar-collapse-1.navbar-collapse.collapse
           ul.nav.navbar-nav
             -var indice = 0
-            -var tamano = 9
+            -var tamano = 8
             each menu in menus
               if indice<tamano
                 li.dropdown
@@ -43,7 +43,7 @@ html
                     if menu.submenus.length>0
                       b.caret
                   if menu.submenus.length>0
-                    ul.dropdown-menu
+                    ul.submenus.dropdown-menu
                       li.grid-demo
                         .row
                           .col-sm-6
@@ -54,7 +54,7 @@ html
                                 if index < (menu.submenus.length-1)
                                   li.divider
                           .divImagenSubmenu.col-sm-6
-                            img(src="/images/logo.png" width="100")
+                            img(src="/images/logo.png" width="200")
               -indice++
             if indice>=tamano
               li.dropdown.yamm-fw

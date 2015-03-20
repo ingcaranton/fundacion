@@ -79,8 +79,7 @@ $(document).ready(function() {
         Page.init();
   });
   /*Fin Cargar Slider*/
-  cargarPaginasEnLayout();
-  
+    
   /*Acordeon*/
   function toggleChevron(e) {
     $(e.target)
@@ -173,9 +172,14 @@ $(document).ready(function() {
       }      
     }); 
   });
+  /*Boton subir*/
+  $('.scrollup').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 600);
+    return false;
+  });
 });
 
-/*Carga los enlaces de las paginas en el pie de pagina*/
+/*Carga los enlaces de las paginas en el pie de pagina
 function cargarPaginasEnLayout(){
 	var table = document.getElementById("tablaEnlaces");
   var contador=1;
@@ -192,7 +196,7 @@ function cargarPaginasEnLayout(){
 		cell.appendChild(a);
     contador++;
 	}
-}
+}*/
 
 function cancelar_eliminarSubmenu(id,panel){
   var tabla=$("#editarMenu #"+panel+" button").attr('tabla');

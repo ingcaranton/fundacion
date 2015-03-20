@@ -76,11 +76,17 @@ html
                               li.divider
 
           ul#botonIngresar.nav.navbar-nav.navbar-right
-            li 
+            li.dropdown
               .btn-group
                 if user
                   if user.rol == "administrador"
-                    button.btn.btn-primary(type="button" onclick="location.href='/admin'") ADMINISTRAR
+                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
+                      span.caret
+                    ul.dropdown-menu(role="menu")
+                      li 
+                        a(href="/admin") Administrar Contenido
+                      li 
+                        a(href="/user/logout") Salir
                   else
                     button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
                       span.caret
@@ -113,12 +119,25 @@ html
     #contenido
      block content
     
-    footer.footer
-      .container
-        #tituloFundacion
-          p FUNDACION CONEXIÓN BIENESTAR
-        #enlaces
-          table#tablaEnlaces
+    #masContenido
+      #linea1
+      #centro
+        a(href="/todocontenido") 
+          b MAS CONTENIDO +
+      #linea2
+        button.btn.btn-primary.scrollup(type="button") 
+         b SUBIR
 
-        #copyright
-          p Copyright @arleyViviana Todos los derechos reservados
+    #piePagina
+      #izquierda
+        input(type="email" placeholder="INSCRIBETE A NEWSLETTER")
+        button.btn(type="button") OK
+      #derecha
+        a(href="javascript:void(0);")
+          b COMUNIDAD PROFESIONAL
+        span &nbsp; - &nbsp;
+        a(href="javascript:void(0);") POLÍTICAS DE MANEJO
+        span &nbsp; - &nbsp;
+        a(href="javascript:void(0);") TÉRMINOS Y CONDICIONES
+        span &nbsp; - &nbsp;
+        span FUNDACIÓN CONEXIÓN BIENESTAR &copy; 2015

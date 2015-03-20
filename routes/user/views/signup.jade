@@ -1,11 +1,8 @@
 extends ../../../views/layout
 block content
   if user
-    if user.rol=="administrador"
-      h2 Administrador de usuarios
-    else
-      #noAdmin 
-        h1 ¡No eres administrador!
+    #noAdmin 
+      h1 ¡Ya estas registrado!
   else
     #usuarioNuevo
       h3 INGRESE SUS DATOS

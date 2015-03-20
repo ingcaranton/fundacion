@@ -1,0 +1,20 @@
+extends ../../../views/layout
+block content
+  if user
+  else
+    h3 INGRESE SUS DATOS
+    form(method="POST", action="/user/signup")
+      #datos1
+        span Nombre Completo: 
+        input(type="text" name="nombre" autofocus)
+      #datos2
+        span E-mail: 
+        input(type="text" name="correo")
+      #datos3
+        span NickName: 
+        input(type="text" name="nickName")
+      #datos5
+        span Contraseña: 
+        input(type="password" name="contrasena")
+      button.btn.btn-primary(type="submit") ENVIAR
+

@@ -83,29 +83,34 @@ html
                     if user.rol == "administrador"
                       span ADMINISTRAR 
                     if user.rol == "usuario"
-                      span Bienvenido #{user.nickname}
+                      span Hola #{user.nickname}
                   else 
                     span INGRESAR
                 .dropdown-menu
-                  #login
-                    h5 
-                      b INGRESA TUS DATOS
-                    form(method="POST", action="/admin/login")
-                      #datos 
-                        input(type="text" name="usuario" autofocus placeholder="Usuario") 
-                        span *
-                        input(type="password" name="contrasena" placeholder="Contraseña") 
-                        span *
-                      #registrarse
-                        a(href="#")
-                          span Registrarse
-                      #olvidoContrasena
-                        a(href="#")
-                          span ¿Olvidó Contraseña?
-                      #boton
-                        button.btn(type="submit") OK
-                
-          //onclick="location.href='/admin'"
+                  if !user
+                    #login
+                      h5 
+                        b INGRESA TUS DATOS
+                      form(method="POST", action="/user/login")
+                        #datos 
+                          input(type="text" name="usuario" autofocus placeholder="Usuario") 
+                          span *
+                          input(type="password" name="contrasena" placeholder="Contraseña") 
+                          span *
+                        #registrarse
+                          a(href="/user/signup")
+                            span Registrarse
+                        #olvidoContrasena
+                          a(href="#")
+                            span ¿Olvidó Contraseña?
+                        #boton
+                          button.btn(type="submit") OK
+                  else
+                    #logout_administrar
+                      if user.rol=="administrador"
+                          a(href="/admin") Administrar
+                      else
+                          a(href="/user/logout") Salir
 
     #contenido
      block content

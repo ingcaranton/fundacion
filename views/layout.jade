@@ -78,16 +78,20 @@ html
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li 
               .btn-group
-                button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
-                  if user 
-                    if user.rol == "administrador"
-                      span ADMINISTRAR 
-                    if user.rol == "usuario"
-                      span Hola #{user.nickname}
-                  else 
+                if user
+                  if user.rol == "administrador"
+                    button.btn.btn-primary(type="button" onclick="location.href='/admin'") ADMINISTRAR
+                  else
+                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
+                      span.caret
+                    ul.dropdown-menu(role="menu")
+                      li 
+                        a(href="/user/logout") Salir
+                     
+                else
+                  button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
                     span INGRESAR
-                .dropdown-menu
-                  if !user
+                  .dropdown-menu
                     #login
                       h5 
                         b INGRESA TUS DATOS
@@ -105,12 +109,6 @@ html
                             span ¿Olvidó Contraseña?
                         #boton
                           button.btn(type="submit") OK
-                  else
-                    #logout_administrar
-                      if user.rol=="administrador"
-                          a(href="/admin") Administrar
-                      else
-                          a(href="/user/logout") Salir
 
     #contenido
      block content

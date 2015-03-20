@@ -2,17 +2,12 @@ extends ../../../views/layout
 block content
   if user && user.rol=="administrador"
      #admin
-      h3 ¡BIENVENIDO ADMINISTRADOR!
-      table
-        tr
-          td
-            button.btn.btn-primary(type="button" onclick="location.href='/admin/editarMenu'") Administrar Menu 
-        tr
-          td
-            button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") Administrar Paginas
-        tr
-          td
-            button.btn.btn-danger(type="button" onclick="location.href='/user/logout'") Salir del Administrador 
+      h3 
+        b ¡BIENVENIDO ADMINISTRADOR!
+      button.btn.btn-primary(type="button" onclick="location.href='/admin/editarMenu'") Administrar Menu 
+      button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") Administrar Paginas
+      button.btn.btn-primary(type="button" onclick="location.href='/user/signup'") Administrar Usuarios
+      button.btn.btn-danger(type="button" onclick="location.href='/user/logout'") Salir del Administrador 
   else
     #noAdmin 
       h1 ¡No eres administrador! 

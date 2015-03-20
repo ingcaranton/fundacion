@@ -40,11 +40,10 @@ block content
                 option(value="emocional") Emocional
                 option(value="espiritual") Espiritual
           tr
-            td.columnaPequena
-  
-            td.columnaGrande
+            td.columnaVisible(colspan="2")
+              span ¿Visible solo para usuario registrados?
               input(name="soloRegistrados" type="checkbox")
-              p Visible solo para usuario registrados
+              
           tr
            td.columnaPequena
               p Contenido

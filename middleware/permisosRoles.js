@@ -1,5 +1,5 @@
 module.exports.isAuthenticated = function(req, res, next) {
-  if (req.user)
+  if (req.sesion.user)
         return next();
 
      req.flash('message', 'No estas autenticado.');
@@ -8,7 +8,7 @@ module.exports.isAuthenticated = function(req, res, next) {
 
 module.exports.isAdmin = function(req, res, next) {
 
-	if(req.user){
+	if(req.session.user){
     	if (req.user.nickName=="admin"){
         	return next();
     	}

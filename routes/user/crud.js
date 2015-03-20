@@ -1,5 +1,4 @@
 module.exports.create = function(req, res, done) {
-  console.log(req.body)
     if (req.body.nickName)
         var nickName = req.body.nickName.toLowerCase(); 
         db.user.findOne({ "nickName" :  nickName }, function(err, user) {
@@ -13,7 +12,12 @@ module.exports.create = function(req, res, done) {
                     newUser.nombre = req.body.nombre;
                     newUser.nickName = nickName;
                     newUser.correo = req.body.correo;
-                    newUser.contrasena = newUser.generateHash(req.body.contrasena);
+                    newUser.contrasena = req.body.contrasena;
+                    if(req.body.rol){
+                      newUser.rol = req.body.rol;
+                    }else{
+                      newUser.rol = "usuario";
+                    }
                 newUser.save(function(error, user) {
                     if (error)
                         return done(error);          
@@ -37,19 +41,23 @@ module.exports.read = function(req, res, done) {
 }
 
 module.exports.update = function (req, res, done) {
-    var nickName=req.body.nickNameOriginal||req.user.nickName;
-    var updateUser= {};
+    var nickName=req.body.nickNameOriginal||req.session.user.nickName;
+    var update= {};
     var newUser= new db.user();
         if(req.body.nombre)
-            updateUser.nombre = req.body.nombre;
+            update.nombre = req.body.nombre;
         if(req.body.nickName)
-            updateUser.nickName = req.body.nickName.toLowerCase();
+            update.nickName = req.body.nickName.toLowerCase();
         if(req.body.contrasena)
-            updateUser.contrasena = newUser.generateHash(req.body.contrasena);
+            update.contrasena = req.body.contrasena;
         if(req.body.correo)
-            updateUser.correo = req.body.correo;
+            update.correo = req.body.correo;
+        if(req.body.rol)
+            update.rol = req.body.rol;
+        else
+            newUser.rol = "usuario";
 
-    db.user.findOneAndUpdate({ "nickName" : nickName},{$set:updateUser},
+    db.user.findOneAndUpdate({ "nickName" : nickName},{$set:update},
         function(error, user){
             if (error)
                 return done(error);          
@@ -65,11 +73,9 @@ module.exports.deleter = function (req, res, done) {
     db.user.findOneAndRemove({ "nickName" : nickName},
         function(error){
             if (error)
-                return done(error);          
-            if(req.user){
-                return done(null, req.flash('message', 'user delete'));   
-                 
-            }  
+                return done(error);    
+            else
+                return done(null, req.flash('message', 'user delete'));            
       }
     );
   }

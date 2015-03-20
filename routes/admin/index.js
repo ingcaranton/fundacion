@@ -1,6 +1,7 @@
 var express = require('express');
 var app = module.exports = express();
 var crudPagina = require("../pagina/crud");
+var crudMenu = require("../menu/crud");
 
 app.set('views', __dirname + '/views');
 
@@ -23,7 +24,7 @@ app.route('/paginas')
 .get(function(req, res){
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     db.pagina.find().exec(function(error, pagsAdmin){
-      db.menu.find().exec(function(errorMenu, menus){
+      crudMenu.read(req, res, function(err, menus, flash){
         res.render('editarPaginas', {
           message : req.flash('message'),
           user : req.session.user,
@@ -40,7 +41,7 @@ app.route('/paginas')
 app.route('/editarmenu')
 .get(function(req, res){
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    db.menu.find().exec(function(errorMenu, menus){
+    crudMenu.read(req, res, function(err, menus, flash){
           res.render('editarMenu', {
           message : req.flash('message'),
           user : req.session.user,

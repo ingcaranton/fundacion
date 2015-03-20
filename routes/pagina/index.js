@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.route('/nueva')
 .get(function(req, res){
   db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    crudMenu.read(req, res, function(err, menus, flash){
+    crudMenu.read(req, res, function(err, menus){
       res.render('nueva', {
         message : req.flash('message'),
         user : req.session.user,
@@ -26,8 +26,8 @@ app.route('/editar/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
   db.pagina.find({publicar:true},"nombreEnlace titulo").exec(function(error, paginas){
-    crudMenu.read(req, res, function(err, menus, flash){
-      crudPagina.read(req, res, function(err, pagina, flash){
+    crudMenu.read(req, res, function(err, menus){
+      crudPagina.read(req, res, function(err, pagina){
         if(pagina){
           res.render('editar', {
             message : req.flash('message'),

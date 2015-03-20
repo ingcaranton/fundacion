@@ -30,7 +30,7 @@ module.exports.create = function(req, res, done) {
         });
 }
 //solo valido para administrador  
-module.exports.read = function(req, res, done) {
+module.exports.read = function(req, res ,done) {
             db.user.find().exec(function (error, users) { 
                 if (error){
                     return done(error);          

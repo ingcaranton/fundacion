@@ -18,6 +18,21 @@ app.route('/')
   });
 });
 
+app.route('/todocontenido')
+.get(function(req, res){
+  db.pagina.find({publicar:true}).exec(function(error, paginas){
+    db.menu.find().exec(function(errorMenu, menus){
+      res.render('todocontenido', {
+        message : req.flash('message'),
+        user : req.session.user,
+        paginas: paginas,
+        title : 'Conexion bienestar',
+        menus : menus
+      });
+    });
+  });
+});
+
 app.route('/:pagina')
 .get(function(req, res) {
   db.pagina.find({publicar:true}).exec(function(error, paginas){

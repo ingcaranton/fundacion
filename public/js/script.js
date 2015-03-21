@@ -144,7 +144,7 @@ $(document).ready(function() {
         append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
         (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
         +']"></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
-          (filas-1)+',\''+panel+'\')"> Cancelar </a></td></tr>');
+          (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
     });
   /*fin editar Menu*/
   /*Menu nuevo*/
@@ -158,7 +158,7 @@ $(document).ready(function() {
         +'</td><td><input type="text" name="tituloSubmenu['+
         (filas-1)+']"></input></td><td><input type="text" name="urlSubmenu['+(filas-1)
         +']"></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
-        (filas-1)+',\'panelMenuNuevo\')"> Cancelar </a></td></tr>');
+        (filas-1)+',\'panelMenuNuevo\',\'Cancelar\')"> Cancelar </a></td></tr>');
   });
   /*Fin menu nuevo*/
   /*Confirmación de elimar pagina*/
@@ -172,6 +172,16 @@ $(document).ready(function() {
       }      
     }); 
   });
+  /*Confirmación de elimar menu*/
+  $("#editarMenu #accordion .panel.panel-primary .acciones").on('click', 'a.eliminarMenu',function(){
+    var menu=$(this).attr('menu');
+    var enlace=$(this).attr('enlace');
+    bootbox.confirm("¿Eliminar menu "+menu+"?", function(result) {    
+      if(result){
+        document.location.href=enlace;
+      }      
+    }); 
+  });
   /*Boton subir*/
   $('.scrollup').click(function(){
     $("html, body").animate({ scrollTop: 0 }, 600);
@@ -179,41 +189,21 @@ $(document).ready(function() {
   });
 });
 
-/*Carga los enlaces de las paginas en el pie de pagina
-function cargarPaginasEnLayout(){
-	var table = document.getElementById("tablaEnlaces");
-  var contador=1;
-	var row = table.insertRow();
-	for(var i=0; i<pag.length; i++){
-		if(contador==6){
-			row = table.insertRow();
-			contador=1;
-		}
-		var cell = row.insertCell();
-		var a = document.createElement("a");
-    a.href = "/"+pag[i].nombreEnlace;
-    a.innerHTML= pag[i].titulo;
-		cell.appendChild(a);
-    contador++;
-	}
-}*/
-
-function cancelar_eliminarSubmenu(id,panel){
+function cancelar_eliminarSubmenu(id,panel,accion){
   var tabla=$("#editarMenu #"+panel+" button").attr('tabla');
-  var filas=$("tr","#"+tabla).length;
-  if(filas>2){
-    $("#editarMenu #"+tabla+" #"+id).remove();
-    var i=1;
-    $('#'+tabla+' tr.dato').each(function () {
-      var td=$(this).find("td").eq(0);
-      td.html(i);
-      this.id=i-1;
-      $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
-      $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
-      $(this).find("td").eq(3).find("a").attr('onclick','cancelar_eliminarSubmenu('+(i-1)+', "'+panel+'")');
-      i++;
-    });
-  }else{
-    bootbox.alert("El menu debe tener por lo menus un submenu");
-  }
+  bootbox.confirm("¿"+accion+" submenu?", function(result) {
+    if(result){
+      $("#editarMenu #"+tabla+" #"+id).remove();
+      var i=1;
+      $('#'+tabla+' tr.dato').each(function () {
+        var td=$(this).find("td").eq(0);
+        td.html(i);
+        this.id=i-1;
+        $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
+        $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
+        $(this).find("td").eq(3).find("a").attr('onclick','cancelar_eliminarSubmenu('+(i-1)+', "'+panel+'")');
+        i++;
+      });
+    }
+  });
 }

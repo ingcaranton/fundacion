@@ -29,7 +29,7 @@ block content
                   .acciones
                     a.agregarSubmenu(href="javascript:void(0);" tabla="tabla"+contador panel="panel"+contador) Agregar Submenu 
                     span &nbsp; | &nbsp;
-                    a.eliminarMenu(href="/admin/menu/eliminar/"+menu.titulo) Eliminar Menu
+                    a.eliminarMenu(href="javascript:void(0);" enlace="/admin/menu/eliminar/"+menu.titulo menu=menu.titulo) Eliminar Menu
                     span &nbsp; | &nbsp;
                     a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar Edición
                 .tituloSubmenu
@@ -56,9 +56,9 @@ block content
                       td 
                         input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
                       td  
-                        a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"')") Eliminar      
+                        a.eliminarSubmenu(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"','Eliminar')") Eliminar      
                 .guardarMenu
-                  button.botonSubmenu.btn.btn-primary.btn-sm(type="submiy") Guardar Cambios
+                  button.botonSubmenu.btn.btn-primary.btn-sm(type="submiy" tabla="tabla"+contador) Guardar Cambios
           -contador++
 
       #botones
@@ -103,7 +103,7 @@ block content
                           td 
                             input(type="text" name="urlSubmenu[0]") 
                           td  
-                            a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo')") Eliminar    
+                            a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo','Cancelar')") Cancelar    
                     .guardarMenu
                       button#botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tablaMenuNuevo") Agregar Submenu
   else

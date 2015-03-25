@@ -21,8 +21,7 @@ html
       var message= "#{message}";
       if(message)
         alert(message);
-      pag=!{JSON.stringify(paginas)};
-    
+      pag=!{JSON.stringify(paginas)};    
     .navbar.yamm.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
@@ -103,9 +102,9 @@ html
                         b INGRESA TUS DATOS
                       form(method="POST", action="/user/login")
                         #datos 
-                          input(type="text" name="usuario" autofocus placeholder="Usuario") 
+                          input(type="text" name="usuario" autofocus placeholder="Usuario" required) 
                           span *
-                          input(type="password" name="contrasena" placeholder="Contraseña") 
+                          input(type="password" name="contrasena" placeholder="Contraseña" required) 
                           span *
                         #registrarse
                           a(href="/user/signup")
@@ -121,8 +120,9 @@ html
 
     #piePagina
       #izquierda
-        input(type="email" placeholder="INSCRIBETE A NEWSLETTER")
-        button.btn(type="button") OK
+        form(method="POST", action="#")
+          input(type="email" placeholder="INSCRIBETE A NEWSLETTER" required)
+          button.btn(type="submit") OK
       #derecha
         a(href="javascript:void(0);")
           b COMUNIDAD PROFESIONAL

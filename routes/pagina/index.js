@@ -55,7 +55,7 @@ app.route('/guardar')
         console.log(err);
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });
@@ -68,7 +68,7 @@ app.route('/publicar')
         console.log(err);
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });
@@ -79,7 +79,7 @@ app.route('/borrar/:pagina')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });
@@ -91,7 +91,7 @@ app.route('/actualizar/guardar')
         console.log(err);
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });
@@ -104,7 +104,7 @@ app.route('/actualizar/publicar')
         console.log(err);
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });
@@ -115,7 +115,7 @@ app.route('/cambiarEstado/:pagina')
       if(err){
         res.redirect("/admin/error");
       }else{
-        res.redirect("/admin/paginas");
+        res.redirect("/admin/editarpaginas");
       }
   });
 });

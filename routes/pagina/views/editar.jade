@@ -11,12 +11,12 @@ block content
               td.columnaPequena
                 p Título
               td.columnaGrande
-                input(type="text" name="titulo" value=pagina.titulo)
+                input(type="text" name="titulo" value=pagina.titulo required title="Titulo de pagina requerido")
             tr
               td.columnaPequena
                 p Enlace
               td.columnaGrande
-                input(type="text" name="nombreEnlace" value=pagina.nombreEnlace)
+                input(type="text" name="nombreEnlace" value=pagina.nombreEnlace required title="Enlace requerido")
             tr
               td.columnaPequena
                 p Imagen Descripción
@@ -31,7 +31,7 @@ block content
               td.columnaPequena
                 p Descripción (Max 120 caracteres)
               td.columnaGrande
-                textarea(name="descripcion" maxlength="120")
+                textarea(name="descripcion" maxlength="120" required title="Descripción requerida")
                   | #{pagina.descripcion}
             tr 
               td.columnaPequena
@@ -75,7 +75,7 @@ block content
               td#publicar 
                 button.btn.btn-primary(type="submit" onclick="this.form.action='/admin/pagina/actualizar/publicar'")  Publicar
               td#regresar  
-                button.btn.btn-primary(type="button" onclick="location.href='/admin/paginas'") Regresar
+                button.btn.btn-primary(type="button" onclick="location.href='/admin/editarpaginas'") Regresar
   else
     #noAdmin 
       h1 ¡No eres administrador! 

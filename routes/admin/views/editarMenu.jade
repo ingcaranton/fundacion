@@ -18,10 +18,10 @@ block content
                   .datosMenu
                     .tituloMenu 
                       span Titulo 
-                      input(type="text" name="tituloMenu" value=menu.titulo)
+                      input(type="text" name="tituloMenu" value=menu.titulo required title="Título requerido")
                     .urlMenu 
                       span Url
-                      input(type="text" name="urlMenu")
+                      input(type="text" name="urlMenu" required title="Url requerida")
                   .creadorMenu
                     span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;
@@ -52,13 +52,13 @@ block content
                     tr.dato(id=index) 
                       td=index+1
                       td 
-                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo)
+                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo required title="Titulo de submenu requerido")
                       td 
-                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url) 
+                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url required title="Url de submenu requerida") 
                       td  
                         a.eliminarSubmenu(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"','Eliminar')") Eliminar      
                 .guardarMenu
-                  button.botonSubmenu.btn.btn-primary.btn-sm(type="submiy" tabla="tabla"+contador) Guardar Cambios
+                  button.botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tabla"+contador) Guardar Cambios
           -contador++
 
       #botones
@@ -75,9 +75,9 @@ block content
                 .panel-collapse
                     .panel-body
                       .tituloMenu
-                        input(type="text" name="tituloMenu" placeholder="Título")
+                        input(type="text" name="tituloMenu" placeholder="Título" required title="Titulo requerido")
                         .acciones
-                          a#aGuardar(href="javascript: document.getElementById('formMenuNuevo').submit();") Guardar 
+                          a#agregarSumenuMenuNuevo(href="javascript:void(0);" tabla="tablaMenuNuevo" panel="panelMenuNuevo") Agregar Submenu 
                           span &nbsp; | &nbsp;
                           a#aCancelar(href="javascript:void(0);") Cancelar
                     .tituloSubmenu
@@ -99,13 +99,13 @@ block content
                         tr#0.dato
                           td 1
                           td 
-                            input(type="text" name="tituloSubmenu[0]")
+                            input(type="text" name="tituloSubmenu[0]" required title="Titulo de submenu requerido")
                           td 
-                            input(type="text" name="urlSubmenu[0]") 
+                            input(type="text" name="urlSubmenu[0]" required title="Url de submenu requerida") 
                           td  
                             a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo','Cancelar')") Cancelar    
                     .guardarMenu
-                      button#botonSubmenu.btn.btn-primary.btn-sm(type="button" tabla="tablaMenuNuevo") Agregar Submenu
+                      button#botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tablaMenuNuevo") Agregar Menu
   else
     #noAdmin 
       h1 ¡No eres administrador!  

@@ -6,25 +6,26 @@ block content
   else
     #usuarioNuevo
       h3 INGRESE SUS DATOS
-      form(method="POST", action="/user/signup")
+      form#registrar(method="POST", action="/user/signup")
         #datos1
           span Nombre Completo: 
-          input(type="text" name="nombre" autofocus)
+          input(title="Nombre Completo requerido" type="text" name="nombre" autofocus required)
           span.asterisco *
         #datos2
           span E-mail: 
-          input(type="email" name="correo")
+          input(title="E-mail requerido" type="email" name="correo" required)
           span.asterisco *
         #datos3
           span NickName: 
-          input(type="text" name="nickName")
+          input(title="NickName requerido" type="text" name="nickName" required)
           span.asterisco *
         #datos4
           span Contraseña: 
-          input(type="password" name="contrasena")
+          input(title="Contraseña requerida" type="password" name="contrasena" required)
           span.asterisco *
-        p 
-          span.asterisco *
-          span Campos obligatorios
-        button.btn.btn-primary(type="submit") ENVIAR
+        #inscribirse
+          span ¿INSCRIBIRSE A NEWSLETTER?
+          input(name="inscribirse" type="checkbox") 
+        div
+          button.btn.btn-primary(type="submit") ENVIAR
 

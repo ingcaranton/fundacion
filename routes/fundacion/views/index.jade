@@ -1,37 +1,8 @@
 extends ../../../views/layout
 block content
-
   #slider 
     #sliderImagenes.wrapper
       ul#sb-slider.sb-slider
-        li
-          img(src="images/imageSlider/1.jpg" alt="image1")
-          .sb-description
-            h3 Creative Lifesaver
-        li
-          img(src="images/imageSlider/2.jpg" alt="image2")
-          .sb-description
-            h3 Honest Entertainer
-        li
-          img(src="images/imageSlider/3.jpg" alt="image1")
-          .sb-description
-            h3 Brave Astronaut
-        li
-          img(src="images/imageSlider/4.jpg" alt="image1")
-          .sb-description
-            h3 Affectionate Decision Maker
-        li
-          img(src="images/imageSlider/5.jpg" alt="image1")
-          .sb-description
-            h3 Faithful Investor
-        li
-          img(src="images/imageSlider/6.jpg" alt="image1")
-          .sb-description
-            h3 Groundbreaking Artist
-        li
-          img(src="images/imageSlider/7.jpg" alt="image1")
-          .sb-description
-            h3 Selfless Philantropist
 
       #shadow.shadow
 
@@ -49,243 +20,66 @@ block content
         span
       
   #seccionesPrincipales
-    #card-1.cardStatic
-      .content.fisico
-        p FISICO 
-        #leerMas
-          a(href="#") LEER +
+    #cards
+      #cardFisico.card 
+        .contenidoCard
+          if paginas[0].linkImagen
+            .imagenDescripcion
+              img(src=paginas[0].linkImagen)
+            .descripcion 
+              p #{paginas[0].descripcion}
+          else 
+            .descripcionSinImagen
+              p #{paginas[0].descripcion}
+        a(href="/"+paginas[0].nombreEnlace) 
+         .leerMas LEER +
 
-    #card-2.cardStatic
-      .content.emocional 
-        p EMOCIONAL
-        #leerMas
-          a(href="#") LEER +
+      #cardEmocional.card
+        .contenidoCard
+          if paginas[1].linkImagen
+            .imagenDescripcion
+              img(src=paginas[1].linkImagen)
+            .descripcion 
+              p #{paginas[1].descripcion}
+          else 
+            .descripcionSinImagen
+              p #{paginas[1].descripcion}
+        a(href="/"+paginas[1].nombreEnlace) 
+         .leerMas LEER +
 
-    #card-3.cardStatic
-      .content.espiritual
-        p ESPIRITUAL 
-        #leerMas
-          a(href="#") LEER +
+      #cardEspiritual.card
+        .contenidoCard 
+          if paginas[2].linkImagen
+            .imagenDescripcion
+              img(src=paginas[2].linkImagen)
+            .descripcion 
+              p #{paginas[2].descripcion}
+          else 
+            .descripcionSinImagen
+              p #{paginas[2].descripcion}
+        a(href="/"+paginas[2].nombreEnlace) 
+         .leerMas LEER +
 
-    #card-4.card
-      .cards.front
-      .cards.back   
-      ul.store
-        each pagina in paginas
-            li 
-              if pagina.categoria == "fisico"
-                .content.fisico 
-                  if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                  #descripcion 
-                    p #{pagina.descripcion}
-                  #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-              if pagina.categoria=="emocional"
-                .content.emocional 
-                  if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                  #descripcion 
-                    p #{pagina.descripcion}
-                  #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-              if pagina.categoria=="espiritual"
-                .content.espiritual
-                  if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                  #descripcion 
-                    p #{pagina.descripcion}
-                  #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-              if pagina.categoria=="sinCategoria"
-                .content.otro 
-                  if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                  #descripcion 
-                    p #{pagina.descripcion}
-                  #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-
-    #card-5.card
-      .cards.front
-      .cards.back
-      ul.store
-        each pagina in paginas
-          li 
-            if pagina.categoria == "fisico"
-              .content.fisico 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="emocional"
-              .content.emocional 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="espiritual"
-              .content.espiritual
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="sinCategoria"
-              .content.otro 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-
-    #card-6.card
-      .cards.front
-      .cards.back
-      ul.store
-        each pagina in paginas
-          li 
-            if pagina.categoria == "fisico"
-              .content.fisico 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="emocional"
-              .content.emocional 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="espiritual"
-              .content.espiritual
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="sinCategoria"
-              .content.otro 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-
-    #card-7.card
-      .cards.front
-      .cards.back
-      ul.store
-        each pagina in paginas
-          li 
-            if pagina.categoria == "fisico"
-              .content.fisico 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="emocional"
-              .content.emocional 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="espiritual"
-              .content.espiritual
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="sinCategoria"
-              .content.otro 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-
-    #card-8.card
-      .cards.front
-      .cards.back
-      ul.store
-        each pagina in paginas
-          li 
-            if pagina.categoria == "fisico"
-              .content.fisico 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="emocional"
-              .content.emocional 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="espiritual"
-              .content.espiritual
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
-            if pagina.categoria=="sinCategoria"
-              .content.otro 
-                if pagina.linkImagen
-                    #imagenDescripcion
-                      img(src=pagina.linkImagen)
-                #descripcion 
-                  p #{pagina.descripcion}
-                #leerMas
-                    a(href=pagina.nombreEnlace) LEER +
+      -contador=3
+      while contador < 8
+        .card
+          .contenidoCard 
+            if paginas[contador].linkImagen
+              .imagenDescripcion
+                img(src=paginas[contador].linkImagen)
+              .descripcion 
+                p #{paginas[contador].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{paginas[contador].descripcion}
+          a(href="/"+paginas[contador].nombreEnlace) 
+            .leerMas LEER +
+        -contador++
 
   #masContenido
       #linea1
-      #centro
-        a(href="/todocontenido") 
+      a(href="/todocontenido") 
+        #centro
           b MAS CONTENIDO +
       #linea2
         button.btn.btn-primary.scrollup(type="button") 

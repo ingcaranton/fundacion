@@ -142,98 +142,75 @@
 
   #seccionesPrincipales
     width 100%
-    background-color #ffe
     float left
-    padding 0 4% 0 4%
-    
-  /*flip*/
-    .card
-      float left
-      width 245px
-      height 350px
-      margin 2% 2% 2% 2%
-
-    .cardStatic
-      float left
-      width 245px
-      height 350px
-      margin 2% 2% 2% 2%
-      .content
-        p 
-          height 85%
-          color #fff
-          size 30px
-
-    .cards
-      width 100%
-      height 100%
-
-    .store
-      display none
-
-    .content
-      padding 15px 0 15px 0
-      width 100%
-      height 100%
-      p 
-        text-align center
-      #imagenDescripcion
-        width 100%
-        height 50%
-        padding 0 15px 0 15px 
-        img 
-          width 100%
-          height 200px
-      #descripcion 
-        width 100%
-        height 35%
-        p 
-          text-align center
-          width 100%
-          color #fff 
-      #leerMas   
-        width 101px
-        margin 5px 72px 0 72px
-        border 2px #fff solid
-        bottom 0
-        text-align center
+    #cards 
+      max-width 980px
+      margin 0 auto
+      .card
+        margin 0 auto
+        float left
+        width 225px
+        height 330px
+        margin 2% 10px 2% 10px
+        .contenidoCard
+          padding 4% 3% 3% 3%
+          height 290px   
+          .imagenDescripcion
+            width 100%
+            text-align center
+            img 
+              max-width 200px
+              height 130px
+          .descripcion 
+            margin-top 15px
+            padding 1% 1% 1% 1%
+            width 100%
+            p 
+              text-align center
+              color gray
+          .descripcionSinImagen
+            margin-top 50%
+            padding 0 1% 0 1%
+            width 100% 
+            p 
+              text-align center
+              color gray
         a 
           text-decoration none
-          color #fff
+          width 100px
+          margin-left 62px
+          float left
+          .leerMas   
+            border 2px gray solid
+            bottom 0
+            text-align center
+            width 100%
+            color gray
 
-    .fisico 
-      background-color #36abd0
-    .emocional 
-      background-color #8762ab
-    .espiritual 
-      background-color #fef000
-      #descripcion 
-        p 
-          color gray
-      #leerMas
-        width 101px
-        margin 5px 72px 0 72px
-        border 2px gray solid
-        bottom 0
-        text-align center
-        a 
-          text-decoration none
-          color gray
-        
-    .otro 
-      #descripcion 
-        p 
-          color gray
-      #leerMas   
-        width 101px
-        margin 5px 72px 0 72px
-        border 2px gray solid
-        bottom 0
-        text-align center
-        a 
-          text-decoration none
-          color gray
-  /*fin flip*/
+      #cardFisico 
+        background-color #36abd0
+        .descripcion 
+          p 
+            color white
+        .descripcionSinImagen
+          p 
+            color white
+        .leerMas
+          border 2px white solid
+          color white
+      #cardEmocional 
+        background-color #8762ab
+        .descripcion 
+          p 
+            color white
+        .descripcionSinImagen
+          p 
+            color white
+        .leerMas
+          border 2px white solid
+          color white
+      #cardEspiritual 
+        background-color #fef000
 
   #masContenido
     float left
@@ -244,16 +221,19 @@
       float left
       border-top 2px solid gray
       width 40%
-    #centro 
+    a 
+      text-decoration none
+      width 16%
       float left
       margin -1.5% 2% 0 2%
-      border 2px solid gray
-      width 16%
       padding 4px 4px 4px 4px
-      text-align center
-      a 
+      #centro 
+        border 2px solid gray        
+        text-align center
         color gray
         width 100%
+        height 30px
+        font-size larger
     #linea2
       float left
       border-top 2px solid gray

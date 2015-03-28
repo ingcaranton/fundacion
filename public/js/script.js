@@ -1,8 +1,11 @@
 /*Variables Globales*/
   var pag={};
 
+  var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
+
 /*Función de cargar en home*/
   $(document).ready(function() {
+    posiciones();
     /*Selector de imagen*/
       $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
@@ -41,7 +44,7 @@
               orientation : 'r',
               cuboidsCount : 5,
               disperseFactor : 20,
-              autoplay: true,
+              autoplay: false,
               interval: 6000,
               onBeforeChange : function( pos ) {
                 $nav.removeClass( 'nav-dot-current' );
@@ -104,16 +107,6 @@
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
       });
     /*fin navbar*/
-    /*flip*/
-      $(function(){      
-        $(".card").flip({        
-          velMax:10000,
-          velMin:5000,
-          rangoMax:(pag.length),
-          rangoMin:1
-        });
-      });
-    /*fin flip*/
     /*editar Menu*/
       /*Ocultar paneles*/
       $("#editarMenu #accordion").on('click','a.aEditar',function(){
@@ -184,9 +177,18 @@
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
       });
+    /*Imagenes Aleatorias Slider*/
+      for(var i=0; i<7;i++){
+        var img = $('<img src='+arrayImagenesSlider[usados[i]]+'>');
+        var li = $('<li/>');
+        li.append(img);
+        $("#sb-slider").append(li);
+      }
   });
 
 /*Otras Funciones*/
+  var usados= new Array();
+
   function cancelar_eliminarSubmenu(id,panel,accion){
     var tabla=$("#editarMenu #"+panel+" button").attr('tabla');
     bootbox.confirm("¿"+accion+" submenu?", function(result) {
@@ -205,3 +207,28 @@
       }
     });
   }  
+
+  function repetido(num){ 
+    var repe= false; 
+    for (i=0; i<usados.length; i++) { 
+      if (num == usados[i]) { 
+        repe = true; 
+      } 
+    } 
+    return repe; 
+  } 
+
+  function aleatorio(min, max){ 
+    while (repe != false) { 
+      var num= Math.floor(Math.random()*(max-min+1))+min; 
+      var repe = repetido(num); 
+    } 
+    usados.push(num); 
+    return num; 
+  } 
+
+  function posiciones(){
+    for(var i=0; i<7; i++){
+      aleatorio(0,6);
+    }
+  }

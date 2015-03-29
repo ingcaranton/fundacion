@@ -1,0 +1,89 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.fixed{
+
+	position: fixed;
+	z-index: 2000;
+}
+header{
+	left: -270px;
+	top:0;
+	height: 100%;
+	width: 300px;
+	background: red;	
+}
+header nav{
+	right: 0px;
+	width: 30px;
+	position: absolute;
+}
+
+header nav li{
+	list-style: none;
+	width: 30px;
+	height: 30px;
+}
+header nav li a {
+	font-size: 30px;
+	color: white;
+	display: block;
+	text-align: center;
+}
+.inner_header{
+	width: 270px;
+	height: 100%;
+}
+
+section .rosado,
+nav .rosado_{
+	background: rgba(255, 114, 178, 0.7);
+}
+
+section .naranja,
+nav .naranja_{
+	background: rgba(215, 145, 20, 0.8);
+}
+
+section .morado,
+nav .morado_{
+	background: rgba(176, 40, 205, 0.8);
+}
+
+section .azulOscuro,
+nav .azulOscuro_{
+	background: rgba(0, 64, 189, 0.8);
+}
+
+section .azulClaro,
+nav .azulClaro_{
+	background: rgba(0, 145, 189, 0.8);
+}
+
+section .verde,
+nav .verde_{
+	background: rgba(0, 160, 0, 0.6);
+}
+
+section .amarillo,
+nav .amarillo_{
+	background: rgba(221, 239, 28, 0.9);
+}
+
+nav .open{
+	text-indent: -9999px;
+	position: relative;
+}
+
+nav .open:after{
+	content: 'x';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-indent:0px;
+    color: white;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+}

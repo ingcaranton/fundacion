@@ -2,18 +2,21 @@ doctype html
 html
   head    
     meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
     title= title
     link(rel='stylesheet' type='text/css' href='/plugins/Slicebox/css/slicebox.css')
     link(rel='stylesheet' href='/css/bootstrap.min.css')
     link(rel='stylesheet' type="text/css" href="/css/yamm.css")
+    link(rel='stylesheet' href='/css/core.css')
     link(rel='stylesheet' href='/css/style.css')
-    script(type='text/javascript' src='/js/jquery-1.11.2.min.js')   
+    script(type='text/javascript' src='/js/jquery-1.11.2.min.js')
     script(type='text/javascript' src='/js/bootstrap.min.js')
     script(type='text/javascript' src='/plugins/ckeditor/ckeditor.js') 
     script(type='text/javascript' src='/js/bootbox.min.js') 
-    script(type='text/javascript' src='/js/script.js')   
+    script(type='text/javascript' src='/js/core.js') 
     script(type='text/javascript' src='/plugins/Slicebox/js/modernizr.custom.46884.js')
     script(type='text/javascript' src='/plugins/Slicebox/js/jquery.slicebox.js')
+    script(type='text/javascript' src='/js/script.js')  
   body
     script(type="text/javascript").
       //Solo para etapa de desarrollo
@@ -114,8 +117,49 @@ html
                         #boton
                           button.btn(type="submit") OK
 
+    header.fixed
+      section
+        article.inner_header.rosado.fixed
+          #parametrosBuscar
+            form(method="POST", action="buscar")
+              #palabraBuscar
+                input(type="text" name="palabraBuscar" placeholder="Ingresar Busqueda")
+              #botonBuscar
+                button.btn(type="submit") 
+                  img(src="/images/buscar.svg")
+          #resultadoBuscar
+            ul 
+        article.inner_header.naranja.fixed
+        article.inner_header.morado.fixed
+        article.inner_header.azulOscuro.fixed
+        article.inner_header.azulClaro.fixed
+        article.inner_header.verde.fixed
+        article.inner_header.amarillo.fixed
+      nav(class="")
+        ul
+          li
+            a(href="javascript:void(0);" id="rosado") 
+              img(src="/images/buscar.svg")
+          li
+            a(href="javascript:void(0);" id="naranja") 
+              img(src="/images/feliz.svg")
+          li
+            a(href="javascript:void(0);" id="morado")
+              img(src="/images/sos.png")
+          li
+            a(href="javascript:void(0);" id="azulOscuro") 
+              img(src="/images/compartir.svg")
+          li
+            a(href="javascript:void(0);" id="azulClaro") 
+              img(src="/images/shopping-cart.svg")
+          li
+            a(href="javascript:void(0);" id="verde") 
+              img(src="/images/video-camera.svg")
+          li
+            a(href="javascript:void(0);" id="amarillo") 
+              img(src="/images/calendar.svg")
     #contenido
-     block content
+      block content
 
     #piePagina
       #izquierda

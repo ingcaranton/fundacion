@@ -119,3 +119,10 @@ app.route('/cambiarEstado/:pagina')
       }
   });
 });
+
+app.route('/buscar')
+.post(function(req,res){
+  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(5).exec(function(error, busqueda){
+    res.send(busqueda);
+  });
+});

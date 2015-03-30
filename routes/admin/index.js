@@ -10,8 +10,6 @@ app.route('/')
 .get(function(req, res){
   db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus, flash){
-      db.pagina.find({publicar:true}).sort('fechaCreacion').limit(2).exec(function(error, ultimas){
-        console.log(ultimas);
       res.render('index', {
         message : req.flash('message'),
         user : req.session.user,
@@ -19,7 +17,6 @@ app.route('/')
         title : "Administrar paginas",
         menus : menus
       });
-    });
     });
   });
 });

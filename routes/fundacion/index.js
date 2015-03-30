@@ -57,6 +57,7 @@ app.route('/hacerdonacion')
   var form={};
   form.comercio="1";
   form.json="MbgxlL0HYcKOx/3Ypdgo2xmmE7VxNlAe2mimlJV4DRNgXX99d3HAz2/YuRaaMMbKlcMiwGw6MbZxNUJyrx8rpRDqC9EKLWGJISdxCK5HHDsex9o3MH+CiuKEKclWY8LSbgX3h/gZ3IADvPmwAw/jJMAPdttqMrzXer5pnsxcVqyQihiz+k63Xq/T/oOK3PtOcykhw3sBVfygSHPhHH206pqP54Yw5Eomj/uEtnHRTrlZcpy99BrX/sk/3HRWC4t9JiScTqqd5ZdTiSdsEW2eMBphggraXruaNHYStguICNNhbQvKbpFRzO6KloHnvHlZnk9OsH9Gz8y52wM9mmds+Abyc7fUx1xzo7Sh4GfzCcoLjVjiwvGmWCU1WwEAqVI53gPwpIUwxfP8FfbcBKuBneyMiBan2vbc5MsLIHOwoIN5iODSwAWZ80ucFJhPbFe4P2qjLv7NBax1oXMQpJSjYUglrALTA7HYUZLRMmpP8jY/FEKKwfb9Qw==";
+  form.comercio=new Buffer(form.comercio).toString('base64');
   
   res.render('hacerdonacion',{
     message : req.flash('message'),

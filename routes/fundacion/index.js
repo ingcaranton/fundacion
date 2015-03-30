@@ -80,7 +80,8 @@ app.route('/donar')
 
   form.comercio=new Buffer(form.comercio).toString('base64');
   res.render('donar',{
-    form : form
+    form : form,
+    title : "pruevba"
   });
 })
 .post(function(req, res) {

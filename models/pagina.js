@@ -6,7 +6,7 @@ module.exports = function(mongoose){
 		descripcion : String,
 		contenido : String,
 		publicar : Boolean,
-		fechaCreacion : String,
+		fechaCreacion : Date,
 		categoria : String,
 		UserModificacion : String,
 		linkImagen: String,

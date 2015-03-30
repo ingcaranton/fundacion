@@ -13,7 +13,7 @@ module.exports.create = function(req, res, done) {
         newPagina.titulo = req.body.titulo;
         newPagina.descripcion = req.body.descripcion;
         newPagina.contenido =req.body.contenido;
-        newPagina.fechaCreacion = dateFormateada();
+        newPagina.fechaCreacion = new Date();;
         newPagina.UserModificacion = req.session.user.nickName;
         newPagina.categoria =req.body.categoria;
         if(req.body.soloRegistrados=="on")
@@ -79,7 +79,7 @@ module.exports.update = function(req, res, done) {
       update.UserModificacion = req.session.user.nickName;
       update.UserModificacion = req.session.user.nickName;
       update.categoria =req.body.categoria;
-      update.fechaCreacion = dateFormateada();
+      update.fechaCreacion = new Date();
       if(req.body.publicar){
         update.publicar = true;
       }else{
@@ -130,6 +130,7 @@ module.exports.updateEstado = function(req, res, done) {
   });
 }
 
+//formatear fecha 
 function pad(d) {
     return (d < 10) ? '0' + d.toString() : d.toString();
 }

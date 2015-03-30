@@ -84,7 +84,7 @@ app.route('/donar')
   });
 })
 .post(function(req, res) {
-  res.send(req.body);
+  res.send(req.body+"si llego");
 });
 
 app.route('/:pagina')

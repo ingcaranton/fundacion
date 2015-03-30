@@ -1,24 +1,37 @@
 extends ../../../views/layout
 block content
+  #linksPrincipales
+    #sobreNosotros
+      a(href="javascript:void(0);") SOBRE NOSOTROS
+    #informacionCentros
+      a(href="javascript:void(0);") INFORMACIÓN CENTROS
+    #franquicias
+      a(href="javascript:void(0);") FRANQUICIAS
+    #plataforma
+      a(href="javascript:void(0);") PLATAFORMA DE DIFUCIÓN
   #todoContenido    
     each pagina,index in paginas
       - var color
       - var colorLetra
       if pagina.categoria=="fisico"
         - color="#36abd0"
+        - colorLetra="#fff"
       if pagina.categoria=="emocional"
         - color="#8762ab"
+        - colorLetra="#fff"
       if pagina.categoria=="espiritual"
         - color="#fef000"
+        - colorLetra="gray"
       if pagina.categoria=="sinCategoria"
         - color="#fff"
         - colorLetra="gray"
-      else
-        - colorLetra="#fff"
-      div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
+      div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color+"" data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
         if pagina.linkImagen
           .izquierda
             img(src=pagina.linkImagen)
         .derecha
           h3(style="color:"+colorLetra) #{pagina.titulo}
           p(style="color:"+colorLetra) #{pagina.descripcion}
+  #botonSubir
+    button.btn.btn-primary.scrollup(type="button") 
+      b SUBIR

@@ -1,9 +1,42 @@
 extends ../../../views/layout
 block content
+  #linksPrincipales
+    #sobreNosotros
+      a(href="javascript:void(0);") SOBRE NOSOTROS
+    #informacionCentros
+      a(href="javascript:void(0);") INFORMACIÓN CENTROS
+    #franquicias
+      a(href="javascript:void(0);") FRANQUICIAS
+    #plataforma
+      a(href="javascript:void(0);") PLATAFORMA DE DIFUCIÓN
   #contenidoPagina
     if pagina
-      h1 #{pagina.titulo}
+      h1#tituloPagina #{pagina.titulo}
+      #fecha
+        #linea1
+        #centro(fecha=pagina.fechaCreacion)
+          span 
+        #linea2
+      #descripcion
+        p 
+          b #{pagina.descripcion}
       #elemento
         | !{pagina.contenido}
+      #redesSociales
+        #facebook
+          img(src="/images/facebook.png")
+          .izquierda
+          .contador
+            b #
+        #twitter
+          img(src="/images/twitter.png")
+          .izquierda
+          .contador
+            b #
+        #correo
+          img(src="/images/correo.png")
     else
       h1 #{error}
+  #botonSubir
+    button.btn.btn-primary.scrollup(type="button") 
+      b SUBIR

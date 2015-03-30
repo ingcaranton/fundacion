@@ -1,6 +1,5 @@
 /*Variables Globales*/
   var pag={};
-
   var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
 
 /*Función de cargar en home*/
@@ -184,6 +183,17 @@
         li.append(img);
         $("#sb-slider").append(li);
       }
+    /*Partir fecha de pagina*/
+      if($("#contenidoPagina #fecha #centro").attr("fecha")){
+        var str=$("#contenidoPagina #fecha #centro").attr("fecha");
+        var res = str.split(" ",1)+"";
+        var fecha=res.split('/');
+        var dia=fecha[0];
+        var mes=fecha[1];
+        var año=fecha[2];
+        var fechaModificada=dia+" - "+mes+" - "+año;
+        $("#contenidoPagina #fecha #centro span").text(fechaModificada);
+      }   
   });
 
 /*Otras Funciones*/

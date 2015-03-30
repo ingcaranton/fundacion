@@ -1,5 +1,6 @@
 /*Layout*/
   .navbar 
+    background white
     .container-fluid
       .navbar-header
         a.navbar-brand
@@ -87,6 +88,7 @@
     width 100%
     margin 4% 0 3% 0
     
+  /*Barra Lateral*/
   header
     top 12%
     bottom 4%
@@ -199,6 +201,7 @@
   #seccionesPrincipales
     width 100%
     float left
+    margin 2% 0 3% 0
     #cards 
       max-width 980px
       margin 0 auto
@@ -269,17 +272,17 @@
         background-color #fef000
 
   #masContenido
-    float left
-    width 100%
+    max-width 1100px
+    margin 0 auto
     padding 3.5% 2% 0 2%
     min-height 40px
     #linea1
       float left
       border-top 2px solid gray
-      width 40%
+      width 39%
     a 
       text-decoration none
-      width 16%
+      width 18%
       float left
       margin -1.5% 2% 0 2%
       padding 4px 4px 4px 4px
@@ -293,7 +296,7 @@
     #linea2
       float left
       border-top 2px solid gray
-      width 40%
+      width 39%
       text-align right
       padding 1% 0 1% 0
       button
@@ -422,15 +425,136 @@
 /*fin administrador*/
 
 /*Ver página*/
-  #contenidoPagina
+  #linksPrincipales
     width 100%
+    float left
+    text-align center
+    margin 2% 18% 2% 18%
+    div 
+      width 200px
+      float left
+      padding 5px 5px 5px 5px
+      a 
+        font-size 12px
+        color gray
+      a:hover
+        color #e58799
+        text-decoration none
+    #informacionCentros
+      border-left 2px solid gray
+      border-right 2px solid gray
+    #franquicias
+      border-right 2px solid gray
+  
+  #contenidoPagina
+    width 980px
+    margin 0 auto
     padding-top 5%
+    
     h1
+      width 100%
+      float left
       text-align center
+      color #e58799
+      margin 2% 0 5% 0
+      
     #elemento
       width 80%
       margin 5% 10% 5% 10%
       text-align justify
+      p 
+        color gray
+    
+    #fecha
+      float left
+      width 100%
+      #linea1
+        float left
+        border-top 1px solid #e58799
+        width 40%
+      #centro
+        width 16%
+        float left
+        margin -1.5% 2% 0 2%
+        padding 4px 4px 4px 4px
+        text-align center
+        span 
+          width 100%
+          color #e58799
+          text-align center
+      #linea2
+        float left
+        border-top 1px solid #e58799
+        width 40%
+    #descripcion
+      width 100%
+      margin 2% 0 2% 0
+      text-align center
+      border-bottom 1px solid #e58799
+      p 
+        text-align center
+        color gray
+    #redesSociales
+      margin 3% 0 3% 0
+      padding 1% 1% 1% 1%
+      width 60%
+      float left
+      border 1px solid #e58799
+      .izquierda
+        margin-top 10px
+        float left
+        width 0
+        height 0
+        border-top 8px solid transparent
+        border-bottom 8px solid transparent
+        border-right 8px solid #aaa
+      .contador
+        float left
+        width 42px
+        height 25px
+        margin-top 5px
+        background #aaa
+        text-align center
+        b 
+          color white
+          font-size 20px
+          text-align center
+      #facebook
+        width 20%
+        float left
+        border-right 2px solid gray
+        padding 0 1% 0 1%
+        img 
+          float left
+          height 35px
+          
+      #twitter
+        width 20%
+        float left
+        border-right 2px solid gray
+        padding 0 1% 0 1%
+        img 
+          float left
+          height 35px          
+          
+      #correo
+        width 20%
+        float left
+        padding 1% 1% 0 1%
+        img 
+          float left
+          height 25px
+
+  #botonSubir
+    margin 1% 0 1% 0
+    width 100%
+    float left
+    text-align right
+    button
+      margin-right 8%
+      background gray
+      border none
+
 /*Fin ver pagina*/
 
 /*Editar Menu*/

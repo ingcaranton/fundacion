@@ -122,7 +122,9 @@ app.route('/cambiarEstado/:pagina')
 
 app.route('/buscar')
 .post(function(req,res){
-  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(5).exec(function(error, busqueda){
+  db.pagina.find({publicar:true}).or([{contenido:new RegExp(req.body.busqueda, "i")},
+    {titulo:new RegExp(req.body.busqueda, "i")}, {descripcion:new RegExp(req.body.busqueda, "i")}
+    ]).exec(function(error, busqueda){
     res.send(busqueda);
   });
 });

@@ -12,16 +12,23 @@ block content
               h3.editar.panel-title 
                 a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
             .panel-collapse.collapse(id="panelCollapse"+contador)
-              form(id="formEditarMenu"+contador method="POST", action="/admin/menu/editar")
+              form(id="formEditarMenu"+contador method="POST" action="/admin/menu/editar")
                 input(type="hidden" name="tituloMenuOriginal" value=menu.titulo)
                 .panel-body
                   .datosMenu
                     .tituloMenu 
                       span Titulo 
                       input(type="text" name="tituloMenu" value=menu.titulo required title="Título requerido")
-                    .urlMenu 
-                      span Url
-                      input(type="text" name="urlMenu" required title="Url requerida")
+                    if !menu.submenus
+                      .seleccionUrl
+                        span ¿Url interna?
+                        input#seleccionUrl(type="checkbox")
+                      .urlMenu 
+                        span Url 
+                          input#urlExterna(type="text" title="Url requerida")
+                          select#urlInterna.form-control(style="display:none")
+                            each pagina in paginas
+                              option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                   .creadorMenu
                     span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;
@@ -32,31 +39,42 @@ block content
                     a.eliminarMenu(href="javascript:void(0);" enlace="/admin/menu/eliminar/"+menu.titulo menu=menu.titulo) Eliminar Menu
                     span &nbsp; | &nbsp;
                     a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar Edición
-                .tituloSubmenu
-                  h3 SUBMENU
-                table.table(id="tabla"+contador)
-                  tr
-                    td 
-                      h5 
-                        b #
-                    td 
-                      h5
-                        b Titulo 
-                    td 
-                      h5
-                        b Url 
-                    td 
-                      h5
-                        b Acción
-                  each submenu, index in menu.submenus
-                    tr.dato(id=index) 
-                      td=index+1
+                if menu.submenus
+                  .tituloSubmenu
+                    h3 SUBMENU
+                  table.table(id="tabla"+contador)
+                    tr
                       td 
-                        input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo required title="Titulo de submenu requerido")
+                        h5 
+                          b #
                       td 
-                        input(type="text" name="urlSubmenu["+index+"]" value=submenu.url required title="Url de submenu requerida") 
-                      td  
-                        a.eliminarSubmenu(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"','Eliminar')") Eliminar      
+                        h5
+                          b Titulo 
+                      td 
+                        h5
+                          b Url 
+                      td 
+                        h5
+                          b Fecha Modificación
+                      td 
+                        h5
+                          b Usuario
+                      td 
+                        h5
+                          b Acción
+                    each submenu, index in menu.submenus
+                      tr.dato(id=index) 
+                        td=index+1
+                        td 
+                          input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo required title="Titulo de submenu requerido")
+                        td 
+                          input(type="text" name="urlSubmenu["+index+"]" value=submenu.url required title="Url de submenu requerida") 
+                        td
+                          span #{menu.fechaCreacion}
+                        td
+                          span #{menu.UserModificacion}
+                        td  
+                          a.eliminarSubmenu(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"','Eliminar')") Eliminar      
                 .guardarMenu
                   button.botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tabla"+contador) Guardar Cambios
           -contador++
@@ -68,44 +86,50 @@ block content
 
       #nuevoMenu
         #menuNuevo(style="display:none")
-          form#formMenuNuevo(method="POST", action="/admin/menu/nuevo")
+          form#formMenuNuevo(method="POST" action="/admin/menu/nuevo")
             #panelMenuNuevo.panel.panel-primary
                 .panel-heading
                   h2.panel-title MENU NUEVO 
                 .panel-collapse
                     .panel-body
-                      .tituloMenu
-                        input(type="text" name="tituloMenu" placeholder="Título" required title="Titulo requerido")
-                        .acciones
-                          a#agregarSumenuMenuNuevo(href="javascript:void(0);" tabla="tablaMenuNuevo" panel="panelMenuNuevo") Agregar Submenu 
-                          span &nbsp; | &nbsp;
-                          a#aCancelar(href="javascript:void(0);") Cancelar
-                    .tituloSubmenu
+                      .datosMenu
+                        .tituloMenu
+                          span Titulo 
+                          input(type="text" name="tituloMenu" required title="Titulo requerido")
+                        .seleccionUrl
+                          span ¿Url interna?
+                          input#seleccionUrl(type="checkbox")
+                        .urlMenu
+                          span Url 
+                          input#urlExterna(type="text" title="Url requerida")
+                          select#urlInterna.form-control(style="display:none")
+                            each pagina in paginas
+                              option(value=pagina.nombreEnlace selected) #{pagina.titulo}
+                      .acciones
+                        a#agregarSubmenuMenuNuevo(href="javascript:void(0);" tabla="tablaMenuNuevo" panel="panelMenuNuevo") Agregar Submenu 
+                        span &nbsp; | &nbsp;
+                        a#aCancelar(href="javascript:void(0);") Cancelar
+                    .tituloSubmenu(style="display:none")
                       h3 SUBMENU
-                    table#tablaMenuNuevo.table
+                    table#tablaMenuNuevo.table(style="display:none")
                       tr
-                        td 
+                        td#numero 
                           h5 
                             b #
-                        td 
+                        td#titulo 
                           h5
                             b Titulo 
-                        td 
+                        td#checkbox
+                          h5 
+                            b ¿Url Interna?
+                        td#url 
                           h5
                             b Url 
-                        td 
+                        td#accion
                           h5
-                            b Acción
-                        tr#0.dato
-                          td 1
-                          td 
-                            input(type="text" name="tituloSubmenu[0]" required title="Titulo de submenu requerido")
-                          td 
-                            input(type="text" name="urlSubmenu[0]" required title="Url de submenu requerida") 
-                          td  
-                            a(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu(0, 'panelMenuNuevo','Cancelar')") Cancelar    
+                            b Acción   
                     .guardarMenu
-                      button#botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tablaMenuNuevo") Agregar Menu
+                      button#botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tablaMenuNuevo") Guardar Menu
   else
     #noAdmin 
       h1 ¡No eres administrador!  

@@ -1,5 +1,7 @@
 extends ../../../views/layout
 block content
+  script(type="text/javascript").
+    homeCargado=true;
   #slider 
     #sliderImagenes.wrapper
       ul#sb-slider.sb-slider
@@ -21,59 +23,59 @@ block content
       
   #seccionesPrincipales
     #cards
-      #cardFisico.card 
-        .contenidoCard
-          if paginas[0].linkImagen
-            .imagenDescripcion
-              img(src=paginas[0].linkImagen)
-            .descripcion 
-              p #{paginas[0].descripcion}
-          else 
-            .descripcionSinImagen
-              p #{paginas[0].descripcion}
-        a(href="/"+paginas[0].nombreEnlace) 
-         .leerMas LEER +
-
-      #cardEmocional.card
-        .contenidoCard
-          if paginas[1].linkImagen
-            .imagenDescripcion
-              img(src=paginas[1].linkImagen)
-            .descripcion 
-              p #{paginas[1].descripcion}
-          else 
-            .descripcionSinImagen
-              p #{paginas[1].descripcion}
-        a(href="/"+paginas[1].nombreEnlace) 
-         .leerMas LEER +
-
-      #cardEspiritual.card
-        .contenidoCard 
-          if paginas[2].linkImagen
-            .imagenDescripcion
-              img(src=paginas[2].linkImagen)
-            .descripcion 
-              p #{paginas[2].descripcion}
-          else 
-            .descripcionSinImagen
-              p #{paginas[2].descripcion}
-        a(href="/"+paginas[2].nombreEnlace) 
-         .leerMas LEER +
-
-      -contador=3
-      while contador < 8
-        .card
-          .contenidoCard 
-            if paginas[contador].linkImagen
+      if ultimasEntradasPrimarias
+        #cardFisico.card 
+          .contenidoCard
+            if ultimasEntradasPrimarias[3].linkImagen
               .imagenDescripcion
-                img(src=paginas[contador].linkImagen)
+                img(src=ultimasEntradasPrimarias[3].linkImagen)
               .descripcion 
-                p #{paginas[contador].descripcion}
+                p #{ultimasEntradasPrimarias[3].descripcion}
             else 
               .descripcionSinImagen
-                p #{paginas[contador].descripcion}
-          a(href="/"+paginas[contador].nombreEnlace) 
-            .leerMas LEER +
+                p #{ultimasEntradasPrimarias[3].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
+           .leerMas LEER +
+        #cardEmocional.card
+          .contenidoCard
+            if ultimasEntradasPrimarias[1].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradasPrimarias[1].linkImagen)
+              .descripcion 
+                p #{ultimasEntradasPrimarias[1].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradasPrimarias[1].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[1].nombreEnlace) 
+           .leerMas LEER +      
+        #cardEspiritual.card
+          .contenidoCard 
+            if ultimasEntradasPrimarias[0].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradasPrimarias[0].linkImagen)
+              .descripcion 
+                p #{ultimasEntradasPrimarias[0].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradasPrimarias[0].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
+           .leerMas LEER +
+    
+      -contador=0
+      while contador < 5
+        .card
+          if ultimasEntradas 
+            .contenidoCard 
+              if ultimasEntradas[contador].linkImagen
+                .imagenDescripcion
+                  img(src=ultimasEntradas[contador].linkImagen)
+                .descripcion 
+                  p #{ultimasEntradas[contador].descripcion}
+              else 
+                .descripcionSinImagen
+                  p #{ultimasEntradas[contador].descripcion}
+            a(href="/"+ultimasEntradas[contador].nombreEnlace) 
+              .leerMas LEER +
         -contador++
 
   #masContenido

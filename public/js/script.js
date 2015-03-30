@@ -1,7 +1,7 @@
 /*Variables Globales*/
   var pag={};
   var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
-
+  var homeCargado=false;
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
@@ -125,29 +125,62 @@
       });
       /*Agregar submenu*/
       $("#editarMenu #accordion .panel.panel-primary .acciones").on('click', 'a.agregarSubmenu',function(){
-        $('#editarMenu #accordion .alert').css("display","none");
         var tabla=$(this).attr('tabla');
         var panel=$(this).attr('panel');
         var filas=$('tr', '#'+tabla).length;
+        if(filas==1){
+          $("#editarMenu #accordion .seleccionUrl").css("display","none");
+          $("#editarMenu #accordion .urlMenu").css("display","none");
+          $("#editarMenu #accordion .tituloSubmenu").css("display","inherit");
+          $("#editarMenu #accordion #"+tabla).css("display","inherit");
+        }
         $('#editarMenu #accordion #'+tabla+' > tbody:last').
           append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
           (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input type="text" name="urlSubmenu['+
           (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
           (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
       });
+      /*Url interna o externa*/
+      $("#editarMenu #accordion #seleccionUrl").click(function() { 
+        if($("#editarMenu #accordion #seleccionUrl").is(':checked')) {  
+          $("#editarMenu #accordion #urlExterna").css("display","none");
+          $("#editarMenu #accordion #urlInterna").css("display","inherit");
+        } else {  
+          $("#editarMenu #accordion #urlExterna").css("display","inherit");
+          $("#editarMenu #accordion #urlInterna").css("display","none"); 
+        }  
+      });
     /*fin editar Menu*/
     /*Menu nuevo*/
       $("#agregarMenu").click(function(){
         $("#menuNuevo").css("display","inherit");
       });
-      $("#editarMenu #nuevoMenu #menuNuevo").on('click','#agregarSumenuMenuNuevo',function(){
+      $("#editarMenu #nuevoMenu #menuNuevo").on('click','#agregarSubmenuMenuNuevo',function(){
         var filas=$("tr","#menuNuevo table").length;
+        if(filas==1){
+          $("#editarMenu #nuevoMenu #menuNuevo .seleccionUrl").css("display","none");
+          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu").css("display","none");
+          $("#editarMenu #nuevoMenu #menuNuevo .tituloSubmenu").css("display","inherit");
+          $("#editarMenu #nuevoMenu #menuNuevo #tablaMenuNuevo").css("display","inherit");
+          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu #urlInterna").text("javascript:void(0);");
+          $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").attr('checked', true);
+        }
         $('#editarMenu #menuNuevo table  > tbody:last').
             append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas
             +'</td><td><input type="text" name="tituloSubmenu['+
-            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input type="text" name="urlSubmenu['+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input name="seleccionUrl" type="checkbox"/></td><td><input type="text" name="urlSubmenu['+
             (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
             (filas-1)+',\'panelMenuNuevo\',\'Cancelar\')"> Cancelar </a></td></tr>');
+      });
+      /*Url interna o externa*/
+      $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").click(function() { 
+        if($("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").is(':checked')) {  
+          $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","none");
+          $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","inherit");
+        } else {  
+          $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","inherit");
+          $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","none"); 
+        }  
       });
     /*Fin menu nuevo*/
     /*Confirmación de elimar pagina*/
@@ -177,22 +210,24 @@
         return false;
       });
     /*Imagenes Aleatorias Slider*/
-      for(var i=0; i<7;i++){
-        var img = $('<img src='+arrayImagenesSlider[usados[i]]+'>');
-        var li = $('<li/>');
-        li.append(img);
-        $("#sb-slider").append(li);
+      if(homeCargado){
+        for(var i=0; i<7;i++){
+          var img = $('<img src='+arrayImagenesSlider[usados[i]]+'>');
+          var li = $('<li/>');
+          li.append(img);
+          $("#sb-slider").append(li);
+        }
       }
     /*Partir fecha de pagina*/
       if($("#contenidoPagina #fecha #centro").attr("fecha")){
         var str=$("#contenidoPagina #fecha #centro").attr("fecha");
-        var res = str.split(" ",1)+"";
-        var fecha=res.split('/');
-        var dia=fecha[0];
-        var mes=fecha[1];
-        var año=fecha[2];
-        var fechaModificada=dia+" - "+mes+" - "+año;
-        $("#contenidoPagina #fecha #centro span").text(fechaModificada);
+        var res = str.split(" ",4);
+        var diaSemana=res[0];
+        var dia=res[1];
+        var mes=res[2];
+        var año=res[3];
+        var fecha=diaSemana+" "+dia+"-"+mes+"-"+año;
+        $("#contenidoPagina #fecha #centro span").text(fecha);
       }   
   });
 
@@ -204,16 +239,23 @@
     bootbox.confirm("¿"+accion+" submenu?", function(result) {
       if(result){
         $("#editarMenu #"+tabla+" #"+id).remove();
-        var i=1;
-        $('#'+tabla+' tr.dato').each(function () {
-          var td=$(this).find("td").eq(0);
-          td.html(i);
-          this.id=i-1;
-          $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
-          $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
-          $(this).find("td").eq(3).find("a").attr('onclick','cancelar_eliminarSubmenu('+(i-1)+', "'+panel+'")');
-          i++;
-        });
+        if($("tr","#editarMenu #"+tabla).length!=1){
+          var i=1;
+          $('#'+tabla+' tr.dato').each(function () {
+            var td=$(this).find("td").eq(0);
+            td.html(i);
+            this.id=i-1;
+            $(this).find("td").eq(1).find("input").attr('name','tituloSubmenu['+(i-1)+']');
+            $(this).find("td").eq(2).find("input").attr('name','urlSubmenu['+(i-1)+']');
+            $(this).find("td").eq(3).find("a").attr('onclick','cancelar_eliminarSubmenu('+(i-1)+', "'+panel+'")');
+            i++;
+          });
+        }else{
+          $("#editarMenu #nuevoMenu #menuNuevo .seleccionUrl").css("display","inherit");
+          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu").css("display","inherit");
+          $("#editarMenu #nuevoMenu #menuNuevo .tituloSubmenu").css("display","none");
+          $("#editarMenu #nuevoMenu #menuNuevo #tablaMenuNuevo").css("display","none");
+        }        
       }
     });
   }  

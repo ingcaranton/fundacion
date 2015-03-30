@@ -3,17 +3,33 @@ var app = module.exports = express();
 
 app.set('views', __dirname + '/views');
 
-app.route('/')
-.get(function(req, res){
+app.use(function(req, res, next){
   db.pagina.find({publicar:true}).exec(function(error, paginas){
     db.menu.find().exec(function(errorMenu, menus){
-      res.render('index', {
-        message : req.flash('message'),
-        user : req.session.user,
-        paginas: paginas,
-        title : 'Conexion bienestar',
-        menus : menus
-      });
+      res.locals.paginas = paginas;
+      res.locals.user = req.session.user,
+      res.locals.menus = menus;
+      res.locals.message = req.flash('message'),
+      next();
+    });
+  });
+});
+
+app.route('/')
+.get(function(req, res){
+  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(5).exec(function(error, ultimasEntradas){
+    db.pagina.aggregate({$sort: {fechaCreacion:1}},{$group: {_id: "$categoria", 
+      descripcion: {$last: "$descripcion" },
+      nombreEnlace: {$last: "$nombreEnlace" },
+      fechaCreacion: {$last: "$fechaCreacion" },
+      linkImagen: {$last: "$linkImagen" },
+      titulo: {$last: "$titulo" }}},
+        function(error, ultimasEntradasPrimarias){
+          res.render('index', {
+            title : 'Conexion bienestar',
+            ultimasEntradas:ultimasEntradas,
+            ultimasEntradasPrimarias:ultimasEntradasPrimarias
+          });
     });
   });
 });

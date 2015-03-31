@@ -1,0 +1,19 @@
+extends ../../../views/layout
+block content
+  if user
+    #paginaDonacion
+      form(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
+        #donacion
+          #imagen
+            img(src="/images/logo.png")
+          #cantidad 
+            span 
+              b CANTIDAD A DONAR
+            input(type="number" name="donacion" required autofocus)
+            input(type="hidden" name="json" size="100" value=form.json)
+            input(type="hidden" name="comercio" value=form.comercio) 
+          #boton
+            button.btn(type="submit") DONAR
+  else
+    #noUsuarioDonacion
+      h1 ¡NO ESTAS AUTENTICADO!

@@ -3,6 +3,7 @@
     background white
     .container-fluid
       .navbar-header
+        margin-left 3%
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1 
@@ -130,7 +131,17 @@
         width 100%
         height 100%
         li 
-          color gray
+          margin 2% 5% 2% 5%
+          a
+            text-decoration none
+            span b
+              color #e58799
+            p 
+              color #555
+        li.linea 
+          height 5px
+          border-top 1px solid #e58799
+          border-bottom 1px solid #e58799 
 
     nav 
       li 
@@ -222,10 +233,12 @@
               height 130px
           .descripcion 
             margin-top 15px
-            padding 1% 1% 1% 1%
+            padding 2px 1% 1% 1%
+            overflow auto
             width 100%
             p 
               text-align center
+              max-height 115px 
               color gray
           .descripcionSinImagen
             margin-top 50%
@@ -384,7 +397,7 @@
       text-align center
       tr 
         td
-          padding 1% 2% 1% 2%
+          padding auto
           height 40px 
           text-align center  
       td.columnaNumero      
@@ -523,27 +536,57 @@
         width 20%
         float left
         border-right 2px solid gray
-        padding 0 1% 0 1%
-        img 
+        padding 1% 1% 0 1%
+        .icon 
           float left
-          height 35px
+          height 42px   
+          width 40px 
+          background-image url("/images/facebook.png") 
+          background-repeat no-repeat
+        .icon:hover 
+          cursor pointer
+          background-image url("/images/facebookHover.png")  
+          background-repeat no-repeat
+          float left
+          height 40px
+          width 35px
           
       #twitter
         width 20%
         float left
         border-right 2px solid gray
-        padding 0 1% 0 1%
-        img 
+        padding 1% 1% 0 1%
+        .icon 
           float left
-          height 35px          
+          height 42px   
+          width 40px 
+          background-image url("/images/twitter.png") 
+          background-repeat no-repeat
+        .icon:hover 
+          cursor pointer
+          background-image url("/images/twitterHover.png")  
+          background-repeat no-repeat
+          float left
+          height 40px
+          width 35px    
           
       #correo
         width 20%
         float left
-        padding 1% 1% 0 1%
-        img 
+        padding 2% 1% 0 1%
+        .icon 
           float left
-          height 25px
+          height 42px   
+          width 40px 
+          background-image url("/images/correo.png") 
+          background-repeat no-repeat
+        .icon:hover 
+          cursor pointer
+          background-image url("/images/correoHover.png")  
+          background-repeat no-repeat
+          float left
+          height 40px
+          width 35px
 
   #botonSubir
     margin 1% 0 1% 0
@@ -554,7 +597,6 @@
       margin-right 8%
       background gray
       border none
-
 /*Fin ver pagina*/
 
 /*Editar Menu*/
@@ -645,8 +687,7 @@
             #url 
               width 40%
             #acciones 
-              width 10%
-              
+              width 10%              
 /*Fin Editar Menu*/
 
 /*Selector de imagen*/
@@ -719,19 +760,69 @@
       margin 2% 5% 2% 5%
       cursor pointer
       .izquierda
+        margin 10px 10px 
         float left
         border none
-        width 100px
+        max-width 100px
         text-align center
         img 
-          width 100px
-          height 50px
+          max-width 100px
+          height 80px
       .derecha
+        padding 0 3%
         border none
         width 95%        
-        h3
+        span
           color gray
+        span.titulo
+          font-size 25px
         p 
           text-align justify
           color gray         
 /*fin todoContenido*/
+
+/*Hacer Donación*/
+  #paginaDonacion
+    width 100%
+    padding-top 8%
+    #donacion 
+      width 50%
+      height auto
+      margin auto auto
+      padding 0 5%
+      border 4px solid rgba(255, 114, 178, 0.7)
+      border-radius 20px
+      #imagen
+        padding 5% 2% 2% 2%
+        width 100%
+        text-align center
+        float left
+        img 
+          width 50%
+      #cantidad
+        padding 2% 2%
+        width 100%
+        float left
+        span 
+          color rgba(255, 114, 178, 0.7)
+        input
+          width 60%
+          margin-left 3%
+          color rgba(255, 114, 178, 0.7)
+          border 2px solid rgba(255, 114, 178, 0.7)
+          border-radius 3px 
+          text-align center
+      #boton 
+        padding 5% 2%
+        text-align center
+        button
+          color white
+          background rgba(255, 114, 178, 0.7)
+  #noUsuarioDonacion
+    width 100%
+    margin-top 15%
+    h1
+      width 100%
+      text-align center
+      color rgba(255, 114, 178, 0.7)
+/*fin hacer donación*/

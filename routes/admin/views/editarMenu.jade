@@ -29,6 +29,16 @@ block content
                           select#urlInterna.form-control(style="display:none")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace selected) #{pagina.titulo}
+                    else 
+                      .seleccionUrl(style="display:none")
+                        span ¿Url interna?
+                        input#seleccionUrl(type="checkbox")
+                      .urlMenu(style="display:none") 
+                        span Url 
+                          input#urlExterna(type="text" title="Url requerida")
+                          select#urlInterna.form-control(style="display:none")
+                            each pagina in paginas
+                              option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                   .creadorMenu
                     span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;

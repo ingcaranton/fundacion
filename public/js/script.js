@@ -108,48 +108,50 @@
     /*fin navbar*/
     /*editar Menu*/
       /*Ocultar paneles*/
-      $("#editarMenu #accordion").on('click','a.aEditar',function(){
-        var titulo=$(this).attr('titulo'); 
-        $("#editarMenu #accordion .panel-heading").css("display","inherit");
-        $("#editarMenu #accordion #"+titulo).css("display","none");
-      });
+        $("#editarMenu #accordion").on('click','a.aEditar',function(){
+          var titulo=$(this).attr('titulo'); 
+          $("#editarMenu #accordion .panel-heading").css("display","inherit");
+          $("#editarMenu #accordion #"+titulo).css("display","none");
+        });
       /*Actualizar panel*/
-      $("#editarMenu #accordion").on('click','a.aCancelar',function() {
-        var panel=$(this).attr('panel');
-        var panelCollapse=$(this).attr('panelCollapse');
-        var titulo=$(this).attr('titulo');
-        $('#'+panel).load(' #'+titulo+', #'+panelCollapse);
-      });
-      $("#editarMenu #menuNuevo").on('click','#aCancelar',function() {
-        $('#nuevoMenu').load(' #menuNuevo');
-      });
+        $("#editarMenu #accordion").on('click','a.aCancelar',function() {
+          var panel=$(this).attr('panel');
+          var panelCollapse=$(this).attr('panelCollapse');
+          var titulo=$(this).attr('titulo');
+          $('#'+panel).load(' #'+titulo+', #'+panelCollapse);
+        });
+        $("#editarMenu #menuNuevo").on('click','#aCancelar',function() {
+          $('#nuevoMenu').load(' #menuNuevo');
+        });
       /*Agregar submenu*/
-      $("#editarMenu #accordion .panel.panel-primary .acciones").on('click', 'a.agregarSubmenu',function(){
-        var tabla=$(this).attr('tabla');
-        var panel=$(this).attr('panel');
-        var filas=$('tr', '#'+tabla).length;
-        if(filas==1){
-          $("#editarMenu #accordion .seleccionUrl").css("display","none");
-          $("#editarMenu #accordion .urlMenu").css("display","none");
-          $("#editarMenu #accordion .tituloSubmenu").css("display","inherit");
-          $("#editarMenu #accordion #"+tabla).css("display","inherit");
-        }
-        $('#editarMenu #accordion #'+tabla+' > tbody:last').
-          append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
-          (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input type="text" name="urlSubmenu['+
-          (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
-          (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
-      });
+        $("#editarMenu #accordion .panel.panel-primary .acciones").on('click', 'a.agregarSubmenu',function(){
+          var tabla=$(this).attr('tabla');
+          var panel=$(this).attr('panel');
+          var filas=$('tr', '#'+tabla).length;
+          if(filas==1){
+            $("#editarMenu #accordion .seleccionUrl").css("display","none");
+            $("#editarMenu #accordion .urlMenu").css("display","none");
+            $("#editarMenu #accordion .tituloSubmenu").css("display","inherit");
+            $("#editarMenu #accordion #"+tabla).css("display","inherit");
+            $("#editarMenu #accordion .urlMenu #urlExterna").text("javascript:void(0);");
+            $("#editarMenu #accordion #seleccionUrl").attr('checked', false);
+          }
+          $('#editarMenu #accordion #'+tabla+' > tbody:last').
+            append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input type="text" name="urlSubmenu['+
+            (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><span/></td><td><span/></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+            (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
+        });
       /*Url interna o externa*/
-      $("#editarMenu #accordion #seleccionUrl").click(function() { 
-        if($("#editarMenu #accordion #seleccionUrl").is(':checked')) {  
-          $("#editarMenu #accordion #urlExterna").css("display","none");
-          $("#editarMenu #accordion #urlInterna").css("display","inherit");
-        } else {  
-          $("#editarMenu #accordion #urlExterna").css("display","inherit");
-          $("#editarMenu #accordion #urlInterna").css("display","none"); 
-        }  
-      });
+        $("#editarMenu #accordion #seleccionUrl").click(function() { 
+          if($("#editarMenu #accordion #seleccionUrl").is(':checked')) {  
+            $("#editarMenu #accordion #urlExterna").css("display","none");
+            $("#editarMenu #accordion #urlInterna").css("display","inherit");
+          } else {  
+            $("#editarMenu #accordion #urlExterna").css("display","inherit");
+            $("#editarMenu #accordion #urlInterna").css("display","none"); 
+          }  
+        });
     /*fin editar Menu*/
     /*Menu nuevo*/
       $("#agregarMenu").click(function(){
@@ -162,8 +164,8 @@
           $("#editarMenu #nuevoMenu #menuNuevo .urlMenu").css("display","none");
           $("#editarMenu #nuevoMenu #menuNuevo .tituloSubmenu").css("display","inherit");
           $("#editarMenu #nuevoMenu #menuNuevo #tablaMenuNuevo").css("display","inherit");
-          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu #urlInterna").text("javascript:void(0);");
-          $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").attr('checked', true);
+          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu #urlExterna").text("javascript:void(0);");
+          $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").attr('checked', false);
         }
         $('#editarMenu #menuNuevo table  > tbody:last').
             append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas
@@ -218,17 +220,39 @@
           $("#sb-slider").append(li);
         }
       }
-    /*Partir fecha de pagina*/
+    /*Formato fecha*/
       if($("#contenidoPagina #fecha #centro").attr("fecha")){
         var str=$("#contenidoPagina #fecha #centro").attr("fecha");
         var res = str.split(" ",4);
-        var diaSemana=res[0];
-        var dia=res[1];
-        var mes=res[2];
-        var año=res[3];
-        var fecha=diaSemana+" "+dia+"-"+mes+"-"+año;
+        var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
         $("#contenidoPagina #fecha #centro span").text(fecha);
       }   
+      if($("#todoContenido .derecha span.fecha").attr("fecha")){
+        var str=$("#todoContenido .derecha span.fecha").attr("fecha");
+        var res = str.split(" ",4);
+        var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
+        $("#todoContenido .derecha span.fecha").text(fecha);
+      }  
+    /*Buscar*/
+      $('#formularioBuscar').submit(function() {
+        $.ajax({
+          type: 'POST',
+          url: $(this).attr('action'),
+          data: $(this).serialize(),
+          success: function(data) {
+            var contador=0;
+            $("#resultadoBuscar ul").empty();
+            while(contador<data.length){
+              $("#resultadoBuscar ul").append("<li><a href="+data[contador].nombreEnlace+"><span><b>"+data[contador].titulo+"</b></span><br><p>"+data[contador].descripcion+"</p></a></li>");
+              if(contador<(data.length-1)){
+                $("#resultadoBuscar ul").append("<li class='linea'></li>");
+              }
+              contador++;
+            }
+          }
+        })        
+        return false;
+      }); 
   });
 
 /*Otras Funciones*/
@@ -251,10 +275,10 @@
             i++;
           });
         }else{
-          $("#editarMenu #nuevoMenu #menuNuevo .seleccionUrl").css("display","inherit");
-          $("#editarMenu #nuevoMenu #menuNuevo .urlMenu").css("display","inherit");
-          $("#editarMenu #nuevoMenu #menuNuevo .tituloSubmenu").css("display","none");
-          $("#editarMenu #nuevoMenu #menuNuevo #tablaMenuNuevo").css("display","none");
+          $("#editarMenu #"+panel+" .seleccionUrl").css("display","inherit");
+          $("#editarMenu #"+panel+" .urlMenu").css("display","inherit");
+          $("#editarMenu #"+panel+" .tituloSubmenu").css("display","none");
+          $("#editarMenu #"+panel+" #"+tabla).css("display","none");        
         }        
       }
     });

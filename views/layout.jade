@@ -51,7 +51,7 @@ html
                             ul.yamm-content.list-unstyled(role="menu")
                               each submenu, index in menu.submenus
                                 li 
-                                  a(tabindex="-1" href=submenu.url) #{submenu.titulo}
+                                  a(tabindex="-1" href="/"+submenu.url) #{submenu.titulo}
                                 if index < (menu.submenus.length-1)
                                   li.divider
                           .divImagenSubmenu.col-sm-6
@@ -102,7 +102,7 @@ html
                     #login
                       h5 
                         b INGRESA TUS DATOS
-                      form(method="POST", action="/user/login")
+                      form(method="POST" action="/user/login")
                         #datos 
                           input(type="text" name="usuario" autofocus placeholder="Usuario" required) 
                           span *
@@ -121,9 +121,9 @@ html
       section
         article.inner_header.rosado.fixed
           #parametrosBuscar
-            form(method="POST", action="buscar")
+            form#formularioBuscar(method="POST", action="/admin/pagina/buscar")
               #palabraBuscar
-                input(type="text" name="palabraBuscar" placeholder="Ingresar Busqueda")
+                input(type="text" name="busqueda" placeholder="Ingresar Busqueda" required)
               #botonBuscar
                 button.btn(type="submit") 
                   img(src="/images/buscar.svg")

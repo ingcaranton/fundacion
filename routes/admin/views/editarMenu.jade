@@ -22,11 +22,11 @@ block content
                     if !menu.submenus
                       .seleccionUrl
                         span ¿Url interna?
-                        input#seleccionUrl(type="checkbox")
+                        input#seleccionUrl(type="checkbox" name="seleccionUrl")
                       .urlMenu 
                         span Url 
-                          input#urlExterna(type="text" title="Url requerida")
-                          select#urlInterna.form-control(style="display:none")
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
+                          select#urlInterna.form-control(style="display:none" name="url")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                     else 
@@ -35,10 +35,10 @@ block content
                         input#seleccionUrl(type="checkbox")
                       .urlMenu(style="display:none") 
                         span Url 
-                          input#urlExterna(type="text" title="Url requerida")
-                          select#urlInterna.form-control(style="display:none")
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
+                          select#urlInterna.form-control(style="display:none" name="url")
                             each pagina in paginas
-                              option(value=pagina.nombreEnlace selected) #{pagina.titulo}
+                              option(value=pagina.nombreEnlace) #{pagina.titulo}
                   .creadorMenu
                     span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;
@@ -54,22 +54,25 @@ block content
                     h3 SUBMENU
                   table.table(id="tabla"+contador)
                     tr
-                      td 
+                      td.numero 
                         h5 
                           b #
-                      td 
+                      td.titulo 
                         h5
                           b Titulo 
-                      td 
+                      td.check
+                        h5 
+                          b ¿Url Interna?
+                      td.url 
                         h5
                           b Url 
-                      td 
+                      td.fecha  
                         h5
                           b Fecha Modificación
-                      td 
+                      td.usuario 
                         h5
                           b Usuario
-                      td 
+                      td.accion 
                         h5
                           b Acción
                     each submenu, index in menu.submenus
@@ -78,10 +81,12 @@ block content
                         td 
                           input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo required title="Titulo de submenu requerido")
                         td 
+                          input(type="checkbox" name="seleccionUrl")
+                        td  
                           input(type="text" name="urlSubmenu["+index+"]" value=submenu.url required title="Url de submenu requerida") 
-                        td
+                        td 
                           span #{menu.fechaCreacion}
-                        td
+                        td 
                           span #{menu.UserModificacion}
                         td  
                           a.eliminarSubmenu(href="javascript:void(0);" onclick="cancelar_eliminarSubmenu("+index+", 'panel"+contador+"','Eliminar')") Eliminar      
@@ -111,8 +116,9 @@ block content
                           input#seleccionUrl(type="checkbox")
                         .urlMenu
                           span Url 
-                          input#urlExterna(type="text" title="Url requerida")
-                          select#urlInterna.form-control(style="display:none")
+                          br 
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
+                          select#urlInterna.form-control(style="display:none" name="url")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                       .acciones

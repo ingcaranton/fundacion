@@ -139,7 +139,7 @@
           }
           $('#editarMenu #accordion #'+tabla+' > tbody:last').
             append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
-            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input type="text" name="urlSubmenu['+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input name="seleccionUrl" type="checkbox"/></td><td><input type="text" name="urlSubmenu['+
             (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><span/></td><td><span/></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
             (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
         });
@@ -262,6 +262,11 @@
       });
       $("#navbar-collapse-1 ul li ul.colorSubmenu").each(function(index, element){
         $(this).css("background-color", arrayColor[index]);
+        if(arrayColor[index]== "#fef000"){
+          var ul = $(this).attr("id");
+          $("#navbar-collapse-1 ul li #"+ul+" a.tituloSubmenu").css("color", "gray");
+          $("#navbar-collapse-1 ul li #"+ul+" .divImagenSubmenu img").attr("src","/images/logoGris.png");
+        }
       });
   });
 

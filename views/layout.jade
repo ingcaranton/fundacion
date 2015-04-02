@@ -39,27 +39,28 @@ html
             -var tamano = 9
             each menu in menus
               if indice<tamano
-                li.dropdown
+                li.dropdown.yamm-fw
                   .colorMenu
                   a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") #{menu.titulo}
                   if menu.submenus.length>0
-                    ul.submenus.dropdown-menu.colorSubmenu
-                      li.grid-demo
-                        .row
-                          .col-sm-6
-                            ul.yamm-content.list-unstyled(role="menu")
-                              each submenu, index in menu.submenus
-                                li 
-                                  a.tituloSubmenu(tabindex="-1" href="/"+submenu.url) #{submenu.titulo}
-                                if index < (menu.submenus.length-1)
-                                  li.divider
-                          .divImagenSubmenu.col-sm-6
-                            img(src="/images/logoBlanco.png" width="200")
+                    ul.submenus.dropdown-menu.colorSubmenu(id="li"+indice) 
+                      li
+                        .yamm-content
+                          .row
+                            .col-sm-9
+                              ul.yamm-content.list-unstyled(role="menu")
+                                each submenu, index in menu.submenus
+                                  li
+                                    a.tituloSubmenu(tabindex="-1" href="/"+submenu.url) #{submenu.titulo}
+                                  if index < (menu.submenus.length-1)
+                                    li.divider
+                            .divImagenSubmenu.col-sm-3
+                              img(src="/images/logoBlanco.png")
               -indice++
             if indice>tamano
-              li.dropdown.yamm-fw
-                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") Mas..
-                  b.caret
+              li.dropdown.yamm-fw.mas
+                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") 
+                  b +
                 ul.dropdown-menu
                   li
                     .yamm-content

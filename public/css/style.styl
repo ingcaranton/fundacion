@@ -3,29 +3,37 @@
     background white
     .container-fluid
       .navbar-header
-        margin-left 3%
+        margin-left 1%
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1 
         ul 
-          padding-left 3%
           li 
             .colorMenu 
               margin auto
-              background-color gray
-              width 80%
+              width 95%
               min-height 8px
-            ul.submenus.dropdown-menu
-              min-width 500px
-              width auto
+            ul.submenus.dropdown-menu.colorSubmenu
+              margin 0 8%
               height auto
-              a.tituloSubmenu
-                text-decoration none
+              a 
                 color white
-            .divImagenSubmenu
-              img 
-                height 50%
-                margin 25% 5%  25% -5%
+              .divImagenSubmenu
+                img
+                  margin auto
+                  padding-top 8%
+                  padding-bottom 1%
+                  width 100%
+                  height auto
+          li.dropdown.yamm-fw.mas
+            margin-left -3px
+            a b 
+              font-size 20px
+            ul.dropdown-menu
+              background-color #BDBDBD
+              margin 0 8%
+              a 
+                color white
       ul#botonIngresar 
         padding-top 0.7%
         padding-right 2%
@@ -642,8 +650,12 @@
             span
               margin-right 15px
             input
+              text-align center
               margin-left 20px
               width 300px
+            select
+              width 300px
+              margin-left 20px
         .creadorMenu
           text-align center
           padding 2% 3% 0 3%
@@ -663,6 +675,16 @@
           text-align center
           input
             width 100%
+            text-align center
+        tr 
+          td.titulo
+            width 25% 
+          td.url
+            width 25%
+          td.fecha
+            width 12%
+          td.Usuario
+            width 12%
       .guardarMenu
         padding 3px 0 10px 0
         text-align center
@@ -690,10 +712,14 @@
               width 3%
             #titulo 
               width 40%
+              input
+                text-align center
             #checkbox
               width 7%
             #url 
               width 40%
+              input
+                text-align center
             #acciones 
               width 10%              
 /*Fin Editar Menu*/

@@ -41,7 +41,7 @@ html
               if indice<tamano
                 li.dropdown.yamm-fw
                   .colorMenu
-                  a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") #{menu.titulo}
+                  a.dropdown-toggle(data-toggle="dropdown" href="/") #{menu.titulo}
                   if menu.submenus.length>0
                     ul.submenus.dropdown-menu.colorSubmenu(id="li"+indice) 
                       li
@@ -51,7 +51,7 @@ html
                               ul.yamm-content.list-unstyled(role="menu")
                                 each submenu, index in menu.submenus
                                   li
-                                    a.tituloSubmenu(tabindex="-1" href="/"+submenu.url) #{submenu.titulo}
+                                    a.tituloSubmenu(tabindex="-1" href="/") #{submenu.titulo}
                                   if index < (menu.submenus.length-1)
                                     li.divider
                             .divImagenSubmenu.col-sm-3
@@ -123,40 +123,167 @@ html
           #parametrosBuscar
             form#formularioBuscar(method="POST", action="/admin/pagina/buscar")
               #palabraBuscar
-                input(type="text" name="busqueda" placeholder="Ingresar Busqueda" required)
+                input(type="text" name="busqueda" placeholder="REALIZAR BUSQUEDA" required)
               #botonBuscar
                 button.btn(type="submit") 
                   img(src="/images/buscar.svg")
           #resultadoBuscar
             ul 
-        article.inner_header.naranja.fixed
-        article.inner_header.morado.fixed
-        article.inner_header.azulOscuro.fixed
         article.inner_header.azulClaro.fixed
+          #clubAmigos
+            #tituloClub
+              span 
+                b &bull; CLUB AMIGOS 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #accordionClubAmigos.panel-group
+              .panel.panel-primary
+                .panel-heading
+                  h3.panel-title 
+                    a.accordion-toggle(data-toggle="collapse" data-parent="#accordionClubAmigos" href="#panelCollapseRegistro") REGISTRO 
+                #panelCollapseRegistro.panel-collapse.collapse.in 
+                  form(method="POST" action="/" name="formularioRegistro")
+                    .panel-body
+                      input(type="text" placeholder="TU NOMBRE" name="nombre" required)
+                      input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
+                      input(type="email" placeholder="TU MAIL" name="correo" required)
+                      br
+                      input(type="checkbox" name="terminos") 
+                      span &nbsp; ACEPTO &nbsp;
+                      a(href="javascript:void(0);")
+                        b TERMINOS Y CONDICIONES
+                      br 
+                      button.btn(type="submit") OK
+              .panel.panel-primary
+                .panel-heading
+                  h3.panel-title 
+                    a.accordion-toggle(data-toggle="collapse" data-parent="#accordionClubAmigos" href="#panelCollapseIngresar") INGRESAR 
+                #panelCollapseIngresar.panel-collapse.collapse
+                  form(method="POST" action="/" name="formularioIngresar")
+                    .panel-body
+                      input(type="text" placeholder="USUARIO" name="usuario" required)
+                      input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
+                      br 
+                      a(href="javascript:void(0);") RECUPERAR CONTRASEÑA
+                      button.btn(type="submit") OK 
+        article.inner_header.morado.fixed
+          #ayudaConexion
+            #tituloAyuda
+              span
+                b &bull; AYUDA CONEXIÓN
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #serVoluntario
+              span
+                b SER VOLUNTARIO
+              form(method="POST" action="/" name="formularioSerVoluntario") 
+                input(type="text" placeholder="TU NOMBRE" name="nombre" required)
+                input(type="email" placeholder="TU MAIL" name="correo" required)
+                br 
+                button.btn(type="submit") OK 
+            #tuDonacionAqui
+              span
+                b TU DONACIÓN AQUÍ
+              br 
+              button.btn(type="button") DONAR 
         article.inner_header.verde.fixed
+          #comunidad 
+            #tituloComunidad
+              span 
+                b &bull; COMUNIDAD 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #iconos
+              a(href="javascript:void(0);")
+                img(src="/images/blogBlanco.svg") 
+              a(href="javascript:void(0);")
+                img(src="/images/facebookBlanco.svg")
+              a(href="javascript:void(0);")
+                img(src="/images/twitterBlanco.svg")
+              a(href="javascript:void(0);")
+                img(src="/images/youtubeBlanco.svg")
+              a(href="javascript:void(0);")
+                img(src="/images/instagramBlanco.svg")
+        article.inner_header.naranja.fixed
+          #tiendaSana
+            #tituloTienda
+              span 
+                b &bull; TIENDA SANA 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #botonTienda
+              span
+                b ENTRAR A LA TIENDA 
+              button.btn(type="button") COMPRAR 
         article.inner_header.amarillo.fixed
+          #videoConexion
+            #tituloVideo
+              span
+                b &bull; VIDEO CONEXION 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #video 
+              video(src="https://www.youtube.com/watch?v=lj7IQDeBNlI" preload loop controls)
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            a(href="javascript:void(0);")
+              span
+                b VER TODOS LOS VIDEOS
+        article.inner_header.azulOscuro.fixed
+          #calendarioEventos
+            #tituloCalendario
+              span
+                b &bull; CALENDARIO EVENTOS 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+            #eventos 
+              .divEvento
+                .titulo
+                  span 
+                    b.numero 28
+                    b.mes &nbsp; Abril
+                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                a(href="javascript:void(0);") 
+                  span VER +
+              .divEvento
+                .titulo
+                  span 
+                    b.numero 6
+                    b.mes  &nbsp; Mayo
+                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                a(href="javascript:void(0);") 
+                  span VER +
+              .divEvento
+                .titulo
+                  span 
+                    b.numero 15
+                    b.mes &nbsp; Junio
+                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                a(href="javascript:void(0);") 
+                  span VER +
+              .divEvento 
+                .titulo
+                  span 
+                    b.numero 5
+                    b.mes &nbsp; Julio
+                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                a(href="javascript:void(0);") 
+                  span VER +
       nav(class="")
         ul
           li
             a(href="javascript:void(0);" id="rosado") 
               img(src="/images/buscar.svg")
           li
-            a(href="javascript:void(0);" id="naranja") 
+            a(href="javascript:void(0);" id="azulClaro") 
               img(src="/images/feliz.svg")
           li
             a(href="javascript:void(0);" id="morado")
               img(src="/images/sos.png")
           li
-            a(href="javascript:void(0);" id="azulOscuro") 
+            a(href="javascript:void(0);" id="verde") 
               img(src="/images/compartir.svg")
           li
-            a(href="javascript:void(0);" id="azulClaro") 
+            a(href="javascript:void(0);" id="naranja") 
               img(src="/images/shopping-cart.svg")
           li
-            a(href="javascript:void(0);" id="verde") 
+            a(href="javascript:void(0);" id="amarillo") 
               img(src="/images/video-camera.svg")
           li
-            a(href="javascript:void(0);" id="amarillo") 
+            a(href="javascript:void(0);" id="azulOscuro") 
               img(src="/images/calendar.svg")
     #contenido
       block content

@@ -90,6 +90,8 @@
       }
       $('#accordion').on('hidden.bs.collapse', toggleChevron);
       $('#accordion').on('shown.bs.collapse', toggleChevron);  
+      $('#accordionClubAmigos').on('hidden.bs.collapse', toggleChevron);
+      $('#accordionClubAmigos').on('shown.bs.collapse', toggleChevron);  
     /*navbar*/
       $(function() {
         window.prettyPrint && prettyPrint()

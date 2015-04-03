@@ -2,12 +2,15 @@
 module.exports.create = function(req, res, done) {
   	var newMenu = new db.menu();
   	newMenu.titulo=req.body.tituloMenu;
-  	newMenu.submenus=[];
+      console.log(req.body);
+     newMenu.submenus=[];
+   if(req.body.tituloSubmenu){
+   	  for(var i=0;i<req.body.tituloSubmenu.length;i++){
+   			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
+      }
+    }
     newMenu.fechaCreacion = dateFormateada();
     newMenu.UserModificacion = req.session.user.nickName;
-   	for(var i=0;i<req.body.tituloSubmenu.length;i++){
-   			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
-    }
     newMenu.save(function(errSave, MenuSave){
       if(errSave)
         return done(errSave);          
@@ -36,13 +39,15 @@ module.exports.deleter = function(req, res, done) {
 module.exports.update = function(req, res, done) {
   var update= {};
   update.titulo=req.body.tituloMenu;
+  console.log(req.body);
   update.submenus=[];
-  update.fechaCreacion = dateFormateada();
-  update.UserModificacion = req.session.user;
+  if(req.body.tituloSubmenu){
     for(var i=0;i<req.body.tituloSubmenu.length;i++){
    	  update.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
     }
-    console.log(req.body);
+  }
+  update.fechaCreacion = dateFormateada();
+  update.UserModificacion = req.session.user;
     db.menu.findOneAndUpdate({ "titulo" : req.body.tituloMenuOriginal},update,
       function(error){
         if (error)

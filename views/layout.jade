@@ -41,7 +41,8 @@ html
               if indice<tamano
                 li.dropdown.yamm-fw
                   .colorMenu
-                  a.dropdown-toggle(data-toggle="dropdown" href="/") #{menu.titulo}
+                  a.dropdown-toggle(data-toggle="dropdown" href="/") 
+                    b #{menu.titulo}
                   if menu.submenus.length>0
                     ul.submenus.dropdown-menu.colorSubmenu(id="li"+indice) 
                       li

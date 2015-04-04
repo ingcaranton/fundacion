@@ -26,15 +26,15 @@ block content
       if ultimasEntradasPrimarias
         #cardFisico.card 
           .contenidoCard
-            if ultimasEntradasPrimarias[3].linkImagen
+            if ultimasEntradasPrimarias[2].linkImagen
               .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[3].linkImagen)
+                img(src=ultimasEntradasPrimarias[2].linkImagen)
               .descripcion 
-                p #{ultimasEntradasPrimarias[3].descripcion}
+                p #{ultimasEntradasPrimarias[2].descripcion}
             else 
               .descripcionSinImagen
-                p #{ultimasEntradasPrimarias[3].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
+                p #{ultimasEntradasPrimarias[2].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[2].nombreEnlace) 
            .leerMas LEER +
         #cardEmocional.card
           .contenidoCard

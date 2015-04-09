@@ -1,38 +1,88 @@
+/*fuente*/
+  @font-face
+    font-family "Roboto-Black"
+    src url("/fonts/Roboto-Black.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-BlackItalic"
+    src url("/fonts/Roboto-BlackItalic.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Bold"
+    src url("/fonts/Roboto-Bold.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-BoldItalic"
+    src url("/fonts/Roboto-BoldItalic.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Italic"
+    src url("/fonts/Roboto-Italic.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Light"
+    src url("/fonts/Roboto-Light.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-LightItalic"
+    src url("/fonts/Roboto-LightItalic.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Medium"
+    src url("/fonts/Roboto-Medium.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-MediumItalic"
+    src url("/fonts/Roboto-MediumItalic.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Regular"
+    src url("/fonts/Roboto-Regular.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-Thin"
+    src url("/fonts/Roboto-Thin.ttf") format("truetype")
+  @font-face
+    font-family "Roboto-ThinItalic"
+    src url("/fonts/Roboto-ThinItalic.ttf") format("truetype")
+
+body 
+  font-family Roboto-Regular 
+  
+.btn 
+  border-radius 0
+
 /*Layout*/
+  .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover
+    background-color white
   .navbar 
     background white
+    margin-bottom 0
     .container-fluid
       .navbar-header
+        width 8.5%
         margin-left 1%
+        float left
+        img 
+          width 100%
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1 
+        width 83%
+        max-width 83%
+        float left
         ul.nav.navbar-nav 
-          margin-left 3% 
+          max-width 100%
           li 
-            margin auto 
             .colorMenu 
+              visibility hidden 
               margin auto
-              width 90%
+              width 97%
               min-height 8px
             a.dropdown-toggle
-              font-size 11px 
-              max-width 125px 
               text-align center
               b 
-                color gray
+                color #d0d0d0
             ul.submenus.dropdown-menu.colorSubmenu
-              margin 0 8%
-              height auto
+              border 1px solid white
+              min-height 200px
+              padding-top -5px
               a 
                 color white
               .divImagenSubmenu
                 img
-                  margin auto
-                  padding-top 8%
-                  padding-bottom 1%
                   width 100%
-                  height auto
+                  margin 25% 5%  25% -5%
           li.dropdown.yamm-fw.mas
             margin-left -7px
             a b 
@@ -43,13 +93,17 @@
               a 
                 color white
       ul#botonIngresar 
-        padding-top 0.6%
-        padding-right 0.5%
+        padding 0 0.5%
         text-align center
         height 100%
+        border-left 1.5px solid gray
+        margin-top 1%
         li 
+          height 100%
           .btn-group
+            height 100%
             a 
+              height 100%
               color white
               background-color gray
             a:hover
@@ -68,22 +122,20 @@
       padding 5% 15% 5% 15%
       #boton
         button
-          margin-right 35%
-          width 100px
+          padding 2%
+          width 93%
           background-color white
           color gray
-      h5
-        text-align center
+      p 
+        text-align justify
         color white
       #datos 
         width 100%
-        padding 2% 2% 2% 2%
+        padding 2%
         input 
-          margin 2% 2% 2% 2%
+          margin 2%
           width 93%
           color gray
-        span
-          color white
       #registrarse
         padding 2% 2% 5% 5%
         width 50%
@@ -111,7 +163,7 @@
     height auto
     min-height 520px
     width 100%
-    margin 4% 0 3% 0
+    margin 0 0 3% 0
     
   /*Barra Lateral*/
   header
@@ -412,9 +464,8 @@
    
 /*Home*/
   #slider
-    //background-color #36abd0
     #sliderImagenes
-      padding 3% 0 3% 0
+      padding 3% 0
       width 100%
       #shadow
         height 100px
@@ -684,7 +735,7 @@
     #elemento
       width 80%
       margin 5% 10% 5% 10%
-      text-align center
+      text-align justify
       p 
         color gray
     

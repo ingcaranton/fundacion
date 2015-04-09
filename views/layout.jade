@@ -22,29 +22,29 @@ html
       //Solo para etapa de desarrollo
       var message= "#{message}";
       if(message)
-        alert(message);
+        bootbox.alert(message);
       pag=!{JSON.stringify(paginas)};    
-    .navbar.yamm.navbar-default.navbar-fixed-top
+    .navbar.yamm.navbar-default
       .container-fluid
         .navbar-header
           a.navbar-brand(href="/")
-            img(alt="Brand" src="/images/logo.png" width="100" height="50")
+            img(alt="Brand" src="/images/logo.png")
           button.navbar-toggle(type="button" data-toggle="collapse" data-target="#navbar-collapse-1")
             span.icon-bar
             span.icon-bar
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
-          ul.nav.navbar-nav
+          ul#ulPrincipal.nav.navbar-nav
             -var indice = 0
             -var tamano = 9
             each menu in menus
               if indice<tamano
-                li.dropdown.yamm-fw
-                  .colorMenu
-                  a.dropdown-toggle(data-toggle="dropdown" href="/") 
+                li.dropdown.yamm-fw(id="li"+indice)
+                  .colorMenu(id="colorMenu"+indice)
+                  a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu"+indice li="li"+indice) 
                     b #{menu.titulo}
                   if menu.submenus.length>0
-                    ul.submenus.dropdown-menu.colorSubmenu(id="li"+indice) 
+                    ul.submenus.dropdown-menu.colorSubmenu 
                       li
                         .yamm-content
                           .row
@@ -56,7 +56,7 @@ html
                                   if index < (menu.submenus.length-1)
                                     li.divider
                             .divImagenSubmenu.col-sm-3
-                              img(src="/images/logoBlanco.png")
+                              img(src="/images/logo.png")
               -indice++
             if indice>tamano
               li.dropdown.yamm-fw.mas
@@ -78,48 +78,50 @@ html
                                   a(href="/") #{submenu.titulo} 
                               li.divider
 
-          ul#botonIngresar.nav.navbar-nav.navbar-right
-            li.dropdown
-              .btn-group
-                if user
-                  if user.rol == "administrador"
-                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
-                      span.caret
-                    ul.dropdown-menu(role="menu")
-                      li 
-                        a(href="/admin") Administrar Contenido
-                      li 
-                        a(href="/user/logout") Salir
-                  else
-                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
-                      span.caret
-                    ul.dropdown-menu(role="menu")
-                      li 
-                        a(href="/user/logout") Salir
-                     
+        ul#botonIngresar.nav.navbar-nav.navbar-right
+          li.dropdown
+            .btn-group
+              if user
+                if user.rol == "administrador"
+                  button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
+                    span.caret
+                  ul.dropdown-menu(role="menu")
+                    li 
+                      a(href="/admin") Administrar Contenido
+                    li 
+                      a(href="/user/logout") Salir
                 else
-                  button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
-                    span INGRESAR
-                  .dropdown-menu
-                    #login
-                      h5 
-                        b INGRESA TUS DATOS
-                      form(method="POST" action="/user/login")
-                        #datos 
-                          input(type="text" name="usuario" autofocus placeholder="Usuario" required) 
-                          span *
-                          input(type="password" name="contrasena" placeholder="Contraseña" required) 
-                          span *
-                        #registrarse
-                          a(href="/user/signup")
-                            span Registrarse
-                        #olvidoContrasena
-                          a(href="#")
-                            span ¿Olvidó Contraseña?
-                        #boton
-                          button.btn(type="submit") OK
+                  button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
+                    span.caret
+                  ul.dropdown-menu(role="menu")
+                    li 
+                      a(href="/user/logout") Salir
+                   
+              else
+                button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+                  span INGRESAR
+                .dropdown-menu
+                  #login
+                    p lksdjflksdjlkf lskjflkdsjkf lskjflksjfj lskfjlksjoiewroiew iouewiru ewiouweoiu werioewioru weiruewiweiouewr eirewio
+                    form(method="POST" action="/user/login")
+                      #datos 
+                        input(type="text" name="usuario" autofocus placeholder="Usuario" required) 
+                        input(type="password" name="contrasena" placeholder="Contraseña" required) 
+                      #terminos 
+                        input(type="checkbox" name="terminos")
+                        span ACEPTO 
+                        a(href="javascript:void(0);") 
+                          b TÉRMINOS Y CONDICIONES
+                      #boton
+                        button.btn(type="submit") OK
+                      #olvidoContrasena
+                        a(href="#")
+                          span RECUPERAR CONTRASEÑA
+                      #registrarse
+                        a(href="/user/signup")
+                          span REGISTRARSE 
 
-    header.fixed
+    header.fixed(id="menuLateral")
       section
         article.inner_header.rosado.fixed
           #parametrosBuscar

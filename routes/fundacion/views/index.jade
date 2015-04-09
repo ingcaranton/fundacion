@@ -23,75 +23,74 @@ block content
       
   #seccionesPrincipales
     #cards
-      if ultimasEntradasPrimarias
-        #cardFisico.card
-          if ultimasEntradasPrimarias[3] 
-            .contenidoCard
-              if ultimasEntradasPrimarias[3].linkImagen
-                .imagenDescripcion
-                  img(src=ultimasEntradasPrimarias[3].linkImagen)
-                .descripcion 
-                  p #{ultimasEntradasPrimarias[3].descripcion}
-              else 
-                .descripcionSinImagen
-                  p #{ultimasEntradasPrimarias[3].descripcion}
-            a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
-             .leerMas LEER +
+      #cardFisico.card
+        if ultimasEntradasPrimarias[3] 
+          .contenidoCard
+            if ultimasEntradasPrimarias[3].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradasPrimarias[3].linkImagen)
+              .descripcion 
+                p #{ultimasEntradasPrimarias[3].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradasPrimarias[3].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
+           .leerMas LEER +
+      .card
+        if ultimasEntradas 
+          .contenidoCard 
+            if ultimasEntradas[0].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradas[0].linkImagen)
+              .descripcion 
+                p #{ultimasEntradas[0].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradas[0].descripcion}
+          a(href="/"+ultimasEntradas[0].nombreEnlace) 
+            .leerMas LEER +
+      #cardEmocional.card
+        if ultimasEntradasPrimarias[1]
+          .contenidoCard
+            if ultimasEntradasPrimarias[1].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradasPrimarias[1].linkImagen)
+              .descripcion 
+                p #{ultimasEntradasPrimarias[1].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradasPrimarias[1].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[1].nombreEnlace) 
+           .leerMas LEER + 
+      -cont=1
+      while cont < 3
         .card
           if ultimasEntradas 
             .contenidoCard 
-              if ultimasEntradas[0].linkImagen
+              if ultimasEntradas[cont].linkImagen
                 .imagenDescripcion
-                  img(src=ultimasEntradas[0].linkImagen)
+                  img(src=ultimasEntradas[cont].linkImagen)
                 .descripcion 
-                  p #{ultimasEntradas[0].descripcion}
+                  p #{ultimasEntradas[cont].descripcion}
               else 
                 .descripcionSinImagen
-                  p #{ultimasEntradas[0].descripcion}
-            a(href="/"+ultimasEntradas[0].nombreEnlace) 
+                  p #{ultimasEntradas[cont].descripcion}
+            a(href="/"+ultimasEntradas[cont].nombreEnlace) 
               .leerMas LEER +
-        #cardEmocional.card
-          if ultimasEntradasPrimarias[1]
-            .contenidoCard
-              if ultimasEntradasPrimarias[1].linkImagen
-                .imagenDescripcion
-                  img(src=ultimasEntradasPrimarias[1].linkImagen)
-                .descripcion 
-                  p #{ultimasEntradasPrimarias[1].descripcion}
-              else 
-                .descripcionSinImagen
-                  p #{ultimasEntradasPrimarias[1].descripcion}
-            a(href="/"+ultimasEntradasPrimarias[1].nombreEnlace) 
-             .leerMas LEER + 
-        -cont=1
-        while cont < 3
-          .card
-            if ultimasEntradas 
-              .contenidoCard 
-                if ultimasEntradas[cont].linkImagen
-                  .imagenDescripcion
-                    img(src=ultimasEntradas[cont].linkImagen)
-                  .descripcion 
-                    p #{ultimasEntradas[cont].descripcion}
-                else 
-                  .descripcionSinImagen
-                    p #{ultimasEntradas[cont].descripcion}
-              a(href="/"+ultimasEntradas[cont].nombreEnlace) 
-                .leerMas LEER +
-          -cont++     
-        #cardEspiritual.card
-          if ultimasEntradasPrimarias[0]
-            .contenidoCard 
-              if ultimasEntradasPrimarias[0].linkImagen
-                .imagenDescripcion
-                  img(src=ultimasEntradasPrimarias[0].linkImagen)
-                .descripcion 
-                  p #{ultimasEntradasPrimarias[0].descripcion}
-              else 
-                .descripcionSinImagen
-                  p #{ultimasEntradasPrimarias[0].descripcion}
-            a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
-             .leerMas LEER +
+        -cont++     
+      #cardEspiritual.card
+        if ultimasEntradasPrimarias[0]
+          .contenidoCard 
+            if ultimasEntradasPrimarias[0].linkImagen
+              .imagenDescripcion
+                img(src=ultimasEntradasPrimarias[0].linkImagen)
+              .descripcion 
+                p #{ultimasEntradasPrimarias[0].descripcion}
+            else 
+              .descripcionSinImagen
+                p #{ultimasEntradasPrimarias[0].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
+           .leerMas LEER +
     
       -contador=3
       while contador < 5

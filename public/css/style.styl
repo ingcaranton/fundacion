@@ -1,3 +1,12 @@
+/*Color placeholder*/
+  input::-webkit-input-placeholder
+    color #fff
+  input:-moz-placeholder 
+    color #fff
+  input::-moz-placeholder 
+    color #fff
+  input:-ms-input-placeholder 
+    color #fff
 /*fuente*/
   @font-face
     font-family "Roboto-Black"
@@ -67,7 +76,7 @@ body
             .colorMenu 
               visibility hidden 
               margin auto
-              width 97%
+              width 100%
               min-height 8px
             a.dropdown-toggle
               text-align center
@@ -77,7 +86,9 @@ body
               border 1px solid white
               min-height 200px
               padding-top -5px
-              a 
+              a b 
+                color white
+              p 
                 color white
               .divImagenSubmenu
                 img
@@ -96,7 +107,7 @@ body
         padding 0 0.5%
         text-align center
         height 100%
-        border-left 1.5px solid gray
+        border-left 1.5px solid #696363
         margin-top 1%
         li 
           height 100%
@@ -105,54 +116,77 @@ body
             a 
               height 100%
               color white
-              background-color gray
+              background-color #696363
             a:hover
               text-decoration underline
-            button
+            button.btn 
               height 100%
-              background-color #777
-              border-color #777
+              background-color #696363
+              border-color #696363
               float right
             .dropdown-menu
-              background-color gray
+              border-radius 0
+              background-color #696363
   /*Login*/
     #login
-      width 500px
+      width 1000px
       min-height 250px
-      padding 5% 15% 5% 15%
-      #boton
-        button
-          padding 2%
-          width 93%
-          background-color white
-          color gray
+      padding 5%
       p 
         text-align justify
         color white
       #datos 
-        width 100%
+        width 40%
         padding 2%
+        margin auto
         input 
+          text-align center
           margin 2%
           width 93%
+          height 30px
           color gray
+      #terminos
+        width 40%
+        padding 2% 3%
+        margin auto
+        input 
+          float left 
+          width 20px
+          height 18px 
+          margin-top 0
+          background-color white
+          color gray
+        span 
+          color white
+          float left
+        a b 
+          color white
+          float left
+          text-decoration inherit
+      button#botonLogin
+        width 33%
+        height 30px
+        margin-left 33%
+        margin-top 2%
+        text-align center
+        background-color white
+        color gray
       #registrarse
-        padding 2% 2% 5% 5%
-        width 50%
-        float left
+        width 40%
+        padding 0 3%
+        margin auto
         a 
           color white
       #olvidoContrasena
-        padding 2% 6% 5% 2%
-        text-align right
-        width 50%
-        float right
+        padding 2% 3% 1% 3%
+        margin auto
+        width 40%
         a 
           color white
     #logout_administrar
       min-height 50px 
       min-width 300px
-      padding 5% 5% 5% 5%
+      padding 5%
       a 
         text-align center
         width 100%
@@ -161,16 +195,25 @@ body
 
   #contenido
     height auto
-    min-height 520px
     width 100%
-    margin 0 0 3% 0
     
   /*Barra Lateral*/
   header
-    top 14%
     bottom 4%
     background none
     padding-top 0px
+    
+    nav 
+      top 25%      
+      li 
+        margin-bottom 5px
+        height auto
+        width 40px
+        padding 1px 1px 1px 1px
+        text-align center
+        background rgba(158, 158, 158, 0.6)
+        img 
+          width 30px 
     
     #parametrosBuscar
       width 80%
@@ -185,24 +228,37 @@ body
           width 100%
           height 35px
           background rgba(255, 255, 255, 0.8)
-          color gray
-          font-size 12px
+          color #696363
+          font-size 16px
+        input::-webkit-input-placeholder
+          color #696363
+          font-size 16px
+        input:-moz-placeholder 
+          color #696363
+          font-size 16px
+        input::-moz-placeholder 
+          color #696363
+          font-size 16px
+        input:-ms-input-placeholder 
+          color #696363
+          font-size 16px
       #botonBuscar
-        background rgba(158, 158, 158, 0.6)
         width 15%
-        height 20px
-        margin 0 5% 0 5%
+        height 35px
+        margin-left 14%
         float left
-        img 
-          width 20px
-          height 20px
+        text-align center
+        button
+          background-color white
+          color #696363
+          width 100%
           
     #resultadoBuscar
       background rgba(255, 255, 255, 0.8)
       width 80%
       margin 5% 10% 5% 10%
       float left
-      height 290px
+      height 400px
       overflow scroll
       ul 
         width 100%
@@ -219,212 +275,280 @@ body
           height 5px
           border-top 1px solid #e58799
           border-bottom 1px solid #e58799 
-
-    nav 
-      li 
-        margin-bottom 5px
-        height auto
-        width 40px
-        padding 1px 1px 1px 1px
-        text-align center
-        background rgba(158, 158, 158, 0.6)
-        img 
-          width 30px 
     
     #clubAmigos
       padding 4% 4%
       #tituloClub
-        border-bottom 1px solid white
-        span
+        border-bottom 2px solid white
+        h3
           color white
       p 
         color white
         text-align justify
-      #accordionClubAmigos
-        #panelCollapseRegistro
-          background-color rgba(0, 145, 189, 0.8)
-          text-align center
-          input 
-            text-align center
-            background-color rgba(255, 255, 255, 0.8)
-            color gray
-            margin 2% 0
-          a 
+        padding 3%
+      .divTerminos
+        width 80%
+        padding 1%
+        margin-left 9%
+        margin-bottom 2%
+        text-align center
+        input.check[type=checkbox]
+          background-color transparent !important
+          border 1px solid white !important
+          width 20px !important
+          float left !important
+          box-shadow none !important
+        span 
+          font-size 10px
+          color white
+          a b
             color white
             font-size 10px 
-          span 
-            font-size 10px
-            color white
-          button
-            background-color rgba(255, 255, 255, 0.8)
-            color gray
-        #panelCollapseIngresar
-          background-color rgba(0, 145, 189, 0.8)
+      #panelRegistro
+        width 50%
+        float left
+        text-align center
+        padding 3% 5%
+        h3 
+          margin-top 0
+          color white
+        input 
           text-align center
-          input
-            text-align center
-            background-color rgba(255, 255, 255, 0.8)
-            color gray
-            margin 2% 0
-          a 
-            color white
-            font-size 14px
-          button
-            background-color rgba(255, 255, 255, 0.8)
-            color gray
+          background-color transparent
+          border 1px solid white
+          width 80%
+          color white
+          margin 2% 0
+        button
+          background-color white
+          width 80%
+          height 24px
+          color #696363
+          font-size 20px
+          padding-top 0
+      #panelIngresar
+        padding 3% 5%
+        width 50%
+        float left
+        text-align center
+        border-left 1px solid white
+        h3 
+          margin-top 0
+          color white
+        input
+          text-align center
+          width 80%
+          background-color transparent
+          border 1px solid white
+          color white
+          margin 2% 0
+        a#recuperarContrasena 
+          color white
+          font-size 10px
+          float left
+          padding 6% 0 0 11%
+        button
+          margin-left 2%
+          width 80%
+          background-color white
+          height 24px
+          color #696363
+          font-size 20px
+          padding-top 0
 
     #ayudaConexion
-      padding 4% 4%
+      padding 4%
       #tituloAyuda
-        border-bottom 1px solid white
-        span 
+        border-bottom 2px solid white
+        h3 
           color white
       p 
+        padding 3%
         color white
         text-align justify
       #serVoluntario
-        padding 4% 4%
+        padding 4%
+        width 50%
         text-align center
-        border-bottom 1px solid white
-        b 
+        float left
+        border-right 1px solid white
+        h3
           color white
         input
-          margin 2% 0
+          margin 2% 10%
+          width 80%
+          height 30px
           text-align center
-          background-color rgba(255, 255, 255, 0.8)
-          color gray
+          background-color transparent
+          border 1px solid white
+          color white
         button
-          color gray
+          color #696363
+          background-color white
+          width 80%
+          margin-left 0.5%
+          height 30px 
+          margin-top 2%
+          padding-top 0
+          font-size 20px
       #tuDonacionAqui
-        margin-top 4px
-        border-top 1px solid white
-        padding 4% 4%
+        margin-top 4%
+        float left
+        width 50%
+        height 24px
+        padding-top 0
         text-align center
-        b 
+        h3 
           color white
         button
           margin-top 2%
-          white 80%
-          height 50px 
-          color gray          
+          width 70%
+          height 100px
+          background-color white 
+          color #696363  
+          b 
+            font-size 30px       
 
     #comunidad
       padding 4% 4%
       #tituloComunidad
-        border-bottom 1px solid white
-        b 
+        border-bottom 2px solid white
+        h3 
           color white
       p
         color white
-        padding 2% 0
+        padding 3%
+        text-align justify
       #iconos
         border-top 1px solid white
         text-align center
-        padding-top 8%
+        padding 4% 0
         img 
-          width 80px  
+          margin 0 3%
+          width 100px  
 
     #tiendaSana
-      padding 4% 4%
+      padding 4%
       #tituloTienda
-        border-bottom 1px solid white
-        b 
+        border-bottom 2px solid white
+        h3 
           color white
       p
         color white
-        padding 2% 0
+        padding 3%
+        text-align justify
       #botonTienda
-        margin-top 4%
+        margin-top 5%
         text-align center
-        b 
+        h3 
           color white
         button
-          margin-top 3%
-          height 70px
-          width 80%
-          color gray
+          margin 3% 25%
+          background-color white
+          height 120px
+          width 50%
+          color #696363
+          font-size 50px 
 
     #videoConexion
-      padding 4% 4%
+      padding 4%
       text-align center
       #tituloVideo
-        border-bottom 1px solid gray
+        border-bottom 2px solid #696363
         text-align left
-        b 
-          color gray
+        h3 
+          color #696363
       p 
-        color gray
-        padding 2% 0
+        color #696363
+        padding 3%
         text-align justify
+        border-bottom 1px solid #696363
       #video 
-        width 100%
+        width 50%
+        padding 3%
         text-align center
+        float left
         video
-          width 90%
-      a 
-        text-decoration none
-        width 100%
-        height auto
-        border 1px solid gray
-        padding 2%
-        span
           width 100%
-          b 
+          height 250px
+      #divVideo
+        float left
+        width 50%
+        padding 10% 3% 3% 0
+        text-align center
+        p 
+          width 100%
+          text-align center
+          padding 2%
+          border none
+        a 
+          text-decoration none
+          margin-top 8%
+          width 100%
+          height auto
+          border 1px solid #696363
+          padding 2%
+          span
             width 100%
-            color gray
-            height 30px
+            b 
+              width 100%
+              color #696363
+              height 30px
             
     #calendarioEventos
-      padding 2% 2%
+      padding 2%
       text-align center
       #tituloCalendario
-        border-bottom 1px solid white
+        border-bottom 2px solid white
         text-align left
-        b 
+        h3 
           color white
       p 
         color white
         text-align justify
-        padding 1% 0
+        padding 3%
       #eventos 
-        width 95%
+        width 98%
+        padding 4%
+        margin-left 2%
         .divEvento
           float left
-          width 50%
-          padding 2%
+          width 30%
+          padding 1%
           text-align center
           .titulo
-            border-bottom 1px solid white
             span
               b.numero 
                 color white
-                font-size 30px 
+                font-size 50px 
               b.mes 
                 color white
-                font-size 15px
+                font-size 25px
           p 
+            border-top 1px solid white
             color white
             text-align center
+            margin-left 15%
+            width 130px
           a 
-            text-decoration none
-            border 1px solid white
             padding 2%
-            width 95%
-            span
-              width 100%
-              font-size 10px
+            text-decoration none
+            div 
+              width 130px
+              border 1px solid white
+              font-size 14px
+              margin-left 15%
               color white
 
   .inner_header
-    height 375px
-      
+    height 83.4% 
   #piePagina
+    position fixed
+    left 0px
+    bottom 0px
     width 100%
-    float left
-    bottom 0
-    background-color #777777
-    padding 2% 3% 2% 3%
-    height auto
+    background-color #696363
+    padding 2% 2%
     #izquierda
       width 32%
       float left
@@ -434,21 +558,14 @@ body
         border 2px solid white
         color white
         font-size 18px
-        background-color gray
+        background-color #696363
         text-align center
-      input::-webkit-input-placeholder
-        color #fff
-      input:-moz-placeholder 
-        color #fff
-      input::-moz-placeholder 
-        color #fff
-      input:-ms-input-placeholder 
-        color #fff
       button
         width 70px
         background-color white
         color gray
         margin-left 10px
+        margin-top -5px
     #derecha
       float left
       width 68%
@@ -467,8 +584,30 @@ body
     #sliderImagenes
       padding 3% 0
       width 100%
+      li 
+        border 1.5px solid white
+        div 
+          border-left none
+          text-align center
+          h3
+            text-align center
+          a 
+            text-decoration none
+            .divLinkImagen 
+              margin auto
+              padding 1%
+              width 100px
+              height 30px 
+              border 1.5px solid white
+              b 
+                color white
+                
       #shadow
         height 100px
+    a.flecha
+      background-color transparent
+      border-radius none
+      box-shadow none
 
   #seccionesPrincipales
     width 100%
@@ -479,46 +618,44 @@ body
       margin 0 auto
       .card
         margin 0 auto
-        float left
         width 225px
-        height 330px
+        float left
+        height 300px
         margin 2% 10px 2% 10px
         .contenidoCard
           padding 4% 3% 3% 3%
-          height 290px   
+          height 250px   
           .imagenDescripcion
             width 100%
             text-align center
             img 
-              max-width 200px
-              height 130px
+              width 200px
+              height 150px
           .descripcion 
             margin-top 15px
             padding 2px 1% 1% 1%
-            overflow auto
             width 100%
             p 
               text-align center
-              max-height 115px 
+              height 60px 
+              overflow hidden
               color gray
           .descripcionSinImagen
-            margin-top 50%
-            padding 0 1% 0 1%
+            height 280px
             width 100% 
             p 
               text-align center
               color gray
         a 
           text-decoration none
-          width 100px
-          margin-left 62px
-          float left
           .leerMas   
-            border 2px gray solid
+            border 1.5px gray solid
             bottom 0
+            margin auto
             text-align center
-            width 100%
+            width 100px
             color gray
+            font-size 13px
 
       #cardFisico 
         background-color #36abd0
@@ -529,7 +666,7 @@ body
           p 
             color white
         .leerMas
-          border 2px white solid
+          border 1.5px white solid
           color white
       #cardEmocional 
         background-color #8762ab
@@ -540,19 +677,18 @@ body
           p 
             color white
         .leerMas
-          border 2px white solid
+          border 1.5px white solid
           color white
       #cardEspiritual 
         background-color #fef000
 
   #masContenido
-    max-width 1100px
-    margin 0 auto
-    padding 3.5% 2% 0 2%
-    min-height 40px
+    float left
+    width 100%
+    margin-bottom 5%
     #linea1
       float left
-      border-top 2px solid gray
+      border-top 1.5px solid gray
       width 39%
     a 
       text-decoration none
@@ -561,7 +697,7 @@ body
       margin -1.5% 2% 0 2%
       padding 4px 4px 4px 4px
       #centro 
-        border 2px solid gray        
+        border 1.5px solid gray        
         text-align center
         color gray
         width 100%
@@ -569,13 +705,13 @@ body
         font-size larger
     #linea2
       float left
-      border-top 2px solid gray
+      border-top 1.5px solid gray
       width 39%
       text-align right
       padding 1% 0 1% 0
       button
-        background-color gray
-        border 1px solid gray
+        background-color #696363
+        border 1px solid #696363
         b 
           color white
 /*Fin Home*/
@@ -996,7 +1132,7 @@ body
     border 2px solid gray
     border-radius 10px
     width 60%
-    margin 15% 20% 0 20%
+    margin 5% 20% 0 20%
     text-align center
     h3
       padding 2% 2% 2% 2%

@@ -4,7 +4,7 @@ function menu_open(){
     if(jQuery(this).hasClass('open')){
       jQuery(this).removeClass('open');
          jQuery('header').animate({
-         'left':'-270px'
+         'left':'-800px'
       }, 300 , "linear");
     }
     else{

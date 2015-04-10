@@ -35,48 +35,104 @@ html
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
           ul#ulPrincipal.nav.navbar-nav
-            -var indice = 0
-            -var tamano = 9
-            each menu in menus
-              if indice<tamano
-                li.dropdown.yamm-fw(id="li"+indice)
-                  .colorMenu(id="colorMenu"+indice)
-                  a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu"+indice li="li"+indice) 
-                    b #{menu.titulo}
-                  if menu.submenus.length>0
-                    ul.submenus.dropdown-menu.colorSubmenu 
-                      li
-                        .yamm-content
-                          .row
-                            .col-sm-9
-                              ul.yamm-content.list-unstyled(role="menu")
-                                each submenu, index in menu.submenus
-                                  li
-                                    a.tituloSubmenu(tabindex="-1" href="/") #{submenu.titulo}
-                                  if index < (menu.submenus.length-1)
-                                    li.divider
-                            .divImagenSubmenu.col-sm-3
-                              img(src="/images/logo.png")
-              -indice++
-            if indice>tamano
-              li.dropdown.yamm-fw.mas
-                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") 
-                  b +
-                ul.dropdown-menu
-                  li
-                    .yamm-content
-                      .row
-                        each menu, index in menus
-                          if index>=tamano
-                            ul.col-sm-2.list-unstyled
-                              li
-                                a(href="/")
-                                  p
-                                    strong #{menu.titulo}
-                              each submenu in menu.submenus
-                                li
-                                  a(href="/") #{submenu.titulo} 
-                              li.divider
+            li.dropdown.yamm-fw(id="li0")
+              .colorMenu(id="colorMenu0")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu0" li="li0") 
+                b QUIENES SOMOS
+              ul.submenus.dropdown-menu.colorSubmenu 
+                li
+                  .yamm-content
+                    .row
+                      .col-sm-9
+                        ul.yamm-content.list-unstyled(role="menu")
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; SOBRE NOSOTROS
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; INFORMACIÓN CENTROS
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; FRANQUICIAS
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b&bull; PLATAFORMAS DE DIFUSIÓN
+                              p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WEB TV 
+                              p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CANALES TV 
+                              p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RED ALTERNA
+                              p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PUBLIK
+                              p &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OTROS MEDIOS
+                      .divImagenSubmenu.col-sm-3
+                        img(src="/images/logo.png")
+            li.dropdown.yamm-fw(id="li1")
+              .colorMenu(id="colorMenu1")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu1" li="li1") 
+                b AYUDAR
+              ul.submenus.dropdown-menu.colorSubmenu 
+                li
+                  .yamm-content
+                    .row
+                      .col-sm-9
+                        ul.yamm-content.list-unstyled(role="menu")
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; COMO VOLUNTARIO 
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; HACER DONACIÓN
+                      .divImagenSubmenu.col-sm-3
+                        img(src="/images/logo.png")
+            li.dropdown.yamm-fw(id="li2")
+              .colorMenu(id="colorMenu2")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu2" li="li2") 
+                b CERTIFICACIONES
+              ul.submenus.dropdown-menu.colorSubmenu 
+                li
+                  .yamm-content
+                    .row
+                      .col-sm-9
+                        ul.yamm-content.list-unstyled(role="menu")
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; SALUD FÍSICA
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; SALUD EMOCIONAL
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/") 
+                                b &bull; CONEXIÓN ESPIRITUAL 
+                      .divImagenSubmenu.col-sm-3
+                        img(src="/images/logo.png")
+            li.dropdown.yamm-fw(id="li3")
+              .colorMenu(id="colorMenu3")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu3" li="li3") 
+                b EVENTOS
+            li.dropdown.yamm-fw(id="li4")
+              .colorMenu(id="colorMenu4")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu4" li="li4") 
+                b CLUB AMIGOS 
+            li.dropdown.yamm-fw(id="li5")
+              .colorMenu(id="colorMenu5")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu5" li="li5") 
+                b YO SOY TU 
+            li.dropdown.yamm-fw(id="li6")
+              .colorMenu(id="colorMenu6")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu6" li="li6") 
+                b VIDEO 
+            li.dropdown.yamm-fw(id="li7")
+              .colorMenu(id="colorMenu7")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu7" li="li7") 
+                b TIENDA SANA 
+            li.dropdown.yamm-fw(id="li8")
+              .colorMenu(id="colorMenu8")
+              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu8" li="li8") 
+                b CONTACTO
 
         ul#botonIngresar.nav.navbar-nav.navbar-right
           li.dropdown
@@ -102,24 +158,23 @@ html
                   span INGRESAR
                 .dropdown-menu
                   #login
-                    p lksdjflksdjlkf lskjflkdsjkf lskjflksjfj lskfjlksjoiewroiew iouewiru ewiouweoiu werioewioru weiruewiweiouewr eirewio
+                    p lksdjflksdjlkf lskjflkdsjkf lskjflksjfj lskfjlksjo sdkjhfsdj qiouew eruiu rwe iewroiew iouewiru ewiouweoiu werioewioru weiruewiweiouewr eirewio ksdjflksdjlkf lskjflkdsjkf lskjflksjfj lskfjlksjo sdkjhfsdj qiouew 32848748 ksdjflksdjlkf lskjflkdsjkf lskjflksjfj lskfjlksjo sdkjhfsdj qiouew 32848748 ksdjflksdjlkf lskjflkdsjkf lskjflksjfj 
                     form(method="POST" action="/user/login")
                       #datos 
-                        input(type="text" name="usuario" autofocus placeholder="Usuario" required) 
-                        input(type="password" name="contrasena" placeholder="Contraseña" required) 
+                        input(type="text" name="usuario" autofocus placeholder="USUARIO" required) 
+                        input(type="password" name="contrasena" placeholder="CONTRASEÑA" required) 
                       #terminos 
                         input(type="checkbox" name="terminos")
-                        span ACEPTO 
+                        span  &nbsp; ACEPTO &nbsp;
                         a(href="javascript:void(0);") 
                           b TÉRMINOS Y CONDICIONES
-                      #boton
-                        button.btn(type="submit") OK
+                      button#botonLogin(type="submit") OK
                       #olvidoContrasena
                         a(href="#")
-                          span RECUPERAR CONTRASEÑA
+                          b RECUPERAR CONTRASEÑA
                       #registrarse
                         a(href="/user/signup")
-                          span REGISTRARSE 
+                          b REGISTRARSE 
 
     header.fixed(id="menuLateral")
       section
@@ -130,70 +185,64 @@ html
                 input(type="text" name="busqueda" placeholder="REALIZAR BUSQUEDA" required)
               #botonBuscar
                 button.btn(type="submit") 
-                  img(src="/images/buscar.svg")
+                  b OK
           #resultadoBuscar
             ul 
         article.inner_header.azulClaro.fixed
           #clubAmigos
             #tituloClub
-              span 
-                b &bull; CLUB AMIGOS 
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
-            #accordionClubAmigos.panel-group
-              .panel.panel-primary
-                .panel-heading
-                  h3.panel-title 
-                    a.accordion-toggle(data-toggle="collapse" data-parent="#accordionClubAmigos" href="#panelCollapseRegistro") REGISTRO 
-                #panelCollapseRegistro.panel-collapse.collapse.in 
-                  form(method="POST" action="/" name="formularioRegistro")
-                    .panel-body
-                      input(type="text" placeholder="TU NOMBRE" name="nombre" required)
-                      input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
-                      input(type="email" placeholder="TU MAIL" name="correo" required)
-                      br
-                      input(type="checkbox" name="terminos") 
-                      span &nbsp; ACEPTO &nbsp;
-                      a(href="javascript:void(0);")
-                        b TERMINOS Y CONDICIONES
-                      br 
-                      button.btn(type="submit") OK
-              .panel.panel-primary
-                .panel-heading
-                  h3.panel-title 
-                    a.accordion-toggle(data-toggle="collapse" data-parent="#accordionClubAmigos" href="#panelCollapseIngresar") INGRESAR 
-                #panelCollapseIngresar.panel-collapse.collapse
-                  form(method="POST" action="/" name="formularioIngresar")
-                    .panel-body
-                      input(type="text" placeholder="USUARIO" name="usuario" required)
-                      input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
-                      br 
-                      a(href="javascript:void(0);") RECUPERAR CONTRASEÑA
-                      button.btn(type="submit") OK 
+              h3 &bull; CLUB AMIGOS 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklf
+            #panelRegistro
+              h3 REGISTRO
+              form(method="POST" action="/" name="formularioRegistro")
+                input(type="text" placeholder="TU NOMBRE" name="nombre" required)
+                input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
+                input(type="email" placeholder="TU MAIL" name="correo" required)
+                .divTerminos
+                  input.check(type="checkbox" name="terminos") 
+                  span &nbsp; ACEPTO &nbsp;
+                  span 
+                    a(href="javascript:void(0);")
+                      b TERMINOS Y CONDICIONES 
+                button.btn(type="submit") 
+                  b OK
+            #panelIngresar
+              h3 INGRESAR
+              form(method="POST" action="/" name="formularioIngresar")
+                input(type="text" placeholder="USUARIO" name="usuario" required)
+                input(type="password" placeholder="CONTRASEÑA" name="contrasena" required)
+                .divTerminos
+                  input.check(type="checkbox" name="terminos") 
+                  span &nbsp; ACEPTO &nbsp;
+                  span 
+                    a(href="javascript:void(0);")
+                      b TERMINOS Y CONDICIONES
+                button.btn(type="submit")
+                  b OK 
+                a#recuperarContrasena(href="javascript:void(0);") 
+                  b RECUPERAR CONTRASEÑA
         article.inner_header.morado.fixed
           #ayudaConexion
             #tituloAyuda
-              span
-                b &bull; AYUDA CONEXIÓN
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+              h3 &bull; AYUDA CONEXIÓN
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklf sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
             #serVoluntario
-              span
-                b SER VOLUNTARIO
+              h3 SER VOLUNTARIO
               form(method="POST" action="/" name="formularioSerVoluntario") 
                 input(type="text" placeholder="TU NOMBRE" name="nombre" required)
                 input(type="email" placeholder="TU MAIL" name="correo" required)
-                br 
-                button.btn(type="submit") OK 
+                button.btn(type="submit") 
+                  b OK 
             #tuDonacionAqui
-              span
-                b TU DONACIÓN AQUÍ
-              br 
-              button.btn(type="button") DONAR 
+              h3 TU DONACIÓN AQUÍ 
+              button.btn(type="button") 
+                b DONAR 
         article.inner_header.verde.fixed
           #comunidad 
             #tituloComunidad
-              span 
-                b &bull; COMUNIDAD 
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+              h3 &bull; COMUNIDAD 
+            p dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklf sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklf sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
             #iconos
               a(href="javascript:void(0);")
                 img(src="/images/blogBlanco.svg") 
@@ -208,64 +257,54 @@ html
         article.inner_header.naranja.fixed
           #tiendaSana
             #tituloTienda
-              span 
-                b &bull; TIENDA SANA 
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+              h3 &bull; TIENDA SANA 
+            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklf sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
             #botonTienda
-              span
-                b ENTRAR A LA TIENDA 
-              button.btn(type="button") COMPRAR 
+              h3 ENTRAR A LA TIENDA 
+              button.btn(type="button") 
+                b COMPRAR 
         article.inner_header.amarillo.fixed
           #videoConexion
             #tituloVideo
-              span
-                b &bull; VIDEO CONEXION 
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+              h3 &bull; VIDEO CONEXION 
+            p kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks fsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sd kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks fsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sd
             #video 
               video(src="https://www.youtube.com/watch?v=lj7IQDeBNlI" preload loop controls)
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
-            a(href="javascript:void(0);")
-              span
-                b VER TODOS LOS VIDEOS
+            #divVideo
+              p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf
+              a(href="javascript:void(0);")
+                span
+                  b VER TODOS LOS VIDEOS
         article.inner_header.azulOscuro.fixed
           #calendarioEventos
             #tituloCalendario
-              span
-                b &bull; CALENDARIO EVENTOS 
-            p sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj 
+              h3 &bull; CALENDARIO EVENTOS 
+            p kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks fsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sd kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks fsld kdlsjf sdklklfjdsj dklsjfsl skllksf slkflks dslkslkj sdljflskd dslkslkj sdljflskd sdklfsldkf sdlkfsdlkjs sdlfkjlkdsfj sdkdsfsld kdlsjf sd
             #eventos 
               .divEvento
                 .titulo
                   span 
                     b.numero 28
                     b.mes &nbsp; Abril
-                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                p sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs
                 a(href="javascript:void(0);") 
-                  span VER +
+                  div VER +
               .divEvento
                 .titulo
                   span 
-                    b.numero 6
+                    b.numero 8
                     b.mes  &nbsp; Mayo
-                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                p sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs
                 a(href="javascript:void(0);") 
-                  span VER +
+                  div VER +
               .divEvento
                 .titulo
                   span 
-                    b.numero 15
-                    b.mes &nbsp; Junio
-                p sdljflskd sdklfsldkf sdlkfsdlkjs
+                    b.numero 18
+                    b.mes &nbsp; Diciembre
+                p sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs sdljflskd sdklfsldkf sdlkfsdlkjs
                 a(href="javascript:void(0);") 
-                  span VER +
-              .divEvento 
-                .titulo
-                  span 
-                    b.numero 5
-                    b.mes &nbsp; Julio
-                p sdljflskd sdklfsldkf sdlkfsdlkjs
-                a(href="javascript:void(0);") 
-                  span VER +
+                  div VER +
       nav(class="")
         ul
           li

@@ -227,8 +227,14 @@
       if(homeCargado){
         for(var i=0; i<7;i++){
           var img = $('<img src='+arrayImagenesSlider[usados[i]]+'>');
+          var h3 = $('<h3>Descripción Imagen lsdkfjfsk dkfsklfks sdkjfsdksd dslkfskljd sdkfskjf sdlfkfkl sdlksfk ssdfds sdfsdf sdsfdf sdfsd</h3>')
+          var a = $('<a href="javascript:void(0);"><div class="divLinkImagen"><b>LEER +</b></div></a>');
+          var div = $('<div class="sb-description"></div>');
+          div.append(h3);
+          div.append(a);
           var li = $('<li/>');
           li.append(img);
+          li.append(div);
           $("#sb-slider").append(li);
         }
         var posicionColor= Math.floor(Math.random()*(8-0+1))+0; 
@@ -291,6 +297,18 @@
           $("#navbar-collapse-1 ul li #"+ul+" a.tituloSubmenu").css("color", "gray");
         }
       });
+    /*divSinImagen*/
+      for(var i=1; i<=8; i++){
+        if($("#d"+i+" p").css("height")){
+          var height = $("#d"+i+" p").css("height").slice(0,-2);
+          var padding = (280-height)/2;
+          $("#d"+i+" p").css("padding", padding+"px 5px")
+        }
+      }      
+    /*mas contenido en home*/
+      var anchoVentana = $(window).width();
+      var padding = (anchoVentana-1100)/2;
+      $("#masContenido").css("padding","2% "+padding+"px");
   });
 
 /*Otras Funciones*/

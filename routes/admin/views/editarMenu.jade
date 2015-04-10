@@ -25,8 +25,8 @@ block content
                         input#seleccionUrl(type="checkbox" name="seleccionUrl")
                       .urlMenu 
                         span Url 
-                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
-                          select#urlInterna.form-control(style="display:none" name="url")
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                          select#urlInterna.form-control(style="display:none" name="urlInterna")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                     else 
@@ -117,8 +117,8 @@ block content
                         .urlMenu
                           span Url 
                           br 
-                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
-                          select#urlInterna.form-control(style="display:none" name="url")
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                          select#urlInterna.form-control(style="display:none" name="urlInterna")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                       .acciones

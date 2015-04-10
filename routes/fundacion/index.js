@@ -19,7 +19,7 @@ app.use(function(req, res, next){
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(5).exec(function(error, ultimasEntradas){
+  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
     db.pagina.aggregate({$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },

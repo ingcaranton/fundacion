@@ -1,5 +1,7 @@
 /*Variables Globales*/
   var pag={};
+  var ultimasEntradas={};
+  var ultimasEntradasPrimarias={};
   var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
   var homeCargado=false;
   var arrayColor=["#fe889b","#d273cd","#8762ab","#36abd0","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];

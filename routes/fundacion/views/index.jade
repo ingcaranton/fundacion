@@ -2,6 +2,8 @@ extends ../../../views/layout
 block content
   script(type="text/javascript").
     homeCargado=true;
+    ultimasEntradas=!{JSON.stringify(ultimasEntradas)}; 
+    ultimasEntradasPrimarias=!{JSON.stringify(ultimasEntradasPrimarias)}; 
   #slider 
     #sliderImagenes.wrapper
       ul#sb-slider.sb-slider
@@ -15,20 +17,20 @@ block content
   #seccionesPrincipales
     #cards
       #cardFisico.card
-        if ultimasEntradasPrimarias[3] 
+        if ultimasEntradasPrimarias[0] 
           .contenidoCard
-            if ultimasEntradasPrimarias[3].linkImagen
+            if ultimasEntradasPrimarias[0].linkImagen
               .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[3].linkImagen)
+                img(src=ultimasEntradasPrimarias[0].linkImagen)
               .descripcion 
-                p #{ultimasEntradasPrimarias[3].descripcion}
+                p #{ultimasEntradasPrimarias[0].descripcion}
             else 
               .descripcionSinImagen(id="d1")
-                p#p1 #{ultimasEntradasPrimarias[3].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
+                p#p1 #{ultimasEntradasPrimarias[0].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
            .leerMas LEER +
       .card
-        if ultimasEntradas 
+        if ultimasEntradas[0] 
           .contenidoCard 
             if ultimasEntradas[0].linkImagen
               .imagenDescripcion
@@ -41,23 +43,23 @@ block content
           a(href="/"+ultimasEntradas[0].nombreEnlace) 
             .leerMas LEER +
       #cardEmocional.card
-        if ultimasEntradasPrimarias[1]
+        if ultimasEntradasPrimarias[2]
           .contenidoCard
-            if ultimasEntradasPrimarias[1].linkImagen
+            if ultimasEntradasPrimarias[2].linkImagen
               .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[1].linkImagen)
+                img(src=ultimasEntradasPrimarias[2].linkImagen)
               .descripcion 
-                p #{ultimasEntradasPrimarias[1].descripcion}
+                p #{ultimasEntradasPrimarias[2].descripcion}
             else 
               .descripcionSinImagen(id="d3")
-                p#p3 #{ultimasEntradasPrimarias[1].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[1].nombreEnlace) 
+                p#p3 #{ultimasEntradasPrimarias[2].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[2].nombreEnlace) 
            .leerMas LEER + 
       -cont=1
       -contp=4
       while cont < 3
         .card
-          if ultimasEntradas 
+          if ultimasEntradas[cont] 
             .contenidoCard 
               if ultimasEntradas[cont].linkImagen
                 .imagenDescripcion
@@ -72,24 +74,24 @@ block content
         -cont++     
         -contp++
       #cardEspiritual.card
-        if ultimasEntradasPrimarias[0]
+        if ultimasEntradasPrimarias[3]
           .contenidoCard 
-            if ultimasEntradasPrimarias[0].linkImagen
+            if ultimasEntradasPrimarias[3].linkImagen
               .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[0].linkImagen)
+                img(src=ultimasEntradasPrimarias[3].linkImagen)
               .descripcion 
-                p #{ultimasEntradasPrimarias[0].descripcion}
+                p #{ultimasEntradasPrimarias[3].descripcion}
             else 
               .descripcionSinImagen(id="d6")
-                p#p6 #{ultimasEntradasPrimarias[0].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
+                p#p6 #{ultimasEntradasPrimarias[3].descripcion}
+          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
            .leerMas LEER +
     
       -contador=3
       -contadorp=7
       while contador < 5
         .card
-          if ultimasEntradas 
+          if ultimasEntradas[contador] 
             .contenidoCard 
               if ultimasEntradas[contador].linkImagen
                 .imagenDescripcion

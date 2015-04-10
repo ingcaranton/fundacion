@@ -1,15 +1,6 @@
 extends ../../../views/layout
 block content
   if paginas
-    #linksPrincipales
-      #sobreNosotros
-        a(href="javascript:void(0);") SOBRE NOSOTROS
-      #informacionCentros
-        a(href="javascript:void(0);") INFORMACIÓN CENTROS
-      #franquicias
-        a(href="javascript:void(0);") FRANQUICIAS
-      #plataforma
-        a(href="javascript:void(0);") PLATAFORMA DE DIFUCIÓN
     #todoContenido    
       each pagina,index in paginas
         - var color

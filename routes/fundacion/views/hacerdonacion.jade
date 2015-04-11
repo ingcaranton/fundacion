@@ -1,19 +1,67 @@
 extends ../../../views/layout
 block content
-  if user
-    #paginaDonacion
-      form(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
-        #donacion
-          #imagen
-            img(src="/images/logo.png")
-          #cantidad 
-            span 
-              b CANTIDAD A DONAR
-            input(type="number" name="donacion" required autofocus)
-            input(type="hidden" name="json" size="100" value=form.json)
-            input(type="hidden" name="comercio" value=form.comercio) 
-          #boton
-            button.btn(type="submit") DONAR
-  else
-    #noUsuarioDonacion
-      h1 ¡NO ESTAS AUTENTICADO!
+  #paginaDonacion
+    h1 Ayuda Conexión - Apóyanos
+    p klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj 
+    form(method="POST" action="/hacerdonacion")  
+    #formulario
+      input(type="text" name="nombre" placeholder="NOMBRE" required)
+      input(type="text" name="apellido" placeholder="APELLIDO" required)           
+      input(type="text" name="telefono" placeholder="TELEFONO")
+      input(type="email" name="email" placeholder="CORREO ELECTRONICO" required)
+      span ¿CÓMO QUIERES AYUDARNOS?
+      #opciones
+        #tiempo 
+          label.checkboxDonacion
+            input(type="checkbox" name="tiempo" value="tiempo")
+            span
+          span  &nbsp; EN TIEMPO
+        #especie
+          label.checkboxDonacion
+            input(type="checkbox" name="especie" value="especie")
+            span
+          span  &nbsp; EN ESPECIE
+        #dinero 
+          label.checkboxDonacion
+            input(type="checkbox" name="dinero" value="dinero")
+            span
+          span  &nbsp; EN DINERO
+      textarea.form-control(rows="5" name="comentario" placeholder="COMENTARIO")
+      button.btn(type="submit")
+        b OK 
+
+    #confirmacion
+      if datosDonacion && datosEncryptados
+        script(type="text/javascript").
+          vistaDonacion=true;
+        form(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
+          input(type="hidden" name="json" value=datosEncryptados.json)
+          input(type="hidden" name="comercio" value=datosEncryptados.comercio)
+          h4 Estos son los datos que ingresaste - ¿Deseas Continuar?
+          span.rosado NOMBRE: 
+          span.gris &nbsp; #{datosDonacion.nombre}
+          br
+          span.rosado APELLIDO: 
+          span.gris &nbsp; #{datosDonacion.apellido}
+          br
+          span.rosado TELEFONO:
+          span.gris &nbsp; #{datosDonacion.telefono}
+          br
+          span.rosado CORREO ELECTRONICO:
+          span.gris &nbsp; #{datosDonacion.email} 
+          br
+          span.rosado AYUDAR CON:
+          span.gris 
+            if datosDonacion.tiempo
+               &nbsp; Tiempo 
+            if datosDonacion.especie
+               &nbsp; Especie 
+            if datosDonacion.dinero
+               &nbsp; Dinero 
+          br
+          span.rosado COMENTARIO:
+          span.gris &nbsp; #{datosDonacion.comentario}
+          button.btn(type="submit") 
+            b SI 
+          button.btn(type="button" onclick="location.href='/hacerdonacion")
+            b NO 

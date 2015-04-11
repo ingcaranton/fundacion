@@ -2,6 +2,7 @@ var express = require('express');
 var app = module.exports = express();
 var crudUser = require("./crud");
 var crudMenu = require("../menu/crud");
+var nodemailer = require('nodemailer');
 
 app.set('views', __dirname + '/views');
 
@@ -20,6 +21,24 @@ app.route('/signup')
   });
 })
 .post(function(req,res){
+  var smtpTransport = nodemailer.createTransport("SMTP",{
+      service: "Gmail",
+    auth: {
+      user: "fcbcontacto@gmail.com",
+      pass: "fundacionconexionbienestar"
+    }
+  });
+  var mailOptions = {
+    from: "Fundacion Conexión Bienestar <fcbcontacto@gmail.com>", // sender address
+    to: "<"+req.body.email+">", // list of receivers
+    subject: "¡Bienvenido! "+req.body.nombre+" "+req.body.apellido, // Subject line
+    text: "La Fundación Conexión Bienestar te da la bienvenida, nos complace que te hayas unido a nuestra comunidad, \n ¡GRACIAS POR APOYARNOS!"
+  }
+  smtpTransport.sendMail(mailOptions, function(error, response){
+      if(error){
+        req.flash('message', 'Error al enviar mensaje de bienvenida');
+      }
+  }); 
   crudUser.create(req, res, function(err, user, flash){
     if(err)
       res.redirect("/");

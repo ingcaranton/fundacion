@@ -4,6 +4,7 @@
   var ultimasEntradasPrimarias={};
   var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
   var homeCargado=false;
+  var vistaDonacion=false;
   var arrayColor=["#fe889b","#d273cd","#8762ab","#36abd0","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
 /*Función de cargar en home*/
   $(document).ready(function() {
@@ -320,6 +321,14 @@
       var anchoVentana = $(window).width();
       var padding = (anchoVentana-1100)/2;
       $("#masContenido").css("padding","2% "+padding+"px");
+    /*vista donacion*/
+      if(vistaDonacion){
+        $("#paginaDonacion #formulario").css("display", "none");
+        $("#paginaDonacion #confirmacion").css("display", "inherit");
+      }else{
+        $("#paginaDonacion #formulario").css("display", "inherit");
+        $("#paginaDonacion #confirmacion").css("display", "none");
+      }
   });
 
 /*Otras Funciones*/
@@ -431,7 +440,8 @@
           descripcionSinImagen.append(p2);
           contenidoCard.append(descripcionSinImagen);
         }
-        var a = $("<a href='/'"+entradas[i].nombreEnlace+"></a>");
+        var a = $("<a></a>");
+        a.attr("href","/"+entradas[i].nombreEnlace);
         var leerMas = $("<div class='leerMas'>LEER +</div>");
         a.append(leerMas);
         $("#seccionesPrincipales #cards #card"+i).append(contenidoCard);

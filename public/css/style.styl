@@ -673,11 +673,13 @@ body
         color gray
     #redesSociales
       margin 3% 0 3% 0
-      padding 1% 1% 1% 1%
-      width 60%
+      padding 1% 1% 1% 5%
+      width 30%
+      height 60px 
       float left
       border 1px solid #e58799
       .izquierda
+        display none 
         margin-top 10px
         float left
         width 0
@@ -686,6 +688,7 @@ body
         border-bottom 8px solid transparent
         border-right 8px solid #aaa
       .contador
+        display none 
         float left
         width 42px
         height 25px
@@ -697,14 +700,14 @@ body
           font-size 20px
           text-align center
       #facebook
-        width 20%
+        width 30%
         float left
-        border-right 2px solid gray
+        //border-right 2px solid gray
         padding 1% 1% 0 1%
         .icon 
           float left
-          height 42px   
-          width 40px 
+          height 50px
+          width 50px
           background-image url("/images/facebook.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -712,18 +715,18 @@ body
           background-image url("/images/facebookHover.png")  
           background-repeat no-repeat
           float left
-          height 40px
-          width 35px
+          height 50px
+          width 50px
           
       #twitter
-        width 20%
+        width 30%
         float left
-        border-right 2px solid gray
+        //border-right 2px solid gray
         padding 1% 1% 0 1%
         .icon 
           float left
-          height 42px   
-          width 40px 
+          height 50px   
+          width 50px  
           background-image url("/images/twitter.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -731,17 +734,17 @@ body
           background-image url("/images/twitterHover.png")  
           background-repeat no-repeat
           float left
-          height 40px
-          width 35px    
+          height 50px   
+          width 50px    
           
       #correo
-        width 20%
+        width 30%
         float left
-        padding 2% 1% 0 1%
+        padding 4% 1% 0 1%
         .icon 
           float left
-          height 42px   
-          width 40px 
+          height 50px   
+          width 50px 
           background-image url("/images/correo.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -749,15 +752,14 @@ body
           background-image url("/images/correoHover.png")  
           background-repeat no-repeat
           float left
-          height 40px
-          width 35px
+          height 50px   
+          width 50px 
 
   #botonSubir
-    margin 1% 0 1% 0
-    width 100%
-    float left
+    margin 4% 15% 1% 0
+    width 10%
+    float right
     text-align right
-    margin-bottom 8%
     button
       margin-right 8%
       background gray
@@ -897,39 +899,42 @@ body
 
 /*Usuario nuevo*/
   #usuarioNuevo
-    border 2px solid gray
-    border-radius 10px
-    width 60%
-    margin 5% 20% 0 20%
-    text-align center
-    h3
-      padding 2% 2% 2% 2%
+    width 100%
+    padding 3% 10%
+    h1
       text-align center
-    div 
       width 100%
-      padding 2% 2% 2% 2%
+      color #ff889b
+    #formulario
+      padding-top 5%
+      width 50%
+      margin auto
+      input::-webkit-input-placeholder
+        color #ccc
+      input:-moz-placeholder 
+        color #ccc
+      input::-moz-placeholder 
+        color #ccc
+      input:-ms-input-placeholder 
+        color #ccc
       input
-        width 500px
-        margin-left 5%
-    #datos1
-      input
-        margin-left 5%
-    #datos2
-      input
-        margin-left 15%
-    #datos3
-      input
-        margin-left 12%
-    #datos4
-      input
-        margin-left 11%
-    #inscribirse 
-      input
-        width 20px
-        transform scale(2,2)
-    span.asterisco
-      color red
-      margin-left 2%
+        width 70%
+        margin 2% 15%
+        height 30px
+        border-left none
+        border-top none
+        border-right none
+        border-bottom 1.8px solid #ff889b
+        text-align center
+      button
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+        color white
+        background-color #ff889b
+        height 25px
+        padding-top 3px
 /*fin Usuario nuevo*/
 
 /*todoContenido*/
@@ -967,45 +972,191 @@ body
 /*Hacer Donación*/
   #paginaDonacion
     width 100%
-    padding-top 8%
-    #donacion 
-      width 50%
-      height auto
-      margin auto auto
-      padding 0 5%
-      border 4px solid rgba(255, 114, 178, 0.7)
-      border-radius 20px
-      #imagen
-        padding 5% 2% 2% 2%
-        width 100%
-        text-align center
-        float left
-        img 
-          width 50%
-      #cantidad
-        padding 2% 2%
-        width 100%
-        float left
-        span 
-          color rgba(255, 114, 178, 0.7)
-        input
-          width 60%
-          margin-left 3%
-          color rgba(255, 114, 178, 0.7)
-          border 2px solid rgba(255, 114, 178, 0.7)
-          border-radius 3px 
-          text-align center
-      #boton 
-        padding 5% 2%
-        text-align center
-        button
-          color white
-          background rgba(255, 114, 178, 0.7)
-  #noUsuarioDonacion
-    width 100%
-    margin-top 15%
+    padding 3% 10%
     h1
-      width 100%
       text-align center
-      color rgba(255, 114, 178, 0.7)
+      width 100%
+      color #ff889b
+    p 
+      border-top 1.8px solid #ff889b
+      border-bottom 1.8px solid #ff889b
+      width 100%
+      padding 3% 5%
+      text-align center
+      color #696363
+    #formulario
+      padding-top 5%
+      width 70%
+      margin auto
+      input::-webkit-input-placeholder
+        color #ccc
+      input:-moz-placeholder 
+        color #ccc
+      input::-moz-placeholder 
+        color #ccc
+      input:-ms-input-placeholder 
+        color #ccc
+      input
+        width 70%
+        margin 2% 15%
+        height 30px
+        border-left none
+        border-top none
+        border-right none
+        border-bottom 1.8px solid #ff889b
+        text-align center
+      textarea
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+      textarea::-webkit-input-placeholder
+        color #ccc
+      textarea:-moz-placeholder 
+        color #ccc
+      textarea::-moz-placeholder 
+        color #ccc
+      textarea:-ms-input-placeholder 
+        color #ccc
+      button
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+        color white
+        background-color #ff889b
+        height 25px
+        padding-top 3px
+      span
+        width 70%
+        padding-left 21%
+        padding-top 3%
+        color #696363
+        margin 2% 15%
+      #opciones
+        width 70%
+        margin 2% 15%
+        padding 1% 0 5% 0
+        #tiempo
+          width 33%
+          padding-left 7%
+          float left
+        #especie
+          padding-left 7%
+          width 33%
+          float left
+        #dinero
+          width 33%
+          float left
+          padding-left 10%
+        span 
+          float left
+          margin 0 !important
+          width auto !important
+          padding-left 1% !important
+        .checkboxDonacion 
+          width 20px
+          height 20px 
+          float left
+          padding-top 1%
+          :hover 
+            cursor pointer
+          input 
+            display none
+
+          span 
+            width 20px !important
+            height 20px
+            display block
+            background-color white
+            border 1.8px solid #ff889b            
+
+          input:checked + span 
+            background-color #ff889b
+            padding 4%
+    #confirmacion
+      display none
+      width 80%
+      padding 3% 15%
+      margin auto
+      h4
+        text-align center
+        width 100%
+        color #ff889b
+      span.rosado
+        color #ff889b
+        margin-left 10%
+      span.gris
+        color #696363
+        margin-right 10%
+      button
+        width 40%
+        margin 2% 10% 2% 25%
+        border 1.8px solid #ff889b
+        text-align center
+        color white
+        background-color #ff889b
+        height 25px
+        padding-top 3px
+        
 /*fin hacer donación*/
+
+/*Contacto*/
+  #contacto 
+    width 100%
+    padding 3% 10%
+    h1
+      text-align center
+      width 100%
+      color #ff889b
+    p 
+      border-top 1.8px solid #ff889b
+      border-bottom 1.8px solid #ff889b
+      width 100%
+      padding 3% 5%
+      text-align center
+      color #696363
+    #formulario
+      padding-top 5%
+      width 50%
+      margin auto
+      input::-webkit-input-placeholder
+        color #ccc
+      input:-moz-placeholder 
+        color #ccc
+      input::-moz-placeholder 
+        color #ccc
+      input:-ms-input-placeholder 
+        color #ccc
+      input
+        width 70%
+        margin 2% 15%
+        height 30px
+        border-left none
+        border-top none
+        border-right none
+        border-bottom 1.8px solid #ff889b
+        text-align center
+      textarea
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+      textarea::-webkit-input-placeholder
+        color #ccc
+      textarea:-moz-placeholder 
+        color #ccc
+      textarea::-moz-placeholder 
+        color #ccc
+      textarea:-ms-input-placeholder 
+        color #ccc
+      button
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+        color white
+        background-color #ff889b
+        height 25px
+        padding-top 3px
+/*fin contacto*/

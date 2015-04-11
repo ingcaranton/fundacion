@@ -5,27 +5,13 @@ block content
       h1 ¡Ya estas registrado!
   else
     #usuarioNuevo
-      h3 INGRESE SUS DATOS
-      form#registrar(method="POST", action="/user/signup")
-        #datos1
-          span Nombre Completo: 
-          input(title="Nombre Completo requerido" type="text" name="nombre" autofocus required)
-          span.asterisco *
-        #datos2
-          span E-mail: 
-          input(title="E-mail requerido" type="email" name="correo" required)
-          span.asterisco *
-        #datos3
-          span NickName: 
-          input(title="NickName requerido" type="text" name="nickName" required)
-          span.asterisco *
-        #datos4
-          span Contraseña: 
-          input(title="Contraseña requerida" type="password" name="contrasena" required)
-          span.asterisco *
-        #inscribirse
-          span ¿INSCRIBIRSE A NEWSLETTER?
-          input(name="inscribirse" type="checkbox") 
-        div
-          button.btn.btn-primary(type="submit") ENVIAR
+      h1 Regitrar 
+      #formulario 
+        form#registrar(method="POST" name="formRegistro" action="/user/signup")
+          input(placeholder="NOMBRE" type="text" name="nombre" required)
+          input(placeholder="APELLIDO" type="text" name="apellido" required)
+          input(placeholder="CORREO ELECTRONICO" type="email" name="email" required)
+          input(placeholder="NICKNAME" type="text" name="nickName" required)
+          input(placeholder="CONTRASEÑA" type="password" name="contrasena" required)
+          button.btn(type="submit") OK
 

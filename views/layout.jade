@@ -120,7 +120,6 @@ html
               if user
                 if user.rol == "administrador"
                   button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
-                    span.caret
                   ul.dropdown-menu(role="menu")
                     li 
                       a(href="/admin") Administrar Contenido
@@ -128,7 +127,6 @@ html
                       a(href="/user/logout") Salir
                 else
                   button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
-                    span.caret
                   ul.dropdown-menu(role="menu")
                     li 
                       a(href="/user/logout") Salir

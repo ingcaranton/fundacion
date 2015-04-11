@@ -2,6 +2,7 @@ var express = require('express');
 var app = module.exports = express();
 var Buffer= require('Buffer');
 var crypto = require('crypto');
+var nodemailer = require('nodemailer');
 
 app.set('views', __dirname + '/views');
 
@@ -31,7 +32,7 @@ app.route('/')
         function(error, ultimasEntradasPrimarias){
           console.log(ultimasEntradasPrimarias);
           res.render('index', {
-            title : 'Conexion bienestar',
+            title : 'Conexión Bienestar',
             ultimasEntradas:ultimasEntradas,
             ultimasEntradasPrimarias:ultimasEntradasPrimarias
           });
@@ -74,6 +75,33 @@ app.route('/contacto')
     message : req.flash('message'),
     title : 'Contacto'
   });
+});
+
+app.route('/enviarContacto')
+.post(function(req,res){
+  var smtpTransport = nodemailer.createTransport("SMTP",{
+      service: "Gmail",
+    auth: {
+      user: "fcbcontacto@gmail.com",
+      pass: "fundacionconexionbienestar"
+    }
+  });
+  var mailOptions = {
+    from: "Correo Contacto <fcbcontacto@gmail.com>", // sender address
+    to: "<info@conexionbienestar.com>", // list of receivers
+    subject: "Solicitud de Contacto", // Subject line
+    text: "Nombre: "+req.body.nombre+"\nApellido: "+req.body.apellido+"\nMail: "+req.body.email+
+      "\nTelefono: "+req.body.telefono+"\nComentario: "+req.body.comentario
+  }
+  smtpTransport.sendMail(mailOptions, function(error, response){
+      if(error){
+        req.flash('message', 'Error al enviar correo vuelve a intentarlo por favor');
+        res.redirect('/contacto');
+      }else{
+        req.flash('message', 'Mensaje enviado, gracias por contactarnos, espera nuestra respuesta');
+        res.redirect('/');
+      }
+  }); 
 });
 
 app.route('/:pagina')

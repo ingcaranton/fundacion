@@ -1,27 +1,68 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.32
-4 verbose node symlink /usr/bin/node
-5 verbose run-script [ 'prestart', 'start', 'poststart' ]
-6 info prestart fundacion@0.0.0
-7 info start fundacion@0.0.0
-8 verbose unsafe-perm in lifecycle true
-9 info fundacion@0.0.0 Failed to exec start script
-10 error fundacion@0.0.0 start: `node ./bin/www`
-10 error Exit status 8
-11 error Failed at the fundacion@0.0.0 start script.
-11 error This is most likely a problem with the fundacion package,
-11 error not with npm itself.
-11 error Tell the author that this fails on your system:
-11 error     node ./bin/www
-11 error You can get their info via:
-11 error     npm owner ls fundacion
-11 error There is likely additional logging output above.
-12 error System Linux 3.13.0-36-generic
-13 error command "/usr/bin/node" "/usr/bin/npm" "start"
-14 error cwd /home/viana/Dropbox/CODETAG/fundacion/fundacion
-15 error node -v v0.10.32
-16 error npm -v 1.4.28
-17 error code ELIFECYCLE
-18 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'child_process',
+1 verbose cli   '--save' ]
+2 info using npm@1.3.10
+3 info using node@v0.10.25
+4 warn package.json fs@0.0.2 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'child_process', null ]
+7 verbose cache add name=undefined spec="child_process" args=["child_process",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'child_process',
+8 verbose parsed url   path: 'child_process',
+8 verbose parsed url   href: 'child_process' }
+9 silly lockFile 4845fa97-child-process child_process
+10 verbose lock child_process /home/arley/.npm/4845fa97-child-process.lock
+11 silly lockFile 4845fa97-child-process child_process
+12 silly lockFile 4845fa97-child-process child_process
+13 verbose addNamed [ 'child_process', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile 512a7ef6-child-process child_process@
+16 verbose lock child_process@ /home/arley/.npm/512a7ef6-child-process.lock
+17 silly addNameRange { name: 'child_process', range: '*', hasData: false }
+18 verbose url raw child_process
+19 verbose url resolving [ 'https://registry.npmjs.org/', './child_process' ]
+20 verbose url resolved https://registry.npmjs.org/child_process
+21 info trying registry request attempt 1 at 18:43:07
+22 http GET https://registry.npmjs.org/child_process
+23 http 404 https://registry.npmjs.org/child_process
+24 silly registry.get cb [ 404,
+24 silly registry.get   { date: 'Sat, 11 Apr 2015 23:43:16 GMT',
+24 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+24 silly registry.get     'content-type': 'application/json',
+24 silly registry.get     'cache-control': 'max-age=0',
+24 silly registry.get     'content-length': '51',
+24 silly registry.get     'accept-ranges': 'bytes',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     age: '0',
+24 silly registry.get     'x-served-by': 'cache-atl6221-ATL',
+24 silly registry.get     'x-cache': 'MISS',
+24 silly registry.get     'x-cache-hits': '0',
+24 silly registry.get     'x-timer': 'S1428795796.488998,VS0,VE81',
+24 silly registry.get     'keep-alive': 'timeout=10, max=50',
+24 silly registry.get     connection: 'Keep-Alive' } ]
+25 silly lockFile 512a7ef6-child-process child_process@
+26 silly lockFile 512a7ef6-child-process child_process@
+27 error 404 'child_process' is not in the npm registry.
+27 error 404 You should bug the author to publish it
+27 error 404
+27 error 404 Note that you can also install from a
+27 error 404 tarball, folder, or http url, or git url.
+28 error System Linux 3.13.0-49-generic
+29 error command "/usr/bin/nodejs" "/usr/bin/npm" "install" "child_process" "--save"
+30 error cwd /home/arley/Dropbox/proyectos/fundacion
+31 error node -v v0.10.25
+32 error npm -v 1.3.10
+33 error code E404
+34 verbose exit [ 1, true ]

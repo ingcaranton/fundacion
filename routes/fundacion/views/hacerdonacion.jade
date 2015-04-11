@@ -14,17 +14,17 @@ block content
         #opciones
           #tiempo 
             label.checkboxDonacion
-              input(type="checkbox" name="tiempo" value="tiempo")
+              input(type="checkbox" name="tiempo")
               span
             span  &nbsp; EN TIEMPO
           #especie
             label.checkboxDonacion
-              input(type="checkbox" name="especie" value="especie")
+              input(type="checkbox" name="especie")
               span
             span  &nbsp; EN ESPECIE
           #dinero 
             label.checkboxDonacion
-              input(type="checkbox" name="dinero" value="dinero")
+              input(type="checkbox" name="dinero")
               span
             span  &nbsp; EN DINERO
         textarea.form-control(rows="5" name="comentario" placeholder="COMENTARIO")
@@ -54,11 +54,11 @@ block content
           span.rosado AYUDAR CON:
           span.gris 
             if datosDonacion.tiempo
-               &nbsp; Tiempo 
+              |&nbsp; Tiempo
             if datosDonacion.especie
-               &nbsp; Especie 
+              |&nbsp; Especie
             if datosDonacion.dinero
-               &nbsp; Dinero 
+              |&nbsp; Dinero
           br
           span.rosado COMENTARIO:
           span.gris &nbsp; #{datosDonacion.comentario}

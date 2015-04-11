@@ -57,16 +57,42 @@ app.route('/todocontenido')
 
 app.route('/hacerdonacion')
 .get(function(req, res){
-  var form={};
-  form.comercio="1";
-  form.json="MbgxlL0HYcKOx/3Ypdgo2xmmE7VxNlAe2mimlJV4DRNgXX99d3HAz2/YuRaaMMbKlcMiwGw6MbZxNUJyrx8rpRDqC9EKLWGJISdxCK5HHDsex9o3MH+CiuKEKclWY8LSbgX3h/gZ3IADvPmwAw/jJMAPdttqMrzXer5pnsxcVqyQihiz+k63Xq/T/oOK3PtOcykhw3sBVfygSHPhHH206pqP54Yw5Eomj/uEtnHRTrlZcpy99BrX/sk/3HRWC4t9JiScTqqd5ZdTiSdsEW2eMBphggraXruaNHYStguICNNhbQvKbpFRzO6KloHnvHlZnk9OsH9Gz8y52wM9mmds+Abyc7fUx1xzo7Sh4GfzCcoLjVjiwvGmWCU1WwEAqVI53gPwpIUwxfP8FfbcBKuBneyMiBan2vbc5MsLIHOwoIN5iODSwAWZ80ucFJhPbFe4P2qjLv7NBax1oXMQpJSjYUglrALTA7HYUZLRMmpP8jY/FEKKwfb9Qw==";
-  form.comercio=new Buffer(form.comercio).toString('base64');
-
-  res.render('hacerdonacion',{
-    message : req.flash('message'),
-    title : 'Donar',
-    form: form
+  var datosDonacion=req.session.datosDonacion;
+  var datosEncryptado;
+  if(req.datosDonacion){
+    var exec = require('child_process').exec;
+    var command = 'php -f encrypt.php';
+    exec(command,
+      function (error, stdout, stderr) {
+        // nodejs error
+        if (error !== null) {
+          console.log('exec error: ' + error);
+        }
+        else {
+              var resultado = stdout.substring(0,stdout.length-2);
+              console.log(stdout);
+        }
+    datosEncryptado={};
+    datosEncryptado.comercio="1";
+    datosEncryptado.json= resultado;
+    datosEncryptado.comercio=new Buffer(datosEncryptado.comercio).toString('base64');
+    
+    });
+  }
+  process.nextTick(function() {
+    console.log(datosEncryptado);
+    console.log(datosDonacion);
+    res.render('hacerdonacion',{
+      message : req.flash('message'),
+      title : 'Donar',
+      datosEncryptado: datosEncryptado,
+      datosDonacion: datosDonacion
+    });
   });
+})
+.post(function(req, res){
+  req.session.datosDonacion=req.body;
+  res.redirect('/hacerdonacion');
 });
 
 app.route('/contacto')

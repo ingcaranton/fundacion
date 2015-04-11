@@ -24,8 +24,10 @@ app.route('/')
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
       fechaCreacion: {$last: "$fechaCreacion" },
+      categoria: {$last: "$categoria" },
       linkImagen: {$last: "$linkImagen" },
-      titulo: {$last: "$titulo" }}},
+      titulo: {$last: "$titulo" }
+    }},
         function(error, ultimasEntradasPrimarias){
           console.log(ultimasEntradasPrimarias);
           res.render('index', {
@@ -63,6 +65,14 @@ app.route('/hacerdonacion')
     message : req.flash('message'),
     title : 'Donar',
     form: form
+  });
+});
+
+app.route('/contacto')
+.get(function(req, res){
+  res.render('contacto',{
+    message : req.flash('message'),
+    title : 'Contacto'
   });
 });
 

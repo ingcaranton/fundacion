@@ -8,6 +8,7 @@
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
+    llenarCards(ultimasEntradasPrimarias, ultimasEntradas);
     /*Selector de imagen*/
       $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
@@ -225,6 +226,14 @@
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
       });
+    /*FlechaBajar*/
+      $.fn.scrollBottom = function() { 
+        return $(document).height() - this.scrollTop() - this.height() - 200; 
+      };
+      $('a.scrolldown').click(function(){
+        $("html, body").animate({ scrollTop: $("#seccionesPrincipales").scrollBottom() }, 900);
+        return false;
+      });
     /*Imagenes y color Aleatorios Slider*/
       if(homeCargado){
         for(var i=0; i<7;i++){
@@ -364,5 +373,69 @@
   function posiciones(){
     for(var i=0; i<7; i++){
       aleatorio(0,6);
+    }
+  }
+  function sacarRepetidosUltimasEntradas(array1,array2){
+    var arrayPrimario=array1;
+    var arraySecundario=array2
+    for(var i=0; i<arraySecundario.length; i++){
+      for(var j=0; j<arrayPrimario.length; j++){
+        if(arrayPrimario[j].categoria!="sinCategoria"){
+          if(arrayPrimario[j].nombreEnlace==arraySecundario[i].nombreEnlace){
+            delete arraySecundario[i];
+            j=arrayPrimario.length;
+          }
+        }
+      }
+    }
+    for(var i=0; i<arraySecundario.length; i++){
+      if(!arraySecundario[i]){
+        arraySecundario.splice(i,1);
+      }
+    }
+    return arraySecundario;
+  }
+  function llenarCards(array1, array2){
+    var entradas=sacarRepetidosUltimasEntradas(array1,array2);  
+    for(var i=0;i<entradas.length;i++){
+      if(entradas[i]){
+        var contenidoCard = $("<div class='contenidoCard'></div>");
+        if(entradas[i].linkImagen){
+          var imagenDescripcion =$("<div class='imagenDescripcion'></div>");
+          var img = $("<img src='"+entradas[i].linkImagen+"'/>");
+          imagenDescripcion.append(img);
+          var descripcion = $("<div class='descripcion'></div>");
+          var p = $("<p>"+entradas[i].descripcion+"</p>");
+          descripcion.append(p);
+          contenidoCard.append(imagenDescripcion);
+          contenidoCard.append(descripcion);
+        }else{
+          var descripcionSinImagen = $("<div class='descripcionSinImagen'></div>");
+          var p2 = $("<p>"+entradas[i].descripcion+"</p>");
+          if(i==0){
+            descripcionSinImagen.attr("id","d2");
+            p2.attr("id","p2");
+          }else if(i==1){
+            descripcionSinImagen.attr("id","d4");
+            p2.attr("id","p4");
+          }else if(i==2){
+            descripcionSinImagen.attr("id","d5");
+            p2.attr("id","p5");
+          }else if(i==3){
+            descripcionSinImagen.attr("id","d7");
+            p2.attr("id","p7");
+          }else{
+            descripcionSinImagen.attr("id","d8");
+            p2.attr("id","p8");
+          }
+          descripcionSinImagen.append(p2);
+          contenidoCard.append(descripcionSinImagen);
+        }
+        var a = $("<a href='/'"+entradas[i].nombreEnlace+"></a>");
+        var leerMas = $("<div class='leerMas'>LEER +</div>");
+        a.append(leerMas);
+        $("#seccionesPrincipales #cards #card"+i).append(contenidoCard);
+        $("#seccionesPrincipales #cards #card"+i).append(a);
+      }
     }
   }

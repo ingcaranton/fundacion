@@ -1,14 +1,14 @@
 
 function menu_open(){
-  jQuery('header nav a').click(function(){
+  jQuery('header nav a.abrir').click(function(){
     if(jQuery(this).hasClass('open')){
       jQuery(this).removeClass('open');
          jQuery('header').animate({
-         'left':'-800px'
+         'left':'-400px'
       }, 300 , "linear");
     }
     else{
-        jQuery('header nav a').removeClass('open');
+        jQuery('header nav a.abrir').removeClass('open');
         jQuery(this).addClass('open');
          jQuery('header').animate({
          'left':'0'
@@ -198,4 +198,3 @@ jQuery(document).ready(function(){
   menu_verde();
   menu_amarillo();
 });
-

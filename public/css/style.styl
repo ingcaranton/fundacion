@@ -85,19 +85,19 @@ body
               text-align center
               b 
                 color #d0d0d0
-                font-size 13px
+                font-size 18px
             ul.submenus.dropdown-menu.colorSubmenu
               border 1px solid white
-              min-height 330px
+              min-height 300px
               padding-top -5px
               a b 
-                color white
-              p 
+                color white                
+              a:hover
                 color white
               .divImagenSubmenu
                 img
                   width 100%
-                  margin 100px 5%  0 -5%
+                  margin 70px 5%  0 -5%
           li.dropdown.yamm-fw.mas
             margin-left -7px
             a b 
@@ -133,14 +133,11 @@ body
               background-color #696363
   /*Login*/
     #login
-      width 1000px
+      width 500px
       min-height 250px
       padding 5%
-      p 
-        text-align justify
-        color white
       #datos 
-        width 40%
+        width 70%
         padding 2%
         margin auto
         input 
@@ -148,9 +145,21 @@ body
           margin 2%
           width 93%
           height 30px
-          color gray
+          color #696363
+        input::-webkit-input-placeholder
+          color #696363
+          font-size 16px
+        input:-moz-placeholder 
+          color #696363
+          font-size 16px
+        input::-moz-placeholder 
+          color #696363
+          font-size 16px
+        input:-ms-input-placeholder 
+          color #696363
+          font-size 16px
       #terminos
-        width 40%
+        width 70%
         padding 2% 3%
         margin auto
         input 
@@ -159,7 +168,7 @@ body
           height 18px 
           margin-top 0
           background-color white
-          color gray
+          color #696363
         span 
           color white
           float left
@@ -168,15 +177,15 @@ body
           float left
           text-decoration inherit
       button#botonLogin
-        width 33%
+        width 63%
         height 30px
-        margin-left 33%
+        margin-left 18%
         margin-top 2%
         text-align center
         background-color white
-        color gray
+        color #696363
       #registrarse
-        width 40%
+        width 70%
         padding 0 3%
         margin auto
         a 
@@ -184,7 +193,7 @@ body
       #olvidoContrasena
         padding 2% 3% 1% 3%
         margin auto
-        width 40%
+        width 70%
         a 
           color white
     #logout_administrar
@@ -198,10 +207,9 @@ body
   /*Fin Login*/
 
   #contenido
-    height auto
+    min-height 600px
     width 100%
-    margin-bottom 20%
-    
+    margin-bottom 1%
   /*Barra Lateral*/
     header
       bottom 4%
@@ -250,7 +258,7 @@ body
         #botonBuscar
           width 15%
           height 35px
-          margin-left 14%
+          margin-left 13%
           float left
           text-align center
           button
@@ -263,7 +271,7 @@ body
         width 80%
         margin 5% 10% 5% 10%
         float left
-        height 400px
+        height 450px
         overflow scroll
         ul 
           width 100%
@@ -280,89 +288,9 @@ body
             height 5px
             border-top 1px solid #e58799
             border-bottom 1px solid #e58799 
-      
-      #clubAmigos
-        padding 4% 4%
-        #tituloClub
-          border-bottom 2px solid white
-          h3
-            color white
-        p 
-          color white
-          text-align justify
-          padding 3%
-        .divTerminos
-          width 80%
-          padding 1%
-          margin-left 9%
-          margin-bottom 2%
-          text-align center
-          input.check[type=checkbox]
-            background-color transparent !important
-            border 1px solid white !important
-            width 20px !important
-            float left !important
-            box-shadow none !important
-          span 
-            font-size 10px
-            color white
-            a b
-              color white
-              font-size 10px 
-        #panelRegistro
-          width 50%
-          float left
-          text-align center
-          padding 3% 5%
-          h3 
-            margin-top 0
-            color white
-          input 
-            text-align center
-            background-color transparent
-            border 1px solid white
-            width 80%
-            color white
-            margin 2% 0
-          button
-            background-color white
-            width 80%
-            height 24px
-            color #696363
-            font-size 20px
-            padding-top 0
-        #panelIngresar
-          padding 3% 5%
-          width 50%
-          float left
-          text-align center
-          border-left 1px solid white
-          h3 
-            margin-top 0
-            color white
-          input
-            text-align center
-            width 80%
-            background-color transparent
-            border 1px solid white
-            color white
-            margin 2% 0
-          a#recuperarContrasena 
-            color white
-            font-size 10px
-            float left
-            padding 6% 0 0 11%
-          button
-            margin-left 2%
-            width 80%
-            background-color white
-            height 24px
-            color #696363
-            font-size 20px
-            padding-top 0
 
       #ayudaConexion
-        padding 4%
+        padding 7%
         #tituloAyuda
           border-bottom 2px solid white
           h3 
@@ -371,35 +299,10 @@ body
           padding 3%
           color white
           text-align justify
-        #serVoluntario
-          padding 4%
-          width 50%
-          text-align center
-          float left
-          border-right 1px solid white
-          h3
-            color white
-          input
-            margin 2% 10%
-            width 80%
-            height 30px
-            text-align center
-            background-color transparent
-            border 1px solid white
-            color white
-          button
-            color #696363
-            background-color white
-            width 80%
-            margin-left 0.5%
-            height 30px 
-            margin-top 2%
-            padding-top 0
-            font-size 20px
         #tuDonacionAqui
-          margin-top 4%
+          margin-top 10%
           float left
-          width 50%
+          width 100%
           height 24px
           padding-top 0
           text-align center
@@ -407,181 +310,32 @@ body
             color white
           button
             margin-top 2%
-            width 70%
+            width 100%
             height 100px
             background-color white 
             color #696363  
             b 
               font-size 30px       
 
-      #comunidad
-        padding 4% 4%
-        #tituloComunidad
-          border-bottom 2px solid white
-          h3 
-            color white
-        p
-          color white
-          padding 3%
-          text-align justify
-        #iconos
-          border-top 1px solid white
-          text-align center
-          padding 4% 0
-          img 
-            margin 0 3%
-            width 100px  
-
-      #tiendaSana
-        padding 4%
-        #tituloTienda
-          border-bottom 2px solid white
-          h3 
-            color white
-        p
-          color white
-          padding 3%
-          text-align justify
-        #botonTienda
-          margin-top 5%
-          text-align center
-          h3 
-            color white
-          button
-            margin 3% 25%
-            background-color white
-            height 120px
-            width 50%
-            color #696363
-            font-size 50px 
-
-      #videoConexion
-        padding 4%
-        text-align center
-        #tituloVideo
-          border-bottom 2px solid #696363
-          text-align left
-          h3 
-            color #696363
-        p 
-          color #696363
-          padding 3%
-          text-align justify
-          border-bottom 1px solid #696363
-        #video 
-          width 50%
-          padding 3%
-          text-align center
-          float left
-          video
-            width 100%
-            height 250px
-        #divVideo
-          float left
-          width 50%
-          padding 10% 3% 3% 0
-          text-align center
-          p 
-            width 100%
-            text-align center
-            padding 2%
-            border none
-          a 
-            text-decoration none
-            margin-top 8%
-            width 100%
-            height auto
-            border 1px solid #696363
-            padding 2%
-            span
-              width 100%
-              b 
-                width 100%
-                color #696363
-                height 30px
-              
-      #calendarioEventos
-        padding 2%
-        text-align center
-        #tituloCalendario
-          border-bottom 2px solid white
-          text-align left
-          h3 
-            color white
-        p 
-          color white
-          text-align justify
-          padding 3%
-        #eventos 
-          width 98%
-          padding 4%
-          margin-left 2%
-          .divEvento
-            float left
-            width 30%
-            padding 1%
-            text-align center
-            .titulo
-              span
-                b.numero 
-                  color white
-                  font-size 50px 
-                b.mes 
-                  color white
-                  font-size 25px
-            p 
-              border-top 1px solid white
-              color white
-              text-align center
-              margin-left 15%
-              width 130px
-            a 
-              padding 2%
-              text-decoration none
-              div 
-                width 130px
-                border 1px solid white
-                font-size 14px
-                margin-left 15%
-                color white
-
     .inner_header
-      height 83.4% 
-    #piePagina
-      position fixed
-      left 0px
-      bottom 0px
-      width 100%
-      background-color #696363
-      padding 2% 2%
-      #izquierda
-        width 32%
-        float left
-        input
-          width 300px
-          height 35px
-          border 1.5px solid white
-          color white
-          font-size 18px
-          background-color #696363
-          text-align center
-        button
-          width 70px
-          background-color white
-          color gray
-          margin-left 10px
-          margin-top -5px
-      #derecha
-        float left
-        width 68%
-        text-align right
-        padding 0.6% 0 0.6% 0
-        span
-          color white
-          font-size 12px
-        a 
-          color white
-          font-size 12px     
+      height 83% 
+  #piePagina
+    left 0
+    bottom 0 !important
+    float left
+    width 100%
+    height 60px
+    background-color #696363
+    padding 2% 2%
+    #derecha
+      margin auto 
+      text-align center
+      span
+        color white
+        font-size 16px
+      a 
+        color white
+        font-size 16px     
 /*Fin Layout*/      
    
 /*Home*/
@@ -608,6 +362,16 @@ body
                 color white             
       #shadow
         height 100px
+      #flechaAbajo
+        position absolute
+        width 80px
+        height 80px
+        right -20%
+        top 77%
+        img 
+          width 100%
+        img#img2
+          margin-top -55px
     a.flecha
       background-color transparent
       border-radius none
@@ -689,7 +453,6 @@ body
   #masContenido
     float left
     width 100%
-    margin-bottom 5%
     #linea1
       float left
       border-top 1.5px solid gray

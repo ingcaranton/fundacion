@@ -8,7 +8,7 @@ block content
       form(method="POST" action="/hacerdonacion") 
         input(type="text" name="nombre" placeholder="NOMBRE" required)
         input(type="text" name="apellido" placeholder="APELLIDO" required)           
-        input(type="text" name="telefono" placeholder="TELEFONO")
+        input(type="tel" name="telefono" placeholder="TELEFONO")
         input(type="email" name="email" placeholder="CORREO ELECTRONICO" required)
         span ¿CÓMO QUIERES AYUDARNOS?
         #opciones
@@ -27,7 +27,7 @@ block content
               input#checkDinero(type="checkbox" name="dinero")
               span
             span  &nbsp; EN DINERO
-        input#cantidad(type="text" name="cantidad" placeholder="CANTIDAD A DONAR" style="display:none")
+        input#cantidad(type="number" name="cantidad" placeholder="CANTIDAD A DONAR" style="display:none")
         textarea.form-control(rows="5" name="comentario" placeholder="COMENTARIO")
         button.btn(type="submit")
           b OK 
@@ -64,6 +64,7 @@ block content
           if datosDonacion.dinero
             span.rosado CANTIDAD A DONAR:
             span.gris #{datosDonacion.cantidad}
+            br
           span.rosado COMENTARIO:
           span.gris &nbsp; #{datosDonacion.comentario}
           button.btn(type="submit") 

@@ -329,6 +329,14 @@
         $("#paginaDonacion #formulario").css("display", "inherit");
         $("#paginaDonacion #confirmacion").css("display", "none");
       }
+    /*input cantidad*/
+      $("#paginaDonacion #formulario #opciones #dinero #checkDinero").click(function() { 
+        if($("#paginaDonacion #formulario #opciones #dinero #checkDinero").is(':checked')) {  
+          $("#paginaDonacion #formulario #cantidad").css("display", "inherit");  
+        } else {  
+          $("#paginaDonacion #formulario #cantidad").css("display", "none");
+        } 
+      });
   });
 
 /*Otras Funciones*/

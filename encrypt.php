@@ -4,10 +4,11 @@
 $key ='DC101AB52CF894CEE52F61731643B94F'; //Addcel
 $code='ed81fadcaf';//Addcel
 
+
+$valor=$argv[1];
 $idComercio='1';
 $idConcepto='Pago de Prueba';
 $idProducto='1001';
-$valor='100000.00';
 $impuesto = '16';
 $valorImpuesto = '16000';
 $concepto='Donacion a fundacion Conexion Bienestar';

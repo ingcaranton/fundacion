@@ -58,10 +58,11 @@ app.route('/todocontenido')
 app.route('/hacerdonacion')
 .get(function(req, res){
   var datosDonacion=req.session.datosDonacion;
-  var datosEncryptado;
-  if(req.datosDonacion){
+  var datosEncryptados;
+  if(datosDonacion && datosDonacion.dinero){
     var exec = require('child_process').exec;
-    var command = 'php -f encrypt.php';
+    var command = 'php -f encrypt.php '+datosDonacion.cantidad+'.00';
+    
     exec(command,
       function (error, stdout, stderr) {
         // nodejs error
@@ -69,28 +70,30 @@ app.route('/hacerdonacion')
           console.log('exec error: ' + error);
         }
         else {
-              var resultado = stdout.substring(0,stdout.length-2);
-              console.log(stdout);
-        }
-    datosEncryptado={};
-    datosEncryptado.comercio="1";
-    datosEncryptado.json= resultado;
-    datosEncryptado.comercio=new Buffer(datosEncryptado.comercio).toString('base64');
-    
+          var resultado = stdout;
+          datosEncryptados={};
+          datosEncryptados.comercio="1";
+          datosEncryptados.json= resultado;
+          datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
+          }
+
+      res.render('hacerdonacion',{
+        message : req.flash('message'),
+        title : 'Donar',
+        datosEncryptados: datosEncryptados,
+        datosDonacion: datosDonacion
+      });
     });
+  }else{
+        res.render('hacerdonacion',{
+        message : req.flash('message'),
+        title : 'Donar',
+        datosDonacion: datosDonacion
+      });
   }
-  process.nextTick(function() {
-    console.log(datosEncryptado);
-    console.log(datosDonacion);
-    res.render('hacerdonacion',{
-      message : req.flash('message'),
-      title : 'Donar',
-      datosEncryptado: datosEncryptado,
-      datosDonacion: datosDonacion
-    });
-  });
 })
 .post(function(req, res){
+  console.log(req.body);
   req.session.datosDonacion=req.body;
   res.redirect('/hacerdonacion');
 });

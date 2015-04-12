@@ -333,8 +333,10 @@
       $("#paginaDonacion #formulario #opciones #dinero #checkDinero").click(function() { 
         if($("#paginaDonacion #formulario #opciones #dinero #checkDinero").is(':checked')) {  
           $("#paginaDonacion #formulario #cantidad").css("display", "inherit");  
+          $("#paginaDonacion #formulario #cantidad").attr("required", true);
         } else {  
           $("#paginaDonacion #formulario #cantidad").css("display", "none");
+          $("#paginaDonacion #formulario #cantidad").attr("required", false);
         } 
       });
   });

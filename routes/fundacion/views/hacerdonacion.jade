@@ -61,6 +61,9 @@ block content
             if datosDonacion.dinero
               |&nbsp; Dinero
           br
+          if datosDonacion.dinero
+            span.rosado CANTIDAD A DONAR:
+            span.gris #{datosDonacion.cantidad}
           span.rosado COMENTARIO:
           span.gris &nbsp; #{datosDonacion.comentario}
           button.btn(type="submit") 

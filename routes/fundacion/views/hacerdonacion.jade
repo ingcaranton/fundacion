@@ -1,9 +1,7 @@
 extends ../../../views/layout
 block content
   #paginaDonacion
-    h1 Ayuda Conexión - Apóyanos
-    p klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj klfdklsdflk sdklfkjf sdlkfklf sklfsklfsdklf sdklfsdlkjf sdklfsldkf sfkdfklsdfjsd ksldfkl ldkfsdlkf dsklsdflksdfksdlf sdklfsdlkfsdfj 
-     
+    h1 Ayuda Conexión - Apóyanos  
     #formulario
       form(method="POST" action="/hacerdonacion") 
         input(type="text" name="nombre" placeholder="NOMBRE" required)
@@ -40,20 +38,20 @@ block content
           input(type="hidden" name="json" value=datosEncryptados.json)
           input(type="hidden" name="comercio" value=datosEncryptados.comercio)
           h4 Estos son los datos que ingresaste - ¿Deseas Continuar?
-          .rosado NOMBRE: 
-          .gris &nbsp; #{datosDonacion.nombre}
+          span.rosado NOMBRE: 
+          span.gris &nbsp; #{datosDonacion.nombre}
           br
-          .rosado APELLIDO: 
-          .gris &nbsp; #{datosDonacion.apellido}
+          span.rosado APELLIDO: 
+          span.gris &nbsp; #{datosDonacion.apellido}
           br
-          .rosado TELEFONO:
-          .gris &nbsp; #{datosDonacion.telefono}
+          span.rosado TELEFONO:
+          span.gris &nbsp; #{datosDonacion.telefono}
           br
-          .rosado CORREO ELECTRONICO:
-          .gris &nbsp; #{datosDonacion.email} 
+          span.rosado CORREO ELECTRONICO:
+          span.gris &nbsp; #{datosDonacion.email} 
           br
-          .rosado AYUDAR CON:
-          .gris 
+          span.rosado AYUDAR CON:
+          span.gris 
             if datosDonacion.tiempo
               |&nbsp; Tiempo
             if datosDonacion.especie
@@ -62,12 +60,12 @@ block content
               |&nbsp; Dinero
           br
           if datosDonacion.dinero
-            .rosado CANTIDAD A DONAR:
-            .gris #{datosDonacion.cantidad}
+            span.rosado CANTIDAD A DONAR:
+            span.gris #{datosDonacion.cantidad}
             br
-          .rosado COMENTARIO:
-          .gris &nbsp; #{datosDonacion.comentario}
-          button.btn#botonSiDonar(type="submit") 
+          span.rosado COMENTARIO:
+          span.gris &nbsp; #{datosDonacion.comentario}
+          button.btn(type="submit") 
             b SI 
-          button.btn#botonNoDonar(type="button" onclick="location.href='/hacerdonacion'")
+          button.btn(type="button" onclick="location.href='/hacerdonacion")
             b NO 

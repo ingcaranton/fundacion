@@ -330,7 +330,7 @@
         $("#paginaDonacion #confirmacion").css("display", "none");
       }
     /*input cantidad*/
-      $("#paginaDonacion #formulario #opciones #dinero #checkDinero").click(function() { 
+      $("#paginaDonacion #formulario #opciones #dinero #checkDinero").on("click",function() { 
         if($("#paginaDonacion #formulario #opciones #dinero #checkDinero").is(':checked')) {  
           $("#paginaDonacion #formulario #cantidad").css("display", "inherit");  
           $("#paginaDonacion #formulario #cantidad").attr("required", true);
@@ -338,6 +338,14 @@
           $("#paginaDonacion #formulario #cantidad").css("display", "none");
           $("#paginaDonacion #formulario #cantidad").attr("required", false);
         } 
+      });
+      $("#paginaDonacion #confirmacion #botonSiDonar").on("click",function(){
+          $("#paginaDonacion #formulario").reset();
+          $("#paginaDonacion #confirmacion").reset();   
+      });
+      $("#paginaDonacion #confirmacion #botonNoDonar").on("click",function(){
+          $("#paginaDonacion #formulario").reset();
+          $("#paginaDonacion #confirmacion").reset();   
       });
   });
 
@@ -458,4 +466,7 @@
         $("#seccionesPrincipales #cards #card"+i).append(a);
       }
     }
+  }
+  $.fn.reset = function () {
+    $(this).each (function() { this.reset(); });
   }

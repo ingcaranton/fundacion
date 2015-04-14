@@ -40,20 +40,20 @@ block content
           input(type="hidden" name="json" value=datosEncryptados.json)
           input(type="hidden" name="comercio" value=datosEncryptados.comercio)
           h4 Estos son los datos que ingresaste - ¿Deseas Continuar?
-          span.rosado NOMBRE: 
-          span.gris &nbsp; #{datosDonacion.nombre}
+          .rosado NOMBRE: 
+          .gris &nbsp; #{datosDonacion.nombre}
           br
-          span.rosado APELLIDO: 
-          span.gris &nbsp; #{datosDonacion.apellido}
+          .rosado APELLIDO: 
+          .gris &nbsp; #{datosDonacion.apellido}
           br
-          span.rosado TELEFONO:
-          span.gris &nbsp; #{datosDonacion.telefono}
+          .rosado TELEFONO:
+          .gris &nbsp; #{datosDonacion.telefono}
           br
-          span.rosado CORREO ELECTRONICO:
-          span.gris &nbsp; #{datosDonacion.email} 
+          .rosado CORREO ELECTRONICO:
+          .gris &nbsp; #{datosDonacion.email} 
           br
-          span.rosado AYUDAR CON:
-          span.gris 
+          .rosado AYUDAR CON:
+          .gris 
             if datosDonacion.tiempo
               |&nbsp; Tiempo
             if datosDonacion.especie
@@ -62,12 +62,12 @@ block content
               |&nbsp; Dinero
           br
           if datosDonacion.dinero
-            span.rosado CANTIDAD A DONAR:
-            span.gris #{datosDonacion.cantidad}
+            .rosado CANTIDAD A DONAR:
+            .gris #{datosDonacion.cantidad}
             br
-          span.rosado COMENTARIO:
-          span.gris &nbsp; #{datosDonacion.comentario}
-          button.btn(type="submit") 
+          .rosado COMENTARIO:
+          .gris &nbsp; #{datosDonacion.comentario}
+          button.btn#botonSiDonar(type="submit") 
             b SI 
-          button.btn(type="button" onclick="location.href='/hacerdonacion")
+          button.btn#botonNoDonar(type="button" onclick="location.href='/hacerdonacion'")
             b NO 

@@ -14,19 +14,17 @@ block content
         if pagina.categoria=="espiritual"
           - color="#fef000"
           - colorLetra="gray"
-        if pagina.categoria=="sinCategoria"
-          - color="#fff"
-          - colorLetra="gray"
-        div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color+"" data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
-          if pagina.linkImagen
-            .izquierda
-              img(src=pagina.linkImagen)
-          .derecha
-            span.titulo
-              b(style="color:"+colorLetra) #{pagina.titulo}
-            span(style="color:"+colorLetra) &nbsp; / &nbsp;
-            span.fecha(fecha=pagina.fechaCreacion style="color:"+colorLetra)
-            p(style="color:"+colorLetra) #{pagina.descripcion}
+        if pagina.categoria!="sinCategoria"
+          div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color+"" data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
+            if pagina.linkImagen
+              .izquierda
+                img(src=pagina.linkImagen)
+            .derecha
+              span.titulo
+                b(style="color:"+colorLetra) #{pagina.titulo}
+              span(style="color:"+colorLetra) &nbsp; / &nbsp;
+              span.fecha(fecha=pagina.fechaCreacion style="color:"+colorLetra)
+              p(style="color:"+colorLetra) #{pagina.descripcion}
     #botonSubir
       button.btn.btn-primary.scrollup(type="button") 
         b SUBIR

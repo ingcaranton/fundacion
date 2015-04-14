@@ -38,7 +38,7 @@ html
             li.dropdown.yamm-fw(id="li0")
               .colorMenu(id="colorMenu0")
               a.dropdown-toggle(href="/SobreNosotros" idDiv="colorMenu0" li="li0") 
-                b QUE SOMOS
+                b SOBRE NOSOTROS
             li.dropdown.yamm-fw(id="li1")
               .colorMenu(id="colorMenu1")
               a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu1" li="li1") 
@@ -50,19 +50,19 @@ html
                       .col-sm-8
                         ul.yamm-content.list-unstyled(role="menu")
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
-                                b &bull; JTA
+                              a.tituloSubmenu(tabindex="-1" href="/juntaDirectiva") 
+                                b &bull;  JUNTA DIRECTIVA
                             li.divider
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
-                                b &bull; EMBAJADORES
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
+                              a.tituloSubmenu(tabindex="-1" href="/direccionCientifica") 
                                 b &bull; DIRECCIÓN CIENTÍFICA
                             li.divider
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
+                              a.tituloSubmenu(tabindex="-1" href="/embajadores") 
+                                b &bull; EMBAJADORES
+                            li.divider
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/equipo") 
                                 b&bull; EQUIPO
                       .divImagenSubmenu.col-sm-4
                         img(src="/images/logoBlanco.png")
@@ -77,11 +77,11 @@ html
                       .col-sm-8
                         ul.yamm-content.list-unstyled(role="menu")
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
+                              a.tituloSubmenu(tabindex="-1" href="/plataformasDifusion") 
                                 b &bull; PLATAFORMAS DE DIFUSIÓN 
                             li.divider
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
+                              a.tituloSubmenu(tabindex="-1" href="/educacion") 
                                 b &bull; EDUCACIÓN
                             li.divider
                             li
@@ -97,22 +97,22 @@ html
                                 b &bull; TIENDA BIENESTAR
                             li.divider
                             li
-                              a.tituloSubmenu(tabindex="-1" href="/") 
+                              a.tituloSubmenu(tabindex="-1" href="/centrosReconexion") 
                                 b &bull; CENTROS DE RECONEXIÓN
                       .divImagenSubmenu.col-sm-4
                         img(src="/images/logoBlanco.png")
             li.dropdown.yamm-fw(id="li3")
               .colorMenu(id="colorMenu3")
               a.dropdown-toggle(href="/clubamigos" idDiv="colorMenu3" li="li3") 
-                b CLUB AMIGOS
+                b CLUB DE AMIGOS
             li.dropdown.yamm-fw(id="li4")
               .colorMenu(id="colorMenu4")
               a.dropdown-toggle(href="/hacerdonacion" idDiv="colorMenu4" li="li4") 
-                b APOYANOS
+                b APÓYANOS
             li.dropdown.yamm-fw(id="li5")
               .colorMenu(id="colorMenu5")
               a.dropdown-toggle(href="/contacto" idDiv="colorMenu5" li="li5") 
-                b CONTACTANOS 
+                b CONTÁCTANOS 
 
         ul#botonIngresar.nav.navbar-nav.navbar-right
           li.dropdown
@@ -143,17 +143,17 @@ html
                       #terminos 
                         input(type="checkbox" name="terminos" checked required)
                         span  &nbsp; ACEPTO &nbsp;
-                        a(href="javascript:void(0);") 
+                        a(href="/terminosCondiciones") 
                           b TÉRMINOS Y CONDICIONES
                       button#botonLogin(type="submit") OK
-                      #olvidoContrasena
+                      #olvidoContrasena(style="display:none")
                         a(href="#")
                           b RECUPERAR CONTRASEÑA
                       #registrarse
                         a(href="/user/signup")
                           b REGISTRARSE 
 
-    header.fixed(id="menuLateral")
+    header#menuLateral.fixed
       section
         article.inner_header.rosado.fixed
           #parametrosBuscar
@@ -180,13 +180,13 @@ html
             a.abrir(href="javascript:void(0);" id="rosado") 
               img(src="/images/buscar.svg")
           li
-            a(href="javascript:void(0);") 
+            a(href="https://www.facebook.com/conexionybienestar?ref=hl") 
               img(src="/images/facebookBlanco.svg")
           li
-            a(href="javascript:void(0);") 
+            a(href="https://twitter.com/conexbienestar") 
               img(src="/images/twitterBlanco.svg")
           li
-            a(href="javascript:void(0);") 
+            a(href="https://instagram.com/conexionbienestar/") 
               img(src="/images/instagramBlanco.svg")
           li
             a.abrir(href="javascript:void(0);" id="morado")
@@ -196,8 +196,8 @@ html
 
     #piePagina
       #derecha
-        a(href="javascript:void(0);") POLÍTICAS DE PRIVACIDAD
+        a(href="/PoliticasProteccionDatosPersonales") POLÍTICAS DE PRIVACIDAD
         span &nbsp; - &nbsp;
-        a(href="javascript:void(0);") TÉRMINOS Y CONDICIONES
+        a(href="/terminosCondiciones") TÉRMINOS Y CONDICIONES
         span &nbsp; - &nbsp;
         span FUNDACIÓN CONEXIÓN BIENESTAR &copy; 2015

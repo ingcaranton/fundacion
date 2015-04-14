@@ -79,7 +79,7 @@ app.route('/hacerdonacion')
 
       res.render('hacerdonacion',{
         message : req.flash('message'),
-        title : 'Donar',
+        title : 'Conexión Bienestar',
         datosEncryptados: datosEncryptados,
         datosDonacion: datosDonacion
       });
@@ -87,7 +87,7 @@ app.route('/hacerdonacion')
   }else{
         res.render('hacerdonacion',{
         message : req.flash('message'),
-        title : 'Donar',
+        title : 'Conexión Bienestar',
         datosDonacion: datosDonacion
       });
   }
@@ -102,7 +102,7 @@ app.route('/contacto')
 .get(function(req, res){
   res.render('contacto',{
     message : req.flash('message'),
-    title : 'Contacto'
+    title : 'Conexión Bienestar'
   });
 });
 
@@ -144,7 +144,7 @@ app.route('/:pagina')
             user : req.session.user,
             pagina: pagina,
             paginas: paginas,
-            title : pagina.titulo,
+            title : 'Conexión Bienestar',
             menus : menus
     		  });
     	   }else{

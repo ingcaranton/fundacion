@@ -1,6 +1,7 @@
 //Create and save a record in the DB
 module.exports.create = function(req, res, done) {
   console.log(req.body);
+  var nombreEnlace=req.body.nombreEnlace.replace(" ","");
   var fs = require('fs');
   db.pagina.findOne({ "nombreEnlace" :  req.body.nombreEnlace }, function(err, pagina) {
     if (err)
@@ -9,7 +10,7 @@ module.exports.create = function(req, res, done) {
       return done(new Error("Page is not created"), false, req.flash('message', 'That page link is already taken.'));
     }else {
       var newPagina = new db.pagina();
-        newPagina.nombreEnlace = req.body.nombreEnlace;
+        newPagina.nombreEnlace = nombreEnlace;
         newPagina.titulo = req.body.titulo;
         newPagina.descripcion = req.body.descripcion;
         newPagina.contenido =req.body.contenido;
@@ -69,10 +70,12 @@ module.exports.deleter = function(req, res, done) {
   );
 }
 module.exports.update = function(req, res, done) {
+
+  var nombreEnlaceUpdate=req.body.nombreEnlace.replace(" ","");
   var nombreEnlace=req.body.nombreEnlaceOriginal;
   
   var update= {};
-      update.nombreEnlace = req.body.nombreEnlace;
+      update.nombreEnlace = nombreEnlaceUpdate;
       update.titulo = req.body.titulo;
       update.descripcion = req.body.descripcion;
       update.contenido =req.body.contenido;

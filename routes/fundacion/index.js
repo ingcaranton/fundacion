@@ -3,6 +3,7 @@ var app = module.exports = express();
 var Buffer= require('Buffer');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
+var crudColaboradores = require('./../colaboradores/crud');
 
 app.set('views', __dirname + '/views');
 
@@ -94,8 +95,10 @@ app.route('/hacerdonacion')
 })
 .post(function(req, res){
   console.log(req.body);
-  req.session.datosDonacion=req.body;
-  res.redirect('/hacerdonacion');
+  crudColaboradores.create(req, res, function(err, colaborador, flash){
+    req.session.datosDonacion=req.body;
+    res.redirect('/hacerdonacion');
+  });
 });
 
 app.route('/respuestaAddCelColombia')

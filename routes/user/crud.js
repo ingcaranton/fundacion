@@ -5,7 +5,7 @@ module.exports.create = function(req, res, done) {
             if (err)
                 return done(err);
             if (user) 
-                return done(new Error("User not created"), false, req.flash('message', 'That nickName is already taken.'));
+                return done(new Error("User not created"), false, req.flash('message', 'El nickName ya existe.'));
              else {
 
                 var newUser= new db.user();
@@ -23,7 +23,7 @@ module.exports.create = function(req, res, done) {
                     if (error)
                         return done(error);          
                     if(user){
-                        return done(null, user, req.flash('message', 'new user created'));   
+                        return done(null, user, req.flash('message', 'nuevo usuario creado'));   
                     }
                 });
   
@@ -65,7 +65,7 @@ module.exports.update = function (req, res, done) {
             if (error)
                 return done(error);          
             else{
-                 return done(null, user, req.flash('message', 'user edited'));   
+                 return done(null, user, req.flash('message', 'usuario editado'));   
             }
         }
     );

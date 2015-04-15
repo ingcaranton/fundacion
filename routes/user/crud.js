@@ -10,8 +10,9 @@ module.exports.create = function(req, res, done) {
 
                 var newUser= new db.user();
                     newUser.nombre = req.body.nombre;
+                    newUser.apellido = req.body.apellido;
                     newUser.nickName = nickName;
-                    newUser.correo = req.body.correo;
+                    newUser.correo = req.body.email;
                     newUser.contrasena = req.body.contrasena;
                     if(req.body.rol){
                       newUser.rol = req.body.rol;
@@ -46,12 +47,14 @@ module.exports.update = function (req, res, done) {
     var newUser= new db.user();
         if(req.body.nombre)
             update.nombre = req.body.nombre;
+        if(req.body.apellido)
+            update.apellido = req.body.apellido;
         if(req.body.nickName)
             update.nickName = req.body.nickName.toLowerCase();
         if(req.body.contrasena)
             update.contrasena = req.body.contrasena;
-        if(req.body.correo)
-            update.correo = req.body.correo;
+        if(req.body.email)
+            update.correo = req.body.email;
         if(req.body.rol)
             update.rol = req.body.rol;
         else

@@ -76,7 +76,7 @@ app.route('/hacerdonacion')
           datosEncryptados.json= resultado;
           datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
           }
-
+          req.session.datosDonacion=null;
       res.render('hacerdonacion',{
         message : req.flash('message'),
         title : 'Conexión Bienestar',

@@ -5,18 +5,18 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
     title= title
     link(rel='stylesheet' type='text/css' href='/plugins/Slicebox/css/slicebox.css')
-    link(rel='stylesheet' href='https://s3.amazonaws.com/fundacion-bucket/bootstrap.min.css')
-    link(rel='stylesheet' type="text/css" href="https://s3.amazonaws.com/fundacion-bucket/yamm.css")
-    link(rel='stylesheet' href='https://s3.amazonaws.com/fundacion-bucket/core.css')
-    link(rel='stylesheet' href='https://s3.amazonaws.com/fundacion-bucket/style.css')
-    script(type='text/javascript' src='https://s3.amazonaws.com/fundacion-bucket/jquery-1.11.2.min.js')
-    script(type='text/javascript' src='https://s3.amazonaws.com/fundacion-bucket/bootstrap.min.js')
+    link(rel='stylesheet' href='/css/bootstrap.min.css')
+    link(rel='stylesheet' type="text/css" href="/css/fundacion-bucket/yamm.css")
+    link(rel='stylesheet' href='/css/core.css')
+    link(rel='stylesheet' href='/css/style.css')
+    script(type='text/javascript' src='/js/jquery-1.11.2.min.js')
+    script(type='text/javascript' src='/js/bootstrap.min.js')
     script(type='text/javascript' src='/plugins/ckeditor/ckeditor.js') 
-    script(type='text/javascript' src='https://s3.amazonaws.com/fundacion-bucket/bootbox.min.js') 
-    script(type='text/javascript' src='https://s3.amazonaws.com/fundacion-bucket/core.js') 
+    script(type='text/javascript' src='/js/bootbox.min.js') 
+    script(type='text/javascript' src='/js/core.js') 
     script(type='text/javascript' src='/plugins/Slicebox/js/modernizr.custom.46884.js')
     script(type='text/javascript' src='/plugins/Slicebox/js/jquery.slicebox.js')
-    script(type='text/javascript' src='https://s3.amazonaws.com/fundacion-bucket/script.js')  
+    script(type='text/javascript' src='/js/script.js')  
   body
     script(type="text/javascript").
       //Solo para etapa de desarrollo
@@ -69,7 +69,7 @@ html
                               a.tituloSubmenu(tabindex="-1" href="/auditoria") 
                                 b&bull; AUDITORIA 
                       .divImagenSubmenu.col-sm-4
-                        img(src="https://s3.amazonaws.com/fundacion-bucket/logoBlanco.png")
+                        img(src="/images/logoBlanco.png")
             li.dropdown.yamm-fw(id="li2")
               .colorMenu(id="colorMenu2")
               a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu2" li="li2") 
@@ -104,7 +104,7 @@ html
                               a.tituloSubmenu(tabindex="-1" href="/centrosReconexion") 
                                 b &bull; CENTROS DE RECONEXIÓN
                       .divImagenSubmenu.col-sm-4
-                        img(src="https://s3.amazonaws.com/fundacion-bucket/logoBlanco.png")
+                        img(src="/images/logoBlanco.png")
             li.dropdown.yamm-fw(id="li3")
               .colorMenu(id="colorMenu3")
               a.dropdown-toggle(href="/clubamigos" idDiv="colorMenu3" li="li3") 

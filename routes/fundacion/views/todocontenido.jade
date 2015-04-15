@@ -6,14 +6,14 @@ block content
         - var color
         - var colorLetra
         if pagina.categoria=="fisico"
-          - color="#36abd0"
+          - color="#00bb41"
           - colorLetra="#fff"
         if pagina.categoria=="emocional"
-          - color="#8762ab"
+          - color="#36abd0"
           - colorLetra="#fff"
         if pagina.categoria=="espiritual"
-          - color="#fef000"
-          - colorLetra="gray"
+          - color="#8762ab"
+          - colorLetra="#fff"
         if pagina.categoria!="sinCategoria"
           div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color+"" data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
             if pagina.linkImagen

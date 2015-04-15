@@ -14,7 +14,10 @@ block content
           b #{pagina.descripcion}
       #elemento
         | !{pagina.contenido}
-      #redesSociales
+      if pagina.nombreEnlace=="apoyar"
+        #botonHacerDonacion
+          button.btn(type="button" onclick="location.href='/hacerdonacion'")
+      #redesSociales(style="display:none")
         #facebook
           a(href="https://www.facebook.com/sharer/sharer.php?u= http://www.conexionbienestar.com/"+pagina.nombreEnlace)
             .icon 

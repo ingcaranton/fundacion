@@ -13,8 +13,8 @@ $impuesto = '16';
 $valorImpuesto = '16000';
 $concepto='Donacion a fundacion Conexion Bienestar';
 $moneda = 'COP';
-$urlComercio='http://192.155.93.202/phoneapp/post.php';
-$urlConfirmacion='http://192.155.93.202/phoneapp/post.php';
+$urlComercio='http://localhost:3000';
+$urlConfirmacion='http://localhost:3000/respuestaAddCelColombia';
 
 
 $cadena= $moneda.'^'.$idComercio.'^'.$idConcepto.'^'.$code.'^'.$valor.'';

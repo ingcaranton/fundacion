@@ -58,6 +58,7 @@ app.route('/todocontenido')
 app.route('/hacerdonacion')
 .get(function(req, res){
   var datosDonacion=req.session.datosDonacion;
+  req.session.datosDonacion=null;
   var datosEncryptados;
   if(datosDonacion && datosDonacion.dinero){
     var exec = require('child_process').exec;
@@ -70,13 +71,12 @@ app.route('/hacerdonacion')
           console.log('exec error: ' + error);
         }
         else {
-          var resultado = stdout;
+          var resultado = stdout.replace(" ","");
           datosEncryptados={};
           datosEncryptados.comercio="1";
           datosEncryptados.json= resultado;
           datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
           }
-          req.session.datosDonacion=null;
       res.render('hacerdonacion',{
         message : req.flash('message'),
         title : 'Conexión Bienestar',
@@ -96,6 +96,12 @@ app.route('/hacerdonacion')
   console.log(req.body);
   req.session.datosDonacion=req.body;
   res.redirect('/hacerdonacion');
+});
+
+app.route('/respuestaAddCelColombia')
+.post(function(req,res){
+  req.flash('message', 'Donacion exitosa');
+  res.redirect('/');
 });
 
 app.route('/contacto')

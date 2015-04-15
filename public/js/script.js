@@ -434,7 +434,7 @@
       divContenidoCard.append(divDescripcion);
     }else{
       var divDescripcionSinImagen = $("<div class='descripcionSinImagen' id='d"+id+"'></div>");
-      var p = $("<p id='p"+id+"'>"+entradasPrimarias[i].descripcion+"</p>");
+      var p = $("<p id='p"+id+"'>"+estructura.descripcion+"</p>");
       divDescripcionSinImagen.append(p);
       divContenidoCard.append(divDescripcionSinImagen);
     }

@@ -121,7 +121,7 @@
         var paddingDivMenu = $("#navbar-collapse-1").css("padding-left").slice(0,-2);
         var longitudMenu=$("#navbar-collapse-1 ul#ulPrincipal").css("width").slice(0,-2);
         left = ((longitudDivMenu-longitudMenu)/2)-paddingDivMenu;
-        $("#navbar-collapse-1 ul#ulPrincipal").css("margin-left",left+"px");
+        //$("#navbar-collapse-1 ul#ulPrincipal").css("margin-left",left+"px");
         var longitudVentana = $(window).width();
         var marginSubmenu = (longitudVentana-longitudMenu)/2;
         $("ul.submenus.dropdown-menu.colorSubmenu").css("margin", "0 "+marginSubmenu+"px");

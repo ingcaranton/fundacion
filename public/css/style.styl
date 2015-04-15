@@ -387,7 +387,6 @@ body
       max-width 980px
       margin 0 auto
       .card
-        margin 0 auto
         width 225px
         float left
         height 300px
@@ -635,7 +634,11 @@ body
       border-right 2px solid gray
   
   #contenidoPagina
-    width 980px
+    max-width 980px
+    width 100%
+    display block
+    box-sizing border-box
+    
     margin 0 auto
     padding-top 5%
     
@@ -1199,3 +1202,45 @@ body
         height 25px
         padding-top 3px
 /*fin contacto*/
+
+@media (max-width:800px)
+  #seccionesPrincipales #cards .card
+    margin 0 2%
+    width 96%
+    display block
+    box-sizing border-box
+    
+  .navbar .container-fluid #navbar-collapse-1
+    width 100%
+    max-width 100%
+
+    ul.nav.navbar-nav
+      width 100%
+      margin 20px auto
+  
+  header
+    left 430px
+    display none
+    nav 
+      bottom 0
+      right 0
+      left 0
+      top initial
+      margin 0 auto
+      width 100%
+      position fixed
+      
+      ul
+        text-align center
+        height 45px
+        background rgb(158,158,158)
+        margin-bottom 0
+
+      li
+        display inline-block
+
+      
+  #piePagina
+    height initial
+    a
+      display block

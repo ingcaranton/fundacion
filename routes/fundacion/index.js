@@ -22,6 +22,7 @@ app.route('/')
     db.pagina.aggregate({$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
+      fechaCreacion: {$last: "$fechaCreacion" },
       categoria: {$last: "$categoria" },
       linkImagen: {$last: "$linkImagen" },
       titulo: {$last: "$titulo" }

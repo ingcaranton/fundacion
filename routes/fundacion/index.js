@@ -18,7 +18,7 @@ app.use(function(req, res, next){
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({publicar:true}).sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
+  db.pagina.find({publicar:true}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
     db.pagina.aggregate({$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
@@ -28,7 +28,6 @@ app.route('/')
       titulo: {$last: "$titulo" }
     }},
         function(error, ultimasEntradasPrimarias){
-          console.log(ultimasEntradasPrimarias);
           res.render('index', {
             title : 'Conexión Bienestar',
             ultimasEntradas:ultimasEntradas,

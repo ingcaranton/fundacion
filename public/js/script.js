@@ -343,17 +343,29 @@
           $("#paginaDonacion #formulario #cantidad").attr("required", false);
         } 
       });
-      $("#paginaDonacion #confirmacion #botonSiDonar").on("click",function(){
-          $("#paginaDonacion #formulario").reset();
-          $("#paginaDonacion #confirmacion").reset();   
-      });
-      $("#paginaDonacion #confirmacion #botonNoDonar").on("click",function(){
-          $("#paginaDonacion #formulario").reset();
-          $("#paginaDonacion #confirmacion").reset();   
-      });
     /*posicionFooter*/
-      var heightVentana = heightWindow();
+      var heightFooter = ($("#piePagina").css("height")).slice(0,-2);
+      var heightVentana = heightWindow()-heightFooter;
       $("#contenido").css("min-height",heightVentana+"px");
+    /*llenar divs principales home*/
+      for(var i=0; i<ultimasEntradasPrimarias.length; i++){
+        if(ultimasEntradasPrimarias[i].categoria=="fisico"){
+          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 1);        
+          $("#contenido #seccionesPrincipales #cards #cardFisico").append(contenido);
+        }else if(ultimasEntradasPrimarias[i].categoria=="emocional"){
+          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 3); 
+          $("#contenido #seccionesPrincipales #cards #cardEmocional").append(contenido);
+        }else if(ultimasEntradasPrimarias[i].categoria=="espiritual"){
+          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 6); 
+          $("#contenido #seccionesPrincipales #cards #cardEspiritual").append(contenido);
+        }
+      }
+    /*redirecciones pagina donacion*/
+      $("#paginaDonacion #confirmacion #tiempoEspecie").on("click",function(){
+        bootbox.alert("Muchas gracias por tu apoyo, pronto estaremos en contacto!!", function(result){
+          location.href="/";
+        });
+      });
   });
 
 /*Otras Funciones*/
@@ -408,6 +420,29 @@
     for(var i=0; i<5; i++){
       aleatorio(0,4);
     }
+  }
+  function llenarCardsPrincipales(estructura, id){
+    var divContenidoCard = $("<div class='contenidoCard'></div>");
+    if(estructura.linkImagen){
+      var divImagenDescripcion = $("<div class='imagenDescripcion'></div>");
+      var img = $("<img src='"+estructura.linkImagen+"'></img>");
+      divImagenDescripcion.append(img);
+      var divDescripcion = $("<div class='descripcion'></div>");
+      var p = $("<p>"+estructura.descripcion+"</p>");
+      divDescripcion.append(p);
+      divContenidoCard.append(divImagenDescripcion);
+      divContenidoCard.append(divDescripcion);
+    }else{
+      var divDescripcionSinImagen = $("<div class='descripcionSinImagen' id='d"+id+"'></div>");
+      var p = $("<p id='p"+id+"'>"+entradasPrimarias[i].descripcion+"</p>");
+      divDescripcionSinImagen.append(p);
+      divContenidoCard.append(divDescripcionSinImagen);
+    }
+    var a = $("<a href='/"+estructura.nombreEnlace+"'></a>");
+    var divLeerMas = $("<div class='leerMas'>LEER +</div>");
+    a.append(divLeerMas);
+    divContenidoCard.append(a);
+    return divContenidoCard;
   }
   function sacarRepetidosUltimasEntradas(array1,array2){
     var arrayPrimario=array1;

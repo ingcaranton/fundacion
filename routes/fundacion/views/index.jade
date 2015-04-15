@@ -21,47 +21,11 @@ block content
   #seccionesPrincipales
     #cards
       #cardFisico.card
-        if ultimasEntradasPrimarias[0] 
-          .contenidoCard
-            if ultimasEntradasPrimarias[0].linkImagen
-              .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[0].linkImagen)
-              .descripcion 
-                p #{ultimasEntradasPrimarias[0].descripcion}
-            else 
-              .descripcionSinImagen(id="d1")
-                p#p1 #{ultimasEntradasPrimarias[0].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[0].nombreEnlace) 
-           .leerMas LEER +
       #card1.card
       #cardEmocional.card
-        if ultimasEntradasPrimarias[2]
-          .contenidoCard
-            if ultimasEntradasPrimarias[2].linkImagen
-              .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[2].linkImagen)
-              .descripcion 
-                p #{ultimasEntradasPrimarias[2].descripcion}
-            else 
-              .descripcionSinImagen(id="d3")
-                p#p3 #{ultimasEntradasPrimarias[2].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[2].nombreEnlace) 
-           .leerMas LEER + 
       #card2.card
       #card3.card
       #cardEspiritual.card
-        if ultimasEntradasPrimarias[3]
-          .contenidoCard 
-            if ultimasEntradasPrimarias[3].linkImagen
-              .imagenDescripcion
-                img(src=ultimasEntradasPrimarias[3].linkImagen)
-              .descripcion 
-                p #{ultimasEntradasPrimarias[3].descripcion}
-            else 
-              .descripcionSinImagen(id="d6")
-                p#p6 #{ultimasEntradasPrimarias[3].descripcion}
-          a(href="/"+ultimasEntradasPrimarias[3].nombreEnlace) 
-           .leerMas LEER +
       #card4.card
       #card5.card 
         

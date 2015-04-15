@@ -25,47 +25,79 @@ block content
               input#checkDinero(type="checkbox" name="dinero")
               span
             span  &nbsp; EN DINERO
-        input#cantidad(type="number" name="cantidad" placeholder="CANTIDAD A DONAR" style="display:none")
+        input#cantidad(type="number" name="cantidad" placeholder="CANTIDAD A DONAR MINIMO  $30.000" min="30000" style="display:none")
         textarea.form-control(rows="5" name="comentario" placeholder="COMENTARIO")
         button.btn(type="submit")
           b OK 
 
     #confirmacion
-      if datosDonacion && datosEncryptados
+      if datosDonacion
         script(type="text/javascript").
           vistaDonacion=true;
-        form(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
-          input(type="hidden" name="json" value=datosEncryptados.json)
-          input(type="hidden" name="comercio" value=datosEncryptados.comercio)
+        if datosEncryptados
+          form#formConfirmacion(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
+            input(type="hidden" name="json" value=datosEncryptados.json)
+            input(type="hidden" name="comercio" value=datosEncryptados.comercio)
+            h4 Estos son los datos que ingresaste - ¿Deseas Continuar?
+            #datosDonacion
+              span.rosado NOMBRE: 
+              span.gris &nbsp; #{datosDonacion.nombre}
+              br
+              span.rosado APELLIDO: 
+              span.gris &nbsp; #{datosDonacion.apellido}
+              br
+              span.rosado TELEFONO:
+              span.gris &nbsp; #{datosDonacion.telefono}
+              br
+              span.rosado CORREO ELECTRONICO:
+              span.gris &nbsp; #{datosDonacion.email} 
+              br
+              span.rosado AYUDAR CON:
+              span.gris 
+                if datosDonacion.tiempo
+                  |&nbsp; Tiempo
+                if datosDonacion.especie
+                  |&nbsp; Especie
+                if datosDonacion.dinero
+                  |&nbsp; Dinero
+              br
+              if datosDonacion.dinero
+                span.rosado CANTIDAD A DONAR:
+                span.gris #{datosDonacion.cantidad}
+                br
+              span.rosado COMENTARIO:
+              span.gris &nbsp; #{datosDonacion.comentario}
+            button#bDinero.btn(type="submit")
+              b SI             
+            button.btn(type="button" onclick="location.href='/hacerdonacion'")
+              b NO 
+        else
           h4 Estos son los datos que ingresaste - ¿Deseas Continuar?
-          span.rosado NOMBRE: 
-          span.gris &nbsp; #{datosDonacion.nombre}
-          br
-          span.rosado APELLIDO: 
-          span.gris &nbsp; #{datosDonacion.apellido}
-          br
-          span.rosado TELEFONO:
-          span.gris &nbsp; #{datosDonacion.telefono}
-          br
-          span.rosado CORREO ELECTRONICO:
-          span.gris &nbsp; #{datosDonacion.email} 
-          br
-          span.rosado AYUDAR CON:
-          span.gris 
-            if datosDonacion.tiempo
-              |&nbsp; Tiempo
-            if datosDonacion.especie
-              |&nbsp; Especie
-            if datosDonacion.dinero
-              |&nbsp; Dinero
-          br
-          if datosDonacion.dinero
-            span.rosado CANTIDAD A DONAR:
-            span.gris #{datosDonacion.cantidad}
+          #datosDonacion
+            span.rosado NOMBRE: 
+            span.gris &nbsp; #{datosDonacion.nombre}
             br
-          span.rosado COMENTARIO:
-          span.gris &nbsp; #{datosDonacion.comentario}
-          button.btn(type="submit") 
+            span.rosado APELLIDO: 
+            span.gris &nbsp; #{datosDonacion.apellido}
+            br
+            span.rosado TELEFONO:
+            span.gris &nbsp; #{datosDonacion.telefono}
+            br
+            span.rosado CORREO ELECTRONICO:
+            span.gris &nbsp; #{datosDonacion.email} 
+            br
+            span.rosado AYUDAR CON:
+            span.gris 
+              if datosDonacion.tiempo
+                |&nbsp; Tiempo
+              if datosDonacion.especie
+                |&nbsp; Especie
+              if datosDonacion.dinero
+                |&nbsp; Dinero
+            br
+            span.rosado COMENTARIO:
+            span.gris &nbsp; #{datosDonacion.comentario}
+          button#tiempoEspecie.btn(type="button")
             b SI 
-          button.btn(type="button" onclick="location.href='/hacerdonacion")
-            b NO 
+          button.btn(type="button" onclick="location.href='/hacerdonacion'")
+            b NO

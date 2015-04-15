@@ -8,17 +8,14 @@ app.set('views', __dirname + '/views');
 
 app.route('/signup')
 .get(function(req, res){
-  db.pagina.find({},"nombreEnlace titulo descripcion").exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus){
       res.render('signup', {
         message : req.flash('message'),
         user : req.session.user,
-        paginas: paginas,
         title : "Registrar",
         menus : menus
       });
     });
-  });
 })
 .post(function(req,res){
   var smtpTransport = nodemailer.createTransport("SMTP",{

@@ -9,15 +9,12 @@ app.set('views', __dirname + '/views');
 
 app.route('/nueva')
 .get(function(req, res){
-  db.pagina.find({publicar:true},"nombreEnlace titulo descripcion").exec(function(error, paginas){
-    crudMenu.read(req, res, function(err, menus){
-      res.render('nueva', {
-        message : req.flash('message'),
-        user : req.session.user,
-        paginas: paginas,
-        title : "Nueva pagina",
-        menus : menus
-      });
+  crudMenu.read(req, res, function(err, menus){
+    res.render('nueva', {
+      message : req.flash('message'),
+      user : req.session.user,
+      title : "Nueva pagina",
+      menus : menus
     });
   });
 });
@@ -25,7 +22,6 @@ app.route('/nueva')
 app.route('/editar/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga
-  db.pagina.find({publicar:true},"nombreEnlace titulo").exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus){
       crudPagina.read(req, res, function(err, pagina){
         if(pagina){
@@ -33,7 +29,6 @@ app.route('/editar/:pagina')
             message : req.flash('message'),
             user : req.session.user,
             pagina: pagina,
-            paginas:paginas,
             title : "Editar "+req.params.pagina,
             menus : menus
           });
@@ -45,7 +40,6 @@ app.route('/editar/:pagina')
          }
       });
     });
-  });
 });
 
 app.route('/guardar')

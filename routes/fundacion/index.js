@@ -8,14 +8,11 @@ var crudColaboradores = require('./../colaboradores/crud');
 app.set('views', __dirname + '/views');
 
 app.use(function(req, res, next){
-  db.pagina.find({publicar:true}).exec(function(error, paginas){
-    db.menu.find().exec(function(errorMenu, menus){
-      res.locals.paginas = paginas;
-      res.locals.user = req.session.user,
-      res.locals.menus = menus;
-      res.locals.message = req.flash('message'),
-      next();
-    });
+  db.menu.find().exec(function(errorMenu, menus){
+    res.locals.user = req.session.user,
+    res.locals.menus = menus;
+    res.locals.message = req.flash('message'),
+    next();
   });
 });
 
@@ -25,7 +22,6 @@ app.route('/')
     db.pagina.aggregate({$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
-      fechaCreacion: {$last: "$fechaCreacion" },
       categoria: {$last: "$categoria" },
       linkImagen: {$last: "$linkImagen" },
       titulo: {$last: "$titulo" }
@@ -43,7 +39,7 @@ app.route('/')
 
 app.route('/todocontenido')
 .get(function(req, res){
-  db.pagina.find({publicar:true}).exec(function(error, paginas){
+  db.pagina.find({publicar:true}, 'nombreEnlace titulo descripcion fechaCreacion linkImagen categoria').exec(function(error, paginas){
     db.menu.find().exec(function(errorMenu, menus){
       res.render('todocontenido', {
         message : req.flash('message'),
@@ -144,25 +140,22 @@ app.route('/enviarContacto')
 
 app.route('/:pagina')
 .get(function(req, res) {
-  db.pagina.find({publicar:true}).exec(function(error, paginas){
-    db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
-      db.menu.find().exec(function(errorMenu, menus){
-        if(pagina){
-          res.render('pagina', {
-            message : req.flash('message'),
-            user : req.session.user,
-            pagina: pagina,
-            paginas: paginas,
-            title : 'Conexión Bienestar',
-            menus : menus
-    		  });
-    	   }else{
-          //Can not find the record, renders not found
-            res.render('../../../views/error', {
-              error: {stack:"not found"}
-            });
-         }
-      });
+  db.pagina.findOne({ nombreEnlace: req.params.pagina }, function(error, pagina){
+    db.menu.find().exec(function(errorMenu, menus){
+      if(pagina){
+        res.render('pagina', {
+          message : req.flash('message'),
+          user : req.session.user,
+          pagina: pagina,
+          title : 'Conexión Bienestar',
+          menus : menus
+  		  });
+  	   }else{
+        //Can not find the record, renders not found
+          res.render('../../../views/error', {
+            error: {stack:"not found"}
+          });
+       }
     });
   });
 });

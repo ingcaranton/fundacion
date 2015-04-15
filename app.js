@@ -25,8 +25,8 @@ app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({limit: '50mb'}));
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '200mb'}));
+app.use(bodyParser.json({limit: '200mb'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //Sesiones y cokies

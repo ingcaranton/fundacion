@@ -2,7 +2,11 @@
   var pag={};
   var ultimasEntradas={};
   var ultimasEntradasPrimarias={};
-  var arrayImagenesSlider=["images/imageSlider/1.jpg","images/imageSlider/2.jpg","images/imageSlider/3.jpg","images/imageSlider/4.jpg","images/imageSlider/5.jpg","images/imageSlider/6.jpg","images/imageSlider/7.jpg"];
+  var arrayImagenesSlider=[{src:"images/imageSlider/1.png",url:"/Los5principiosdelAcompanar",descripcion:"Programa para el cuidado del ser y sus relaciones, 7 sesiones que permiten identificar las dificultades y las potencialidades de los participantes, encontrando caminos de transformación que mejoran los escenarios de vida de las personas, las familias y las comunidades."},
+    {src:"images/imageSlider/2.jpg",url:"/croquetazanahoria",descripcion:"Las zanahorias son una de las hortalizas que más se producen a nivel mundial. Por contener carotenoides, numerosos estudios la han vinculado con la prevención del cáncer de mama. Además, es fuente de vitaminas A, B, C y E. También contiene minerales y antioxidantes."},
+    {src:"images/imageSlider/3.jpg",url:"/hamburguesavegetariana",descripcion:"Aquí tienes 4 opciones de hamburguesa vegetariana, para preparar y disfrutar de un rico y saludable almuerzo. Puedes variar y combinar los distintos ingredientes que más te gusten, para preparar tu hamburguesa perfecta."},
+    {src:"images/imageSlider/4.jpg",url:"/semillastradicionales",descripcion:"Sembrar, cosechar y cocinar nuestros alimentos nos permite retornar al origen de la vida, a nuestra cultura a nuestro legado. Somos como las semillas diversas, coloridas y sonrientes."},
+    {src:"images/imageSlider/5.jpg",url:"/domoconsacosdetierra",descripcion:"Los domos hechos con sacos de tierra no son algo novedoso, estas estructuras se han utilizado desde siempre. Actualmente la Bioconstrucción los presenta como una opción equilibrada y amigable  con el medio ambiente, para así generar un  espacio cómodo  y  a  bajo costo."}];
   var homeCargado=false;
   var vistaDonacion=false;
   var arrayColor=["#fe889b","#d273cd","#8762ab","#36abd0","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
@@ -237,10 +241,10 @@
       });
     /*Imagenes y color Aleatorios Slider*/
       if(homeCargado){
-        for(var i=0; i<7;i++){
-          var img = $('<img src='+arrayImagenesSlider[usados[i]]+'>');
-          var h3 = $('<h3>Descripción Imagen lsdkfjfsk dkfsklfks sdkjfsdksd dslkfskljd sdkfskjf sdlfkfkl sdlksfk ssdfds sdfsdf sdsfdf sdfsd</h3>')
-          var a = $('<a href="javascript:void(0);"><div class="divLinkImagen"><b>LEER +</b></div></a>');
+        for(var i=0; i<arrayImagenesSlider.length;i++){
+          var img = $('<img src="'+arrayImagenesSlider[usados[i]].src+'">');
+          var h3 = $('<h3 style="font-size:14px">'+arrayImagenesSlider[usados[i]].descripcion+'</h3>')
+          var a = $('<a href="'+arrayImagenesSlider[usados[i]].url+'"><div class="divLinkImagen"><b style="font-size:14px">LEER +</b></div></a>');
           var div = $('<div class="sb-description"></div>');
           div.append(h3);
           div.append(a);
@@ -330,7 +334,7 @@
         $("#paginaDonacion #confirmacion").css("display", "none");
       }
     /*input cantidad*/
-      $("#paginaDonacion #formulario #opciones #dinero #checkDinero").click(function() { 
+      $("#paginaDonacion #formulario #opciones #dinero #checkDinero").on("click",function() { 
         if($("#paginaDonacion #formulario #opciones #dinero #checkDinero").is(':checked')) {  
           $("#paginaDonacion #formulario #cantidad").css("display", "inherit");  
           $("#paginaDonacion #formulario #cantidad").attr("required", true);
@@ -339,6 +343,17 @@
           $("#paginaDonacion #formulario #cantidad").attr("required", false);
         } 
       });
+      $("#paginaDonacion #confirmacion #botonSiDonar").on("click",function(){
+          $("#paginaDonacion #formulario").reset();
+          $("#paginaDonacion #confirmacion").reset();   
+      });
+      $("#paginaDonacion #confirmacion #botonNoDonar").on("click",function(){
+          $("#paginaDonacion #formulario").reset();
+          $("#paginaDonacion #confirmacion").reset();   
+      });
+    /*posicionFooter*/
+      var heightVentana = heightWindow();
+      $("#contenido").css("min-height",heightVentana+"px");
   });
 
 /*Otras Funciones*/
@@ -390,8 +405,8 @@
   } 
 
   function posiciones(){
-    for(var i=0; i<7; i++){
-      aleatorio(0,6);
+    for(var i=0; i<5; i++){
+      aleatorio(0,4);
     }
   }
   function sacarRepetidosUltimasEntradas(array1,array2){
@@ -458,4 +473,22 @@
         $("#seccionesPrincipales #cards #card"+i).append(a);
       }
     }
+  }
+  $.fn.reset = function () {
+    $(this).each (function() { this.reset(); });
+  }
+
+  function heightWindow() {
+    var myHeight = 0;
+    if( typeof( window.innerWidth ) == 'number' ) {
+      //No-IE
+      myHeight = window.innerHeight;
+    } else if( document.documentElement && document.documentElement.clientHeight) {
+      //IE 6+
+      myHeight = document.documentElement.clientHeight;
+    } else if( document.body && document.body.clientHeight) {
+      //IE 4 compatible
+      myHeight = document.body.clientHeight;
+    }
+    return myHeight;
   }

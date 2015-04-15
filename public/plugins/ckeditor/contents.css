@@ -6,8 +6,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 body
 {
 	/* Font */
-	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
-	font-size: 12px;
+	font-family: "Roboto-Black";
+    src: url("/fonts/Roboto-Black.ttf") format("truetype");
+    font-size: 12px;
 
 	/* Text color */
 	color: #333;
@@ -27,7 +28,8 @@ body
 blockquote
 {
 	font-style: italic;
-	font-family: Georgia, Times, "Times New Roman", serif;
+	font-family: "Roboto-Black";
+    src: url("/fonts/Roboto-Black.ttf") format("truetype");
 	padding: 2px 0;
 	border-style: solid;
 	border-color: #ccc;

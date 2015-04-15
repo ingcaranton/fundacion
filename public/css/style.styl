@@ -64,7 +64,7 @@ body
         margin-left 1%
         float left
         img 
-          width 100%
+          height 100%
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1 
@@ -85,7 +85,7 @@ body
               text-align center
               b 
                 color #d0d0d0
-                font-size 18px
+                font-size 16px
             ul.submenus.dropdown-menu.colorSubmenu
               border 1px solid white
               min-height 300px
@@ -207,7 +207,6 @@ body
   /*Fin Login*/
 
   #contenido
-    min-height 600px
     width 100%
     margin-bottom 1%
   /*Barra Lateral*/
@@ -271,11 +270,12 @@ body
         width 80%
         margin 5% 10% 5% 10%
         float left
-        height 400px
+        height 80%
         overflow scroll
         ul 
           width 100%
           height 100%
+          list-style none
           li 
             margin 2% 5% 2% 5%
             a
@@ -316,9 +316,8 @@ body
             color #696363  
             b 
               font-size 30px       
-
     .inner_header
-      height 83% 
+      height 550px 
   #piePagina
     left 0
     bottom 0 !important
@@ -341,7 +340,7 @@ body
 /*Home*/
   #slider
     #sliderImagenes
-      padding 3% 0
+      padding-top 3%
       width 100%
       li 
         border 1.5px solid white
@@ -359,15 +358,13 @@ body
               height 30px 
               border 1.5px solid white
               b 
-                color white             
-      #shadow
-        height 100px
+                color white       
       #flechaAbajo
         position absolute
         width 80px
         height 80px
         right -20%
-        top 77%
+        top 75%
         img 
           width 100%
         img#img2
@@ -1083,12 +1080,17 @@ body
         text-align center
         width 100%
         color #ff889b
-      span.rosado
+      .rosado
         color #ff889b
         margin-left 18%
-      span.gris
+        float left
+        min-width 180px
+      .gris
         color #696363
-        margin-right 15%
+        float left
+        max-width 200px
+        margin-right 5%
+        overflow-x hidden
       button
         width 40%
         margin 2% 10% 2% 25%

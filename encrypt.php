@@ -1,32 +1,31 @@
 <?php
 
 
-$key ='DC101AB52CF894CEE52F61731643B94F'; //Addcel
-$code='ed81fadcaf';//Addcel
-
-
+$key = "CA7376561BB1CC5BFF78D871BAC964DD";
+$code = "GwD412r7";
 $valor=$argv[1];
-$idComercio='1';
-$idConcepto='Pago de Prueba';
-$idProducto='1001';
-$impuesto = '16';
-$valorImpuesto = '16000';
-$concepto='Donacion a fundacion Conexion Bienestar';
-$moneda = 'COP';
-$urlComercio='http://localhost:3000';
-$urlConfirmacion='http://localhost:3000/respuestaAddCelColombia';
-
+$idComercio = '7';
+$idTipoTransaccion = "1";
+$pagos = "1";
+$idConcepto = "prueba Fundacion";
+$idProducto = "1006";
+$impuesto = "16";
+$valorImpuesto = "0";
+$concepto = "Donacion Bienestar";
+$moneda = "COP ";
+$urlComercio = "http://conexionbienestar.com";
+$urlConfirmacion = "http://conexionbienestar.com/respuestaAddCelColombia";
 
 $cadena= $moneda.'^'.$idComercio.'^'.$idConcepto.'^'.$code.'^'.$valor.'';
 
 
 $certificado=base64_encode(tobin(md5($cadena)));
 
-$data ='{"idComercio":'.$idComercio.',"idTipoTransaccion":1,"pagos":1,"idProducto":"'.$idProducto
+$data ='{"idComercio":'.$idComercio.',"idTipoTransaccion":'.$idTipoTransaccion.',"pagos":'.$pagos.',"idProducto":"'.$idProducto
 .'","idConcepto":"'.$idConcepto.'","concepto":"'.$concepto.'","valor":'.$valor.',"impuesto":'.$impuesto.
-',"valorImpuesto":'.$valorImpuesto.',"moneda":"'.$moneda.'","secureCode":"ed81fadcaf","certificado":"'
+',"valorImpuesto":'.$valorImpuesto.',"moneda":"'.$moneda.'","secureCode":"'.$code.'","certificado":"'
 .$certificado.'","urlComercio":"'.$urlComercio.'" ,"urlConfirmacion":"'.$urlConfirmacion.'"}';
- 
+
 
 if($valor>0){
 echo encrypt3DES(tobin($key),$data);

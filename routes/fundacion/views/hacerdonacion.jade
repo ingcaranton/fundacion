@@ -10,6 +10,11 @@ block content
         input(type="email" name="email" placeholder="CORREO ELECTRONICO" required)
         span ¿CÓMO QUIERES AYUDARNOS?
         #opciones
+          #dinero 
+            label.checkboxDonacion
+              input#checkDinero(type="checkbox" name="dinero")
+              span
+            span  &nbsp; EN DINERO
           #tiempo 
             label.checkboxDonacion
               input(type="checkbox" name="tiempo")
@@ -20,12 +25,7 @@ block content
               input(type="checkbox" name="especie")
               span
             span  &nbsp; EN ESPECIE
-          #dinero 
-            label.checkboxDonacion
-              input#checkDinero(type="checkbox" name="dinero")
-              span
-            span  &nbsp; EN DINERO
-        input#cantidad(type="number" name="cantidad" placeholder="CANTIDAD A DONAR MINIMO  $30.000" min="30000" style="display:none")
+        input#cantidad(type="number" name="cantidad" placeholder="CÚAL ES EL VALOR DE TU APORTE?" min="30000" style="display:none")
         textarea.form-control(rows="5" name="comentario" placeholder="COMENTARIO")
         button.btn(type="submit")
           b OK 
@@ -35,7 +35,7 @@ block content
         script(type="text/javascript").
           vistaDonacion=true;
         if datosEncryptados
-          form#formConfirmacion(method="POST" action="https://50.57.192.214/AddcelColombiaWeb/login")
+          form#formConfirmacion(method="POST" action="https://prod.mobilecard.com.co/AddcelColombiaWeb/login")
             input(type="hidden" name="json" value=datosEncryptados.json)
             input(type="hidden" name="comercio" value=datosEncryptados.comercio)
             h4 Estos son los datos que ingresaste - ¿Deseas Continuar?

@@ -58,8 +58,14 @@ app.route('/hacerdonacion')
   req.session.datosDonacion=null;
   var datosEncryptados;
   if(datosDonacion && datosDonacion.dinero){
+
+    //espacio al final de cada String
+      var dineroDonado=datosDonacion.cantidad+".00"
+      var comercio = "4";
+
     var exec = require('child_process').exec;
-    var command = 'php -f encrypt.php '+datosDonacion.cantidad+'.00';
+    var command = 'php -f encrypt.php '+dineroDonado;
+    console.log(command);
     
     exec(command,
       function (error, stdout, stderr) {
@@ -70,7 +76,7 @@ app.route('/hacerdonacion')
         else {
           var resultado = stdout.replace(" ","");
           datosEncryptados={};
-          datosEncryptados.comercio="1";
+          datosEncryptados.comercio=comercio;
           datosEncryptados.json= resultado;
           datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
           }

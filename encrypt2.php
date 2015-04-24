@@ -1,33 +1,39 @@
 <?php
 
 
-$key = "CA7376561BB1CC5BFF78D871BAC964DD";
-$code = "GwD412r7";
-$valor=$argv[1];
-$idComercio = '7';
-$idTipoTransaccion = "1";
-$pagos = "1";
+$key = "828B2FEE0B6AA2AEDE3C9E4B08E70829";
+$code = "feDs34qP";
+$idComercio = '9';
+
+$pagos = "11";
+
+$valor= $argv[1];
+$idTipoTransaccion = "2";
+$intervaloCobro = "3"; 
+$fechaCobroRecurrente = $argv[2];
+
 $idConcepto = "Donacion";
-$idProducto = "1006";
+$idProducto = "1013";
 $impuesto = "16";
 $valorImpuesto = "0";
-$concepto = "Donacion unica";
+$concepto = "Donacion de estrellas";
 $moneda = "COP ";
-$urlComercio = "http://conexionbienestar.com";
-$urlConfirmacion = "http://conexionbienestar.com/respuestaAddCelColombia";
+$urlComercio = "https://mysterious-ridge-6587.herokuapp.com";
+$urlConfirmacion = "https://mysterious-ridge-6587.herokuapp.com/hacerdonacion";
 
 $cadena= $moneda.'^'.$idComercio.'^'.$idConcepto.'^'.$code.'^'.$valor.'';
 
 
 $certificado=base64_encode(tobin(md5($cadena)));
 
-$data ='{"idComercio":'.$idComercio.',"idTipoTransaccion":'.$idTipoTransaccion.',"pagos":'.$pagos.',"idProducto":"'
-.$idProducto.'","idConcepto":"'.$idConcepto.'","concepto":"'.$concepto.'","valor":'.$valor.',"impuesto":'.$impuesto.
-',"valorImpuesto":'.$valorImpuesto.',"moneda":"'.$moneda.'","secureCode":"'.$code.'","certificado":"'
+$data ='{"idComercio":'.$idComercio.',"idTipoTransaccion":'.$idTipoTransaccion.',"pagos":'.$pagos.',"intervaloCobro":'
+.$intervaloCobro.',"fechaCobroRecurrente":"'.$fechaCobroRecurrente.'","idProducto":"'.$idProducto.'","idConcepto":"'
+.$idConcepto.'","concepto":"'.$concepto.'","valor":'.$valor.',"impuesto":'.$impuesto
+.',"valorImpuesto":'.$valorImpuesto.',"moneda":"'.$moneda.'","secureCode":"'.$code.'","certificado":"'
 .$certificado.'","urlComercio":"'.$urlComercio.'" ,"urlConfirmacion":"'.$urlConfirmacion.'"}';
 
-
 if($valor>0){
+    echo $data;
 echo encrypt3DES(tobin($key),$data);
 }
 

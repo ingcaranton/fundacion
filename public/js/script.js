@@ -389,7 +389,7 @@
           var valorFinal="000000";
         else
           var valorFinal=valorEstrellas*30000;
-        $("#paginaEstrellas #formulario #dinero #valorEstrellas").text(valorFinal);
+        $("#paginaEstrellas #formulario #dinero #valorEstrellas").val(valorFinal);
       });     
   });
 

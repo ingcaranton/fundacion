@@ -61,7 +61,6 @@ app.route('/hacerdonacion')
 
     var exec = require('child_process').exec;
     var command = 'php -f encrypt.php '+dineroDonado;
-    console.log(command);
     
     exec(command,
       function (error, stdout, stderr) {
@@ -90,7 +89,6 @@ app.route('/hacerdonacion')
   }
 })
 .post(function(req, res){
-  console.log(req.body);
   crudColaboradores.create(req, res, function(err, colaborador, flash){
     req.session.datosDonacion=req.body;
     res.redirect('/hacerdonacion');
@@ -102,17 +100,16 @@ app.route('/estrellas')
  var datosDonacion=req.session.datosDonacion;
   req.session.datosDonacion=null;
   var datosEncryptados;
+    if(datosDonacion && datosDonacion.estrellas){
       var date=new Date();
       var fechaCobroRecurrente=date.getFullYear().toString()+"-"+("0"+(date.getMonth()+2)).slice(-2).toString()+"-"+("0"+date.getDate()).slice(-2).toString();
-      console.log(fechaCobroRecurrente);
-      var estrellas=req.body.estrellas;
-      var valor=estrellas*30000;
+      var estrellas=datosDonacion.estrellas;
+      var valor=datosDonacion.valorEstrellas;
       valor+=".00";
-      var comercio = "10";
+      var comercio = "4";
 
     var exec = require('child_process').exec;
-    var command = 'php -f encrypt2.php '+'30000.00'+' '+fechaCobroRecurrente;
-    console.log(command);
+    var command = 'php -f encrypt2.php '+valor+' '+fechaCobroRecurrente;
     
     exec(command,
       function (error, stdout, stderr) {
@@ -127,20 +124,26 @@ app.route('/estrellas')
           datosEncryptados.json= resultado;
           datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
           }
-          console.log(resultado);
-          console.log(datosEncryptados.comercio);
       res.render('estrellas',{
         title : 'Conexión Bienestar',
         datosEncryptados: datosEncryptados,
         datosDonacion: datosDonacion
       });
     });
-
+     }else{
+        res.render('estrellas',{
+        title : 'Conexión Bienestar',
+        datosDonacion: datosDonacion
+      });
+      }
+})
+.post(function(req, res){
+    req.session.datosDonacion=req.body;
+    res.redirect('/estrellas');
 });
 
 app.route('/respuestaAddCelColombia')
 .post(function(req,res){
-  console.log(req.body);
   req.flash('message', 'Donacion exitosa');
   res.redirect('/');
 });

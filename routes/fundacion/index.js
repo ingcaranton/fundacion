@@ -100,7 +100,7 @@ app.route('/hacerdonacion')
 
 app.route('/estrellas')
 .get(function(req, res){
-  res.render('contacto',{
+  res.render('estrellas',{
     title : 'Conexión Bienestar'
   });
 });

@@ -301,7 +301,7 @@
       }); 
     /*Color Menu*/
       for(var i=0;i<9;i++){
-        if($("#navbar-collapse-1 ul li #colorMenu"+(i+1)){
+        if($("#navbar-collapse-1 ul li #colorMenu"+(i+1))){
           $("#navbar-collapse-1 ul li #colorMenu"+(i+1)).css("background-color", arrayColor[i]);
         }
         if($("#navbar-collapse-1 ul li #colorSubmenu"+(i+1))){

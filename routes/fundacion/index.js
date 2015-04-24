@@ -77,7 +77,6 @@ app.route('/hacerdonacion')
           datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
           }
       res.render('hacerdonacion',{
-        message : req.flash('message'),
         title : 'Conexión Bienestar',
         datosEncryptados: datosEncryptados,
         datosDonacion: datosDonacion
@@ -100,9 +99,43 @@ app.route('/hacerdonacion')
 
 app.route('/estrellas')
 .get(function(req, res){
-  res.render('estrellas',{
-    title : 'Conexión Bienestar'
-  });
+ var datosDonacion=req.session.datosDonacion;
+  req.session.datosDonacion=null;
+  var datosEncryptados;
+      var date=new Date();
+      var fechaCobroRecurrente=date.getFullYear().toString()+"-"+("0"+(date.getMonth()+2)).slice(-2).toString()+"-"+("0"+date.getDate()).slice(-2).toString();
+      console.log(fechaCobroRecurrente);
+      var estrellas=req.body.estrellas;
+      var valor=estrellas*30000;
+      valor+=".00";
+      var comercio = "10";
+
+    var exec = require('child_process').exec;
+    var command = 'php -f encrypt2.php '+'30000.00'+' '+fechaCobroRecurrente;
+    console.log(command);
+    
+    exec(command,
+      function (error, stdout, stderr) {
+        // nodejs error
+        if (error !== null) {
+          console.log('exec error: ' + error);
+        }
+        else {
+          var resultado = stdout.replace(" ","");
+          datosEncryptados={};
+          datosEncryptados.comercio=comercio;
+          datosEncryptados.json= resultado;
+          datosEncryptados.comercio=new Buffer(datosEncryptados.comercio).toString('base64');
+          }
+          console.log(resultado);
+          console.log(datosEncryptados.comercio);
+      res.render('estrellas',{
+        title : 'Conexión Bienestar',
+        datosEncryptados: datosEncryptados,
+        datosDonacion: datosDonacion
+      });
+    });
+
 });
 
 app.route('/respuestaAddCelColombia')

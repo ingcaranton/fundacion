@@ -8,7 +8,9 @@ module.exports = function(mongoose){
     especie: String,
     tiempo: String,
     dinero: String,
-    cantidad: String
+    cantidad: String,
+    recurrente: String,
+    fecha: String
   });
 return mongoose.model('colaboradores', userSchema);
 }

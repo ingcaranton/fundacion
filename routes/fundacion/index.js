@@ -103,6 +103,7 @@ app.route('/estrellas')
   res.render('contacto',{
     title : 'Conexión Bienestar'
   });
+});
 
 app.route('/respuestaAddCelColombia')
 .post(function(req,res){

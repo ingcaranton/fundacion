@@ -20,10 +20,7 @@ app.route('/nueva')
 .get(function(req, res){
   crudMenu.read(req, res, function(err, menus){
     res.render('nueva', {
-      message : req.flash('message'),
-      user : req.session.user,
-      title : "Nueva pagina",
-      menus : menus
+      title : "Nueva pagina"
     });
   });
 });
@@ -35,11 +32,8 @@ app.route('/editar/:pagina')
       crudPagina.read(req, res, function(err, pagina){
         if(pagina){
           res.render('editar', {
-            message : req.flash('message'),
-            user : req.session.user,
             pagina: pagina,
-            title : "Editar "+req.params.pagina,
-            menus : menus
+            title : "Editar "+req.params.pagina
           });
         }else{
           //Can not find the record, renders not found

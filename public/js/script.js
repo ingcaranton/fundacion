@@ -342,7 +342,7 @@
         $("#paginaDonacion #confirmacion").css("display", "none");
       }
     /*Vista estrellas*/
-      if(vistaEstrella){
+      if(vistaEstrellas){
         $("#paginaEstrellas #formulario").css("display", "none");
         $("#paginaEstrellas #confirmacionEstrellas").css("display", "inherit");
       }else{
@@ -386,7 +386,7 @@
       $("#paginaEstrellas #formulario #numEstrellas #estrellas").on('keyup',function(){
         var valorEstrellas=$("#paginaEstrellas #formulario #numEstrellas #estrellas").val();
         if(valorEstrellas=="" || valorEstrellas=="0")
-          var valorFinal="00000000000";
+          var valorFinal="000000";
         else
           var valorFinal=valorEstrellas*30000;
         $("#paginaEstrellas #formulario #dinero #valorEstrellas").text(valorFinal);

@@ -18,7 +18,7 @@
     {src:"https://s3.amazonaws.com/fundacion-bucket/5.jpg",url:"/domoconsacosdetierra",descripcion:"Los domos hechos con sacos de tierra no son algo novedoso, estas estructuras se han utilizado desde siempre. Actualmente la Bioconstrucción los presenta como una opción equilibrada y amigable  con el medio ambiente, para así generar un  espacio cómodo  y  a  bajo costo."}];
   var homeCargado=false;
   var vistaDonacion=false;
-  var vistaEstrella=false;
+  var vistaEstrellas=false;
   var arrayColor=["#fe889b","#d273cd","#36abd0","#8762ab","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
 /*Función de cargar en home*/
   $(document).ready(function() {

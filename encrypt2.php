@@ -1,9 +1,9 @@
 <?php
 
 
-$key = "828B2FEE0B6AA2AEDE3C9E4B08E70829";
-$code = "feDs34qP";
-$idComercio = '9';
+$key = "CA7376561BB1CC5BFF78D871BAC964DD";
+$code = "GwD412r7";
+$idComercio = '7';
 
 $pagos = "11";
 
@@ -13,13 +13,13 @@ $intervaloCobro = "3";
 $fechaCobroRecurrente = $argv[2];
 
 $idConcepto = "Donacion";
-$idProducto = "1013";
+$idProducto = "1006";
 $impuesto = "16";
 $valorImpuesto = "0";
 $concepto = "Donacion de estrellas";
 $moneda = "COP ";
-$urlComercio = "https://mysterious-ridge-6587.herokuapp.com";
-$urlConfirmacion = "https://mysterious-ridge-6587.herokuapp.com/hacerdonacion";
+$urlComercio = "http://conexionbienestar.com";
+$urlConfirmacion = "http://conexionbienestar.com/respuestaAddCelColombia";
 
 $cadena= $moneda.'^'.$idComercio.'^'.$idConcepto.'^'.$code.'^'.$valor.'';
 
@@ -33,7 +33,6 @@ $data ='{"idComercio":'.$idComercio.',"idTipoTransaccion":'.$idTipoTransaccion.'
 .$certificado.'","urlComercio":"'.$urlComercio.'" ,"urlConfirmacion":"'.$urlConfirmacion.'"}';
 
 if($valor>0){
-    echo $data;
 echo encrypt3DES(tobin($key),$data);
 }
 

@@ -6,13 +6,12 @@ block content
     ultimasEntradasPrimarias=!{JSON.stringify(ultimasEntradasPrimarias)}; 
   #slider 
     #sliderImagenes.wrapper
-      ul#sb-slider.sb-slider
-
-      #shadow.shadow
-
+      video(width="100%" controls autoplay loop)
+        source(src="/videos/VIDEOEVENTO.mov" type="video/mp4")
+  
       #nav-arrows.nav-arrows
-        a.flecha(href="#") Next
-        a.flecha(href="#") Previous
+        a.flecha(href="#" style="display:none") Next
+        a.flecha(href="#" style="display:none") Previous
       #flechaAbajo
         a.scrolldown(href="javascript:void(0);")
           img(src="https://s3.amazonaws.com/fundacion-bucket/flechaAbajo.svg")

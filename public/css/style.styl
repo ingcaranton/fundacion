@@ -32,18 +32,13 @@ body
     margin-bottom 0
     .container-fluid
       .navbar-header
-        width 8.5%
         margin-left 1%
-        float left
         img 
           height 100%
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1 
         overflow hidden
-        width 83%
-        max-width 83%
-        float left
         ul.nav.navbar-nav 
           z-index 2000
           max-width 100%
@@ -57,7 +52,6 @@ body
               text-align center
               b 
                 color #d0d0d0
-                font-size 16px
             ul.submenus.dropdown-menu.colorSubmenu
               border 1px solid white
               min-height 300px
@@ -81,7 +75,6 @@ body
                 color white
       ul#botonIngresar 
         padding 0 0.5%
-        text-align center
         height 100%
         border-left 1.5px solid #696363
         margin-top 1%
@@ -313,6 +306,7 @@ body
   #slider
     #sliderImagenes
       padding-top 3%
+      padding-bottom 3%
       width 100%
       li 
         border 1.5px solid white
@@ -1170,6 +1164,113 @@ body
         padding-top 3px
 /*fin contacto*/
 
+/*Estrellas*/
+  #paginaEstrellas
+    width 100%
+    padding 3% 10%
+    h1
+      text-align center
+      width 100%
+      color #36abd0
+    #formulario
+      padding 5% 0
+      width 50%
+      margin auto
+      #titulo
+        width 100%
+        padding 1% 0
+        h3 
+          color #36abd0
+          text-align center
+          padding-bottom 2%
+        p 
+          text-align center
+          color #696363
+          margin-top -2%
+      #numEstrellas
+        padding 1% 0
+        width 65%
+        margin auto
+        span
+          float left
+          color #696363
+          padding-top 1%
+        input
+          margin-left 2%
+          width 80px
+          float left
+          height 30px
+          border 1.8px solid #36abd0
+          text-align center
+          color #696363
+      #dinero
+        padding 7% 2%
+        width 80%
+        margin auto
+        #spanValor
+          float left
+          color #696363
+          padding-top 1%
+        #signoPesos
+          float left
+          color #36abd0
+          font-size 20px
+        #valorEstrellas
+          float left
+          color #36abd0
+          font-size 20px
+      button
+        width 90%
+        margin 2% 5%
+        border 1.8px solid #36abd0
+        color white
+        background-color #36abd0
+        height 25px
+        padding-top 3px
+      #terminos
+        width 100%
+        padding-top 2%
+        padding-left 5%
+        span 
+          color #696363
+        a 
+          color #696363
+    #confirmacionEstrellas
+      display none
+      width 80%
+      padding 3% 5%
+      margin auto
+      h4
+        text-align center
+        width 100%
+        color #36abd0
+      #datosEstrellas
+        text-align center
+        width 80%
+        margin auto
+        border 1.5px solid #36abd0
+        padding 6% 5%
+        overflow-y overlay
+        .azul
+          color #36abd0
+          min-width 180px
+          padding 2%
+        .gris
+          color #696363
+          width 200px
+          overflow-x hidden
+          padding 2%
+      button
+        width 50%
+        margin 2.5% 25%
+        border 1.8px solid #36abd0
+        text-align center
+        color white
+        background-color #36abd0
+        height 25px
+        padding-top 3px
+/*fin estrellas*/
+
 @media (max-width:800px)
   #seccionesPrincipales #cards .card
     margin 0 2%
@@ -1206,7 +1307,6 @@ body
       li
         display inline-block
 
-      
   #piePagina
     height initial
     a

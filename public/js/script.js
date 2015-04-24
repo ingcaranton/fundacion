@@ -9,7 +9,6 @@
 
 
 /*Variables Globales*/
-  var pag={};
   var ultimasEntradas={};
   var ultimasEntradasPrimarias={};
   var arrayImagenesSlider=[{src:"https://s3.amazonaws.com/fundacion-bucket/1.png",url:"/Los5principiosdelAcompanar",descripcion:"Programa para el cuidado del ser y sus relaciones, 7 sesiones que permiten identificar las dificultades y las potencialidades de los participantes, encontrando caminos de transformación que mejoran los escenarios de vida de las personas, las familias y las comunidades."},
@@ -19,7 +18,8 @@
     {src:"https://s3.amazonaws.com/fundacion-bucket/5.jpg",url:"/domoconsacosdetierra",descripcion:"Los domos hechos con sacos de tierra no son algo novedoso, estas estructuras se han utilizado desde siempre. Actualmente la Bioconstrucción los presenta como una opción equilibrada y amigable  con el medio ambiente, para así generar un  espacio cómodo  y  a  bajo costo."}];
   var homeCargado=false;
   var vistaDonacion=false;
-  var arrayColor=["#fe889b","#d273cd","#8762ab","#36abd0","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
+  var vistaEstrella=false;
+  var arrayColor=["#fe889b","#d273cd","#36abd0","#8762ab","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
@@ -251,7 +251,7 @@
       });
     /*Imagenes y color Aleatorios Slider*/
       if(homeCargado){
-        for(var i=0; i<arrayImagenesSlider.length;i++){
+        /*for(var i=0; i<arrayImagenesSlider.length;i++){
           var img = $('<img src="'+arrayImagenesSlider[usados[i]].src+'">');
           var h3 = $('<h3 style="font-size:14px">'+arrayImagenesSlider[usados[i]].descripcion+'</h3>')
           var a = $('<a href="'+arrayImagenesSlider[usados[i]].url+'"><div class="divLinkImagen"><b style="font-size:14px">LEER +</b></div></a>');
@@ -262,7 +262,7 @@
           li.append(img);
           li.append(div);
           $("#sb-slider").append(li);
-        }
+        }*/
         var posicionColor= Math.floor(Math.random()*(8-0+1))+0; 
         $("#slider").css("background-color", arrayColor[posicionColor]);
       }
@@ -300,9 +300,14 @@
         return false;
       }); 
     /*Color Menu*/
-      $("#navbar-collapse-1 ul li .colorMenu").each(function(index, element){
-        $(this).css("background-color", arrayColor[index]);
-      });
+      for(var i=0;i<9;i++){
+        if($("#navbar-collapse-1 ul li #colorMenu"+(i+1)){
+          $("#navbar-collapse-1 ul li #colorMenu"+(i+1)).css("background-color", arrayColor[i]);
+        }
+        if($("#navbar-collapse-1 ul li #colorSubmenu"+(i+1))){
+          $("#navbar-collapse-1 ul li #colorSubmenu"+(i+1)).css("background-color", arrayColor[i]);
+        }
+      }
       $("#navbar-collapse-1 ul li a.dropdown-toggle").on("click",function(){
         var div=$(this).attr("idDiv");
         var li=$(this).attr("li");
@@ -315,13 +320,6 @@
             $(this).css("visibility" , "hidden");
           }
         });
-      });
-      $("#navbar-collapse-1 ul li ul.colorSubmenu").each(function(index, element){
-        $(this).css("background-color", arrayColor[index]);
-        if(arrayColor[index]== "#fef000"){
-          var ul = $(this).attr("id");
-          $("#navbar-collapse-1 ul li #"+ul+" a.tituloSubmenu").css("color", "gray");
-        }
       });
     /*divSinImagen*/
       for(var i=1; i<=8; i++){
@@ -342,6 +340,14 @@
       }else{
         $("#paginaDonacion #formulario").css("display", "inherit");
         $("#paginaDonacion #confirmacion").css("display", "none");
+      }
+    /*Vista estrellas*/
+      if(vistaEstrella){
+        $("#paginaEstrellas #formulario").css("display", "none");
+        $("#paginaEstrellas #confirmacionEstrellas").css("display", "inherit");
+      }else{
+        $("#paginaEstrellas #formulario").css("display", "inherit");
+        $("#paginaEstrellas #confirmacionEstrellas").css("display", "none");
       }
     /*input cantidad*/
       $("#paginaDonacion #formulario #opciones #dinero #checkDinero").on("click",function() { 
@@ -376,6 +382,15 @@
           location.href="/";
         });
       });
+    /*Valor label estrellas*/
+      $("#paginaEstrellas #formulario #numEstrellas #estrellas").on('keyup',function(){
+        var valorEstrellas=$("#paginaEstrellas #formulario #numEstrellas #estrellas").val();
+        if(valorEstrellas=="" || valorEstrellas=="0")
+          var valorFinal="00000000000";
+        else
+          var valorFinal=valorEstrellas*30000;
+        $("#paginaEstrellas #formulario #dinero #valorEstrellas").text(valorFinal);
+      });     
   });
 
 /*Otras Funciones*/

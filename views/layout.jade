@@ -19,11 +19,9 @@ html
     script(type='text/javascript' src='/js/script.js')  
   body
     script(type="text/javascript").
-      //Solo para etapa de desarrollo
       var message= "#{message}";
       if(message)
-        bootbox.alert(message);
-      pag=!{JSON.stringify(paginas)};    
+        bootbox.alert(message);  
     .navbar.yamm.navbar-default
       .container-fluid
         .navbar-header
@@ -35,20 +33,20 @@ html
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
           ul#ulPrincipal.nav.navbar-nav
-            li.dropdown.yamm-fw(id="li0")
-              .colorMenu(id="colorMenu0")
-              a.dropdown-toggle(href="/SobreNosotros" idDiv="colorMenu0" li="li0") 
-                b SOBRE NOSOTROS
             li.dropdown.yamm-fw(id="li1")
               .colorMenu(id="colorMenu1")
               a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu1" li="li1") 
                 b QUIÉNES SOMOS
-              ul.submenus.dropdown-menu.colorSubmenu 
+              ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu1")
                 li
                   .yamm-content
                     .row
                       .col-sm-8
                         ul.yamm-content.list-unstyled(role="menu")
+                            li
+                              a.tituloSubmenu(tabindex="-1" href="/SobreNosotros") 
+                                b &bull;  SOBRE NOSOTROS
+                            li.divider
                             li
                               a.tituloSubmenu(tabindex="-1" href="/juntaDirectiva") 
                                 b &bull;  JUNTA DIRECTIVA
@@ -74,7 +72,7 @@ html
               .colorMenu(id="colorMenu2")
               a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu2" li="li2") 
                 b LINEAS DE ACCIÓN
-              ul.submenus.dropdown-menu.colorSubmenu 
+              ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu2") 
                 li
                   .yamm-content
                     .row
@@ -107,55 +105,59 @@ html
                         img(src="/images/logoBlanco.png")
             li.dropdown.yamm-fw(id="li3")
               .colorMenu(id="colorMenu3")
-              a.dropdown-toggle(href="/clubamigos" idDiv="colorMenu3" li="li3") 
-                b CLUB DE AMIGOS
+              a.dropdown-toggle(href="/estrellas" idDiv="colorMenu3" li="li3") 
+                b COMPRA TU ESTRELLA
             li.dropdown.yamm-fw(id="li4")
               .colorMenu(id="colorMenu4")
-              a.dropdown-toggle(href="/hacerdonacion" idDiv="colorMenu4" li="li4") 
-                b APÓYANOS
+              a.dropdown-toggle(href="/clubamigos" idDiv="colorMenu4" li="li4") 
+                b CLUB DE AMIGOS
             li.dropdown.yamm-fw(id="li5")
               .colorMenu(id="colorMenu5")
-              a.dropdown-toggle(href="/contacto" idDiv="colorMenu5" li="li5") 
+              a.dropdown-toggle(href="/hacerdonacion" idDiv="colorMenu5" li="li5") 
+                b APÓYANOS
+            li.dropdown.yamm-fw(id="li6")
+              .colorMenu(id="colorMenu6")
+              a.dropdown-toggle(href="/contacto" idDiv="colorMenu6" li="li6") 
                 b CONTÁCTANOS 
 
-        ul#botonIngresar.nav.navbar-nav.navbar-right
-          li.dropdown
-            .btn-group
-              if user
-                if user.rol == "administrador"
-                  button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
-                  ul.dropdown-menu(role="menu")
-                    li 
-                      a(href="/admin") Administrar Contenido
-                    li 
-                      a(href="/user/logout") Salir
+          ul#botonIngresar.nav.navbar-nav.navbar-right
+            li.dropdown
+              .btn-group
+                if user
+                  if user.rol == "administrador"
+                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
+                    ul.dropdown-menu(role="menu")
+                      li 
+                        a(href="/admin") Administrar Contenido
+                      li 
+                        a(href="/user/logout") Salir
+                  else
+                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
+                    ul.dropdown-menu(role="menu")
+                      li 
+                        a(href="/user/logout") Salir
+                     
                 else
-                  button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
-                  ul.dropdown-menu(role="menu")
-                    li 
-                      a(href="/user/logout") Salir
-                   
-              else
-                button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
-                  span INGRESAR
-                .dropdown-menu
-                  #login
-                    form(method="POST" action="/user/login")
-                      #datos 
-                        input(type="text" name="usuario" autofocus placeholder="USUARIO" required) 
-                        input(type="password" name="contrasena" placeholder="CONTRASEÑA" required) 
-                      #terminos 
-                        input(type="checkbox" name="terminos" checked required)
-                        span  &nbsp; ACEPTO &nbsp;
-                        a(href="/terminosCondiciones") 
-                          b TÉRMINOS Y CONDICIONES
-                      button#botonLogin(type="submit") OK
-                      #olvidoContrasena(style="display:none")
-                        a(href="#")
-                          b RECUPERAR CONTRASEÑA
-                      #registrarse
-                        a(href="/user/signup")
-                          b REGISTRARSE 
+                  button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+                    span INGRESAR
+                  .dropdown-menu
+                    #login
+                      form(method="POST" action="/user/login")
+                        #datos 
+                          input(type="text" name="usuario" autofocus placeholder="USUARIO" required) 
+                          input(type="password" name="contrasena" placeholder="CONTRASEÑA" required) 
+                        #terminos 
+                          input(type="checkbox" name="terminos" checked required)
+                          span  &nbsp; ACEPTO &nbsp;
+                          a(href="/terminosCondiciones") 
+                            b TÉRMINOS Y CONDICIONES
+                        button#botonLogin(type="submit") OK
+                        #olvidoContrasena(style="display:none")
+                          a(href="#")
+                            b RECUPERAR CONTRASEÑA
+                        #registrarse
+                          a(href="/user/signup")
+                            b REGISTRARSE 
 
     header#menuLateral.fixed
       section

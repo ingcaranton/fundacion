@@ -1,7 +1,6 @@
 var express = require('express');
 var app = module.exports = express();
 var Buffer= require('Buffer');
-var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var crudColaboradores = require('./../colaboradores/crud');
 
@@ -18,8 +17,8 @@ app.use(function(req, res, next){
 
 app.route('/')
 .get(function(req, res){
-  db.pagina.find({publicar:true}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
-    db.pagina.aggregate({$sort: {_id:1}},{$group: {_id: "$categoria", 
+  db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
+    db.pagina.aggregate({$match: {publicar:true} },{$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
       fechaCreacion: {$last: "$fechaCreacion" },
@@ -42,11 +41,8 @@ app.route('/todocontenido')
   db.pagina.find({publicar:true}, 'nombreEnlace titulo descripcion fechaCreacion linkImagen categoria').exec(function(error, paginas){
     db.menu.find().exec(function(errorMenu, menus){
       res.render('todocontenido', {
-        message : req.flash('message'),
-        user : req.session.user,
         paginas: paginas,
-        title : 'Conexion bienestar',
-        menus : menus
+        title : 'Conexion bienestar'
       });
     });
   });
@@ -89,7 +85,6 @@ app.route('/hacerdonacion')
     });
   }else{
         res.render('hacerdonacion',{
-        message : req.flash('message'),
         title : 'Conexión Bienestar',
         datosDonacion: datosDonacion
       });
@@ -103,8 +98,15 @@ app.route('/hacerdonacion')
   });
 });
 
+app.route('/estrellas')
+.get(function(req, res){
+  res.render('contacto',{
+    title : 'Conexión Bienestar'
+  });
+
 app.route('/respuestaAddCelColombia')
 .post(function(req,res){
+  console.log(req.body);
   req.flash('message', 'Donacion exitosa');
   res.redirect('/');
 });
@@ -112,7 +114,6 @@ app.route('/respuestaAddCelColombia')
 app.route('/contacto')
 .get(function(req, res){
   res.render('contacto',{
-    message : req.flash('message'),
     title : 'Conexión Bienestar'
   });
 });
@@ -150,11 +151,8 @@ app.route('/:pagina')
     db.menu.find().exec(function(errorMenu, menus){
       if(pagina){
         res.render('pagina', {
-          message : req.flash('message'),
-          user : req.session.user,
           pagina: pagina,
-          title : 'Conexión Bienestar',
-          menus : menus
+          title : 'Conexión Bienestar'
   		  });
   	   }else{
         //Can not find the record, renders not found

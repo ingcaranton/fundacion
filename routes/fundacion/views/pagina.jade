@@ -6,8 +6,11 @@ block content
       h1#tituloPagina #{pagina.titulo}
       #fecha
         #linea1
-        #centro(fecha=pagina.fechaCreacion)
-          span 
+        if pagina.categoria!="sinCategoria"
+          #centro(fecha=pagina.fechaCreacion)
+            span 
+        else
+          #linea3
         #linea2
       #descripcion
         p 
@@ -20,7 +23,7 @@ block content
             b HACER DONACION
       #redesSociales(style="display:none")
         #facebook
-          a(href="https://www.facebook.com/sharer/sharer.php?u= http://www.conexionbienestar.com/"+pagina.nombreEnlace)
+          a(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u= http://www.conexionbienestar.com/"+pagina.nombreEnlace)
             .icon 
           .izquierda
           .contador

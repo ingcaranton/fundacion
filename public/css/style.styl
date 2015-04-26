@@ -27,7 +27,13 @@ body
 /*Layout*/
   .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover
     background-color white
-  .navbar 
+  .navbar
+    border-radius 0
+    top -50px
+    position fixed
+    z-index 2000
+    right 0
+    left 0
     background white
     margin-bottom 0
     .container-fluid
@@ -37,7 +43,7 @@ body
           height 100%
         a.navbar-brand
           padding 0 0 0 1%
-      #navbar-collapse-1 
+      #navbar-collapse-1
         overflow hidden
         ul.nav.navbar-nav 
           z-index 2000
@@ -648,6 +654,11 @@ body
           width 100%
           color #e58799
           text-align center
+      #linea3
+        float left
+        margin-bottom 1%
+        border-top 1px solid #e58799
+        width 20%
       #linea2
         float left
         border-top 1px solid #e58799
@@ -663,13 +674,11 @@ body
         color gray
     #redesSociales
       margin 3% 0 3% 0
-      padding 1% 1% 1% 5%
-      width 30%
-      height 60px 
+      padding 1% 1% 1% 1%
+      width 60%
       float left
       border 1px solid #e58799
       .izquierda
-        display none 
         margin-top 10px
         float left
         width 0
@@ -678,7 +687,6 @@ body
         border-bottom 8px solid transparent
         border-right 8px solid #aaa
       .contador
-        display none 
         float left
         width 42px
         height 25px
@@ -690,14 +698,14 @@ body
           font-size 20px
           text-align center
       #facebook
-        width 30%
+        width 20%
         float left
-        //border-right 2px solid gray
+        border-right 2px solid gray
         padding 1% 1% 0 1%
         .icon 
           float left
-          height 50px
-          width 50px
+          height 42px   
+          width 40px 
           background-image url("/images/facebook.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -705,18 +713,18 @@ body
           background-image url("/images/facebookHover.png")  
           background-repeat no-repeat
           float left
-          height 50px
-          width 50px
+          height 42px
+          width 40px
           
       #twitter
-        width 30%
+        width 20%
         float left
-        //border-right 2px solid gray
+        border-right 2px solid gray
         padding 1% 1% 0 1%
         .icon 
           float left
-          height 50px   
-          width 50px  
+          height 42px   
+          width 40px 
           background-image url("/images/twitter.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -724,17 +732,17 @@ body
           background-image url("/images/twitterHover.png")  
           background-repeat no-repeat
           float left
-          height 50px   
-          width 50px    
+          height 42px
+          width 40px    
           
       #correo
-        width 30%
+        width 20%
         float left
-        padding 4% 1% 0 1%
+        padding 2% 1% 0 1%
         .icon 
           float left
-          height 50px   
-          width 50px 
+          height 42px   
+          width 40px 
           background-image url("/images/correo.png") 
           background-repeat no-repeat
         .icon:hover 
@@ -742,8 +750,8 @@ body
           background-image url("/images/correoHover.png")  
           background-repeat no-repeat
           float left
-          height 50px   
-          width 50px 
+          height 42px
+          width 40px
 
   #botonSubir
     margin 4% 15% 1% 0
@@ -1313,3 +1321,4 @@ body
     height initial
     a
       display block
+  

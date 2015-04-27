@@ -44,6 +44,7 @@ body
         a.navbar-brand
           padding 0 0 0 1%
       #navbar-collapse-1
+        padding-left 10%
         overflow hidden
         ul.nav.navbar-nav 
           z-index 2000
@@ -59,6 +60,7 @@ body
               b 
                 color #d0d0d0
             ul.submenus.dropdown-menu.colorSubmenu
+              margin 0 130px 0 115px
               border 1px solid white
               min-height 300px
               padding-top -5px
@@ -314,6 +316,8 @@ body
       padding-top 3%
       padding-bottom 3%
       width 100%
+      iframe 
+        height 400px
       li 
         border 1.5px solid white
         div 
@@ -1282,6 +1286,16 @@ body
 /*fin estrellas*/
 
 @media (max-width:800px)
+  body 
+    overflow-x hidden
+  #contenido
+    padding-top 8%
+    #slider
+      #sliderImagenes
+        iframe 
+          height 250px
+        #flechaAbajo
+          display none
   #seccionesPrincipales #cards .card
     margin 0 2%
     width 96%
@@ -1291,34 +1305,37 @@ body
   .navbar .container-fluid #navbar-collapse-1
     width 100%
     max-width 100%
+    padding-left 2%
 
     ul.nav.navbar-nav
       width 100%
       margin 20px auto
-  
-  header
-    left 430px
+      ul.submenus.dropdown-menu.colorSubmenu
+        margin 0 !important
+    #botonIngresar.nav.navbar-nav.navbar-right
+      border-left none
+      text-align center
+      padding 0
+      #login
+        width 250px    
+        padding 1% 0 0 0  
+  header 
     display none
-    nav 
-      bottom 0
-      right 0
-      left 0
-      top initial
-      margin 0 auto
-      width 100%
-      position fixed
-      
-      ul
-        text-align center
-        height 45px
-        background rgb(158,158,158)
-        margin-bottom 0
 
-      li
-        display inline-block
 
+  #masContenido
+    #linea1
+      display none
+    a
+      width 50%
+    #linea2
+      padding 0 0 1% 0
+      border-top none
+      width 40%
   #piePagina
     height initial
     a
       display block
+    span.guion
+      display none
   

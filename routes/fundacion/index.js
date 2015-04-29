@@ -18,6 +18,7 @@ app.use(function(req, res, next){
 app.route('/')
 .get(function(req, res){
   db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(8).exec(function(error, ultimasEntradas){
+    console.log(ultimasEntradas);
     db.pagina.aggregate({$match: {publicar:true} },{$sort: {_id:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },

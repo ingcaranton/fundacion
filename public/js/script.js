@@ -22,7 +22,6 @@
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
-    llenarCards(ultimasEntradasPrimarias, ultimasEntradas);
     /*Selector de imagen*/
       $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
@@ -334,15 +333,7 @@
             $(this).css("visibility" , "hidden");
           }
         });
-      });
-    /*divSinImagen*/
-      for(var i=1; i<=8; i++){
-        if($("#d"+i+" p").css("height")){
-          var height = $("#d"+i+" p").css("height").slice(0,-2);
-          var padding = (280-height)/2;
-          $("#d"+i+" p").css("padding", padding+"px 5px")
-        }
-      }      
+      });     
     /*mas contenido en home*/
       var anchoVentana = $(window).width();
       var padding = (anchoVentana-1100)/2;
@@ -377,7 +368,7 @@
       var heightFooter = ($("#piePagina").css("height")).slice(0,-2);
       var heightVentana = heightWindow()-heightFooter;
       $("#contenido").css("min-height",heightVentana+"px");
-    /*llenar divs principales home*/
+    /*llenar divs home*/
       for(var i=0; i<ultimasEntradasPrimarias.length; i++){
         if(ultimasEntradasPrimarias[i].categoria=="fisico"){
           var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 1);        
@@ -390,6 +381,7 @@
           $("#contenido #seccionesPrincipales #cards #cardEspiritual").append(contenido);
         }
       }
+      llenarCards(ultimasEntradas);
     /*redirecciones pagina donacion*/
       $("#paginaDonacion #confirmacion #tiempoEspecie").on("click",function(){
         bootbox.alert("Muchas gracias por tu apoyo, pronto estaremos en contacto!!", function(result){
@@ -498,28 +490,8 @@
     divContenidoCard.append(a);
     return divContenidoCard;
   }
-  function sacarRepetidosUltimasEntradas(array1,array2){
-    var arrayPrimario=array1;
-    var arraySecundario=array2
-    for(var i=0; i<arraySecundario.length; i++){
-      for(var j=0; j<arrayPrimario.length; j++){
-        if(arrayPrimario[j].categoria!="sinCategoria"){
-          if(arrayPrimario[j].nombreEnlace==arraySecundario[i].nombreEnlace){
-            delete arraySecundario[i];
-            j=arrayPrimario.length;
-          }
-        }
-      }
-    }
-    for(var i=0; i<arraySecundario.length; i++){
-      if(!arraySecundario[i]){
-        arraySecundario.splice(i,1);
-      }
-    }
-    return arraySecundario;
-  }
-  function llenarCards(array1, array2){
-    var entradas=sacarRepetidosUltimasEntradas(array1,array2);  
+  function llenarCards(array){
+    var entradas=array;
     for(var i=0;i<entradas.length;i++){
       if(entradas[i]){
         var contenidoCard = $("<div class='contenidoCard'></div>");
@@ -547,7 +519,7 @@
           }else if(i==3){
             descripcionSinImagen.attr("id","d7");
             p2.attr("id","p7");
-          }else{
+          }else if(i==4){
             descripcionSinImagen.attr("id","d8");
             p2.attr("id","p8");
           }
@@ -558,8 +530,8 @@
         a.attr("href","/"+entradas[i].nombreEnlace);
         var leerMas = $("<div class='leerMas'>LEER +</div>");
         a.append(leerMas);
-        $("#seccionesPrincipales #cards #card"+i).append(contenidoCard);
-        $("#seccionesPrincipales #cards #card"+i).append(a);
+        $("#seccionesPrincipales #cards #card"+(i+1)).append(contenidoCard);
+        $("#seccionesPrincipales #cards #card"+(i+1)).append(a);
       }
     }
   }

@@ -47,7 +47,6 @@ app.route('/agregarContenidoScroll')
 .post(function(req, res){
   var indice=req.body.indice;
   db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').skip(indice).limit(4).exec(function(error, entradas){
-
         res.send(entradas);
   });
 });

@@ -35,7 +35,6 @@ app.route('/')
           array.push(ultimasEntradasPrimarias[2].nombreEnlace);
 
       db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}, nombreEnlace:{$nin:array}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(5).exec(function(error, ultimasEntradas){
-        console.log(ultimasEntradas);
           res.render('index', {
             title : 'Conexión Bienestar',
             ultimasEntradas:ultimasEntradas,
@@ -44,6 +43,15 @@ app.route('/')
     });
   });
 });
+app.route('/agregarContenidoScroll')
+.post(function(req, res){
+  var indice=req.body.indice;
+  db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').skip(indice).limit(4).exec(function(error, entradas){
+
+        res.send(entradas);
+  });
+});
+
 
 app.route('/todocontenido')
 .get(function(req, res){

@@ -530,8 +530,10 @@
         a.attr("href","/"+entradas[i].nombreEnlace);
         var leerMas = $("<div class='leerMas'>LEER +</div>");
         a.append(leerMas);
-        $("#seccionesPrincipales #cards #card"+(i+1)).append(contenidoCard);
-        $("#seccionesPrincipales #cards #card"+(i+1)).append(a);
+        var card= $("<div class='card'></div>");
+        card.append(contenidoCard);
+        card.append(a);
+        $("#seccionesPrincipales #cards").append(card);
       }
     }
   }

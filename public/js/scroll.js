@@ -15,7 +15,7 @@ $(document).ready(function(){
           }, 3000);
         }else{
           $('div#agregarContenidoScroll').empty();
-          $('div#agregarContenidoScroll').html('No hay mas contenido');
+          $('div#agregarContenidoScroll').html('FIN DE LAS PUBLICACIONES');
           masContenido=false;
         }
       });

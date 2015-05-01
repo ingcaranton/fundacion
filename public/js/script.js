@@ -22,6 +22,16 @@
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
+    /*Colores de menuEscondido*/
+      $(".navbar #menuEscondido #1").css("background-color","#fe889b");
+      $(".navbar #menuEscondido #2").css("background-color","#d273cd");
+      $(".navbar #menuEscondido #3").css("background-color","#36abd0");
+      $(".navbar #menuEscondido #4").css("background-color","#8762ab");
+      $(".navbar #menuEscondido #5").css("background-color","#00c7fc");
+      $(".navbar #menuEscondido #6").css("background-color","#00bb41");
+      $(".navbar #menuEscondido #7").css("background-color","#fef000");
+      $(".navbar #menuEscondido #8").css("background-color","#ffa700");
+      $(".navbar #menuEscondido #9").css("background-color","#ff7f5b");
     /*Selector de imagen*/
       $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
@@ -44,7 +54,7 @@
         });
       });
     /*fin selector de imagen*/
-    /*Cargar Slider*/
+    /*Cargar Slider
       $(function() {
         var Page = (function() {
           var $navArrows = $( '#nav-arrows' ).hide(),
@@ -124,6 +134,15 @@
       $('.dropdown').on('hide.bs.dropdown', function(e){
         $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
       });
+      /*centrar menu*/
+        var longitudDivMenu = $("#navbar-collapse-1").css("width").slice(0,-2);
+        var paddingDivMenu = $("#navbar-collapse-1").css("padding-left").slice(0,-2);
+        var longitudMenu=$("#navbar-collapse-1 ul#ulPrincipal").css("width").slice(0,-2);
+        left = ((longitudDivMenu-longitudMenu)/2)-paddingDivMenu;
+        $("#navbar-collapse-1 ul#ulPrincipal").css("margin-left",left+"px");
+        var longitudVentana = $(window).width();
+        var marginSubmenu = (longitudVentana-longitudMenu)/2;
+        $("ul.submenus.dropdown-menu.colorSubmenu").css("margin", "0 "+marginSubmenu+"px");
     /*fin navbar*/
     /*editar Menu*/
       /*Ocultar paneles*/
@@ -253,7 +272,12 @@
           $("#sb-slider").append(li);
         }*/
         var posicionColor= Math.floor(Math.random()*(8-0+1))+0; 
-        $("#slider").css("background-color", arrayColor[posicionColor]);
+        $("#slider").mouseenter(function() {
+          $(this).css("background-color", arrayColor[posicionColor]);
+        });
+        $("#slider").mouseleave(function() {
+          $(this).css("background-color", "white");
+        });
       }
     /*Formato fecha*/
       if($("#contenidoPagina #fecha #centro").attr("fecha")){
@@ -289,6 +313,8 @@
         return false;
       }); 
     /*Color Menu*/
+      var cantidadMenu=$("#navbar-collapse-1 ul li.dropdown.yamm-fw").length;
+      $("#navbar-collapse-1 ul li.dropdown.yamm-fw").css("min-width",cantidadMenu+"%");
       for(var i=0;i<9;i++){
         if($("#navbar-collapse-1 ul li #colorMenu"+(i+1))){
           $("#navbar-collapse-1 ul li #colorMenu"+(i+1)).css("background-color", arrayColor[i]);
@@ -369,19 +395,19 @@
       var heightVentana = heightWindow()-heightFooter;
       $("#contenido").css("min-height",heightVentana+"px");
     /*llenar divs home*/
+      llenarCards(ultimasEntradas);
       for(var i=0; i<ultimasEntradasPrimarias.length; i++){
         if(ultimasEntradasPrimarias[i].categoria=="fisico"){
-          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 1);        
-          $("#contenido #seccionesPrincipales #cards #cardFisico").append(contenido);
+          var cardNueva = llenarCardsPrincipales(ultimasEntradasPrimarias[i],"cardFisico");      
+          $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 0 ).before(cardNueva);  
         }else if(ultimasEntradasPrimarias[i].categoria=="emocional"){
-          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 3); 
-          $("#contenido #seccionesPrincipales #cards #cardEmocional").append(contenido);
+          var cardNueva = llenarCardsPrincipales(ultimasEntradasPrimarias[i],"cardEmocional");      
+          $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 2 ).before(cardNueva); 
         }else if(ultimasEntradasPrimarias[i].categoria=="espiritual"){
-          var contenido = llenarCardsPrincipales(ultimasEntradasPrimarias[i], 6); 
-          $("#contenido #seccionesPrincipales #cards #cardEspiritual").append(contenido);
+          var cardNueva = llenarCardsPrincipales(ultimasEntradasPrimarias[i],"cardEspiritual");      
+          $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 5 ).before(cardNueva); 
         }
       }
-      llenarCards(ultimasEntradas);
     /*redirecciones pagina donacion*/
       $("#paginaDonacion #confirmacion #tiempoEspecie").on("click",function(){
         bootbox.alert("Muchas gracias por tu apoyo, pronto estaremos en contacto!!", function(result){
@@ -402,16 +428,18 @@
         $(".navbar").css("top","0");
         $("#contenido").css("margin-top","4.6%");
       }else{
+        $(".navbar #menuEscondido").css("display","inherit");
         $(".navbar").mouseenter(function() {
-          $(this).css("top","0");
-          $("#contenido").css("margin-top","4.6%");
+          $(".navbar #menuEscondido").css("display","none");
+          $(this).stop().animate({'top':'0px'},'slow');
+          $("#contenido").stop().animate({"margin-top":"4.6%"},'slow');
         });
         $(".navbar").mouseleave(function() {
-          $(this).css("top","-50px");
-          $("#contenido").css("margin-top","0");
+          $(".navbar #menuEscondido").css("display","inherit");
+          $(this).stop().animate({'top':'-50px'},'slow');
+          $("#contenido").stop().animate({"margin-top":"0"},'slow');
         });
-      }
-    
+      }    
   });
 
 /*Otras Funciones*/
@@ -467,7 +495,7 @@
       aleatorio(0,4);
     }
   }
-  function llenarCardsPrincipales(estructura, id){
+  function llenarCardsPrincipales(estructura,id){
     var divContenidoCard = $("<div class='contenidoCard'></div>");
     if(estructura.linkImagen){
       var divImagenDescripcion = $("<div class='imagenDescripcion'></div>");
@@ -479,8 +507,8 @@
       divContenidoCard.append(divImagenDescripcion);
       divContenidoCard.append(divDescripcion);
     }else{
-      var divDescripcionSinImagen = $("<div class='descripcionSinImagen' id='d"+id+"'></div>");
-      var p = $("<p id='p"+id+"'>"+estructura.descripcion+"</p>");
+      var divDescripcionSinImagen = $("<div class='descripcionSinImagen'></div>");
+      var p = $("<p>"+estructura.descripcion+"</p>");
       divDescripcionSinImagen.append(p);
       divContenidoCard.append(divDescripcionSinImagen);
     }
@@ -488,10 +516,12 @@
     var divLeerMas = $("<div class='leerMas'>LEER +</div>");
     a.append(divLeerMas);
     divContenidoCard.append(a);
-    return divContenidoCard;
+    var card= $("<div class='card'></div>");
+    card.attr("id",id);
+    card.append(divContenidoCard);
+    return card;
   }
-  function llenarCards(array){
-    var entradas=array;
+  function llenarCards(entradas){
     for(var i=0;i<entradas.length;i++){
       if(entradas[i]){
         var contenidoCard = $("<div class='contenidoCard'></div>");
@@ -507,22 +537,6 @@
         }else{
           var descripcionSinImagen = $("<div class='descripcionSinImagen'></div>");
           var p2 = $("<p>"+entradas[i].descripcion+"</p>");
-          if(i==0){
-            descripcionSinImagen.attr("id","d2");
-            p2.attr("id","p2");
-          }else if(i==1){
-            descripcionSinImagen.attr("id","d4");
-            p2.attr("id","p4");
-          }else if(i==2){
-            descripcionSinImagen.attr("id","d5");
-            p2.attr("id","p5");
-          }else if(i==3){
-            descripcionSinImagen.attr("id","d7");
-            p2.attr("id","p7");
-          }else if(i==4){
-            descripcionSinImagen.attr("id","d8");
-            p2.attr("id","p8");
-          }
           descripcionSinImagen.append(p2);
           contenidoCard.append(descripcionSinImagen);
         }

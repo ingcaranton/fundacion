@@ -1,4 +1,6 @@
 extends ../../../views/layout
+block head
+  script(type='text/javascript' src='/plugins/ckeditor/ckeditor.js')
 block content
   if user && user.rol == "administrador"
     if pagina

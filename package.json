@@ -24,6 +24,7 @@
     "fs": "0.0.2",
     "connect-multiparty": "~1.2.5",
     "Buffer": "0.0.0",
-    "nodemailer": "0.7.1"
+    "nodemailer": "0.7.1",
+    "path": "~0.11.14"
   }
 }

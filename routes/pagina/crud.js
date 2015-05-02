@@ -72,14 +72,14 @@ module.exports.deleter = function(req, res, done) {
 module.exports.update = function(req, res, done) {
 
   var nombreEnlaceUpdate=req.body.nombreEnlace.replace(" ","");
-  var nombreEnlace=req.body.nombreEnlaceOriginal;
+  var nombreEnlace=req.body.nombreEnlaceOriginal; 
+  var fs = require('fs');
   
   var update= {};
       update.nombreEnlace = nombreEnlaceUpdate;
       update.titulo = req.body.titulo;
       update.descripcion = req.body.descripcion;
       update.contenido =req.body.contenido;
-      update.UserModificacion = req.session.user.nickName;
       update.UserModificacion = req.session.user.nickName;
       update.categoria =req.body.categoria;
       update.fechaCreacion = new Date();

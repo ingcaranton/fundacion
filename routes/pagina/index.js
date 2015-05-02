@@ -25,6 +25,30 @@ app.route('/nueva')
   });
 });
 
+app.route('/guardarImagenCKeditor')
+.post(multipart(),function(req, res){
+  fs=require("fs");
+  if(req.files.image.name){
+    fs.readFile(req.files.image.path, function (err, data) {
+    var imageName = req.files.image.name;
+    var nombre=new Date().toISOString();
+    var path = require('path')
+    var extencion=path.extname(imageName);
+    var newPath ='./public/imagesUploads/'+ nombre+extencion;
+    var path2='/imagesUploads/'+ nombre+extencion;
+
+      fs.writeFile(newPath, data, function (err) {
+          if(err){
+            res.send(err);
+          }else{
+            res.send(path2);
+          }
+      });
+    });
+  }
+});
+
+
 app.route('/editar/:pagina')
 .get(function(req, res) {
   //Busca la pagina que se esta pidiendo en la BD, si la encuentra renderiza la informacion que tenga

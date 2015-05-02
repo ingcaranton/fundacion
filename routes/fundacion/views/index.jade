@@ -1,11 +1,11 @@
 extends ../../../views/layout
 block head 
+  link(rel='stylesheet' type='text/css' href='/plugins/Slicebox/css/slicebox.css')
   script(type='text/javascript' src='/plugins/Slicebox/js/modernizr.custom.46884.js')
   script(type='text/javascript' src='/plugins/Slicebox/js/jquery.slicebox.js') 
   script(type='text/javascript' src='/js/scroll.js')
 block content
   script(type="text/javascript").
-    homeCargado=true;
     ultimasEntradas=!{JSON.stringify(ultimasEntradas)}; 
     ultimasEntradasPrimarias=!{JSON.stringify(ultimasEntradasPrimarias)}; 
   #slider 

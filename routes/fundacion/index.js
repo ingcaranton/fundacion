@@ -17,7 +17,7 @@ app.use(function(req, res, next){
 
 app.route('/')
 .get(function(req, res){
-    db.pagina.aggregate({$match: {publicar:true} },{$sort: {_id:1}},{$group: {_id: "$categoria", 
+    db.pagina.aggregate({$match: {publicar:true} },{$sort: {categoria:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
       nombreEnlace: {$last: "$nombreEnlace" },
       fechaCreacion: {$last: "$fechaCreacion" },
@@ -25,7 +25,7 @@ app.route('/')
       linkImagen: {$last: "$linkImagen" },
       titulo: {$last: "$titulo" }
     }},
-        function(error, ultimasEntradasPrimarias){  
+        function(error, ultimasEntradasPrimarias){ 
         var array=[];
         if(ultimasEntradasPrimarias[0]) 
           array.push(ultimasEntradasPrimarias[0].nombreEnlace);

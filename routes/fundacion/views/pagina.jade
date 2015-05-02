@@ -15,6 +15,9 @@ block content
       #descripcion
         p 
           b #{pagina.descripcion}
+      if pagina.linkImagen
+        #imagenDescripcion
+          img(src=pagina.linkImagen)
       #elemento
         | !{pagina.contenido}
       if pagina.nombreEnlace=="apoyar"

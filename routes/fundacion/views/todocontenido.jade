@@ -2,29 +2,21 @@ extends ../../../views/layout
 block content
   if paginas
     #todoContenido    
+      h1 PUBLICACIONES
       each pagina,index in paginas
-        - var color
         - var colorLetra
         if pagina.categoria=="fisico"
-          - color="#00bb41"
-          - colorLetra="#fff"
+          - colorLetra="#00bb41"
         if pagina.categoria=="emocional"
-          - color="#36abd0"
-          - colorLetra="#fff"
+          - colorLetra="#36abd0"
         if pagina.categoria=="espiritual"
-          - color="#8762ab"
-          - colorLetra="#fff"
+          - colorLetra="#8762ab"
         if pagina.categoria!="sinCategoria"
-          div(onClick="location.href='"+pagina.nombreEnlace+"'" style="background-color:"+color+"" data-toggle="tooltip" data-placement="bottom" title="Ver Mas")
-            if pagina.linkImagen
-              .izquierda
-                img(src=pagina.linkImagen)
-            .derecha
+          div
+            a(href=pagina.nombreEnlace style="color:"+colorLetra)
               span.titulo
                 b(style="color:"+colorLetra) #{pagina.titulo}
-              span(style="color:"+colorLetra) &nbsp; / &nbsp;
-              span.fecha(fecha=pagina.fechaCreacion style="color:"+colorLetra)
-              p(style="color:"+colorLetra) #{pagina.descripcion}
+            p(style="color:#5c5c5c") #{pagina.descripcion}
     #botonSubir
       button.btn.btn-primary.scrollup(type="button") 
         b SUBIR

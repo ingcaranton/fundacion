@@ -18,7 +18,7 @@
   var homeCargado=false;
   var vistaDonacion=false;
   var vistaEstrellas=false;
-  var arrayColor=["#fe889b","#d273cd","#36abd0","#8762ab","#00c7fc","#00bb41","#fef000","#ffa700","#ff7f5b"];
+  var arrayColor=["#fe889b","#d273cd","#00c7fc","#8762ab","#36abd0","#00bb41","#fef000","#ffa700","#ff7f5b"];
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
@@ -255,12 +255,6 @@
         var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
         $("#contenidoPagina #fecha #centro span").text(fecha);
       }   
-      if($("#todoContenido .derecha span.fecha").attr("fecha")){
-        var str=$("#todoContenido .derecha span.fecha").attr("fecha");
-        var res = str.split(" ",4);
-        var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
-        $("#todoContenido .derecha span.fecha").text(fecha);
-      }  
     /*Buscar*/
       $('#formularioBuscar').submit(function() {
         $.ajax({

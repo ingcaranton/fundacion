@@ -490,8 +490,7 @@ body
           color white
 /*Fin Home*/
 
-/*Agregar paginas*/    
-      
+/*Agregar paginas*/          
   #pagina
     width 100%
     padding 3% 10% 3% 10%
@@ -595,7 +594,7 @@ body
         
 /*administrador*/
   #admin
-    padding 4% 5% 4% 5%
+    padding 4% 3% 4% 3%
     border 2px solid gray
     border-radius 10px
     margin 7% 20% 0 20%
@@ -608,7 +607,7 @@ body
       margin 5% 5% 5% 5%
 /*fin administrador*/
 
-/*Ver página*/
+/*Pagina Interna*/
   #linksPrincipales
     width 100%
     float left
@@ -645,7 +644,16 @@ body
       text-align center
       color #e58799
       margin 2% 0 5% 0
-      
+    
+    #imagenDescripcion
+      width 100%
+      text-align center
+      padding 3%
+      img 
+        padding 1.5%
+        width 80%
+        border 1px solid #e58799
+    
     #elemento
       width 80%
       margin 5% 10% 5% 10%
@@ -792,7 +800,7 @@ body
       margin-right 8%
       background gray
       border none
-/*Fin ver pagina*/
+/*Fin Pagina Interna*/
 
 /*Editar Menu*/
   #editarMenu
@@ -815,16 +823,21 @@ body
           float left
           .tituloMenu 
             padding 3% 3% 0 3%
+            span 
+              float left
             input
+              float left
               margin-left 15px
-              width 300px
+              width 70%
           .seleccionUrl
             padding 3% 3% 0 3%
+            float left
             span
               margin-right 15px
             input
               margin-left 20px
           .urlMenu
+            float left
             padding 3% 3% 0 3%
             span
               margin-right 15px
@@ -836,11 +849,13 @@ body
               width 300px
               margin-left 20px
         .creadorMenu
+          float left
           text-align center
           padding 2% 3% 0 3%
           width 20%
           float left          
         .acciones
+          float left
           text-align center
           padding 3% 1% 0 1%
       .tituloSubmenu
@@ -969,32 +984,17 @@ body
   #todoContenido
     width 100%
     padding 5% 5% 5% 5%
+    h1
+      width 100%
+      text-align center
+      color #5f5f5f
+      padding-bottom 3%
+      border-bottom 1px solid #5f5f5f
     div 
-      border 2px solid gray
-      border-radius 10px
       width 90%
-      margin 2% 5% 2% 5%
-      cursor pointer
-      .izquierda
-        margin 10px 10px 
-        float left
-        border none
-        max-width 100px
-        text-align center
-        img 
-          max-width 100px
-          height 80px
-      .derecha
-        padding 0 3%
-        border none
-        width 95%        
-        span
-          color gray
-        span.titulo
-          font-size 25px
-        p 
-          text-align justify
-          color gray         
+      margin 2% 5% 2% 5%    
+      p 
+        text-align justify
 /*fin todoContenido*/
 
 /*Hacer Donación*/
@@ -1311,58 +1311,118 @@ body
         padding-top 3px
 /*fin estrellas*/
 
-@media (max-width:800px)
-  body 
-    overflow-x hidden
-  #contenido
-    padding-top 8%
+/*Responsive*/
+  @media (max-width:800px)
+    body 
+      overflow-x hidden
+    /*Layout*/
+    .navbar
+      .container-fluid #navbar-collapse-1
+        width 100%
+        max-width 100%
+        padding-left 2%
+        ul#ulPrincipal
+          margin-left 0 !important
+        ul.nav.navbar-nav
+          width 100%
+          margin 20px auto
+          ul.submenus.dropdown-menu.colorSubmenu
+            margin 0 !important
+        #botonIngresar.nav.navbar-nav.navbar-right
+          border-left none
+          text-align center
+          padding 0
+          #login
+            width 250px    
+            padding 1% 0 0 0  
+    header 
+      display none
+    #contenido
+      padding-top 8%
+    #piePagina
+      height initial
+      a
+        display block
+      span.guion
+        display none
+    /*Fin Layout*/
+    /*Home*/
     #slider
       #sliderImagenes
         iframe 
           height 250px
         #flechaAbajo
           display none
-  #seccionesPrincipales #cards .card
-    margin 0 2%
-    width 96%
-    display block
-    box-sizing border-box
-    
-  .navbar
-    .container-fluid #navbar-collapse-1
-      width 100%
-      max-width 100%
-      padding-left 2%
-      ul#ulPrincipal
-        margin-left 0 !important
-      ul.nav.navbar-nav
-        width 100%
-        margin 20px auto
-        ul.submenus.dropdown-menu.colorSubmenu
-          margin 0 !important
-      #botonIngresar.nav.navbar-nav.navbar-right
-        border-left none
-        text-align center
-        padding 0
-        #login
-          width 250px    
-          padding 1% 0 0 0  
-  header 
-    display none
-
-  #masContenido
-    #linea1
-      display none
-    a
-      width 50%
-    #linea2
-      padding 0 0 1% 0
-      border-top none
-      width 40%
-  #piePagina
-    height initial
-    a
+    #seccionesPrincipales #cards .card
+      margin 0 2%
+      width 96%
       display block
-    span.guion
-      display none
-  
+      box-sizing border-box
+
+    #masContenido
+      #linea1
+        display none
+      a
+        width 50%
+      #linea2
+        padding 0 0 1% 0
+        border-top none
+        width 40%
+    /*Fin Home*/
+    /*Pagina Interna*/
+    #imagenDescripcion
+      padding 0
+      img 
+        width 90%
+    #elemento
+      width 90% !important
+      p 
+        max-width 90% !important
+      span
+        max-width 90% !important
+      img 
+        max-width 90% !important
+        max-height 35% !important
+    #fecha
+      #linea1
+        width 30% !important
+      #centro
+        width 36% !important
+      #linea2
+        width 30% !important
+    /*Fin Pagina Interna*/
+    /*Contacto*/
+    #contacto 
+      padding 3%
+      #formulario
+        width 80%
+    /*Fin Contacto*/
+    /*Hacer Donacion*/
+    #paginaDonacion
+      padding 3%
+      h1
+        font-size 30px
+      #formulario
+        width 100%
+        span
+          padding-left 10%
+      #confirmacion
+        width 90%
+    /*Fin Hacer Donacion*/
+    /*Estrellas*/
+    #paginaEstrellas
+      padding 3%
+      h1
+        font-size 30px
+      #formulario
+        width 80%
+        #numEstrellas
+          width 90%
+          margin none
+        #dinero
+          width 90%
+          margin none
+    /*Fin Estrellas*/
+    #editarPaginas
+      table#tablaEditarPaginas
+        margin auto

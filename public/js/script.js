@@ -414,14 +414,12 @@
         if($(window).width()>800){
           $(".navbar #menuEscondido").css("display","inherit");
           $(".navbar").mouseenter(function() {
-            $(this).stop().animate({'top':'0px','magin-bottom':'4.6%'},'slow',function(){
-              $(".navbar #menuEscondido").slideUp();
-            });
+            $(".navbar #menuEscondido").slideUp('slow');
+              $(this).stop().animate({'top':'0px','magin-bottom':'4.6%'},'slow');
           });
           $(".navbar").mouseleave(function() {
-            $(this).stop().animate({'top':'-50px','magin-bottom':'0'},'slow',function(){
-              $(".navbar #menuEscondido").slideDown();
-            });
+            $(this).stop().animate({'top':'-50px','magin-bottom':'0'},'slow');
+              $(".navbar #menuEscondido").slideDown('slow');
           });
         }else{
           $(".navbar").css("top","0");

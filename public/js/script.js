@@ -470,7 +470,7 @@
   } 
 
   function aleatorio(min, max){ 
-    while (repe != false) { 
+    while (repe !== false) { 
       var num= Math.floor(Math.random()*(max-min+1))+min; 
       var repe = repetido(num); 
     } 

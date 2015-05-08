@@ -2,7 +2,6 @@
 module.exports.create = function(req, res, done) {
   	var newMenu = new db.menu();
   	newMenu.titulo=req.body.tituloMenu;
-      console.log(req.body);
      newMenu.submenus=[];
    if(req.body.tituloSubmenu){
    	  for(var i=0;i<req.body.tituloSubmenu.length;i++){
@@ -47,7 +46,7 @@ module.exports.update = function(req, res, done) {
     }
   }
   update.fechaCreacion = dateFormateada();
-  update.UserModificacion = req.session.user;
+  update.UserModificacion = req.session.user.nickName;
     db.menu.findOneAndUpdate({ "titulo" : req.body.tituloMenuOriginal},update,
       function(error){
         if (error)

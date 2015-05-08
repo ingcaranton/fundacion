@@ -38,9 +38,12 @@ app.route('/editarpaginas')
 
 app.route('/editarmenu')
 .get(function(req, res){
+  db.pagina.find({publicar:true}, 'nombreEnlace titulo categoria').exec(function(error, paginas){
     crudMenu.read(req, res, function(err, menus){
-          res.render('editarMenu', {
-          title : "Administrar menu"
+      res.render('editarMenu', {
+      title : "Administrar menu",
+      paginas: paginas
+      });
     });
   });
 });

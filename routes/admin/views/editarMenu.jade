@@ -1,5 +1,7 @@
 extends ../../../views/layout
 block content
+  script(type="text/javascript").
+    paginas=!{JSON.stringify(paginas)};
   if user && user.rol == "administrador"
     #editarMenu
       h1 EDITAR MENU
@@ -35,8 +37,8 @@ block content
                         input#seleccionUrl(type="checkbox")
                       .urlMenu(style="display:none") 
                         span Url 
-                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="url")
-                          select#urlInterna.form-control(style="display:none" name="url")
+                          input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                          select#urlInterna.form-control(style="display:none" name="urlInterna")
                             each pagina in paginas
                               option(value=pagina.nombreEnlace) #{pagina.titulo}
                   .creadorMenu
@@ -108,9 +110,15 @@ block content
                 .panel-collapse
                     .panel-body
                       .datosMenu
+                        .numeroMenu
+                          span Orden en el Menu  
+                          input(type="number" name="numeroMenu" min=0 required title="Número requerido")
                         .tituloMenu
                           span Titulo 
                           input(type="text" name="tituloMenu" required title="Titulo requerido")
+                        .colorMenu
+                          span Color
+                          input(type="color" name="colorMenu" required title="Color requerido")
                         .seleccionUrl
                           span ¿Url interna?
                           input#seleccionUrl(type="checkbox")

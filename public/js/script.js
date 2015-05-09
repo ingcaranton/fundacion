@@ -10,6 +10,7 @@
 /*Variables Globales*/
   var ultimasEntradas={};
   var ultimasEntradasPrimarias={};
+  var paginas={};
   var arrayImagenesSlider=[{src:"https://s3.amazonaws.com/fundacion-bucket/1.png",url:"/Los5principiosdelAcompanar",descripcion:"Programa para el cuidado del ser y sus relaciones, 7 sesiones que permiten identificar las dificultades y las potencialidades de los participantes, encontrando caminos de transformación que mejoran los escenarios de vida de las personas, las familias y las comunidades."},
     {src:"https://s3.amazonaws.com/fundacion-bucket/2.jpg",url:"/croquetazanahoria",descripcion:"Las zanahorias son una de las hortalizas que más se producen a nivel mundial. Por contener carotenoides, numerosos estudios la han vinculado con la prevención del cáncer de mama. Además, es fuente de vitaminas A, B, C y E. También contiene minerales y antioxidantes."},
     {src:"https://s3.amazonaws.com/fundacion-bucket/3.jpg",url:"/hamburguesavegetariana",descripcion:"Aquí tienes 4 opciones de hamburguesa vegetariana, para preparar y disfrutar de un rico y saludable almuerzo. Puedes variar y combinar los distintos ingredientes que más te gusten, para preparar tu hamburguesa perfecta."},
@@ -199,20 +200,40 @@
         $('#editarMenu #menuNuevo table  > tbody:last').
             append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas
             +'</td><td><input type="text" name="tituloSubmenu['+
-            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input name="seleccionUrl" type="checkbox"/></td><td><input type="text" name="urlSubmenu['+
-            (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input class="seleccionUrlSubmenu" name="seleccionUrlSubmenu" type="checkbox" externa="urlExternaSubmenu'+
+            (filas-1)+'" interna="urlInternaSubmenu'+(filas-1)+'"/></td><td><input type="text" name="urlExternaSubmenu['+
+            (filas-1)+']" id="urlExternaSubmenu'+
+            (filas-1)+'"></input><select style="display:none" id="urlInternaSubmenu'+
+            (filas-1)+'" name="urlInternaSubmenu['+(filas-1)+']" class="form-control"></select></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
             (filas-1)+',\'panelMenuNuevo\',\'Cancelar\')"> Cancelar </a></td></tr>');
+        //Url submenu interna o externa
+          $("#editarMenu #menuNuevo table .seleccionUrlSubmenu").click(function() { 
+            var interna = $(this).attr("interna");
+            var externa = $(this).attr("externa");
+            if($(this).is(':checked')) {  
+              $("#"+externa).css("display","none");
+              $("#"+interna).css("display","inherit");
+              if($("#"+interna).children('option').length==0){
+                for(var i=0; i<paginas.length;i++){
+                  $("#"+interna).append('<option value="'+paginas[i].nombreEnlace+'">'+paginas[i].titulo+'</option>');
+                }
+              }
+            } else {  
+              $("#"+externa).css("display","inherit");
+              $("#"+interna).css("display","none"); 
+            }  
+          });
       });
       /*Url interna o externa*/
-      $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").click(function() { 
-        if($("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").is(':checked')) {  
-          $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","none");
-          $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","inherit");
-        } else {  
-          $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","inherit");
-          $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","none"); 
-        }  
-      });
+        $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").click(function() { 
+          if($("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").is(':checked')) {  
+            $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","none");
+            $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","inherit");
+          } else {  
+            $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","inherit");
+            $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","none"); 
+          }  
+        });
     /*Fin menu nuevo*/
     /*Confirmación de elimar pagina*/
       $("#editarPaginas table").on('click', 'a.eliminarPagina', function(){

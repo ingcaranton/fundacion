@@ -821,8 +821,32 @@ body
         .datosMenu
           width 40%
           float left
-          .tituloMenu 
+          .numeroMenu 
             padding 3% 3% 0 3%
+            float left
+            width 100%
+            span 
+              float left
+            input
+              float left
+              margin-left 15px
+              text-align center
+              width 20%
+          .tituloMenu 
+            width 100%
+            float left
+            padding 3% 3% 0 3%
+            span 
+              float left
+            input
+              float left
+              margin-left 15px
+              text-align center
+              width 70%
+          .colorMenu 
+            float left
+            padding 3% 3% 0 3%
+            width 100%
             span 
               float left
             input
@@ -830,6 +854,7 @@ body
               margin-left 15px
               width 70%
           .seleccionUrl
+            width 100%
             padding 3% 3% 0 3%
             float left
             span
@@ -837,14 +862,15 @@ body
             input
               margin-left 20px
           .urlMenu
+            width 100%
             float left
             padding 3% 3% 0 3%
             span
-              margin-right 15px
+              float left
             input
               text-align center
               margin-left 20px
-              width 300px
+              width 70%
             select
               width 300px
               margin-left 20px
@@ -868,6 +894,9 @@ body
         tr td 
           text-align center
           input
+            width 100%
+            text-align center
+          select
             width 100%
             text-align center
         tr 
@@ -1426,3 +1455,7 @@ body
     #editarPaginas
       table#tablaEditarPaginas
         margin auto
+    .panel.panel-primary
+      .panel-body
+        .datosMenu
+          width 80% !important

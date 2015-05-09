@@ -8,7 +8,8 @@ var menuSchema = new Schema({
 	fechaCreacion : String,
     submenus : [{
 					titulo : String,
-					url : String
+					urlExterna : String,
+					urlInterna : String
 		}]
 });
 return mongoose.model('menu', menuSchema);

@@ -5,8 +5,11 @@ module.exports.create = function(req, res, done) {
      newMenu.submenus=[];
    if(req.body.tituloSubmenu){
    	  for(var i=0;i<req.body.tituloSubmenu.length;i++){
-   			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
-      }
+        if(req.body.seleccionUrlSubmenu[i]==='on'){
+          newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
+        }else{
+   			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+      }}
     }
     newMenu.fechaCreacion = dateFormateada();
     newMenu.UserModificacion = req.session.user.nickName;
@@ -14,7 +17,7 @@ module.exports.create = function(req, res, done) {
       if(errSave)
         return done(errSave);          
       else
-        return done(null, req.flash('message', 'menu save'));          
+        return done(null, false, req.flash('message', 'menu save'));          
     });
 }
 module.exports.read = function(req, res, done) {
@@ -29,9 +32,9 @@ module.exports.deleter = function(req, res, done) {
   db.menu.findOneAndRemove({ "titulo" : req.params.menu},
     function(error){
       if (error)
-          return done(error);          
+        return done(error);          
       else
-        return done(null, req.flash('message', 'menu delete'));
+        return done(null, false, req.flash('message', 'menu borrado'));
     }
   );
 }
@@ -41,9 +44,12 @@ module.exports.update = function(req, res, done) {
   console.log(req.body);
   update.submenus=[];
   if(req.body.tituloSubmenu){
-    for(var i=0;i<req.body.tituloSubmenu.length;i++){
-   	  update.submenus.push({titulo:req.body.tituloSubmenu[i],url:req.body.urlSubmenu[i]});
-    }
+      for(var i=0;i<req.body.tituloSubmenu.length;i++){
+        if(req.body.seleccionUrlSubmenu[i]==='on'){
+          newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
+        }else{
+        newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+      }}
   }
   update.fechaCreacion = dateFormateada();
   update.UserModificacion = req.session.user.nickName;

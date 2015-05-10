@@ -162,24 +162,96 @@
             $("#editarMenu #accordion .seleccionUrl").css("display","none");
             $("#editarMenu #accordion .urlMenu").css("display","none");
             $("#editarMenu #accordion .tituloSubmenu").css("display","inherit");
-            $("#editarMenu #accordion #"+tabla).css("display","inherit");
+            $("#editarMenu #accordion .table-responsive #"+tabla).css("display","inherit");
             $("#editarMenu #accordion .urlMenu #urlExterna").text("javascript:void(0);");
             $("#editarMenu #accordion #seleccionUrl").attr('checked', false);
           }
-          $('#editarMenu #accordion #'+tabla+' > tbody:last').
-            append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas+'</td><td><input type="text" name="tituloSubmenu['+
-            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input name="seleccionUrl" type="checkbox"/></td><td><input type="text" name="urlSubmenu['+
-            (filas-1)+']" required title=\'Url submenu requerida\'></input></td><td><span/></td><td><span/></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+          $('#editarMenu #accordion .table-responsive #'+tabla+' > tbody:last').
+            append('<tr id="'+(filas-1)+'" class="dato"><td>'+
+              filas+'</td><td><input type="text" name="tituloSubmenu['+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input class="seleccionUrlSubmenu" name="seleccionUrlSubmenu['+
+            (filas-1)+']" type="checkbox" interna="urlInternaSubmenu'+
+            (filas-1)+'" externa="urlExternaSubmenu'+(filas-1)+'" valor="valorUrlSubmenu'+
+            (filas-1)+'"></input><input type="hidden" name="valorUrlSubmenu['+
+            (filas-1)+']"></input></td><td><input type="url" name="urlExternaSubmenu['+
+            (filas-1)+']" placeholder="http://http://www.ejemplo.com" id="urlExternaSubmenu'+
+            (filas-1)+'"></input><select style="display:none" id="urlInternaSubmenu'+
+            (filas-1)+'" name="urlInternaSubmenu['+(filas-1)+']" id="urlInternaSubmenu'+
+            (filas-1)+'" class="form-control"></select></td><td><span/></td><td><span/></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
             (filas-1)+',\''+panel+'\',\'Cancelar\')"> Cancelar </a></td></tr>');
+          if($("#editarMenu #accordion .seleccionUrlSubmenu").is(':checked')) {  
+            var valor = $(this).attr("valor");
+            $("#editarMenu #accordion .table-responsive #"+tabla+" #"+valor).val("on");
+          } else {  
+            var valor = $(this).attr("valor");
+            $("#editarMenu #accordion .table-responsive #"+tabla+" #"+valor).val("off");
+          }  
+          $("#editarMenu #accordion .seleccionUrlSubmenu").click(function() { 
+            var interna = $(this).attr("interna");
+            var externa = $(this).attr("externa");
+            var valor= $(this).attr("valor");
+            if($(this).is(':checked')) {  
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+externa).css("display","none");
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+externa).val("");
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+valor).val("on");
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna).css("display","inherit");
+              if($("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna).children('option').length==0){
+                $("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna).append('<option value="none">Seleccione una opción</option>');
+                for(var i=0; i<paginas.length;i++){
+                  $("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna).append('<option value="'+paginas[i].nombreEnlace+'">'+paginas[i].titulo+'</option>');
+                }
+              }
+            } else {  
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+externa).css("display","inherit");
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna).css("display","none"); 
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+valor).val("off");
+              $("#editarMenu #accordion .table-responsive #"+tabla+" #"+interna+" option[value='none'").attr("selected",true);
+            }  
+          });       
         });
       /*Url interna o externa*/
+        if($("#editarMenu #accordion #seleccionUrl").is(':checked')) {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #accordion #"+valor).val("on");
+        } else {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #accordion #"+valor).val("off");
+        }  
         $("#editarMenu #accordion #seleccionUrl").click(function() { 
-          if($("#editarMenu #accordion #seleccionUrl").is(':checked')) {  
+          var valor=$(this).attr("valor");
+          if($(this).is(':checked')) {  
             $("#editarMenu #accordion #urlExterna").css("display","none");
+            $("#editarMenu #accordion #urlExterna").val("");
+            $("#editarMenu #accordion #"+valor).val("on");
             $("#editarMenu #accordion #urlInterna").css("display","inherit");
           } else {  
             $("#editarMenu #accordion #urlExterna").css("display","inherit");
             $("#editarMenu #accordion #urlInterna").css("display","none"); 
+            $("#editarMenu #accordion #"+valor).val("off");
+            $("#editarMenu #accordion #urlInterna option[value='none'").attr("selected",true);
+          }  
+        });
+        if($("#editarMenu #accordion .seleccionUrlSubmenu").is(':checked')) {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #accordion .table-responsive table #"+valor).val("on");
+        } else {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #accordion .table-responsive table #"+valor).val("off");
+        } 
+        $("#editarMenu #accordion .seleccionUrlSubmenu").click(function() { 
+          var interna = $(this).attr("interna");
+          var externa = $(this).attr("externa");
+          var valor=$(this).attr("valor");
+          if($(this).is(':checked')) {  
+            $("#editarMenu #accordion .table-responsive table #"+externa).css("display","none");
+            $("#editarMenu #accordion .table-responsive table #"+externa).val("");
+            $("#editarMenu #accordion .table-responsive table #"+valor).val("on");
+            $("#editarMenu #accordion .table-responsive table #"+interna).css("display","inherit");
+          } else {  
+            $("#editarMenu #accordion .table-responsive table #"+externa).css("display","inherit");
+            $("#editarMenu #accordion .table-responsive table #"+interna).css("display","none"); 
+            $("#editarMenu #accordion .table-responsive table #"+valor).val("off");
+            $("#editarMenu #accordion .table-responsive table #"+interna+" option[value='none'").attr("selected",true);
           }  
         });
     /*fin editar Menu*/
@@ -200,38 +272,61 @@
         $('#editarMenu #menuNuevo table  > tbody:last').
             append('<tr id="'+(filas-1)+'" class="dato"><td>'+filas
             +'</td><td><input type="text" name="tituloSubmenu['+
-            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input class="seleccionUrlSubmenu" name="seleccionUrlSubmenu" type="checkbox" externa="urlExternaSubmenu'+
-            (filas-1)+'" interna="urlInternaSubmenu'+(filas-1)+'"/></td><td><input type="text" name="urlExternaSubmenu['+
+            (filas-1)+']" required title=\'Titulo submenu requerido\'></input></td><td><input class="seleccionUrlSubmenu" name="seleccionUrlSubmenu['+
+            (filas-1)+']" type="checkbox" externa="urlExternaSubmenu'+
+            (filas-1)+'" interna="urlInternaSubmenu'+
+            (filas-1)+'" valor="valorUrlSubmenu'+
+            (filas-1)+'"/><input type="hidden" value="off" name="valorUrlSubmenu['+
+            (filas-1)+']" id="valorUrlSubmenu'+
+            (filas-1)+'"/></td><td><input type="url" name="urlExternaSubmenu['+
             (filas-1)+']" id="urlExternaSubmenu'+
-            (filas-1)+'"></input><select style="display:none" id="urlInternaSubmenu'+
-            (filas-1)+'" name="urlInternaSubmenu['+(filas-1)+']" class="form-control"></select></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
+            (filas-1)+'" placeholder="http://www.ejemplo.com"></input><select style="display:none" id="urlInternaSubmenu'+
+            (filas-1)+'" name="urlInternaSubmenu['+
+            (filas-1)+']" class="form-control"></select></td><td><a href="javascript:void(0);" onclick="cancelar_eliminarSubmenu('+
             (filas-1)+',\'panelMenuNuevo\',\'Cancelar\')"> Cancelar </a></td></tr>');
         //Url submenu interna o externa
           $("#editarMenu #menuNuevo table .seleccionUrlSubmenu").click(function() { 
             var interna = $(this).attr("interna");
             var externa = $(this).attr("externa");
+            var valor=$(this).attr("valor");
             if($(this).is(':checked')) {  
-              $("#"+externa).css("display","none");
-              $("#"+interna).css("display","inherit");
-              if($("#"+interna).children('option').length==0){
+              $("#editarMenu #menuNuevo table #"+externa).css("display","none");
+              $("#editarMenu #menuNuevo table #"+externa).val("");
+              $("#editarMenu #menuNuevo table #"+valor).val("on");
+              $("#editarMenu #menuNuevo table #"+interna).css("display","inherit");
+              if($("#editarMenu #menuNuevo table #"+interna).children('option').length==0){
+                $("#editarMenu #menuNuevo table #"+interna).append('<option value="none" selected>Seleccione una opción</option>');
                 for(var i=0; i<paginas.length;i++){
-                  $("#"+interna).append('<option value="'+paginas[i].nombreEnlace+'">'+paginas[i].titulo+'</option>');
+                  $("#editarMenu #menuNuevo table #"+interna).append('<option value="'+paginas[i].nombreEnlace+'">'+paginas[i].titulo+'</option>');
                 }
               }
             } else {  
-              $("#"+externa).css("display","inherit");
-              $("#"+interna).css("display","none"); 
+              $("#editarMenu #menuNuevo table #"+externa).css("display","inherit");
+              $("#editarMenu #menuNuevo table #"+interna).css("display","none"); 
+              $("#editarMenu #menuNuevo table #"+valor).val("off");
+              $("#editarMenu #menuNuevo table #"+interna+" option[value='none'").attr("selected",true);
             }  
           });
       });
       /*Url interna o externa*/
+        if($("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").is(':checked')) {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #nuevoMenu #menuNuevo #valorUrl").val("on");
+        } else {  
+          var valor = $(this).attr("valor");
+          $("#editarMenu #nuevoMenu #menuNuevo #valorUrl").val("off");
+        } 
         $("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").click(function() { 
-          if($("#editarMenu #nuevoMenu #menuNuevo #seleccionUrl").is(':checked')) {  
+          if($(this).is(':checked')) {  
             $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","none");
+            $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").val("");
+            $("#editarMenu #nuevoMenu #menuNuevo #valorUrl").val("on");
             $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","inherit");
           } else {  
             $("#editarMenu #nuevoMenu #menuNuevo #urlExterna").css("display","inherit");
             $("#editarMenu #nuevoMenu #menuNuevo #urlInterna").css("display","none"); 
+            $("#editarMenu #nuevoMenu #menuNuevo #valorUrl").val("off");
+            $("#editarMenu #nuevoMenu #menuNuevo #urlInterna option[value='none']").attr("selected",true);
           }  
         });
     /*Fin menu nuevo*/

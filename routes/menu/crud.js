@@ -1,5 +1,6 @@
 //Create and save a record in the DB
 module.exports.create = function(req, res, done) {
+    console.log(req.body);
   	var newMenu = new db.menu();
   	newMenu.titulo=req.body.tituloMenu;
      newMenu.submenus=[];
@@ -8,7 +9,7 @@ module.exports.create = function(req, res, done) {
         if(req.body.seleccionUrlSubmenu[i]==='on'){
           newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
         }else{
-   			newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+   			  newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
       }}
     }
     newMenu.fechaCreacion = dateFormateada();
@@ -46,9 +47,9 @@ module.exports.update = function(req, res, done) {
   if(req.body.tituloSubmenu){
       for(var i=0;i<req.body.tituloSubmenu.length;i++){
         if(req.body.seleccionUrlSubmenu[i]==='on'){
-          newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
+          update.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
         }else{
-        newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+        update.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
       }}
   }
   update.fechaCreacion = dateFormateada();

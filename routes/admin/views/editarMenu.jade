@@ -23,24 +23,29 @@ block content
                         input(type="number" name="numeroMenu" min=0 required title="Número requerido")
                     .tituloMenu 
                       span Titulo 
-                      span #{menu.submenus}
+                      span #{menu.urlExterna}
                       input(type="text" name="tituloMenu" value=menu.titulo required title="Título requerido")
                     .colorMenu
                         span Color
                         input(type="color" name="colorMenu" required title="Color requerido")
-                    if !menu.submenus
+                    if menu.submenus==""
                       .seleccionUrl
                         span ¿Url interna?                        
                         if menu.urlInterna
                           input#seleccionUrl(type="checkbox" checked name="seleccionUrl" valor="valorUrl"+contador)
                         else
-                          input#seleccionUrl(type="checkbox" name="seleccionUrl")
+                          input#seleccionUrl(type="checkbox" name="seleccionUrl" valor="valorUrl"+contador)
                         input(type="hidden" id="valorUrl"+contador)
                       .urlMenu 
                         span Url 
                           if menu.urlExterna
                             input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                            select#urlInterna.form-control(name="urlInterna" style="display:none")
+                              option(value="none") Seleccione una opción
+                              each pagina in paginas
+                                option(value=pagina.nombreEnlace) #{pagina.titulo}
                           if menu.urlInterna
+                            input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna" style="display:none")
                             select#urlInterna.form-control(name="urlInterna")
                               option(value="none") Seleccione una opción
                               each pagina in paginas
@@ -48,6 +53,18 @@ block content
                                  option(value=pagina.nombreEnlace selected) #{pagina.titulo}
                                 else 
                                  option(value=pagina.nombreEnlace) #{pagina.titulo} 
+                    else 
+                      .seleccionUrl(style="display:none")
+                        span ¿Url interna?      
+                          input#seleccionUrl(type="checkbox" name="seleccionUrl" valor="valorUrl"+contador)
+                        input(type="hidden" id="valorUrl"+contador)
+                      .urlMenu(style="display:none")
+                        span Url 
+                            input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                            select#urlInterna.form-control(name="urlInterna" style="display:none")
+                              option(value="none") Seleccione una opción
+                              each pagina in paginas
+                                option(value=pagina.nombreEnlace) #{pagina.titulo}
                   .creadorMenu
                     span Usuario: #{menu.UserModificacion}
                     span &nbsp; &nbsp;
@@ -58,7 +75,36 @@ block content
                     a.eliminarMenu(href="javascript:void(0);" enlace="/admin/menu/eliminar/"+menu.titulo menu=menu.titulo) Eliminar Menu
                     span &nbsp; | &nbsp;
                     a.aCancelar(href="javascript:void(0);" panel="panel"+contador titulo="titulo"+contador panelCollapse="panelCollapse"+contador) Cancelar Edición
-                if menu.submenus
+                if menu.submenus==""
+                  .tituloSubmenu(style="display:none")
+                    h3 SUBMENU
+                  .table-responsive
+                    table.table(id="tabla"+contador style="display:none")
+                      thead
+                        tr
+                          th.numero 
+                            h5 
+                              b #
+                          th.titulo 
+                            h5
+                              b Titulo 
+                          th.check
+                            h5 
+                              b ¿Url Interna?
+                          th.url 
+                            h5
+                              b Url 
+                          th.fecha  
+                            h5
+                              b Fecha Modificación
+                          th.usuario 
+                            h5
+                              b Usuario
+                          th.accion 
+                            h5
+                              b Acción
+                      tbody
+                else
                   .tituloSubmenu
                     h3 SUBMENU
                   .table-responsive

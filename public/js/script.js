@@ -19,7 +19,7 @@
   var homeCargado=false;
   var vistaDonacion=false;
   var vistaEstrellas=false;
-  var arrayColor=["#fe889b","#d273cd","#00c7fc","#8762ab","#36abd0","#00bb41","#fef000","#ffa700","#ff7f5b"];
+  var arrayColor=["#d273cd","#00bb41","#00c7fc","#36abd0","#8762ab","#fef000","#ffa700","#fe889b","#ff7f5b"];
 /*Función de cargar en home*/
   $(document).ready(function() {
     posiciones();
@@ -158,7 +158,7 @@
           var tabla=$(this).attr('tabla');
           var panel=$(this).attr('panel');
           var filas=$('tr', '#'+tabla).length;
-          if(filas==1){
+          if(filas===1){
             $("#editarMenu #accordion .seleccionUrl").css("display","none");
             $("#editarMenu #accordion .urlMenu").css("display","none");
             $("#editarMenu #accordion .tituloSubmenu").css("display","inherit");

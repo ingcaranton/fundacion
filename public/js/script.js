@@ -376,7 +376,7 @@
       }); 
     /*Color Menu*/
       var cantidadMenu=$("#navbar-collapse-1 ul li.dropdown.yamm-fw").length;
-      $("#navbar-collapse-1 ul li.dropdown.yamm-fw").css("min-width",cantidadMenu+"%");
+      //$("#navbar-collapse-1 ul li.dropdown.yamm-fw").css("min-width",cantidadMenu+"%");
       for(var i=0;i<5;i++){
         var color = $("#navbar-collapse-1 ul li #colorMenu"+(i+1)).attr("color");
         if($("#navbar-collapse-1 ul li #colorMenu"+(i+1))){

@@ -1,6 +1,8 @@
 doctype html
 html
   head    
+    meta(name="description" content="Conexión Bienestar es una fundación que ayuda a que la gente viva mejor, difundiendo conocimiento en salud física, salud emocional y salud espiritual.")
+    meta(name="keywords" content="Conexión, bienestar, ayuda, estrellas, salud espiritual, salud fisica, salud emocional")
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
     title= title
@@ -30,88 +32,74 @@ html
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
           ul#ulPrincipal.nav.navbar-nav
-            li.dropdown.yamm-fw(id="li1")
-              .colorMenu(id="colorMenu1")
-              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu1" li="li1") 
-                b QUIÉNES SOMOS
-              ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu1")
-                li
-                  .yamm-content
-                    .row
-                      .col-sm-8
-                        ul.yamm-content.list-unstyled(role="menu")
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/SobreNosotros") 
-                                b &bull;  SOBRE NOSOTROS
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/juntaDirectiva") 
-                                b &bull;  JUNTA DIRECTIVA
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/direccionCientifica") 
-                                b &bull; DIRECCIÓN CIENTÍFICA
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/embajadores") 
-                                b &bull; EMBAJADORES
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/equipo") 
-                                b&bull; EQUIPO
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/auditoria") 
-                                b&bull; AUDITORIA 
-                      .divImagenSubmenu.col-sm-4
-                        img(src="/images/logoBlanco.png")
-            li.dropdown.yamm-fw(id="li2")
-              .colorMenu(id="colorMenu2")
-              a.dropdown-toggle(data-toggle="dropdown" href="/" idDiv="colorMenu2" li="li2") 
-                b LINEAS DE ACCIÓN
-              ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu2") 
-                li
-                  .yamm-content
-                    .row
-                      .col-sm-8
-                        ul.yamm-content.list-unstyled(role="menu")
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/plataformasDifusion") 
-                                b &bull; PLATAFORMAS DE DIFUSIÓN 
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="http://bienestar.alejandriaonline.com/josso/signon/bluematLogin.do?josso_cmd=login&token=5DB2CAB44EA9EEB5AC0CD1172F6546FF601D450821647ABFEBC2DFC8366DC778&josso_back_to=/lms") 
-                                b &bull; EDUCACIÓN
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/consultasonline") 
-                                b &bull; CURSOS ONLINE
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/certificacionempresas") 
-                                b &bull; CERTIFICACIÓN EMPRESARIAL
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/tiendabienestar") 
-                                b &bull; TIENDA BIENESTAR
-                            li.divider
-                            li
-                              a.tituloSubmenu(tabindex="-1" href="/centrosReconexion") 
-                                b &bull; CENTROS DE RECONEXIÓN
-                      .divImagenSubmenu.col-sm-4
-                        img(src="/images/logoBlanco.png")
-            li.dropdown.yamm-fw(id="li3")
-              .colorMenu(id="colorMenu3")
-              a.dropdown-toggle(href="/estrellas" idDiv="colorMenu3" li="li3") 
-                b COMPRA TU ESTRELLA
-            li.dropdown.yamm-fw(id="li4")
-              .colorMenu(id="colorMenu4")
-              a.dropdown-toggle(href="/hacerdonacion" idDiv="colorMenu4" li="li4") 
-                b APÓYANOS
-            li.dropdown.yamm-fw(id="li5")
-              .colorMenu(id="colorMenu5")
-              a.dropdown-toggle(href="/contacto" idDiv="colorMenu5" li="li5") 
-                b CONTÁCTANOS 
+            -var contador=0
+            each menu, index in menus 
+              if index < 5
+                -contador++
+                li.dropdown.yamm-fw(id="li"+(index+1))
+                  .colorMenu(id="colorMenu"+(index+1) color=menu.color)
+                  if menu.submenus==""
+                    if menu.urlInterna!="none"
+                      a.dropdown-toggle(href="/"+menu.urlInterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+                        b #{menu.titulo}
+                    else 
+                      a.dropdown-toggle(href=menu.urlExterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+                        b #{menu.titulo}
+                  else
+                    a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);" idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+                      b #{menu.titulo}
+                    ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu"+(index+1))
+                      li
+                        .yamm-content
+                          .row
+                            .col-sm-8
+                              ul.yamm-content.list-unstyled(role="menu")
+                                each submenu, index2 in menu.submenus
+                                  li
+                                    if submenu.urlInterna!='none'
+                                      a.tituloSubmenu(tabindex="-1" href="/"+submenu.urlInterna) 
+                                        b &bull;  #{submenu.titulo}
+                                    else
+                                      a.tituloSubmenu(tabindex="-1" href=submenu.urlExterna) 
+                                        b &bull;  #{submenu.titulo}
+                                  if index2=(menu.submenus.length)
+                                    li.divider
+                            .divImagenSubmenu.col-sm-4
+                              img(src="/images/logoBlanco.png")
+            if contador==5
+              li.dropdown.yamm-fw.mas
+                .colorMenu
+                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") 
+                  b +               
+                ul.dropdown-menu
+                  li
+                    .yamm-content
+                      .row
+                        each menu, index in menus 
+                          if index >= 5  
+                            ul.col-sm-2.list-unstyled                                  
+                              if menu.submenus!=""
+                                li
+                                  a(href="javascript:void(0);")
+                                    p
+                                      strong #{menu.titulo}
+                                each submenu in menu.submenus
+                                  li
+                                    if submenu.urlInterna!='none'
+                                      a(href="/"+submenu.urlInterna) #{submenu.titulo} 
+                                    else
+                                      a(href=submenu.urlExterna) #{submenu.titulo} 
+                              else
+                                li
+                                  if menu.urlInterna!='none'
+                                    a(href="/"+menu.urlInterna)
+                                      p
+                                        strong #{menu.titulo}
+                                  else
+                                    a(href=menu.urlExterna)
+                                      p
+                                        strong #{menu.titulo}
+                              li.divider
 
           ul#botonIngresar.nav.navbar-nav.navbar-right
             li.dropdown
@@ -136,6 +124,7 @@ html
                   .dropdown-menu
                     #login
                       form(method="POST" action="/user/login")
+                        input#url(type="hidden" name="url")
                         #datos 
                           input(type="text" name="usuario" autofocus placeholder="USUARIO" required) 
                           input(type="password" name="contrasena" placeholder="CONTRASEÑA" required) 
@@ -146,7 +135,7 @@ html
                             b TÉRMINOS Y CONDICIONES
                         button#botonLogin(type="submit") OK
                         #olvidoContrasena(style="display:none")
-                          a(href="#")
+                          a#recuperarContrasena(href="javascript:void(0);")
                             b RECUPERAR CONTRASEÑA
                         #registrarse
                           a(href="/user/signup")

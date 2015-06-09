@@ -53,14 +53,14 @@ app.route('/login')
     if(user){
       if(user.contrasena==req.body.contrasena){
         req.session.user=user;
-        res.redirect("/");
+        res.redirect(req.body.url);
       }else{
         req.flash('message', 'error with contrasena');
-        res.redirect('/');
+        res.redirect(req.body.url);
       }
     }else{
       req.flash('message', 'error with nickname');
-      res.redirect('/');
+      res.redirect(req.body.url);
     }
   });
 });

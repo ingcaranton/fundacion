@@ -7,7 +7,7 @@ var crudColaboradores = require('./../colaboradores/crud');
 app.set('views', __dirname + '/views');
 
 app.use(function(req, res, next){
-  db.menu.find().exec(function(errorMenu, menus){
+  db.menu.find().sort({posicion:1}).exec(function(errorMenu, menus){
     res.locals.user = req.session.user,
     res.locals.menus = menus;
     res.locals.message = req.flash('message'),
@@ -31,8 +31,8 @@ app.route('/')
           array.push(ultimasEntradasPrimarias[0].nombreEnlace);
         if(ultimasEntradasPrimarias[1]) 
           array.push(ultimasEntradasPrimarias[1].nombreEnlace);
-        if(ultimasEntradasPrimarias[2]) 
-          array.push(ultimasEntradasPrimarias[2].nombreEnlace);
+        if(ultimasEntradasPrimarias[3]) 
+          array.push(ultimasEntradasPrimarias[3].nombreEnlace);
 
       db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}, nombreEnlace:{$nin:array}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen titulo').sort('-fechaCreacion').limit(5).exec(function(error, ultimasEntradas){
           res.render('index', {
@@ -40,6 +40,7 @@ app.route('/')
             ultimasEntradas:ultimasEntradas,
             ultimasEntradasPrimarias:ultimasEntradasPrimarias
           });
+          console.log(ultimasEntradasPrimarias);
     });
   });
 });

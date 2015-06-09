@@ -3,13 +3,22 @@ module.exports.create = function(req, res, done) {
     console.log(req.body);
   	var newMenu = new db.menu();
   	newMenu.titulo=req.body.tituloMenu;
-     newMenu.submenus=[];
-   if(req.body.tituloSubmenu){
+    newMenu.posicion = req.body.numeroMenu;
+    newMenu.color= req.body.colorMenu;
+    if(req.body.urlInterna!=='none'){
+      newMenu.urlInterna=req.body.urlInterna;
+      newMenu.urlExterna="";
+    }else if(req.body.urlExterna!==''){
+      newMenu.urlExterna=req.body.urlExterna;
+      newMenu.urlInterna='none';
+    }
+    newMenu.submenus=[];
+    if(req.body.tituloSubmenu){
    	  for(var i=0;i<req.body.tituloSubmenu.length;i++){
-        if(req.body.seleccionUrlSubmenu[i]==='on'){
-          newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
+        if(req.body.urlInternaSubmenu[i]!=='none'){
+          newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i],urlExterna:''});
         }else{
-   			  newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+   			  newMenu.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i], urlInterna:'none'});
       }}
     }
     newMenu.fechaCreacion = dateFormateada();
@@ -42,14 +51,23 @@ module.exports.deleter = function(req, res, done) {
 module.exports.update = function(req, res, done) {
   var update= {};
   update.titulo=req.body.tituloMenu;
+  update.posicion = req.body.numeroMenu;
+  update.color= req.body.colorMenu;
+  if(req.body.urlInterna!=='none'){
+    update.urlInterna=req.body.urlInterna;
+    update.urlExterna="";
+  }else if(req.body.urlExterna!==''){
+    update.urlExterna=req.body.urlExterna;
+    update.urlInterna='none'
+  }
   console.log(req.body);
   update.submenus=[];
   if(req.body.tituloSubmenu){
       for(var i=0;i<req.body.tituloSubmenu.length;i++){
-        if(req.body.seleccionUrlSubmenu[i]==='on'){
-          update.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i]});
+        if(req.body.urlInternaSubmenu[i]!=='none'){
+          update.submenus.push({titulo:req.body.tituloSubmenu[i],urlInterna:req.body.urlInternaSubmenu[i],urlExterna:''});
         }else{
-        update.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i]});
+        update.submenus.push({titulo:req.body.tituloSubmenu[i],urlExterna:req.body.urlExternaSubmenu[i], urlInterna:'none'});
       }}
   }
   update.fechaCreacion = dateFormateada();

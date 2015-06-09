@@ -7,7 +7,7 @@ var crudUser = require("../user/crud");
 app.set('views', __dirname + '/views');
 
 app.use(function(req, res, next){
-  db.menu.find().exec(function(errorMenu, menus){
+  db.menu.find().sort({posicion:1}).exec(function(errorMenu, menus){
     res.locals.user = req.session.user,
     res.locals.menus = menus;
     res.locals.message = req.flash('message'),

@@ -24,21 +24,21 @@ block content
         #botonHacerDonacion
           button.btn(type="button" onclick="location.href='/hacerdonacion'") 
             b HACER DONACION
-      #redesSociales(style="display:none")
+      #redesSociales
         #facebook
           a(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u= http://www.conexionbienestar.com/"+pagina.nombreEnlace)
             .icon 
-          .izquierda
-          .contador
+          .izquierda(style="display:none")
+          .contador(style="display:none")
             b 0
         #twitter
-          a(href="https://twitter.com/?status=Me gusta esta página  http://www.conexionbienestar.com/"+pagina.nombreEnlace)
+          a(target="_blank" href="https://twitter.com/?status=Me gusta esta página  http://www.conexionbienestar.com/"+pagina.nombreEnlace)
             .icon 
-          .izquierda
-          .contador
+          .izquierda(style="display:none")
+          .contador(style="display:none")
             b 0
         #correo
-          a(href="https://plus.google.com/share?url=http://www.conexionbienestar.com/"+pagina.nombreEnlace)
+          a(target="_blank" href="https://plus.google.com/share?url=http://www.conexionbienestar.com/"+pagina.nombreEnlace)
             .icon 
     else
       h1 #{error}

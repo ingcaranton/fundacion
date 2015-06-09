@@ -5,12 +5,15 @@ block content
   if user && user.rol == "administrador"
     #editarMenu
       h1 EDITAR MENU
+      #nota
+        h4 NOTA 
+        p Se recomienda asignar el orden de cada menú con un número que no este asignado, si el que desea ya esta asignado primero libere la posición editando el menú que contiene el número requerido y después si asigne su posición. 
       #accordion.panel-group
         - var contador = 0
         each menu in menus
           .panel.panel-primary(id="panel"+contador)
             .panel-heading(id="titulo"+contador)
-              h2.panel-title #{menu.titulo}
+              h2.panel-title #{menu.posicion}- &nbsp;&nbsp; #{menu.titulo}
               h3.editar.panel-title 
                 a.aEditar.accordion-toggle(titulo="titulo"+contador data-toggle="collapse" data-parent="#accordion" href="#panelCollapse"+contador) Editar 
             .panel-collapse.collapse(id="panelCollapse"+contador)
@@ -20,31 +23,29 @@ block content
                   .datosMenu
                     .numeroMenu
                         span Orden en el Menu  
-                        input(type="number" name="numeroMenu" min=0 required title="Número requerido")
+                        input(type="number" name="numeroMenu" min=0 required title="Número requerido" value=menu.posicion)
                     .tituloMenu 
                       span Titulo 
-                      span #{menu.urlExterna}
                       input(type="text" name="tituloMenu" value=menu.titulo required title="Título requerido")
                     .colorMenu
                         span Color
-                        input(type="color" name="colorMenu" required title="Color requerido")
+                        input(type="color" name="colorMenu" required title="Color requerido" value=menu.color)
                     if menu.submenus==""
                       .seleccionUrl
                         span ¿Url interna?                        
-                        if menu.urlInterna
-                          input#seleccionUrl(type="checkbox" checked name="seleccionUrl" valor="valorUrl"+contador)
+                        if menu.urlExterna!=""
+                          input#seleccionUrl(type="checkbox" name="seleccionUrl")
                         else
-                          input#seleccionUrl(type="checkbox" name="seleccionUrl" valor="valorUrl"+contador)
-                        input(type="hidden" id="valorUrl"+contador)
+                          input#seleccionUrl(type="checkbox" checked name="seleccionUrl")
                       .urlMenu 
                         span Url 
                           if menu.urlExterna
-                            input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
+                            input#urlExterna(type="url" placeholder="http://www.ejemplo.com" value=menu.urlExterna name="urlExterna")
                             select#urlInterna.form-control(name="urlInterna" style="display:none")
                               option(value="none") Seleccione una opción
                               each pagina in paginas
                                 option(value=pagina.nombreEnlace) #{pagina.titulo}
-                          if menu.urlInterna
+                          else
                             input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna" style="display:none")
                             select#urlInterna.form-control(name="urlInterna")
                               option(value="none") Seleccione una opción
@@ -56,8 +57,7 @@ block content
                     else 
                       .seleccionUrl(style="display:none")
                         span ¿Url interna?      
-                          input#seleccionUrl(type="checkbox" name="seleccionUrl" valor="valorUrl"+contador)
-                        input(type="hidden" id="valorUrl"+contador)
+                          input#seleccionUrl(type="checkbox" name="seleccionUrl")
                       .urlMenu(style="display:none")
                         span Url 
                             input#urlExterna(type="url" placeholder="http://www.ejemplo.com" name="urlExterna")
@@ -139,15 +139,19 @@ block content
                             td 
                               input(type="text" name="tituloSubmenu["+index+"]" value=submenu.titulo required title="Titulo de submenu requerido")
                             td 
-                              if submenu.urlInterna
-                                input.seleccionUrlSubmenu(valor="valorUrlSubmenu"+index type="checkbox" checked name="seleccionUrl" interna="urlInternaSubmenu"+index externa="urlExternaSubmenu"+index)
                               if submenu.urlExterna
                                 input.seleccionUrlSubmenu(type="checkbox" name="seleccionUrl" interna="urlInternaSubmenu"+index externa="urlExternaSubmenu"+index)
-                              input(id="valorUrlSubmenu"+index type="hidden" name="valorUrlSubmenu["+index+"]")                            
+                              else 
+                                input.seleccionUrlSubmenu(type="checkbox" checked name="seleccionUrl" interna="urlInternaSubmenu"+index externa="urlExternaSubmenu"+index)                         
                             td  
                               if submenu.urlExterna
                                 input(type="url" id="urlExternaSubmenu"+index value=submenu.urlExterna name="urlExternaSubmenu["+index+"]" placeholder="http://www.ejemplo.com") 
-                              if submenu.urlInterna 
+                                select.form-control(style="display:none" id="urlInternaSubmenu"+index name="urlInternaSubmenu["+index+"]")
+                                  option(value="none") Seleccione una opción
+                                  each pagina in paginas
+                                    option(value=pagina.nombreEnlace) #{pagina.titulo}
+                              else if submenu.urlInterna
+                                input(style="display:none" type="url" id="urlExternaSubmenu"+index name="urlExternaSubmenu["+index+"]" placeholder="http://www.ejemplo.com")
                                 select.form-control(id="urlInternaSubmenu"+index name="urlInternaSubmenu["+index+"]")
                                   option(value="none") Seleccione una opción
                                   each pagina in paginas
@@ -181,7 +185,7 @@ block content
                       .datosMenu
                         .numeroMenu
                           span Orden en el Menu  
-                          input(type="number" name="numeroMenu" min=0 required title="Número requerido")
+                          input(type="number" name="numeroMenu" min=0 required title="Número requerido" value=(menus.length+1))
                         .tituloMenu
                           span Titulo 
                           input(type="text" name="tituloMenu" required title="Titulo requerido")
@@ -191,7 +195,6 @@ block content
                         .seleccionUrl
                           span ¿Url interna?
                           input#seleccionUrl(type="checkbox")
-                          input#valorUrl(type="hidden" name="valorUrl")
                         .urlMenu
                           span Url 
                           br 

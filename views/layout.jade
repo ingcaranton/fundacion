@@ -54,7 +54,7 @@ html
                           .row
                             .col-sm-8
                               ul.yamm-content.list-unstyled(role="menu")
-                                each submenu, index2 in menu.submenus
+                                each submenu, index in menu.submenus
                                   li
                                     if submenu.urlInterna!='none'
                                       a.tituloSubmenu(tabindex="-1" href="/"+submenu.urlInterna) 
@@ -62,7 +62,7 @@ html
                                     else
                                       a.tituloSubmenu(tabindex="-1" href=submenu.urlExterna) 
                                         b &bull;  #{submenu.titulo}
-                                  if index2=(menu.submenus.length)
+                                  if index<(menu.submenus.length-1)
                                     li.divider
                             .divImagenSubmenu.col-sm-4
                               img(src="/images/logoBlanco.png")

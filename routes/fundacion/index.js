@@ -40,7 +40,6 @@ app.route('/')
             ultimasEntradas:ultimasEntradas,
             ultimasEntradasPrimarias:ultimasEntradasPrimarias
           });
-          console.log(ultimasEntradasPrimarias);
     });
   });
 });
@@ -51,7 +50,6 @@ app.route('/agregarContenidoScroll')
         res.send(entradas);
   });
 });
-
 
 app.route('/todocontenido')
 .get(function(req, res){

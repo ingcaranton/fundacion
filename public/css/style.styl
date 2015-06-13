@@ -1,12 +1,42 @@
-/*Color placeholder*/
-  input::-webkit-input-placeholder
-    color gray
-  input:-moz-placeholder 
-    color gray
-  input::-moz-placeholder 
-    color gray
-  input:-ms-input-placeholder 
-    color gray
+/*Mixins*/
+  radio-buttons(color)
+    width 20px
+    height 20px 
+    float left
+    padding-top 1%
+    :hover 
+      cursor pointer
+    input 
+      display none
+
+    span 
+      width 20px !important
+      height 20px
+      display block
+      background-color white
+      border 1.8px solid color            
+
+    input:checked + span 
+      background-color color
+      padding 4%
+  color-placeholder-input(color)
+    input::-webkit-input-placeholder
+      color color
+    input:-moz-placeholder 
+      color color
+    input::-moz-placeholder 
+      color color
+    input:-ms-input-placeholder 
+      color color
+  color-placeholder-textarea(color)
+    textarea::-webkit-input-placeholder
+      color color 
+    textarea:-moz-placeholder 
+      color color 
+    textarea::-moz-placeholder 
+      color color 
+    textarea:-ms-input-placeholder 
+      color color 
 /*fuente*/
   @font-face
     font-family "Roboto-Regular"
@@ -21,6 +51,7 @@ body
     font-family Roboto-Regular 
   p 
     font-family Roboto-Regular 
+color-placeholder-input(gray)
 .btn 
   border-radius 0
 .modal-content
@@ -1053,25 +1084,11 @@ body
       text-align center
       width 100%
       color #ff889b
-    p 
-      border-top 1.8px solid #ff889b
-      border-bottom 1.8px solid #ff889b
-      width 100%
-      padding 3% 5%
-      text-align center
-      color #696363
     #formulario
       padding-top 5%
       width 70%
       margin auto
-      input::-webkit-input-placeholder
-        color #aaa
-      input:-moz-placeholder 
-        color #aaa
-      input::-moz-placeholder 
-        color #aaa
-      input:-ms-input-placeholder 
-        color #aaa
+      color-placeholder-input(#aaa)
       input
         width 70%
         margin 2% 15%
@@ -1086,14 +1103,7 @@ body
         margin 2% 15%
         border 1.8px solid #ff889b
         text-align center
-      textarea::-webkit-input-placeholder
-        color #aaa
-      textarea:-moz-placeholder 
-        color #aaa
-      textarea::-moz-placeholder 
-        color #aaa
-      textarea:-ms-input-placeholder 
-        color #aaa
+      color-placeholder-textarea(#aaa)
       button
         width 70%
         margin 2% 15%
@@ -1131,25 +1141,7 @@ body
           width auto !important
           padding-left 1% !important
         .checkboxDonacion 
-          width 20px
-          height 20px 
-          float left
-          padding-top 1%
-          :hover 
-            cursor pointer
-          input 
-            display none
-
-          span 
-            width 20px !important
-            height 20px
-            display block
-            background-color white
-            border 1.8px solid #ff889b            
-
-          input:checked + span 
-            background-color #ff889b
-            padding 4%
+          radio-buttons(#ff889b)
     #confirmacion
       display none
       width 80%
@@ -1358,6 +1350,59 @@ body
         height 25px
         padding-top 3px
 /*fin estrellas*/
+
+/*Recuperar Contraseña*/
+  #recuperar
+    width 100%
+    padding 3% 10%
+    h1
+      text-align center
+      width 100%
+      color #ff889b
+    #formulario
+      padding-top 5%
+      width 70%
+      margin auto
+      color-placeholder-input(#aaa)
+      input
+        width 70%
+        margin 2% 15%
+        height 30px
+        border-left none
+        border-top none
+        border-right none
+        border-bottom 1.8px solid #ff889b
+        text-align center
+      button
+        width 70%
+        margin 2% 15%
+        border 1.8px solid #ff889b
+        text-align center
+        color white
+        background-color #ff889b
+        height 25px
+        padding-top 3px
+      span
+        width 70%
+        padding-left 15%
+        padding-top 3%
+        color #696363
+      #opciones
+        width 70%
+        margin 2% 15%
+        padding 1% 0 5% 0
+        .div
+          width 50%
+          padding-left 7%
+          float left
+        span 
+          float left
+          width auto 
+          padding-left 1%
+          padding-top 6%
+        .checkbox 
+          radio-buttons(#ff889b)
+/*Fin recuperar contraseña*/
 
 /*Responsive*/
   @media (max-width:800px)

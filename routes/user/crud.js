@@ -5,28 +5,36 @@ module.exports.create = function(req, res, done) {
             if (err)
                 return done(err);
             if (user) 
-                return done(new Error("User not created"), false, req.flash('message', 'El nickName ya existe.'));
+                return done(new Error("User not created"), false, req.flash('message', 'El nickName '+nickName+' ya existe.'));
              else {
-
-                var newUser= new db.user();
-                    newUser.nombre = req.body.nombre;
-                    newUser.apellido = req.body.apellido;
-                    newUser.nickName = nickName;
-                    newUser.correo = req.body.email;
-                    newUser.contrasena = req.body.contrasena;
-                    if(req.body.rol){
-                      newUser.rol = req.body.rol;
-                    }else{
-                      newUser.rol = "usuario";
-                    }
-                newUser.save(function(error, user) {
-                    if (error)
-                        return done(error);          
-                    if(user){
-                        return done(null, user, req.flash('message', 'nuevo usuario creado'));   
+                var correo = req.body.email.toLowerCase();
+                db.user.findOne({"correo":correo}, function(err, userCorreo){
+                    if (err)
+                        return done(err);
+                    if (userCorreo)
+                        return done(new Error("User not created"), false, req.flash('message', 'El correo '+correo+' ya existe'));
+                    else{
+                        var newUser= new db.user();
+                        newUser.nombre = req.body.nombre;
+                        newUser.apellido = req.body.apellido;
+                        newUser.nickName = nickName;
+                        newUser.correo = req.body.email;
+                        newUser.contrasena = req.body.contrasena;
+                        if(req.body.rol){
+                          newUser.rol = req.body.rol;
+                        }else{
+                          newUser.rol = "usuario";
+                        }
+                        newUser.save(function(error, user) {
+                            if (error)
+                                return done(error);          
+                            if(user){
+                                return done(null, user, req.flash('message', 'Registro exitoso ¡Gracias!'));   
+                            }
+                        });
                     }
                 });
-  
+                  
             }
         });
 }

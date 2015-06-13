@@ -24,30 +24,39 @@
   $(document).ready(function() {
     posiciones();
     $("#url").val(window.location.pathname);
-    //Recuperar Contraseña
-      $("#recuperarContrasena").on("click", function(){
-        bootbox.dialog({
-                title: "Recuperar Contraseña",
-                message: '<div class="row">  ' +
-                    '<div class="col-md-12"> ' +
-                    '<form class="form-horizontal method="POST" action="/user/recuperarContrasena"> ' +
-                    '<div class="form-group"> ' +
-                    '<label class="col-md-4 control-label" for="name">USUARIO:</label> ' +
-                    '<div class="col-md-4"> ' +
-                    '<input id="name" name="name" type="text" placeholder="Escriba su usuario" class="form-control input-md"> ' +
-                    '</div></div> </form> </div>  </div>',
-                buttons: {
-                    success: {
-                        label: "Save",
-                        className: "btn-success",
-                        callback: function () {
-                            var name = $('#name').val();
-                        }
-                    }
-                }
-            }
-        );
-      });   
+    /*Recuperar Contraseña*/
+      if(window.location.pathname==="/user/recuperarContrasena"){
+        $("#checkUsuario").on("click",function(){
+          if($(this).is(':checked')){
+            $("#checkCorreo").prop("checked",false);
+            $("#inputUsuario").css("display","inherit");
+            $("#inputCorreo").css("display","none");
+            $("#inputUsuario").attr("required",true);
+            $("#inputCorreo").attr("required",false);
+          }else{
+            $("#checkCorreo").prop("checked",true);
+            $("#inputUsuario").css("display","none");
+            $("#inputCorreo").css("display","inherit");
+            $("#inputUsuario").attr("required",false);
+            $("#inputCorreo").attr("required",true);
+          }
+        });
+        $("#checkCorreo").on("click",function(){
+          if($(this).is(':checked')){          
+            $("#checkUsuario").prop("checked",false);
+            $("#inputUsuario").css("display","none");
+            $("#inputCorreo").css("display","inherit");
+            $("#inputUsuario").attr("required",false);
+            $("#inputCorreo").attr("required",true);
+          }else{
+            $("#checkUsuario").prop("checked",true);
+            $("#inputUsuario").css("display","inherit");
+            $("#inputCorreo").css("display","none");
+            $("#inputUsuario").attr("required",true);
+            $("#inputCorreo").attr("required",false);
+          }
+        });
+      }  
     /*Colores de menuEscondido*/
       $(".navbar #menuEscondido #1").css("background-color","#fe889b");
       $(".navbar #menuEscondido #2").css("background-color","#d273cd");

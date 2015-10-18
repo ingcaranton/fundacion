@@ -3,6 +3,7 @@ var app = module.exports = express();
 var crudPagina = require("../pagina/crud");
 var crudMenu = require("../menu/crud");
 var crudUser = require("../user/crud");
+var crudSlider = require("../slider/crud");
 
 app.set('views', __dirname + '/views');
 
@@ -57,4 +58,19 @@ app.route('/editaruser')
         });
       });  
     });
+});
+
+app.route('/editarslider')
+.get(function(req, res){
+  db.pagina.find({publicar:true}, 'nombreEnlace titulo categoria').exec(function(error, paginas){
+    db.slider.find().sort('-fechaCreacion').exec(function(error, sliders){
+      crudMenu.read(req, res, function(err, users){
+        res.render('editarSlider', {
+        title : "Administrar slider",
+        paginas: paginas,
+        sliders: sliders
+        });
+      });
+    });
+  });
 });

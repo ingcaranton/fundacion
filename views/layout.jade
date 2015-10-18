@@ -9,8 +9,10 @@ html
     link(rel='stylesheet' href='/css/bootstrap.min.css')
     link(rel='stylesheet' href='/css/core.css') 
     link(rel='stylesheet' href='/css/yamm.css')
+    link(rel='stylesheet' href='/css/page.css')
     link(rel='stylesheet' href='/css/style.css')
     script(type='text/javascript' src='/js/jquery-1.11.2.min.js')
+    script(type='text/javascript' src='/js/page.js')
     script(type='text/javascript' src='/js/bootstrap.min.js')
     script(type='text/javascript' src='/js/bootbox.min.js')
     script(type='text/javascript' src='/js/core.js')
@@ -32,125 +34,80 @@ html
             span.icon-bar
         #navbar-collapse-1.navbar-collapse.collapse
           ul#ulPrincipal.nav.navbar-nav
-            -var contador=0
-            each menu, index in menus 
-              if index < 5
-                -contador++
-                li.dropdown.yamm-fw(id="li"+(index+1))
-                  .colorMenu(id="colorMenu"+(index+1) color=menu.color)
-                  if menu.submenus==""
-                    if menu.urlInterna!="none"
-                      a.dropdown-toggle(href="/"+menu.urlInterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+            if menus 
+              -var contador=0
+              each menu, index in menus 
+                if index < 5
+                  -contador++
+                  li.dropdown.yamm-fw(id="li"+(index+1))
+                    .colorMenu(id="colorMenu"+(index+1) color=menu.color)
+                    if menu.submenus.length>0
+                      a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);" idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
                         b #{menu.titulo}
-                    else 
-                      a.dropdown-toggle(href=menu.urlExterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
-                        b #{menu.titulo}
-                  else
-                    a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);" idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
-                      b #{menu.titulo}
-                    ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu"+(index+1))
-                      li
-                        .yamm-content
-                          .row
-                            .col-sm-8
-                              ul.yamm-content.list-unstyled(role="menu")
-                                each submenu, index in menu.submenus
+                      ul.submenus.dropdown-menu.colorSubmenu(id="colorSubmenu"+(index+1))
+                        li
+                          .yamm-content
+                            .row
+                              .col-sm-8
+                                ul.yamm-content.list-unstyled(role="menu")
+                                  each submenu, index in menu.submenus
+                                    li
+                                      if submenu.urlInterna!='none'
+                                        a.tituloSubmenu(tabindex="-1" href="/"+submenu.urlInterna) 
+                                          b &bull;  #{submenu.titulo}
+                                      else
+                                        a.tituloSubmenu(tabindex="-1" href=submenu.urlExterna) 
+                                          b &bull;  #{submenu.titulo}
+                                    if index<(menu.submenus.length-1)
+                                      li.divider
+                              .divImagenSubmenu.col-sm-4
+                                img(src="/images/logoBlanco.png")
+                    else
+                      if menu.urlExterna
+                        a.dropdown-toggle(href=menu.urlExterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+                          b #{menu.titulo}
+                      else 
+                        a.dropdown-toggle(href="/"+menu.urlInterna idDiv="colorMenu"+(index+1) li="li"+(index+1)) 
+                          b #{menu.titulo}                        
+                      
+              if menus.length>5
+                li.dropdown.yamm-fw.mas
+                  .colorMenu
+                  a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") 
+                    b +               
+                  ul.dropdown-menu
+                    li
+                      .yamm-content
+                        .row
+                          each menu, index in menus 
+                            if index >= 5  
+                              ul.col-sm-2.list-unstyled                                  
+                                if menu.submenus!=""
                                   li
-                                    if submenu.urlInterna!='none'
-                                      a.tituloSubmenu(tabindex="-1" href="/"+submenu.urlInterna) 
-                                        b &bull;  #{submenu.titulo}
-                                    else
-                                      a.tituloSubmenu(tabindex="-1" href=submenu.urlExterna) 
-                                        b &bull;  #{submenu.titulo}
-                                  if index<(menu.submenus.length-1)
-                                    li.divider
-                            .divImagenSubmenu.col-sm-4
-                              img(src="/images/logoBlanco.png")
-            if menus.length>5
-              li.dropdown.yamm-fw.mas
-                .colorMenu
-                a.dropdown-toggle(data-toggle="dropdown" href="javascript:void(0);") 
-                  b +               
-                ul.dropdown-menu
-                  li
-                    .yamm-content
-                      .row
-                        each menu, index in menus 
-                          if index >= 5  
-                            ul.col-sm-2.list-unstyled                                  
-                              if menu.submenus!=""
-                                li
-                                  a(href="javascript:void(0);")
-                                    p
-                                      strong #{menu.titulo}
-                                each submenu in menu.submenus
-                                  li
-                                    if submenu.urlInterna!='none'
-                                      a(href="/"+submenu.urlInterna) #{submenu.titulo} 
-                                    else
-                                      a(href=submenu.urlExterna) #{submenu.titulo} 
-                              else
-                                li
-                                  if menu.urlInterna!='none'
-                                    a(href="/"+menu.urlInterna)
+                                    a(href="javascript:void(0);")
                                       p
                                         strong #{menu.titulo}
-                                  else
-                                    a(href=menu.urlExterna)
-                                      p
-                                        strong #{menu.titulo}
-                              li.divider
+                                  each submenu in menu.submenus
+                                    li
+                                      if submenu.urlInterna!='none'
+                                        a(href="/"+submenu.urlInterna) #{submenu.titulo} 
+                                      else
+                                        a(href=submenu.urlExterna) #{submenu.titulo} 
+                                else
+                                  li
+                                    if menu.urlInterna!='none'
+                                      a(href="/"+menu.urlInterna)
+                                        p
+                                          strong #{menu.titulo}
+                                    else
+                                      a(href=menu.urlExterna)
+                                        p
+                                          strong #{menu.titulo}
+                                li.divider
 
-          ul#botonIngresar.nav.navbar-nav.navbar-right
-            li.dropdown
-              .btn-group
-                if user
-                  if user.rol == "administrador"
-                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") Admin 
-                    ul.dropdown-menu(role="menu")
-                      li 
-                        a(href="/admin") Administrar Contenido
-                      li 
-                        a(href="/user/logout") Salir
-                  else
-                    button.btn.btn-primary.dropdown-toggle(type="button" data-toggle="dropdown") #{user.nickName} 
-                    ul.dropdown-menu(role="menu")
-                      li 
-                        a(href="/user/logout") Salir
-                     
-                else
-                  button.btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
-                    span INGRESAR
-                  .dropdown-menu
-                    #login
-                      form(method="POST" action="/user/login")
-                        input#url(type="hidden" name="url")
-                        #datos 
-                          input(type="text" name="usuario" autofocus placeholder="USUARIO" required) 
-                          input(type="password" name="contrasena" placeholder="CONTRASEÑA" required) 
-                        #terminos 
-                          input(type="checkbox" name="terminos" checked required)
-                          span  &nbsp; ACEPTO &nbsp;
-                          a(href="/terminosCondiciones") 
-                            b TÉRMINOS Y CONDICIONES
-                        button#botonLogin(type="submit") OK
-                        #olvidoContrasena
-                          a#recuperarContrasena(href="/user/recuperarContrasena")
-                            b RECUPERAR CONTRASEÑA
-                        #registrarse
-                          a(href="/user/signup")
-                            b REGISTRARSE 
-
-        #menuEscondido(style="display:none")
-          #1
-          #2 
-          #3 
-          #4 
-          #5 
-          #6 
-          #7 
-          #8 
-          #9 
+          a(href="/estrellas")
+            button#botonDonar.nav.navbar-nav.navbar-right 
+              b DONAR
 
     header#menuLateral.fixed
       section
@@ -194,9 +151,17 @@ html
       block content
 
     #piePagina
-      #derecha
+      div
         a(href="/PoliticasProteccionDatosPersonales") POLÍTICAS DE PRIVACIDAD
         span.guion &nbsp; - &nbsp;
         a(href="/terminosCondiciones") TÉRMINOS Y CONDICIONES
         span.guion &nbsp; - &nbsp;
         span FUNDACIÓN CONEXIÓN BIENESTAR &copy; 2015
+        span.guion &nbsp; - &nbsp;
+        if user
+          if user.rol == "administrador"
+              a(href="/admin") ADMINISTRAR CONTENIDO
+              span.guion &nbsp; - &nbsp; 
+              a(href="/user/logout") CERRAR SESIÓN              
+        else
+          a#aLogin(href="javascript:void(0);") ADMINISTRAR CONTENIDO

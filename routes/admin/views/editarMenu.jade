@@ -3,12 +3,12 @@ block content
   script(type="text/javascript").
     paginas=!{JSON.stringify(paginas)};
   if user && user.rol == "administrador"
-    #editarMenu
+    #editarMenu.editarconaccordion
       h1 EDITAR MENU
       #nota
         h4 NOTA 
         p Se recomienda asignar el orden de cada menú con un número que no este asignado, si el que desea ya esta asignado primero libere la posición editando el menú que contiene el número requerido y después si asigne su posición. 
-      #accordion.panel-group
+      #accordion.panel-group.accordion
         - var contador = 0
         each menu in menus
           .panel.panel-primary(id="panel"+contador)
@@ -169,15 +169,15 @@ block content
                   button.botonSubmenu.btn.btn-primary.btn-sm(type="submit" tabla="tabla"+contador) Guardar Cambios
           -contador++
 
-      #botones
+      .botones
         button#agregarMenu.btn.btn-primary(type="button") Agregar Menu 
         span &nbsp; &nbsp; &nbsp;
         button.btn.btn-primary(type="button" onclick="location.href='/admin'") Regresar 
 
-      #nuevoMenu
-        #menuNuevo(style="display:none")
+      #nuevoMenu.nuevo
+        #menuNuevo.nuevoElemento(style="display:none")
           form#formMenuNuevo(method="POST" action="/admin/menu/nuevo")
-            #panelMenuNuevo.panel.panel-primary
+            #panelMenuNuevo.panel.panel-primary.panelNuevo
                 .panel-heading
                   h2.panel-title MENU NUEVO 
                 .panel-collapse
@@ -210,7 +210,7 @@ block content
                     .tituloSubmenu(style="display:none")
                       h3 SUBMENU
                     .table-responsive
-                      table#tablaMenuNuevo.table(style="display:none")
+                      table#tablaMenuNuevo.tablaNuevo.table(style="display:none")
                         tr
                           th#numero 
                             h5 

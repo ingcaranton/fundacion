@@ -1,6 +1,6 @@
 extends ../../../views/layout
 block content
-  if user.rol == "administrador"
+  if user && user.rol == "administrador"
     #editarPaginas
       h3 EDITAR PAGINAS 
       table#tablaEditarPaginas.table

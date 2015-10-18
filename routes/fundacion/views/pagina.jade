@@ -15,10 +15,18 @@ block content
       #descripcion
         p 
           b #{pagina.descripcion}
+      if pagina.idVideo
+        iframe(allowfullscreen frameborder="0" src="//www.youtube-nocookie.com/embed/"+pagina.idVideo+"?fs=1&hd=1&rel=0&showsearch=0&showinfo=0&iv_load_policy=3&loop=1&theme=light&modestbranding=1&autohide=1" style="width: 100%; height: 500px;")
+        #elemento
+          | !{pagina.contenido}
       if pagina.linkImagen
         #imagenDescripcion
           img(src=pagina.linkImagen)
-      #elemento
+        if !pagina.idVideo
+          #elemento
+            | !{pagina.contenido}
+      if !pagina.idVideo && !pagina.linkImagen
+        #elemento
         | !{pagina.contenido}
       if pagina.nombreEnlace=="apoyar"
         #botonHacerDonacion

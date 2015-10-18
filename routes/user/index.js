@@ -53,7 +53,7 @@ app.route('/login')
     if(user){
       if(user.contrasena==req.body.contrasena){
         req.session.user=user;
-        res.redirect(req.body.url);
+        res.redirect("/admin");
       }else{
         req.flash('message', 'Contraseña incorrecta');
         res.redirect(req.body.url);

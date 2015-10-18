@@ -9,6 +9,7 @@ module.exports = function(mongoose){
 		fechaCreacion : Date,
 		categoria : String,
 		UserModificacion : String,
+		idVideo: String,
 		linkImagen: String,
 		soloRegistrados : Boolean
 	});

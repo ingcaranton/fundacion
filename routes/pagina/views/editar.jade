@@ -19,6 +19,15 @@ block content
                 p Enlace
               td.columnaGrande
                 input(type="text" name="nombreEnlace" value=pagina.nombreEnlace required title="Enlace requerido")
+            tr 
+              td.columnaPequena
+                p Enlace Video
+              td.columnaGrande
+                if pagina.idVideo
+                  input.enlaceVideo(type="text" placeholder="Ejemplo   https://www.youtube.com/watch?v=-Dc_kzFd1lw" value="https://www.youtube.com/watch?v="+pagina.enlaceVideo)
+                else
+                  input.enlaceVideo(type="text" placeholder="Ejemplo   https://www.youtube.com/watch?v=-Dc_kzFd1lw")
+                input.idVideo(type="hidden" name="idVideo")
             tr
               td.columnaPequena
                 p Imagen Descripción
@@ -28,7 +37,7 @@ block content
                     span.btn.btn-primary.btn-file
                         span Seleccione una imagen&hellip; 
                           input(type="file" name="image")
-                  input.form-control(type="text" readonly)
+                  input.form-control(type="text" readonly name="imagenAnterior" value=pagina.linkImagen)
             tr
               td.columnaPequena
                 p Descripción (Max 300 caracteres)

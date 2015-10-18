@@ -14,9 +14,10 @@ module.exports.create = function(req, res, done) {
         newPagina.titulo = req.body.titulo;
         newPagina.descripcion = req.body.descripcion;
         newPagina.contenido =req.body.contenido;
-        newPagina.fechaCreacion = new Date();;
+        newPagina.fechaCreacion = new Date();
         newPagina.UserModificacion = req.session.user.nickName;
         newPagina.categoria =req.body.categoria;
+        newPagina.idVideo = req.body.idVideo;
         if(req.body.soloRegistrados=="on")
           newPagina.soloRegistrados = true;
         else
@@ -83,6 +84,7 @@ module.exports.update = function(req, res, done) {
       update.UserModificacion = req.session.user.nickName;
       update.categoria =req.body.categoria;
       update.fechaCreacion = new Date();
+      update.idVideo = req.body.idVideo;
       if(req.body.publicar){
         update.publicar = true;
       }else{
@@ -105,6 +107,7 @@ module.exports.update = function(req, res, done) {
           });
         });
       }else{
+        update.linkImagen=req.body.imagenAnterior;
         db.pagina.findOneAndUpdate({ "nombreEnlace" : nombreEnlace},{$set:update},
           function(error){
             if (error)
@@ -131,13 +134,4 @@ module.exports.updateEstado = function(req, res, done) {
         );
     }
   });
-}
-
-//formatear fecha 
-function pad(d) {
-    return (d < 10) ? '0' + d.toString() : d.toString();
-}
-function dateFormateada(){
-  var date = new Date()
-  return pad(date.getDay())+"/"+pad(date.getMonth())+"/"+date.getFullYear()+" "+pad(date.getHours())+":"+pad(date.getMinutes());
 }

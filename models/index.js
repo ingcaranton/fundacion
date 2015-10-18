@@ -23,7 +23,8 @@ if (!global.hasOwnProperty('db')) {
     pagina:require('./pagina')(mongoose),
     user:require('./user')(mongoose),
     menu:require('./menu')(mongoose),
-    colaboradores:require('./colaboradores')(mongoose)
+    colaboradores:require('./colaboradores')(mongoose),
+    slider:require('./slider')(mongoose)
   };
 }
  

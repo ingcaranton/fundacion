@@ -159,9 +159,8 @@ html
         span FUNDACIÓN CONEXIÓN BIENESTAR &copy; 2015
         span.guion &nbsp; - &nbsp;
         if user
-          if user.rol == "administrador"
-              a(href="/admin") ADMINISTRAR CONTENIDO
-              span.guion &nbsp; - &nbsp; 
-              a(href="/user/logout") CERRAR SESIÓN              
+          a(href="/admin") ADMINISTRAR CONTENIDO
+          span.guion &nbsp; - &nbsp; 
+          a(href="/user/logout") CERRAR SESIÓN              
         else
           a#aLogin(href="javascript:void(0);") ADMINISTRAR CONTENIDO

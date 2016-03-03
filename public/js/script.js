@@ -11,11 +11,6 @@
   var ultimasEntradas={};
   var ultimasEntradasPrimarias={};
   var paginas={};
-  var arrayImagenesSlider=[{src:"https://s3.amazonaws.com/fundacion-bucket/1.png",url:"/Los5principiosdelAcompanar",descripcion:"Programa para el cuidado del ser y sus relaciones, 7 sesiones que permiten identificar las dificultades y las potencialidades de los participantes, encontrando caminos de transformación que mejoran los escenarios de vida de las personas, las familias y las comunidades."},
-    {src:"https://s3.amazonaws.com/fundacion-bucket/2.jpg",url:"/croquetazanahoria",descripcion:"Las zanahorias son una de las hortalizas que más se producen a nivel mundial. Por contener carotenoides, numerosos estudios la han vinculado con la prevención del cáncer de mama. Además, es fuente de vitaminas A, B, C y E. También contiene minerales y antioxidantes."},
-    {src:"https://s3.amazonaws.com/fundacion-bucket/3.jpg",url:"/hamburguesavegetariana",descripcion:"Aquí tienes 4 opciones de hamburguesa vegetariana, para preparar y disfrutar de un rico y saludable almuerzo. Puedes variar y combinar los distintos ingredientes que más te gusten, para preparar tu hamburguesa perfecta."},
-    {src:"https://s3.amazonaws.com/fundacion-bucket/4.jpg",url:"/semillastradicionales",descripcion:"Sembrar, cosechar y cocinar nuestros alimentos nos permite retornar al origen de la vida, a nuestra cultura a nuestro legado. Somos como las semillas diversas, coloridas y sonrientes."},
-    {src:"https://s3.amazonaws.com/fundacion-bucket/5.jpg",url:"/domoconsacosdetierra",descripcion:"Los domos hechos con sacos de tierra no son algo novedoso, estas estructuras se han utilizado desde siempre. Actualmente la Bioconstrucción los presenta como una opción equilibrada y amigable  con el medio ambiente, para así generar un  espacio cómodo  y  a  bajo costo."}];
   var homeCargado=false;
   var vistaDonacion=false;
   var vistaEstrellas=false;
@@ -115,6 +110,10 @@
             $("#navbar-collapse-1 ul li #colorSubmenu"+(i+1)).css("background-color", color);
           }
         }
+        $("#navbar-collapse-1 ul li .colorMenu").each(function(element){
+          $(this).css("visibility" , "visible");
+        });
+        /*
         $("#navbar-collapse-1 ul li a.dropdown-toggle").on("click",function(){
           var div=$(this).attr("idDiv");
           var li=$(this).attr("li");
@@ -127,7 +126,8 @@
               $(this).css("visibility" , "hidden");
             }
           });
-        });
+        });*/
+       /* Aqui hago que la barra de color de cada menu se muestre al hace hover----
         $("#navbar-collapse-1 ul li a.dropdown-toggle").mouseenter(function(){
           var div=$(this).attr("idDiv");
           var li=$(this).attr("li");
@@ -151,7 +151,7 @@
               $(this).css("visibility" , "hidden");
             }
           });
-        }); 
+        }); */
    
     /*Mas Contenido*/
       $("ul.holder").sweetPages({perPage:10,altura:110});
@@ -517,6 +517,9 @@
           $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 4 ).before(cardNueva); 
           cardNueva = llenarCardsPrincipales(ultimasEntradasPrimarias[1],"cardEspiritual");   
           $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 6 ).before(cardNueva); 
+          /*Banner
+          var banner = $("<div id='banner'></div>");
+          $( "#contenido #seccionesPrincipales #cards" ).find( ".card" ).eq( 4 ).before(banner); */
         /*Imagenes y color Aleatorios Slider*/
           /*for(var i=0; i<arrayImagenesSlider.length;i++){
             var img = $('<img src="'+arrayImagenesSlider[usados[i]].src+'">');
@@ -529,7 +532,7 @@
             li.append(img);
             li.append(div);
             $("#sb-slider").append(li);
-          }*/
+          }
           if($(window).width()>800){
             $("#slider").mouseenter(function() {
               $(this).css('background-color',arrayColor[posicionColor]);
@@ -539,9 +542,9 @@
               $(this).css('background-color','white');
               $(this).css('transition','background-color 2s');
             });
-          }else{
+          }else{*/
             $("#slider").css('background-color',arrayColor[posicionColor]);
-          }
+          /*}*/
         /*mas contenido en home*/
           var anchoVentana = $(window).width();
           var padding = (anchoVentana-1100)/2;

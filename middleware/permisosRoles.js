@@ -15,5 +15,5 @@ module.exports.isAdmin = function(req, res, next) {
 	}
 
      req.flash('message', 'No eres administrador.');
-     res.redirect('/');
+     res.redirect('/home');
 }

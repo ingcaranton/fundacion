@@ -4,6 +4,7 @@ var crudPagina = require("../pagina/crud");
 var crudMenu = require("../menu/crud");
 var crudUser = require("../user/crud");
 var crudSlider = require("../slider/crud");
+var crudFrase = require("../frase/crud");
 
 app.set('views', __dirname + '/views');
 
@@ -54,7 +55,7 @@ app.route('/editaruser')
     crudUser.read(req, res, function(err, users){
       crudMenu.read(req, res, function(err, menus){
         res.render('editarUser', {
-          title : "Administrar paginas"
+          title : "Administrar Usuarios"
         });
       });  
     });
@@ -70,6 +71,18 @@ app.route('/editarslider')
         paginas: paginas,
         sliders: sliders
         });
+      });
+    });
+  });
+});
+
+app.route('/editarFrase')
+.get(function(req, res){
+  db.frase.find('texto').exec(function(error, frases){
+    crudFrase.read(req, res, function(err, frases){
+      res.render('editarFrase', {
+      title : "Administrar frases",
+      frases: frases
       });
     });
   });

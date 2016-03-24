@@ -14,91 +14,53 @@
   var homeCargado=false;
   var vistaDonacion=false;
   var vistaEstrellas=false;
-  var arrayColor=["#d273cd","#00bb41","#00c7fc","#36abd0","#8762ab","#fef000","#ffa700","#fe889b","#ff7f5b"];
+  var arrayColor=["#d273cd","#00bb41","#00c7fc","#36abd0","#8762ab","#ffa700","#fe889b","#ff7f5b"];
 
 /*Función principal*/
   $(document).ready(function() {
 
     /*Layout*/
-      //posiciones();
-      $(".navbar").css("top","0");
-      $("#contenido").css("margin-top","4.6%");
-      /*bootBox ingresar*/ 
-        $("#aLogin").on("click",function(){
-          bootbox.dialog({
-            title: "Para administrar contenido debes validarte",
-            message: '<div class="row" id="login">  ' +
-              '<form id="formLogin" class="form-horizontal" method="POST" action="/user/login"> ' +
-              '<input id="url" type="hidden" name="url" value="'+window.location.pathname+'"></input>'+
-              '<div id="datos">'+
-              '<input type="text" name="usuario" autofocus placeholder="Usuario" required></input>'+
-              '<input type="password" name="contrasena" placeholder="Contraseña" required></input>'+
-              '<button id="botonLogin" type="submit">Ingresar</button>'+
-              '</div></form></div>'
+      if(window.location.pathname!="/"){
+        //posiciones();
+        $(".navbar").css("top","0");
+        $("#contenido").css("margin-top","4.6%");
+        /*bootBox ingresar*/ 
+          $("#aLogin").on("click",function(){
+            bootbox.dialog({
+              title: "Para administrar contenido debes validarte",
+              message: '<div class="row" id="login">  ' +
+                '<form id="formLogin" class="form-horizontal" method="POST" action="/user/login"> ' +
+                '<input id="url" type="hidden" name="url" value="'+window.location.pathname+'"></input>'+
+                '<div id="datos">'+
+                '<input type="text" name="usuario" autofocus placeholder="Usuario" required></input>'+
+                '<input type="password" name="contrasena" placeholder="Contraseña" required></input>'+
+                '<button id="botonLogin" type="submit">Ingresar</button>'+
+                '</div></form></div>'
+            });
           });
-        });
-      /*navbar*/
-        $(function() {
-          window.prettyPrint && prettyPrint()
-          $(document).on('click', '.yamm .dropdown-menu', function(e) {
-            e.stopPropagation()
+        /*navbar*/
+          $(function() {
+            window.prettyPrint && prettyPrint()
+            $(document).on('click', '.yamm .dropdown-menu', function(e) {
+              e.stopPropagation()
+            })
           })
-        })
-      /*centrar menu*/
-        var longitudDivMenu = $("#navbar-collapse-1").css("width").slice(0,-2);
-        var paddingDivMenu = $("#navbar-collapse-1").css("padding-left").slice(0,-2);
-        var longitudMenu=$("#navbar-collapse-1 ul#ulPrincipal").css("width").slice(0,-2);
-        left = ((longitudDivMenu-longitudMenu)/2)-paddingDivMenu;
-        $("#navbar-collapse-1 ul#ulPrincipal").css("margin-left",left+"px");
-        var longitudVentana = $(window).width();
-        var marginSubmenu = (longitudVentana-longitudMenu)/2;
-        $("ul.submenus.dropdown-menu.colorSubmenu").css("margin", "0 "+marginSubmenu+"px");
-      /*posicionFooter*/
-        var heightFooter = ($("#piePagina").css("height")).slice(0,-2);
-        var heightMenu = ($(".navbar").css("height")).slice(0,-2);
-        var heightVentana = heightWindow()-heightFooter-heightMenu;
-        $("#contenido").css("min-height",heightVentana+"px");    
-      /*Boton subir*/
-        $('.scrollup').click(function(){
-          $("html, body").animate({ scrollTop: 0 }, 600);
-          return false;
-        });
-      /*FlechaBajar*/
-        $.fn.scrollBottom = function() { 
-          return $(document).height() - this.scrollTop() - this.height() - 200; 
-        };
-        $('a.scrolldown').click(function(){
-          $("html, body").animate({ scrollTop: $("#seccionesPrincipales").scrollBottom() }, 900);
-          return false;
-        });
-      /*Formato fecha*/
-        if($("#contenidoPagina #fecha #centro").attr("fecha")){
-          var str=$("#contenidoPagina #fecha #centro").attr("fecha");
-          var res = str.split(" ",4);
-          var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
-          $("#contenidoPagina #fecha #centro span").text(fecha);
-        }   
-      /*Buscar*/
-        $('#formularioBuscar').submit(function() {
-          $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            success: function(data) {
-              var contador=0;
-              $("#resultadoBuscar ul").empty();
-              while(contador<data.length){
-                $("#resultadoBuscar ul").append("<li><a href="+data[contador].nombreEnlace+"><span><b>"+data[contador].titulo+"</b></span><br><p>"+data[contador].descripcion+"</p></a></li>");
-                if(contador<(data.length-1)){
-                  $("#resultadoBuscar ul").append("<li class='linea'></li>");
-                }
-                contador++;
-              }
-            }
-          })        
-          return false;
-        }); 
-      /*Color Menu*/
+        /*centrar menu*/
+          var longitudDivMenu = $("#navbar-collapse-1").css("width").slice(0,-2);
+          var paddingDivMenu = $("#navbar-collapse-1").css("padding-left").slice(0,-2);
+          var longitudMenu=$("#navbar-collapse-1 ul#ulPrincipal").css("width").slice(0,-2);
+          left = ((longitudDivMenu-longitudMenu)/2)-paddingDivMenu;
+          $("#navbar-collapse-1 ul#ulPrincipal").css("margin-left",left+"px");
+          var longitudVentana = $(window).width();
+          var marginSubmenu = (longitudVentana-longitudMenu)/2;
+          $("ul.submenus.dropdown-menu.colorSubmenu").css("margin", "0 "+marginSubmenu+"px");
+        /*posicionFooter*/
+          var heightFooter = ($("#piePagina").css("height")).slice(0,-2);
+          var heightMenu = ($(".navbar").css("height")).slice(0,-2);
+          var heightVentana = heightWindow()-heightFooter-heightMenu;
+          $("#contenido").css("min-height",heightVentana+"px");  
+
+        /*Color Menu*/
         var cantidadMenu=$("#navbar-collapse-1 ul li.dropdown.yamm-fw").length;
         //$("#navbar-collapse-1 ul li.dropdown.yamm-fw").css("min-width",cantidadMenu+"%");
         for(var i=0;i<5;i++){
@@ -152,7 +114,58 @@
             }
           });
         }); */
+
+        /*Buscar*/
+        $('#formularioBuscar').submit(function() {
+          $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+              var contador=0;
+              $("#resultadoBuscar ul").empty();
+              while(contador<data.length){
+                $("#resultadoBuscar ul").append("<li><a href="+data[contador].nombreEnlace+"><span><b>"+data[contador].titulo+"</b></span><br><p>"+data[contador].descripcion+"</p></a></li>");
+                if(contador<(data.length-1)){
+                  $("#resultadoBuscar ul").append("<li class='linea'></li>");
+                }
+                contador++;
+              }
+            }
+          })        
+          return false;
+        }); 
+
+        /*Boton subir*/
+        $('.scrollup').click(function(){
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          return false;
+        });
+      /*FlechaBajar*/
+        $.fn.scrollBottom = function() { 
+          return $(document).height() - this.scrollTop() - this.height() - 200; 
+        };
+        $('a.scrolldown').click(function(){
+          $("html, body").animate({ scrollTop: $("#seccionesPrincipales").scrollBottom() }, 900);
+          return false;
+        });
+      /*Formato fecha*/
+        if($("#contenidoPagina #fecha #centro").attr("fecha")){
+          var str=$("#contenidoPagina #fecha #centro").attr("fecha");
+          var res = str.split(" ",4);
+          var fecha=res[0]+" "+res[1]+"-"+res[2]+"-"+res[3];
+          $("#contenidoPagina #fecha #centro span").text(fecha);
+        }  
+
+      }   
    
+    /*Redireccion Splash*/
+      if(window.location.pathname=="/"){
+        setTimeout("redireccionar()", 15000);
+        var posicionColor= Math.floor(Math.random()*(7-0+1))+0;
+        $('#splash').css("background-color",arrayColor[posicionColor]);
+      }
+
     /*Mas Contenido*/
       $("ul.holder").sweetPages({perPage:10,altura:110});
       var controls = $('.swControls').detach();
@@ -419,7 +432,7 @@
       /*redirecciones pagina donacion*/
         $("#paginaDonacion #confirmacion #tiempoEspecie").on("click",function(){
           bootbox.alert("Muchas gracias por tu apoyo, pronto estaremos en contacto!!", function(result){
-            location.href="/";
+            location.href="/home";
           });
         });
     
@@ -454,8 +467,8 @@
       });     
     
     /*home*/
-      if(window.location.pathname=="/"){
-        var posicionColor= Math.floor(Math.random()*(8-0+1))+0; 
+      if(window.location.pathname=="/home"){
+        var posicionColor= Math.floor(Math.random()*(7-0+1))+0; 
         /*Cargar Slider*/
           $(function() {
             var Page = (function() {
@@ -580,6 +593,50 @@
             });
       }
 
+    /*Frases*/
+
+      if(window.location.pathname=="/admin/editarFrase"){
+
+        $('#agregarFrase').on('click',function(){
+          var cantidadFrases= $(this).attr('cantidadFrases');
+          if(parseInt(cantidadFrases)<15){
+            $('#nuevaFrase').css('display','inherit');  
+          }else{
+            bootbox.alert('El número máximo de frases es 15, elimine una frase para agregar otra');
+          }          
+        });
+
+        $('#editarFrases #frases .frase .accionesFrase a.aEditarFrase').on('click',function(){
+          var aEditar=$(this).attr('id');
+          var aGuardar=$(this).attr('aGuardar');
+          var aCancelar=$(this).attr('aCancelar');
+          var input=$(this).attr('input');
+          $('#'+aEditar).css('display','none');
+          $('#'+aGuardar).css('display','inherit');
+          $('#'+aCancelar).css('display','inherit');
+          $('#'+input).removeAttr('readonly');
+          $('#'+input).select();
+        });
+
+        $('#editarFrases #frases .frase .accionesFrase a.aCancelarFrase').on('click',function(){
+          var aEditar=$(this).attr('aEditar');
+          var aGuardar=$(this).attr('aGuardar');
+          var aCancelar=$(this).attr('id');
+          var input=$(this).attr('input');
+          var hidden=$(this).attr('ih');
+          var valorAnterior=$('#'+hidden).attr('value');
+          $('#'+aGuardar).css('display','none');
+          $('#'+aCancelar).css('display','none');
+          $('#'+aEditar).css('display','inherit');
+          $('#'+input).attr('readonly',true);
+          $('#'+input).val(valorAnterior);
+        });
+
+        $('#editarFrases #frases .frase .accionesFrase a.aGuardarFrase').on('click',function(){
+          var form=$(this).attr('form');
+          $('#'+form).submit();
+        });
+      }
   });
 
 /*Funciones*/
@@ -741,4 +798,8 @@
     var enlace = enlace;
     var id=enlace.split("v=")[1];
     return id; 
+  }
+
+  function redireccionar() {
+    window.location.href="/home";
   }

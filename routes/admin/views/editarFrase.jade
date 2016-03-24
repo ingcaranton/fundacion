@@ -1,0 +1,32 @@
+extends ../../../views/layout
+block content
+  if user && user.rol == "administrador"
+    #editarFrases
+      h1 EDITAR FRASES
+      #frases
+        each frase, index in frases
+          .frase
+            .texto
+              span=index+1
+              form(id="formEditarFrase"+index method="POST" action="/admin/frase/editar")
+                input(id="hidden"+index type="hidden" name="textoFraseOriginal" value=frase.texto)
+                textarea.eFrase(id="input"+index name="texto" required title="Texto requerido" placeholder="Escriba su frase" value=frase.texto readonly) #{frase.texto}
+            .accionesFrase
+              a(href="/admin/frase/eliminar/"+frase.texto) Eliminar
+              a.aEditarFrase(id="aEditarFrase"+index aCancelar="aCancelarFrase"+index aGuardar="aGuardarFrase"+index input="input"+index href="javascript:void(0);") Editar 
+              a.aGuardarFrase(id="aGuardarFrase"+index style="display:none" form="formEditarFrase"+index href="javascript:void(0);") Guardar
+              a.aCancelarFrase(id="aCancelarFrase"+index ih="hidden"+index input="input"+index aGuardar="aGuardarFrase"+index aEditar="aEditarFrase"+index style="display:none" href="javascript:void(0);") Cancelar
+
+      .botones
+        button#agregarFrase.btn.btn-primary(type="button" cantidadFrases=frases.length) Agregar Frase
+        span &nbsp; &nbsp; &nbsp;
+        button.btn.btn-primary(type="button" onclick="location.href='/admin'") Regresar 
+
+    #nuevaFrase(style="display:none")
+      form#formFraseNuevo(method="POST" action="/admin/frase/nuevo")
+        textarea(name="texto" required title="Texto requerido" placeholder="Escriba su frase")
+        button#botonGuardarMenu.btn.btn-primary.btn-sm(type="submit") Guardar Frase
+
+  else
+    #noAdmin 
+      h1 ¡No eres administrador!

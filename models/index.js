@@ -8,7 +8,8 @@ if (!global.hasOwnProperty('db')) {
 
   //Choose the DB according to your environment variable
   if(process.env.NODE_ENV==="production"){
-    mongoose.connect('mongodb://arley:arley@ds045521.mongolab.com:45521/fundacion');
+    //mongoose.connect('mongodb://arley:arley@ds045521.mongolab.com:45521/fundacion');
+    mongoose.connect('mongodb://52.11.187.79:27017/fundacion');
   }
   if(process.env.NODE_ENV==="test"){
     mongoose.connect('mongodb://localhost/testFundacion');
@@ -24,7 +25,8 @@ if (!global.hasOwnProperty('db')) {
     user:require('./user')(mongoose),
     menu:require('./menu')(mongoose),
     colaboradores:require('./colaboradores')(mongoose),
-    slider:require('./slider')(mongoose)
+    slider:require('./slider')(mongoose),
+    frase:require('./frase')(mongoose)
   };
 }
  

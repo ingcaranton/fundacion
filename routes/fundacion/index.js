@@ -18,6 +18,19 @@ app.use(function(req, res, next){
 
 app.route('/')
 .get(function(req, res){
+  db.frase.count().exec(function(err, resultCount){
+    var rand = Math.floor(Math.random()*resultCount);
+    db.frase.findOne('texto').skip(rand).exec(function(error, frase){
+      res.render('index', {
+        title : "Conexión Bienestar",
+        frase: frase
+      });
+    });
+  });
+});
+
+app.route('/home')
+.get(function(req, res){
   db.slider.find({publicado:true}).sort('-fechaCreacion').exec(function(error, sliders){
     db.pagina.aggregate({$match: {publicar:true} },{$sort: {categoria:1}},{$group: {_id: "$categoria", 
       descripcion: {$last: "$descripcion" },
@@ -38,7 +51,7 @@ app.route('/')
             array.push(ultimasEntradasPrimarias[3].nombreEnlace);
 
         db.pagina.find({publicar:true,categoria:{$ne:"sinCategoria"}, nombreEnlace:{$nin:array}}, 'descripcion nombreEnlace fechaCreacion categoria linkImagen idVideo titulo').sort('-fechaCreacion').limit(3).exec(function(error, ultimasEntradas){
-            res.render('index', {
+            res.render('home', {
               title : 'Conexión Bienestar',
               ultimasEntradas:ultimasEntradas,
               ultimasEntradasPrimarias:ultimasEntradasPrimarias,
@@ -48,6 +61,7 @@ app.route('/')
     });
   });
 });
+
 app.route('/agregarContenidoScroll')
 .post(function(req, res){
   var indice=req.body.indice;

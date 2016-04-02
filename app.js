@@ -18,6 +18,7 @@ var pagina = require('./routes/pagina');
 var menu = require('./routes/menu');
 var user = require('./routes/user');
 var slider = require('./routes/slider');
+var frase = require('./routes/frase');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +39,7 @@ app.use(flash());
 //routes
 app.use('/user/', user);
 app.use('/admin/menu', menu);
+app.use('/admin/frase', frase);
 app.use('/admin/pagina', pagina);
 app.use('/admin/slider',slider);
 app.use('/admin', admin);
